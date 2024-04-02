@@ -42,6 +42,8 @@ func _ready():
 	border_jump_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_peak * border_jump_time_to_peak)) * -1
 	border_fall_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_descend * border_jump_time_to_descend)) * -1
 	
+	#print(tr("Test"))
+	
 func get_gravity() -> float:
 	#if ((rightFootRaycast.is_colliding() and not rightRaycast.is_colliding()) and 
 	#(rightFootRaycast.is_colliding() and not rightRaycast.is_colliding())):
@@ -62,7 +64,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		#if velocity.y > 2000:
 		#	velocity.y = 2000
-		labelText.text = "Not on Ground"
+		#labelText.text = "Not on Ground"
 
 		velocity.y += get_gravity() * delta
 			
@@ -75,7 +77,9 @@ func _physics_process(delta):
 			animationPlayer.play("Fall")	
 	else:
 		coyote_counter = coyote_time
-		labelText.text = "On Ground"
+		
+		#labelText.text = "On Ground"
+		#labelText.text = tr("Test")
 			
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
@@ -84,7 +88,8 @@ func _physics_process(delta):
 	if jump_buffer_counter > 0:
 		jump_buffer_counter -= delta
 	
-	print("JumpBufferCounter: " +  str(jump_buffer_counter) +  " Coyote_counter: " + str(coyote_counter))
+	#print("JumpBufferCounter: " +  str(jump_buffer_counter) +  " Coyote_counter: " + str(coyote_counter))
+	
 	if jump_buffer_counter > 0 and coyote_counter > 0:
 		jump() 
 		jump_buffer_counter = 0
