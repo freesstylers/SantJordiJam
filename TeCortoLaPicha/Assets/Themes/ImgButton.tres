@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg651pgtwypi2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wubbt"]
+
+[resource]
+Button/colors/icon_hover_color = Color(0.670588, 0.670588, 0.670588, 1)
+Button/colors/icon_hover_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_wubbt")
+Button/styles/focus = SubResource("StyleBoxEmpty_wubbt")
+Button/styles/hover = SubResource("StyleBoxEmpty_wubbt")
+Button/styles/normal = SubResource("StyleBoxEmpty_wubbt")
+Button/styles/pressed = SubResource("StyleBoxEmpty_wubbt")

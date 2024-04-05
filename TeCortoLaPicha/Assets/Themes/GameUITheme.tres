@@ -1,0 +1,126 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://r36jadpqieh6"]
+
+[ext_resource type="FontFile" uid="uid://bnu0s2kb4sfvc" path="res://Assets/Fonts/Larceny.ttf" id="1_wmgqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
+bg_color = Color(0.278431, 0.278431, 0.278431, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxj1j"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eilg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_055lk"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scmdd"]
+bg_color = Color(1, 0, 0, 0.419608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by12p"]
+bg_color = Color(0.152941, 0.745098, 0.0352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etfc5"]
+bg_color = Color(0.588235, 0.584314, 0.584314, 0.419608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rj2u"]
+bg_color = Color(1, 0.847059, 0.0313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_wmgqg")
+Button/styles/hover = SubResource("StyleBoxFlat_s53q5")
+Button/styles/normal = SubResource("StyleBoxFlat_qxj1j")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_wmgqg")
+Label/styles/normal = SubResource("StyleBoxEmpty_8eilg")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = SubResource("StyleBoxFlat_055lk")
+ProgressBar/constants/outline_size = 8
+ProgressBar/styles/background = SubResource("StyleBoxFlat_scmdd")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_by12p")
+VBoxContainer/constants/separation = 108
+exp/base_type = &"ProgressBar"
+exp/styles/background = SubResource("StyleBoxFlat_etfc5")
+exp/styles/fill = SubResource("StyleBoxFlat_5rj2u")

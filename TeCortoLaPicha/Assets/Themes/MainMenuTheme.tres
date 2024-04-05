@@ -1,0 +1,66 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccsfly34nw0wv"]
+
+[ext_resource type="FontFile" uid="uid://xd08wkb6sh3w" path="res://Assets/Fonts/Retro Gaming.ttf" id="1_2g3kf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
+bg_color = Color(0.278431, 0.278431, 0.278431, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxj1j"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eilg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_055lk"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+default_font = ExtResource("1_2g3kf")
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_2g3kf")
+Button/styles/hover = SubResource("StyleBoxFlat_s53q5")
+Button/styles/normal = SubResource("StyleBoxFlat_qxj1j")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_2g3kf")
+Label/styles/normal = SubResource("StyleBoxEmpty_8eilg")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = SubResource("StyleBoxFlat_055lk")
+VBoxContainer/constants/separation = 108

@@ -1,0 +1,289 @@
+[gd_scene load_steps=8 format=3 uid="uid://gu2ukvm2nfkb"]
+
+[ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
+[ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
+[ext_resource type="Texture2D" uid="uid://hl6iglmjffd0" path="res://Assets/MainMenu/LogoFreestylers.png" id="4_de44m"]
+[ext_resource type="Theme" uid="uid://dg651pgtwypi2" path="res://Assets/Themes/ImgButton.tres" id="4_n67yd"]
+[ext_resource type="Texture2D" uid="uid://6vfyvfq8fls4" path="res://Assets/MainMenu/Twitter.png" id="5_sxy5r"]
+[ext_resource type="Texture2D" uid="uid://b1dwgpu6404vd" path="res://Assets/MainMenu/GGJ_Logo_TEMP.png" id="6_yrhqi"]
+[ext_resource type="Texture2D" uid="uid://bdqnfpplo87hy" path="res://Assets/MainMenu/LogoDGT.png" id="7_wbon5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hmyp4")
+script = ExtResource("2_12wsh")
+
+[node name="MainButtonContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FreeStylers" type="Button" parent="MainButtonContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7625
+anchor_top = 0.8125
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_n67yd")
+icon = ExtResource("4_de44m")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Twitter" type="Button" parent="MainButtonContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.822737
+anchor_top = 0.675948
+anchor_right = 0.94946
+anchor_bottom = 0.80267
+offset_right = -0.240005
+offset_bottom = -0.240005
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_n67yd")
+icon = ExtResource("5_sxy5r")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="jam" type="Button" parent="MainButtonContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00972222
+anchor_top = 0.845833
+anchor_right = 0.226722
+anchor_bottom = 0.992
+offset_right = -0.240005
+offset_bottom = -0.240005
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_n67yd")
+icon = ExtResource("6_yrhqi")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MainButtonContainer"]
+layout_mode = 2
+offset_left = 162.0
+offset_top = 51.1875
+offset_right = 560.0
+offset_bottom = 243.188
+texture = ExtResource("7_wbon5")
+stretch_mode = 5
+
+[node name="MainButtonContainer" type="VBoxContainer" parent="MainButtonContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2815
+anchor_top = 0.461281
+anchor_right = 0.7185
+anchor_bottom = 0.827344
+offset_left = -0.320007
+offset_top = -0.440002
+offset_right = 0.319946
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="play" type="Button" parent="MainButtonContainer/MainButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Tutorial
+"
+
+[node name="Credits" type="Button" parent="MainButtonContainer/MainButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="credits" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177778
+anchor_top = 0.234722
+anchor_right = 0.822222
+anchor_bottom = 0.766667
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="container" type="MarginContainer" parent="credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="credits/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Label" type="Label" parent="credits/container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CREDITS
+--------
+Gonzalo cidoncha - silly goofy
+DAVID CZEPIEL - el becario
+PABLO GROSSI - el machango
+IGNACIO ORY - superviviente
+JOSE MARTÍN - jose
+JAVIER ARIAS - kumquat konnoisseur"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditsBack" type="Button" parent="credits/container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[node name="tutorial" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+anchor_left = 0.115625
+anchor_top = 0.0710938
+anchor_right = 0.884375
+anchor_bottom = 0.917969
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0172764
+anchor_top = 0.00922509
+anchor_right = 0.982724
+anchor_bottom = 0.127306
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 75
+text = "---------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296748
+anchor_top = 0.00922509
+anchor_right = 0.703252
+anchor_bottom = 0.126384
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.137255, 0.137255, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="tutorial/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 75
+text = "TUTORIAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00813008
+anchor_top = 0.141633
+anchor_right = 0.992886
+anchor_bottom = 0.475581
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="tutorial/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 45
+text = "STEER:
+ACCELERATE:
+BRAKE:
+DRIFT:
+???:"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="tutorial/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 45
+text = "A/D
+W
+S
+SPACE
+E"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="tutorial"]
+layout_mode = 2
+anchor_left = 0.0180668
+anchor_top = 0.734727
+anchor_right = 0.982836
+anchor_bottom = 0.902009
+theme_override_colors/font_color = Color(0.890196, 0.0705882, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "FUN IS DEAD
+BLOOD IS FUEL
+STREETS ARE FULL"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditsBack" type="Button" parent="tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0325203
+anchor_top = 0.924354
+anchor_right = 0.96748
+anchor_bottom = 0.986162
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Close"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="_on_free_stylers_button_down"]
+[connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="_on_twitter_button_down"]
+[connection signal="button_down" from="MainButtonContainer/jam" to="." method="_on_gift_jam_button_down"]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="TogglePlayMenu" binds= [true]]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
