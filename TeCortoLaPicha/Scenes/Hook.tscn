@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bkqm575n8adqw" path="res://Sprites/JV/Fall/Fall1.png" id="1_2inf3"]
 [ext_resource type="Script" path="res://Scripts/PlayerHook.gd" id="1_7sjhh"]
+[ext_resource type="Texture2D" uid="uid://bwyshk0t3w262" path="res://testingChain.png" id="3_0r0ik"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
-[ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="4_di7nd"]
 
 [node name="Hook" type="Node2D"]
 
@@ -14,16 +14,18 @@ texture = ExtResource("1_2inf3")
 script = ExtResource("1_7sjhh")
 hook_travel_speed = 1000
 
+[node name="HookTipChain" type="Sprite2D" parent="HookGun"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(26.0255, -2.51341)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("3_0r0ik")
+region_enabled = true
+region_rect = Rect2(1.9126, 100.313, 297.959, 41.5191)
+region_filter_clip_enabled = true
+
 [node name="HookTip" type="Sprite2D" parent="HookGun"]
-position = Vector2(31, -13)
+z_index = -1
+position = Vector2(25.1906, -28.3301)
 scale = Vector2(0.112903, 0.112903)
 texture = ExtResource("3_2dfxj")
-
-[node name="HookTipChain" type="Sprite2D" parent="HookGun"]
-texture_repeat = 2
-position = Vector2(93.4374, -2.89408)
-scale = Vector2(0.185, 0.185)
-texture = ExtResource("4_di7nd")
-region_enabled = true
-region_rect = Rect2(176.487, 5.118, 36.434, 1000)
-region_filter_clip_enabled = true

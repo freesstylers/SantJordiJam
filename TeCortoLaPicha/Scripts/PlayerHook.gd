@@ -5,7 +5,7 @@ extends Sprite2D
 @export var hook_max_travel_distance = 300
 
 @onready var hook_tip : Node2D = $HookTip
-@onready var hook_chain : Node2D = $HookTipChain
+@onready var hook_chain : Sprite2D = $HookTipChain
 
 var hook_target : Vector2 = Vector2.ZERO
 var hook_shot = false
@@ -17,10 +17,17 @@ func _ready():
 	
 func _process(delta):
 	if hook_shot:
-		var direction = (hook_target - hook_tip.global_position).normalized()
+		var position_delta = (hook_target - hook_tip.global_position)
+		var direction = position_delta.normalized()
+		
 		hook_tip.global_position += direction * hook_travel_speed * delta
-		hook_chain.global_position = (hook_tip.global_position + hook_chain.global_position) / 2
-
+		hook_tip.global_rotation = direction.angle()
+		
+		hook_chain.global_position = (hook_tip.global_position + global_position) / 2
+		hook_chain.global_rotation = direction.angle() - PI
+		hook_chain.region_rect.size.x = (hook_tip.global_position - global_position).length()
+		print(hook_chain.region_rect.size)
+		
 		if (hook_tip.global_position - hook_target).length() < 10:
 			hook_shot = false
 			hook_tip.hide()
