@@ -66,7 +66,7 @@ z_index = -1
 scale = Vector2(0.112903, 0.112903)
 texture = ExtResource("3_2dfxj")
 
-[node name="Rope" type="Line2D" parent="HookGun" node_paths=PackedStringArray("linePath")]
+[node name="Rope" type="Line2D" parent="HookGun"]
 position = Vector2(-16.1242, -23.7728)
 scale = Vector2(0.20672, 0.20672)
 points = PackedVector2Array(190, -18, -57, -86, -115, 95, -90, 120, -72, 114, -58, 96, -33, 175)
@@ -75,10 +75,9 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("5_4riq8")
+RopeMovementSpeed = 0.35
+WaveHeightMultiplier = 0.5
 straightenLineSpeed = 10.0
-StartWaveSize = 0.5
-ropeProgressionSpeed = 0.35
-linePath = NodePath("RopeVisualPath")
 
 [node name="RopeVisualPath" type="Path2D" parent="HookGun/Rope"]
 position = Vector2(1, 0)

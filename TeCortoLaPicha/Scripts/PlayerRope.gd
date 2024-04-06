@@ -3,88 +3,83 @@ class_name GrapplingRope
 
 #Tutorial_GrapplingGun grapplingGun;
 @export var grapplingGun : PlayerHook = null
-@export var percision : int = 40;
+@export var NumRopeSegments : int = 40;
+@export_range(0.01,5) var RopeMovementSpeed : float = 1
+@export_range(0.01,4) var WaveHeightMultiplier : float = 2
 @export_range(0,25) var straightenLineSpeed : float = 0.5
-@export_range(0.01,4) var StartWaveSize : float = 2
-@export_range(0.01,5) var ropeProgressionSpeed : float = 1
-@export var isGrappling : bool = true
 
-@export var linePath : Path2D = null
-var m_lineRenderer : Line2D = self
-var waveSize : float = 0
-var strightLine : bool = false;
-var Dest : Vector2 = global_position + Vector2(100,0)
+@onready var linePath : Path2D = $RopeVisualPath
+@onready var waveHeight : float = WaveHeightMultiplier
+@onready var m_lineRenderer : Line2D = self
+
+var rope_target : Vector2 = global_position + Vector2(100,0)
 var rope_shot : bool = false
+var straightLine : bool = false;
+var isGrappling : bool = true
 
 func _ready():
 	LinePointsToFirePoint()
-	waveSize = StartWaveSize;
-
-func ShootRope(hook_target : Vector2):
-	rope_shot = true
-	LinePointsToFirePoint()
-	strightLine = false;
-	waveSize = StartWaveSize
-	m_lineRenderer.visible = true;
-	
-	var delta_pos : Vector2 = hook_target - global_position
-	Dest = Vector2(delta_pos.length(),0)
-	global_rotation = delta_pos.angle()	
-
-func HideRope():
-	m_lineRenderer.visible = false;
-	isGrappling = false;
-
-func LinePointsToFirePoint():
-	m_lineRenderer.clear_points()
-	for i in range(0,percision+1):
-		m_lineRenderer.add_point(Vector2(0,0));
 
 func _process(delta):
 	if not rope_shot:
 		return
 	DrawRope(delta)
+
+func LinePointsToFirePoint():
+	m_lineRenderer.clear_points()
+	for i in range(0,NumRopeSegments+1):
+		m_lineRenderer.add_point(Vector2(0,0))
+		
+func ShootRope(hook_target : Vector2):
+	LinePointsToFirePoint()
+	rope_shot = true
+	straightLine = false;
+	waveHeight = WaveHeightMultiplier
+	m_lineRenderer.visible = true;
+	
+	var delta_pos : Vector2 = hook_target - global_position
+	rope_target = Vector2(delta_pos.length(),0)
+	global_rotation = delta_pos.angle()	
+
+func HideRope():
+	m_lineRenderer.visible = false;
+	isGrappling = false;
 	
 func DrawRope(delta):
-	if (!strightLine):
+	if (!straightLine):
 		#Rope reached the hook target???
-		var last_point_pos = m_lineRenderer.get_point_position(percision)
-		if abs(last_point_pos.x - Dest.x) < 10:
-			strightLine = true;
+		if abs(m_lineRenderer.get_point_position(NumRopeSegments).x - rope_target.x) < 10:
+			straightLine = true;
 		else:
 			DrawRopeWaves();
 	else:
-		#if (!isGrappling):
+		if (!isGrappling):
 			##grapplingGun.Grapple();
-			#isGrappling = true;
-		if (waveSize > 0):
-			waveSize = clampf(waveSize - (delta * straightenLineSpeed), 0, StartWaveSize)
-		else:
-			#rope_shot=false
-			waveSize = 0;
-		DrawRopeWaves();
-			#if (m_lineRenderer.positionCount != 2):
-				#m_lineRenderer.positionCount = 2
-			#DrawRopeNoWaves();
+			isGrappling = true;
+		if (waveHeight > 0):
+			waveHeight = clampf(waveHeight - (delta * straightenLineSpeed), 0, WaveHeightMultiplier)
+			DrawRopeWaves()
+		else:		
+			if m_lineRenderer.get_point_count() != 2:
+				m_lineRenderer.clear_points()
+				m_lineRenderer.add_point(Vector2(0,0))
+				m_lineRenderer.add_point(Vector2(0,0))
+			DrawRopeNoWaves();
 
 func DrawRopeWaves():
 	var back_length = linePath.curve.get_baked_length()
-	for vertexIndex in range(0,percision+1):
-		var curve_local_offset = back_length * (vertexIndex as float/percision as float)
+	for vertexIndex in range(0,NumRopeSegments+1):
+		#Get the position of the current vertex inside the curve2D and transform it to global coordinates
+		var curve_local_offset = back_length * (vertexIndex as float/NumRopeSegments as float)
 		var pos_inside_curve = linePath.curve.sample_baked(curve_local_offset) / 100 #X in range [0,100] Y in range [-100,100]
-		var height = pos_inside_curve.y * waveSize
-		var point_world_pos = pos_inside_curve * Dest.length()
-		height = point_world_pos.y * waveSize
-		#point_world_pos.y=0
-		
-		var pointCount = m_lineRenderer.get_point_count()
+		var pos_in_world = pos_inside_curve * rope_target.length()
+		#Lerp each point from the firePoint to its end position
 		var originalPos = m_lineRenderer.get_point_position(vertexIndex)
-		var modifiedPos = originalPos.lerp(point_world_pos, ropeProgressionSpeed)
-		modifiedPos.y = height
-		m_lineRenderer.set_point_position(vertexIndex, modifiedPos)
+		var lerpedPos = originalPos.lerp(pos_in_world, RopeMovementSpeed)
+		#The height of the vertex is modified only when the rope has reached its target and starts straightening
+		lerpedPos.y = pos_in_world.y * waveHeight
+		m_lineRenderer.set_point_position(vertexIndex, lerpedPos)
 
 func DrawRopeNoWaves():
-	pass
-	#m_lineRenderer.SetPosition(0, grapplingGun.firePoint.position);
-	#m_lineRenderer.SetPosition(1, grapplingGun.hook_target);
-
+	m_lineRenderer.set_point_position(0, Vector2(0,0));
+	m_lineRenderer.set_point_position(1, rope_target);
