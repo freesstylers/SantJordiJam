@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bk43jhsw5sywy"]
 
 [ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="1_ifnhu"]
-[ext_resource type="PackedScene" uid="uid://gu2ukvm2nfkb" path="res://Scenes/MainMenu.tscn" id="2_hk2fo"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
+[ext_resource type="PackedScene" uid="uid://d1oae8ne04f66" path="res://Scenes/MainMenu.tscn" id="2_hk2fo"]
+[ext_resource type="PackedScene" uid="uid://c6kwux5euwagh" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vnqq6"]
 animations = [{
