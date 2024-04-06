@@ -63,9 +63,10 @@ scale = Vector2(4.83746, 4.83746)
 curve = SubResource("Curve2D_o2trt")
 
 [node name="RopeForceSpring" type="DampedSpringJoint2D" parent="RigidBody2D"]
-visible = false
 rotation = 2.29772
 node_a = NodePath("..")
+node_b = NodePath("../../Ceiling1")
+bias = 0.9
 length = 500.0
 stiffness = 64.0
 

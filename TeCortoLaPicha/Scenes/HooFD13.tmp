@@ -45,7 +45,7 @@ texture = ExtResource("3_2dfxj")
 [node name="RayCast2D" type="RayCast2D" parent="RigidBody2D/RopeStartingPoint"]
 rotation = -1.5708
 scale = Vector2(2, 2)
-target_position = Vector2(0, 400)
+target_position = Vector2(0, 1000)
 
 [node name="Rope" type="Line2D" parent="RigidBody2D/RopeStartingPoint"]
 scale = Vector2(2, 2)
@@ -63,9 +63,10 @@ scale = Vector2(4.83746, 4.83746)
 curve = SubResource("Curve2D_o2trt")
 
 [node name="RopeForceSpring" type="DampedSpringJoint2D" parent="RigidBody2D"]
-visible = false
 rotation = 2.29772
 node_a = NodePath("..")
+node_b = NodePath("../../Ceiling1")
+bias = 0.9
 length = 500.0
 stiffness = 64.0
 

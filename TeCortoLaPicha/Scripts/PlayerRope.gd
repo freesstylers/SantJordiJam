@@ -26,6 +26,7 @@ func _process(delta):
 	DrawRope(delta)
 
 func LinePointsToFirePoint():
+	rope_shot=false
 	m_lineRenderer.clear_points()
 	for i in range(0,NumRopeSegments+1):
 		m_lineRenderer.add_point(Vector2(0,0))
@@ -42,7 +43,7 @@ func ShootRope(hook_target : Vector2):
 	global_rotation = delta_pos.angle()	
 
 func HideRope():
-	m_lineRenderer.visible = false;
+	LinePointsToFirePoint()
 	isGrappling = false;
 	
 func DrawRope(delta):
