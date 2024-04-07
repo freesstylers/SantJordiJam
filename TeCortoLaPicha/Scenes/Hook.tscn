@@ -26,10 +26,13 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_elit4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu0oa"]
+size = Vector2(65, 71)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyxwc"]
 size = Vector2(1142, 32)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_elit4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hq73"]
 size = Vector2(1134.23, 32.8505)
@@ -37,16 +40,13 @@ size = Vector2(1134.23, 32.8505)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udioh"]
 size = Vector2(1131.71, 29.2593)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu0oa"]
-size = Vector2(65, 71)
-
 [node name="Hook" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(817, 466)
-mass = 0.5
 can_sleep = false
 script = ExtResource("1_7sjhh")
+launch_vel = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_n4bm3")
@@ -59,13 +59,16 @@ texture = ExtResource("3_2dfxj")
 rotation = -1.5708
 scale = Vector2(2, 2)
 target_position = Vector2(0, 400)
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="Rope" type="Line2D" parent="RigidBody2D/RopeStartingPoint"]
+[node name="Rope" type="Line2D" parent="RigidBody2D/RopeStartingPoint" node_paths=PackedStringArray("grapplingGun")]
 scale = Vector2(2, 2)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("5_4riq8")
+grapplingGun = NodePath("../..")
 RopeMovementSpeed = 0.35
 WaveHeightMultiplier = 0.5
 straightenLineSpeed = 10.0
@@ -80,29 +83,29 @@ curve = SubResource("Curve2D_vmmks")
 [node name="RopeVisualPath3" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
 curve = SubResource("Curve2D_rm8rj")
 
-[node name="RopeForceSpring" type="DampedSpringJoint2D" parent="RigidBody2D"]
-node_a = NodePath("..")
-node_b = NodePath("../../Ceiling4")
-bias = 0.9
-length = 1.0
-stiffness = 32.0
-
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_2dfxj")
 
+[node name="Ceiling6" type="StaticBody2D" parent="."]
+position = Vector2(427, 95)
+physics_material_override = SubResource("PhysicsMaterial_elit4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ceiling6"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2dfxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling6"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pu0oa")
+
 [node name="Prueba" type="RigidBody2D" parent="."]
-position = Vector2(425, 246)
+position = Vector2(354, 149)
 mass = 0.5
 can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Prueba"]
 shape = SubResource("CircleShape2D_n4bm3")
-
-[node name="RopeForceSpring" type="DampedSpringJoint2D" parent="Prueba"]
-node_a = NodePath("..")
-node_b = NodePath("../../Ceiling6")
-stiffness = 32.0
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(547, 605)
@@ -146,62 +149,47 @@ texture = ExtResource("3_2dfxj")
 position = Vector2(27.9812, 0.0207214)
 shape = SubResource("RectangleShape2D_udioh")
 
-[node name="Ceiling3" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 position = Vector2(617, 251)
-physics_material_override = SubResource("PhysicsMaterial_elit4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ceiling3"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2dfxj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling3"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(617, 251.5)
 shape = SubResource("RectangleShape2D_pu0oa")
 
-[node name="Ceiling4" type="StaticBody2D" parent="."]
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
 position = Vector2(812, 164)
-physics_material_override = SubResource("PhysicsMaterial_elit4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ceiling4"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2dfxj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling4"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(812, 164.5)
 shape = SubResource("RectangleShape2D_pu0oa")
 
-[node name="Ceiling5" type="StaticBody2D" parent="."]
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
 position = Vector2(306, 329)
-physics_material_override = SubResource("PhysicsMaterial_elit4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ceiling5"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2dfxj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling5"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(306, 329.5)
 shape = SubResource("RectangleShape2D_pu0oa")
 
-[node name="Ceiling6" type="StaticBody2D" parent="."]
-position = Vector2(427, 95)
-physics_material_override = SubResource("PhysicsMaterial_elit4")
+[node name="Area2D4" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Ceiling6"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dfxj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling6"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_pu0oa")
-
-[node name="Ceiling7" type="StaticBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D4"]
 position = Vector2(1074, 251)
-physics_material_override = SubResource("PhysicsMaterial_elit4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ceiling7"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2dfxj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling7"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(1074, 251.5)
 shape = SubResource("RectangleShape2D_pu0oa")

@@ -138,10 +138,10 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="FontVariation" id="FontVariation_77k86"]
+[sub_resource type="FontVariation" id="FontVariation_i3n8k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2hdyn"]
-font = SubResource("FontVariation_77k86")
+font = SubResource("FontVariation_i3n8k")
 font_size = 10
 font_color = Color(0, 0.756863, 0.529412, 1)
 outline_size = 4

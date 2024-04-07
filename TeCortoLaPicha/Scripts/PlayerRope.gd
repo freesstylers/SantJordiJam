@@ -1,7 +1,6 @@
 extends Line2D
 class_name GrapplingRope 
 
-#Tutorial_GrapplingGun grapplingGun;
 @export var grapplingGun : PlayerHook = null
 @export var NumRopeSegments : int = 40;
 @export_range(0.01,5) var RopeMovementSpeed : float = 1
@@ -13,9 +12,10 @@ class_name GrapplingRope
 @onready var m_lineRenderer : Line2D = self
 
 var rope_target : Vector2 = global_position + Vector2(100,0)
+var hook_gun_target : Vector2 = Vector2(0,0)
 var rope_shot : bool = false
 var straightLine : bool = false;
-var isGrappling : bool = true
+var isGrappling : bool = false
 var ropeBakedLength : int = 0
 
 func _ready():
@@ -24,10 +24,13 @@ func _ready():
 func _process(delta):
 	if not rope_shot:
 		return
+	var delta_pos : Vector2 = hook_gun_target - global_position
+	rope_target = Vector2(delta_pos.length(),0)
 	DrawRope(delta)
 
 func LinePointsToFirePoint():
 	rope_shot=false
+	hook_gun_target = Vector2(0,0)
 	ropeBakedLength=0
 	m_lineRenderer.clear_points()
 	for i in range(0,NumRopeSegments+1):
@@ -41,6 +44,7 @@ func ShootRope(hook_target : Vector2):
 	waveHeight = WaveHeightMultiplier
 	m_lineRenderer.visible = true;
 	
+	hook_gun_target = hook_target
 	var delta_pos : Vector2 = hook_target - global_position
 	rope_target = Vector2(delta_pos.length(),0)
 	global_rotation = delta_pos.angle()	
@@ -59,7 +63,7 @@ func DrawRope(delta):
 			DrawRopeWaves();
 	else:
 		if (!isGrappling):
-			##grapplingGun.Grapple();
+			grapplingGun.Launch();
 			isGrappling = true;
 		if (waveHeight > 0):
 			waveHeight = clampf(waveHeight - (delta * straightenLineSpeed), 0, WaveHeightMultiplier)
