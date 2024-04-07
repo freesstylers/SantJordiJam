@@ -3,7 +3,7 @@ class_name GrapplingRope
 
 @export var grapplingGun : PlayerHook = null
 @export var NumRopeSegments : int = 40;
-@export_range(0.01,5) var RopeMovementSpeed : float = 1
+@export_range(0.01,5) var RopeBaseMovementSpeed : float = 1
 @export_range(0.01,4) var WaveHeightMultiplier : float = 2
 @export_range(0,25) var straightenLineSpeed : float = 0.5
 
@@ -17,6 +17,10 @@ var rope_shot : bool = false
 var straightLine : bool = false;
 var isGrappling : bool = false
 var ropeBakedLength : int = 0
+var baseDistance : float = 0
+
+var timeToHitTarget :float = 0.2
+var shotTime : float = 0
 
 func _ready():
 	LinePointsToFirePoint()
@@ -24,6 +28,7 @@ func _ready():
 func _process(delta):
 	if not rope_shot:
 		return
+	shotTime = clampf(shotTime + delta, 0, timeToHitTarget)
 	var delta_pos : Vector2 = hook_gun_target - global_position
 	rope_target = Vector2(delta_pos.length(),0)
 	DrawRope(delta)
@@ -32,6 +37,7 @@ func LinePointsToFirePoint():
 	rope_shot=false
 	hook_gun_target = Vector2(0,0)
 	ropeBakedLength=0
+	shotTime = 0
 	m_lineRenderer.clear_points()
 	for i in range(0,NumRopeSegments+1):
 		m_lineRenderer.add_point(Vector2(0,0))
@@ -48,6 +54,7 @@ func ShootRope(hook_target : Vector2):
 	var delta_pos : Vector2 = hook_target - global_position
 	rope_target = Vector2(delta_pos.length(),0)
 	global_rotation = delta_pos.angle()	
+	baseDistance = delta_pos.length()
 
 func HideRope():
 	LinePointsToFirePoint()
@@ -57,7 +64,7 @@ func HideRope():
 func DrawRope(delta):
 	if (!straightLine):
 		#Rope reached the hook target???
-		if abs(m_lineRenderer.get_point_position(NumRopeSegments).x - rope_target.x) < 10:
+		if abs(m_lineRenderer.get_point_position(NumRopeSegments).x - rope_target.x) < 30:
 			straightLine = true;
 		else:
 			DrawRopeWaves();
@@ -84,7 +91,9 @@ func DrawRopeWaves():
 		var pos_in_world = pos_inside_curve * rope_target.length()
 		#Lerp each point from the firePoint to its end position
 		var originalPos = m_lineRenderer.get_point_position(vertexIndex)
-		var lerpedPos = originalPos.lerp(pos_in_world, RopeMovementSpeed)
+		#var weight = RopeBaseMovementSpeed*(((hook_gun_target-global_position).length())/(baseDistance))
+		var lerpedPos = originalPos.lerp(pos_in_world, RopeBaseMovementSpeed)
+		lerpedPos = ((pos_in_world)*(shotTime/timeToHitTarget))
 		#The height of the vertex is modified only when the rope has reached its target and starts straightening
 		lerpedPos.y = pos_in_world.y * waveHeight
 		m_lineRenderer.set_point_position(vertexIndex, lerpedPos)
