@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drdf566oul36v"]
+[gd_scene load_steps=12 format=3 uid="uid://drdf566oul36v"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
@@ -10,7 +10,13 @@ radius = 46.0977
 [sub_resource type="Curve2D" id="Curve2D_o2trt"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -10.3752, -2.04925, 10.3752, 2.04925, 16.5376, 12.6099, -11.504, 1.02701, 11.504, -1.02701, 42.1709, -6.82176, -7.55592, 0.438025, 7.55592, -0.438025, 65.3235, 5.99488, 0, 0, 0, 0, 88.8896, -4.96128, 0, 0, 0, 0, 100, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -41.995, -2.52119, 41.995, 2.52119, 70, 33, -53.9783, -2.27655, 53.9783, 2.27655, 167, -20, -29.265, 2.32577, 29.265, -2.32577, 253, 49, -37.755, 1.41581, 37.755, -1.41581, 387, -18, 0, 0, 0, 0, 487, 27)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_vmmks"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, 0, -53.3936, -4.00452, 53.3936, 4.00452, 72, -30, -66.0746, 0.66742, 66.0746, -0.66742, 193, 62, -55.3959, -3.3371, 55.3959, 3.3371, 319, -32, -47.3868, 1.33484, 47.3868, -1.33484, 399, 61, 0, 0, 0, 0, 500, -2)
 }
 point_count = 6
 
@@ -32,7 +38,8 @@ size = Vector2(65, 71)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(817, 466)
-mass = 0.1
+mass = 0.5
+can_sleep = false
 script = ExtResource("1_7sjhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -59,15 +66,34 @@ straightenLineSpeed = 10.0
 
 [node name="RopeVisualPath" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
 position = Vector2(1, 0)
-scale = Vector2(4.83746, 4.83746)
 curve = SubResource("Curve2D_o2trt")
 
+[node name="RopeVisualPath2" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
+curve = SubResource("Curve2D_vmmks")
+
 [node name="RopeForceSpring" type="DampedSpringJoint2D" parent="RigidBody2D"]
-visible = false
-rotation = 2.29772
 node_a = NodePath("..")
-length = 500.0
-stiffness = 64.0
+node_b = NodePath("../../Ceiling4")
+bias = 0.9
+length = 1.0
+stiffness = 32.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_2dfxj")
+
+[node name="Prueba" type="RigidBody2D" parent="."]
+position = Vector2(425, 246)
+mass = 0.5
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prueba"]
+shape = SubResource("CircleShape2D_n4bm3")
+
+[node name="RopeForceSpring" type="DampedSpringJoint2D" parent="Prueba"]
+node_a = NodePath("..")
+node_b = NodePath("../../Ceiling6")
+stiffness = 32.0
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(547, 605)
