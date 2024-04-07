@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drdf566oul36v"]
+[gd_scene load_steps=13 format=3 uid="uid://drdf566oul36v"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
@@ -19,6 +19,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -2, 0, -53.3936, -4.00452, 53.3936, 4.00452, 72, -30, -66.0746, 0.66742, 66.0746, -0.66742, 193, 62, -55.3959, -3.3371, 55.3959, 3.3371, 319, -32, -47.3868, 1.33484, 47.3868, -1.33484, 399, 61, 0, 0, 0, 0, 500, -2)
 }
 point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_rm8rj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 1, -31.6198, 2.83162, 31.6198, -2.83162, 54, 73, -31.6198, -1.41581, 31.6198, 1.41581, 131, -56, -26.4285, 1.41581, 26.4285, -1.41581, 184, 84, -35.3953, -3.30356, 35.3953, 3.30356, 253, -26, -24.5407, 0.471937, 24.5407, -0.471937, 320, 48, -21.2372, 0.471937, 21.2372, -0.471937, 416, -3, -19.8214, -3.7755, 19.8214, 3.7755, 469, 20, 0, 0, 0, 0, 500, 5)
+}
+point_count = 9
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyxwc"]
 size = Vector2(1142, 32)
@@ -70,6 +76,9 @@ curve = SubResource("Curve2D_o2trt")
 
 [node name="RopeVisualPath2" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
 curve = SubResource("Curve2D_vmmks")
+
+[node name="RopeVisualPath3" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
+curve = SubResource("Curve2D_rm8rj")
 
 [node name="RopeForceSpring" type="DampedSpringJoint2D" parent="RigidBody2D"]
 node_a = NodePath("..")
