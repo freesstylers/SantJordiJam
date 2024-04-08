@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc4jvnkk0fh31"]
+
+[ext_resource type="Script" path="res://Scripts/flyingEnemy.gd" id="1_ymp45"]
+[ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
+[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_d3vg0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lfxvp")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d3vg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
+size = Vector2(128, 128)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_ymp45")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efgdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_43enp")
+
+[node name="wall_checker" type="RayCast2D" parent="."]
+target_position = Vector2(70, 0)

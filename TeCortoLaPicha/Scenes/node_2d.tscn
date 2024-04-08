@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bseufg57frh2s"]
+[gd_scene load_steps=39 format=3 uid="uid://bseufg57frh2s"]
 
 [ext_resource type="Texture2D" uid="uid://bkqm575n8adqw" path="res://Sprites/JV/Fall/Fall1.png" id="2_7cu31"]
 [ext_resource type="Texture2D" uid="uid://d0mp624bdf5km" path="res://Sprites/JV/Idle/JV_Idle1.png" id="3_ttnds"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dtb213ce4e5" path="res://Sprites/JV/Run/JV_Run7.png" id="26_ajiqp"]
 [ext_resource type="Texture2D" uid="uid://bpxedfl6qsq0g" path="res://Sprites/JV/Run/JV_Run8.png" id="27_h7iki"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="29_7pkxv"]
+[ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="30_0c1d7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
 size = Vector2(11.2281, 26.0078)
@@ -774,4 +775,8 @@ layer_0/tile_data = PackedInt32Array(131053, 131072, 16, 196589, 131072, 17, 262
 
 [node name="enemy" parent="enemies" instance=ExtResource("29_7pkxv")]
 position = Vector2(-112, -88)
+scale = Vector2(0.2, 0.2)
+
+[node name="enemy2" parent="enemies" instance=ExtResource("30_0c1d7")]
+position = Vector2(-63, -18)
 scale = Vector2(0.2, 0.2)
