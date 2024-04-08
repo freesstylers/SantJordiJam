@@ -39,6 +39,10 @@ RTrigger={
 
 locale/translations=PackedStringArray("res://Assets/Localization/Loc.ast.translation", "res://Assets/Localization/Loc.ca.translation", "res://Assets/Localization/Loc.ca_ES.translation", "res://Assets/Localization/Loc.en.translation", "res://Assets/Localization/Loc.es.translation", "res://Assets/Localization/Loc.eu.translation", "res://Assets/Localization/Loc.gl.translation", "res://Assets/Localization/Loc.la.translation")
 
+[layer_names]
+
+2d_physics/layer_2="enemies"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
