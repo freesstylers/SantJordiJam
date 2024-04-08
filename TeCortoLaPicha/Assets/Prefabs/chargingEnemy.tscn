@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs7ciwbxs3u7x"]
+
+[ext_resource type="Script" path="res://Scripts/chargingEnemy.gd" id="1_efae3"]
+[ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_xexob"]
+[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_u22wj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xexob")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u22wj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
+size = Vector2(128, 128)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_efae3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efgdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_43enp")
+
+[node name="player_checker" type="RayCast2D" parent="."]
+target_position = Vector2(500, 0)
+collision_mask = 4

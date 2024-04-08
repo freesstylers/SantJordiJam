@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bseufg57frh2s"]
+[gd_scene load_steps=40 format=3 uid="uid://bseufg57frh2s"]
 
 [ext_resource type="Texture2D" uid="uid://bkqm575n8adqw" path="res://Sprites/JV/Fall/Fall1.png" id="2_7cu31"]
 [ext_resource type="Texture2D" uid="uid://d0mp624bdf5km" path="res://Sprites/JV/Idle/JV_Idle1.png" id="3_ttnds"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bpxedfl6qsq0g" path="res://Sprites/JV/Run/JV_Run8.png" id="27_h7iki"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="29_7pkxv"]
 [ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="30_0c1d7"]
+[ext_resource type="PackedScene" uid="uid://bs7ciwbxs3u7x" path="res://Assets/Prefabs/chargingEnemy.tscn" id="31_coglb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
 size = Vector2(11.2281, 26.0078)
@@ -683,8 +684,9 @@ sources/0 = SubResource("TileSetAtlasSource_kb6vc")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("labelText", "animationPlayer", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("labelText", "animationPlayer", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast")]
 position = Vector2(0, 32)
+collision_layer = 5
 script = ExtResource("3_wp61n")
 jump_height = 80.0
 jump_time_to_peak = 0.4
@@ -702,20 +704,20 @@ max_speed = 200.0
 max_sprinting_speed = 400.0
 acceleration = 500.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.4, 2)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_0s5v5")
 animation = &"Jump"
 autoplay = "Idle"
 
-[node name="Label" type="Label" parent="CharacterBody2D"]
+[node name="Label" type="Label" parent="Player"]
 offset_left = -41.6
 offset_top = -38.2
 offset_right = 41.4
@@ -725,22 +727,22 @@ label_settings = SubResource("LabelSettings_2hdyn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RayCastLeft" type="RayCast2D" parent="CharacterBody2D"]
+[node name="RayCastLeft" type="RayCast2D" parent="Player"]
 position = Vector2(0, -0.705)
 scale = Vector2(1.647, 4.635)
 target_position = Vector2(-10.2, 0)
 
-[node name="RayCastRight" type="RayCast2D" parent="CharacterBody2D"]
+[node name="RayCastRight" type="RayCast2D" parent="Player"]
 position = Vector2(0, -0.705)
 scale = Vector2(1.647, 4.635)
 target_position = Vector2(9.8, 0)
 
-[node name="LeftFootRayCast" type="RayCast2D" parent="CharacterBody2D"]
+[node name="LeftFootRayCast" type="RayCast2D" parent="Player"]
 position = Vector2(0, 10.8)
 scale = Vector2(1, 2.085)
 target_position = Vector2(-13.8, 9.53674e-07)
 
-[node name="RightFootRayCast" type="RayCast2D" parent="CharacterBody2D"]
+[node name="RightFootRayCast" type="RayCast2D" parent="Player"]
 position = Vector2(0, 10.8)
 scale = Vector2(1, 2.085)
 target_position = Vector2(12.8, 9.53674e-07)
@@ -778,5 +780,9 @@ position = Vector2(-112, -88)
 scale = Vector2(0.2, 0.2)
 
 [node name="enemy2" parent="enemies" instance=ExtResource("30_0c1d7")]
-position = Vector2(-63, -18)
+position = Vector2(-260, -73)
+scale = Vector2(0.2, 0.2)
+
+[node name="enemy3" parent="enemies" instance=ExtResource("31_coglb")]
+position = Vector2(-62, -17)
 scale = Vector2(0.2, 0.2)
