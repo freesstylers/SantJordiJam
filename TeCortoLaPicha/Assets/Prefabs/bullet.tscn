@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://djkq6d6qsj3ee"]
+
+[ext_resource type="Script" path="res://Scripts/bulletScript.gd" id="1_in27w"]
+[ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_sx14f"]
+[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_nkj74"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sx14f")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nkj74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
+size = Vector2(128, 128)
+
+[node name="bullet" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_in27w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efgdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_43enp")
