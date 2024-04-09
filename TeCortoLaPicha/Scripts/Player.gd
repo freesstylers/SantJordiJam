@@ -33,6 +33,16 @@ var jump_buffer_counter : float = 0
 
 @export var coyote_time : float = 0.2
 var coyote_counter : float = 0.0
+
+#Dashing
+@export var DashSpeed = 500000
+var dashing = false
+@export var dashDuration: float = 0.8
+var auxDashTime : float = 0.0
+@export var dashCooldown: float = 3.0
+var auxDashCooldown = 0.0
+var canDash = true
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -120,9 +130,28 @@ func _physics_process(delta):
 	else:
 		#Goes to 0 if not pressing anything in 0.2 seconds
 		velocity.x = lerp(velocity.x, 0.0, 0.2)
+	
+	if Input.is_action_just_pressed("Dash") and canDash:
+		dashing = true
+		canDash = false	
 		
-
-	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta)
+	if dashing:
+		auxDashTime += delta
+		
+		if auxDashTime >= dashDuration:
+			dashing = false
+			auxDashTime = 0.0
+			auxDashCooldown = 0.0
+	elif not canDash:
+		auxDashCooldown += delta
+		
+		if auxDashCooldown >= dashCooldown:
+			canDash = true
+				
+	if dashing:
+		velocity.x = move_toward(velocity.x, direction * DashSpeed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta)
 	
 	if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
 		if Input.is_action_pressed("RTrigger"):
