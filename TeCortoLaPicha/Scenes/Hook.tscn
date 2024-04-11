@@ -42,10 +42,11 @@ size = Vector2(1131.71, 29.2593)
 
 [node name="Hook" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="." node_paths=PackedStringArray("body_to_launch")]
 position = Vector2(817, 466)
 can_sleep = false
 script = ExtResource("1_7sjhh")
+body_to_launch = NodePath(".")
 launch_impulse = 900.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -82,10 +83,6 @@ curve = SubResource("Curve2D_vmmks")
 
 [node name="RopeVisualPath3" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
 curve = SubResource("Curve2D_rm8rj")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("3_2dfxj")
 
 [node name="Ceiling6" type="StaticBody2D" parent="."]
 position = Vector2(427, 95)

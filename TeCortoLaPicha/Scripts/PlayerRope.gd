@@ -14,10 +14,9 @@ class_name GrapplingRope
 var rope_target : Vector2 = global_position + Vector2(100,0)
 var hook_gun_target : Vector2 = Vector2(0,0)
 var rope_shot : bool = false
-var straightLine : bool = false;
+var straightLine : bool = false
 var isGrappling : bool = false
 var ropeBakedLength : int = 0
-var baseDistance : float = 0
 
 var timeToHitTarget :float = 0.2
 var shotTime : float = 0
@@ -43,18 +42,17 @@ func LinePointsToFirePoint():
 		m_lineRenderer.add_point(Vector2(0,0))
 		
 func ShootRope(hook_target : Vector2):
-	linePath= get_child(randi()%get_child_count()) as Path2D
 	LinePointsToFirePoint()
+	#Get a random Curve2D to visualize the rope
+	linePath= get_child(randi()%get_child_count()) as Path2D
 	rope_shot = true
 	straightLine = false;
 	waveHeight = WaveHeightMultiplier
-	m_lineRenderer.visible = true;
 	
 	hook_gun_target = hook_target
 	var delta_pos : Vector2 = hook_target - global_position
 	rope_target = Vector2(delta_pos.length(),0)
 	global_rotation = delta_pos.angle()	
-	baseDistance = delta_pos.length()
 
 func HideRope():
 	LinePointsToFirePoint()
@@ -88,15 +86,11 @@ func DrawRopeWaves():
 		#Get the position of the current vertex inside the curve2D and transform it to global coordinates
 		var curve_local_offset = back_length * (vertexIndex as float/NumRopeSegments as float)
 		var pos_inside_curve = linePath.curve.sample_baked(curve_local_offset) / linePath.curve.get_point_position(linePath.curve.point_count-1).x #X in range [0,100] Y in range [-100,100]
-		var pos_in_world = pos_inside_curve * rope_target.length()
-		#Lerp each point from the firePoint to its end position
-		var originalPos = m_lineRenderer.get_point_position(vertexIndex)
-		#var weight = RopeBaseMovementSpeed*(((hook_gun_target-global_position).length())/(baseDistance))
-		var lerpedPos = originalPos.lerp(pos_in_world, RopeBaseMovementSpeed)
-		lerpedPos = ((pos_in_world)*(shotTime/timeToHitTarget))
+		var final_pos_in_local_coords = pos_inside_curve * rope_target.length()
+		var current_pos_in_local_coords = ((final_pos_in_local_coords)*(shotTime/timeToHitTarget))
 		#The height of the vertex is modified only when the rope has reached its target and starts straightening
-		lerpedPos.y = pos_in_world.y * waveHeight
-		m_lineRenderer.set_point_position(vertexIndex, lerpedPos)
+		current_pos_in_local_coords.y = final_pos_in_local_coords.y * waveHeight
+		m_lineRenderer.set_point_position(vertexIndex, current_pos_in_local_coords)
 
 func DrawRopeNoWaves():
 	m_lineRenderer.set_point_position(0, Vector2(0,0));
