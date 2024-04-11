@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://drdf566oul36v"]
+[gd_scene load_steps=14 format=3 uid="uid://drdf566oul36v"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerHook.gd" id="1_7sjhh"]
+[ext_resource type="Script" path="res://Scripts/Hook/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
-[ext_resource type="Script" path="res://Scripts/PlayerRope.gd" id="5_4riq8"]
+[ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="4_pqx3o"]
+[ext_resource type="Script" path="res://Scripts/Hook/PlayerRope.gd" id="5_4riq8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4bm3"]
 radius = 46.0977
@@ -47,7 +48,6 @@ position = Vector2(817, 466)
 can_sleep = false
 script = ExtResource("1_7sjhh")
 body_to_launch = NodePath(".")
-launch_impulse = 900.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_n4bm3")
@@ -145,47 +145,17 @@ texture = ExtResource("3_2dfxj")
 position = Vector2(27.9812, 0.0207214)
 shape = SubResource("RectangleShape2D_udioh")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-1, -3)
+[node name="HookTarget" parent="." instance=ExtResource("4_pqx3o")]
+position = Vector2(1022, 315)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(617, 251)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dfxj")
+[node name="HookTarget2" parent="." instance=ExtResource("4_pqx3o")]
+position = Vector2(814, 157)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(617, 251.5)
-shape = SubResource("RectangleShape2D_pu0oa")
+[node name="HookTarget3" parent="." instance=ExtResource("4_pqx3o")]
+position = Vector2(381, 367)
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="HookTarget4" parent="." instance=ExtResource("4_pqx3o")]
+position = Vector2(128, 427)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
-position = Vector2(812, 164)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dfxj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(812, 164.5)
-shape = SubResource("RectangleShape2D_pu0oa")
-
-[node name="Area2D3" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
-position = Vector2(306, 329)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dfxj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(306, 329.5)
-shape = SubResource("RectangleShape2D_pu0oa")
-
-[node name="Area2D4" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D4"]
-position = Vector2(1074, 251)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dfxj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(1074, 251.5)
-shape = SubResource("RectangleShape2D_pu0oa")
+[node name="HookTarget5" parent="." instance=ExtResource("4_pqx3o")]
+position = Vector2(347, 178)
