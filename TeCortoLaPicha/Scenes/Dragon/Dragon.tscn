@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cphrveb0thd0b"]
+
+[ext_resource type="Script" path="res://Scripts/Dragon/DragonVisualizer.gd" id="1_js10r"]
+[ext_resource type="Script" path="res://Scripts/Dragon/DragonManager.gd" id="1_sufd8"]
+[ext_resource type="Texture2D" uid="uid://d0mp624bdf5km" path="res://Sprites/JV/Idle/JV_Idle1.png" id="3_bw88d"]
+[ext_resource type="Script" path="res://Scripts/Dragon/DragonIdleState.gd" id="3_m64kb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4kp2"]
+
+[node name="DragonStateMachine" type="Node2D"]
+script = ExtResource("1_sufd8")
+
+[node name="DragonVisualizer" type="Node2D" parent="."]
+script = ExtResource("1_js10r")
+
+[node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
+texture = ExtResource("3_bw88d")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_p4kp2")
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="IDLE" type="Node2D" parent="States"]
+script = ExtResource("3_m64kb")
+MyState = "IDLE"
