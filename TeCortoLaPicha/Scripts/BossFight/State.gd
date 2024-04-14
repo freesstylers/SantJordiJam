@@ -7,7 +7,7 @@ class_name State
 func preState():
 	pass
 
-func operate():
+func operate(delta):
 	return MyState
 
 #Wanna do something before going to the next state???

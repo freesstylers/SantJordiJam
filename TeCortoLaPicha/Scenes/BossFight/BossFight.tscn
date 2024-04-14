@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgk316k267s27"]
+
+[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="1_4fpct"]
+[ext_resource type="Script" path="res://Scripts/BossFight/BossFightManager.gd" id="1_nn163"]
+[ext_resource type="PackedScene" uid="uid://cphrveb0thd0b" path="res://Scenes/BossFight/Dragon/Dragon.tscn" id="2_loj10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpm4h"]
+size = Vector2(1142, 32)
+
+[node name="BossFight" type="Node2D"]
+script = ExtResource("1_nn163")
+
+[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions") instance=ExtResource("2_loj10")]
+FiringPositions = [NodePath("../FireballFiringPositions/Pos1"), NodePath("../FireballFiringPositions/Pos2"), NodePath("../FireballFiringPositions/Pos3"), NodePath("../FireballFiringPositions/Pos4")]
+
+[node name="FireballFiringPositions" type="Node2D" parent="."]
+
+[node name="Pos1" type="Node2D" parent="FireballFiringPositions"]
+position = Vector2(96, 215)
+
+[node name="Pos2" type="Node2D" parent="FireballFiringPositions"]
+position = Vector2(392, 109)
+
+[node name="Pos3" type="Node2D" parent="FireballFiringPositions"]
+position = Vector2(739, 109)
+
+[node name="Pos4" type="Node2D" parent="FireballFiringPositions"]
+position = Vector2(1051, 217)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(548, 642)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(27, 0)
+scale = Vector2(8.92202, 0.275664)
+texture = ExtResource("1_4fpct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_bpm4h")

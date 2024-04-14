@@ -1,16 +1,16 @@
-extends StateMachine
-class_name DragonManager
+extends Node2D
+class_name StateMachine
 
-@export var Lifes : int = 5
-var lifesLeft : int = Lifes
+@export var currentState : String = ""
+@export var states : Dictionary = {}
 
-func _ready():
-	states = {($States/IDLE as State).MyState : ($States/IDLE as State)}
+func _process(delta):
+	operate(delta)
 
-func operate(_delta):
+func operate(delta):
 	if currentState == "":
 		return
-	var nextState = (states.get(currentState) as State).operate()
+	var nextState = (states.get(currentState) as State).operate(delta)
 	if currentState != nextState:
 		(states.get(currentState) as State).postState()
 		(states.get(nextState) as State).preState()
