@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 class_name PlayerHook
 @onready var rope_starting_point : Sprite2D = $RopeStartingPoint
 @onready var grappling_rope : GrapplingRope = $RopeStartingPoint/Rope
@@ -7,13 +7,15 @@ class_name PlayerHook
 @export var body_to_launch : PhysicsBody2D = null
 @export var launch : bool = false
 @export var launch_duration : float = 0.35
+@export var rope_length : float = 400
+
 
 var hook_shot = false
 var hook_target_pos : Vector2 = Vector2.ZERO
 var hook_target_object : HookTarget = null
 
 func _ready():
-	set_process_input(true) # Enable input processing
+	($RopeStartingPoint/RayCast2D as RayCast2D).target_position = Vector2(0,rope_length) 
 	
 func _process(delta):
 	if launch:
@@ -53,11 +55,11 @@ func Launch():
 	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	localTween.tween_property(body_to_launch, "position",hook_target_pos, launch_duration)
 	localTween.tween_callback(func():
-			body_to_launch.linear_velocity= Vector2(0,0)
+			#body_to_launch.linear_velocity= Vector2(0,0)
 			launch = false
 			grappling_rope.HideRope()
 			hook_shot = false
-			body_to_launch.apply_impulse(launch_impulse_dir*hook_target_object.get_launch_impulse())
+			#body_to_launch.apply_impulse(launch_impulse_dir*hook_target_object.get_launch_impulse())
 			hook_target_object.update_target_status(false)
 			hook_target_object = null
 			)
