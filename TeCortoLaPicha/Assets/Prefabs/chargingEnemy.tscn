@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs7ciwbxs3u7x"]
 
-[ext_resource type="Script" path="res://Scripts/chargingEnemy.gd" id="1_efae3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/chargingEnemy.gd" id="1_efae3"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_xexob"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_u22wj"]
 

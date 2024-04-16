@@ -1,48 +1,45 @@
-class_name GameManager
-extends Node
+extends Node2D
 
-@export var GameTime : int
+var menu = true
 
-var Points = 0
-var TotalDead = 0
-var Experience = 0
-var ExpNextLevel = 0
-var Level = 0
-
-var TimeLeft = 0
-
-func NextLevelCalc():
-	return (Level * 10) + 5
+@export var level1 : Resource
+@export var level2 : Resource
+@export var mainMenu : Resource
 
 # Called when the node enters the scene tree for the first time.
-func _init():
-
-	#Globals.GameMan = self
-	#Globals.exp_gain.connect(expGain)
-	ExpNextLevel = NextLevelCalc()
-	pass
-	
 func _ready():
-	TimeLeft = GameTime
-	pass
+	#Globals.connect("loadLevel", loadLevel)
 
-func _process(delta):
-	TimeLeft -= delta
-	if(TimeLeft <= 0):
-		#Globals.game_over.emit(false)
-		pass
-	pass
+	pass # Replace with function body.	
 
-func expGain(exp : float, points : float):
-	Points += points
-	Experience += exp
-	TotalDead += 1
-	if(Experience >= ExpNextLevel):
-		Level += 1
-		Experience -= ExpNextLevel
-		ExpNextLevel = NextLevelCalc()
-		#Globals.level_up.emit()
-		pass
+func loadLevel():
+
+	$CurrentScene.get_child(0).queue_free()
+	
 		
-	#Globals.exp_update.emit()
+	if get_tree().paused:
+		get_tree().paused = false
+	
+	if menu:
+		$CurrentScene.add_child(mainMenu.instantiate())
+		return
+		
+	var rng = RandomNumberGenerator.new()
+	var level = rng.randi_range(0,1)
+		
+	if level == 0:
+		$CurrentScene.add_child(level1.instantiate())
+		pass
+	elif level == 1:
+		$CurrentScene.add_child(level2.instantiate())
+		pass
+
+func startGame():
+	menu = false
+	$TransitionScreen.transition()
+	pass
+
+func backToMenu():
+	menu = true
+	$TransitionScreen.transition()
 	pass

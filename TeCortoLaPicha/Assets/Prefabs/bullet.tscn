@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://djkq6d6qsj3ee"]
 
-[ext_resource type="Script" path="res://Scripts/bulletScript.gd" id="1_in27w"]
+[ext_resource type="Script" path="res://Scripts/Enemies/bulletScript.gd" id="1_in27w"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_sx14f"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_nkj74"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxw328csmcn03"]
 
-[ext_resource type="Script" path="res://Scripts/shootingEnemy.gd" id="1_icnvq"]
+[ext_resource type="Script" path="res://Scripts/Enemies/shootingEnemy.gd" id="1_icnvq"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_gjwiw"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_yilw1"]
 [ext_resource type="PackedScene" uid="uid://djkq6d6qsj3ee" path="res://Assets/Prefabs/bullet.tscn" id="4_u60i7"]

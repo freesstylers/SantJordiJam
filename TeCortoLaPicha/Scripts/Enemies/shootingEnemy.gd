@@ -1,5 +1,4 @@
-extends CharacterBody2D
-
+extends baseEnemy
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -41,13 +40,11 @@ func _process(delta):
 			if timesShot > 2:
 				shooting = false
 				timesShot = 0
-				auxShootingTime = 0
-			
-		
+				auxShootingTime = 0	
 
 func shoot():
 	var bulletAux = bullet.instantiate()
 	bulletAux.position = position
 	bulletAux.Player = Player
 	bulletAux.shot = true
-	bulletAux.reparent(get_parent())
+	get_parent().add_child((bulletAux))

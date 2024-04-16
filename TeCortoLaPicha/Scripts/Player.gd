@@ -109,7 +109,6 @@ func _physics_process(delta):
 		if velocity.y < 0:
 			velocity.y += 150
 
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	act_max_speed = max_speed

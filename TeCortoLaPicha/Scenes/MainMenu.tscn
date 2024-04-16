@@ -29,10 +29,10 @@ grow_vertical = 2
 [node name="FreeStylers" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7625
-anchor_top = 0.8125
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.859375
+anchor_top = 0.786111
+anchor_right = 0.992969
+anchor_bottom = 0.973611
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("4_n67yd")
@@ -43,10 +43,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Twitter" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.822737
-anchor_top = 0.675948
-anchor_right = 0.94946
-anchor_bottom = 0.80267
+anchor_left = 0.884375
+anchor_top = 0.659722
+anchor_right = 0.958
+anchor_bottom = 0.786444
 offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
@@ -59,10 +59,10 @@ metadata/_edit_use_anchors_ = true
 [node name="jam" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00972222
-anchor_top = 0.845833
-anchor_right = 0.226722
-anchor_bottom = 0.992
+anchor_left = 0.0164062
+anchor_top = 0.8125
+anchor_right = 0.1455
+anchor_bottom = 0.958667
 offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
@@ -74,10 +74,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="MainButtonContainer"]
 layout_mode = 2
-offset_left = 162.0
-offset_top = 51.1875
-offset_right = 560.0
-offset_bottom = 243.188
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 440.0
+offset_top = 57.0
+offset_right = -442.0
+offset_bottom = -471.0
 texture = ExtResource("7_wbon5")
 stretch_mode = 5
 
@@ -101,6 +103,11 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Play"
+
+[node name="play2" type="Button" parent="MainButtonContainer/MainButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play - Endless"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
@@ -282,8 +289,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="_on_twitter_button_down"]
 [connection signal="button_down" from="MainButtonContainer/jam" to="." method="_on_gift_jam_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="TogglePlayMenu" binds= [true]]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play2" to="." method="TogglePlayMenu" binds= [true]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
