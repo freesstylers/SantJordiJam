@@ -69,7 +69,6 @@ func jump_border():
 	velocity.y = border_jump_velocity
 
 func _physics_process(delta):
-	print(velocity)
 	# VERTICAL MOVEMENT CONTROL
 	if not is_on_floor():
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
@@ -95,7 +94,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		if velocity.y < 0:
 			velocity.y += 150
-	# MOVEMENT INPUT
+	# ANIM FLIP
 	act_max_speed = max_speed
 	if Input.is_action_pressed("RTrigger"):
 		act_max_speed = max_sprinting_speed

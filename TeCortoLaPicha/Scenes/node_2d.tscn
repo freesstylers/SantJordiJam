@@ -803,5 +803,5 @@ position = Vector2(-362, 26)
 scale = Vector2(1, 1)
 
 [node name="HookTarget" parent="." instance=ExtResource("34_otlv5")]
-position = Vector2(-116, -132)
+position = Vector2(-89, -142)
 launch_impulse = 4000.0
