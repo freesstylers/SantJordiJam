@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 @export var horizontalSpeed = 50
 @export var detect_cliffs = true
 @export var sprite : AnimatedSprite2D
-@export var instantationOffsett = 20
+@export var instantationOffsett = Vector2(20, 2)
 @export var bullet: PackedScene
 @export var shootingTime: float = 3.0
 @export var cooldown = 3.0
@@ -64,7 +64,7 @@ func _process(delta):
 
 func shoot():
 	var bulletAux = bullet.instantiate()
-	bulletAux.position = position + Vector2(instantationOffsett * -lastDir, 0)
+	bulletAux.position = position + Vector2(instantationOffsett.x * -lastDir, instantationOffsett.y)
 	bulletAux.Player = Player
 	bulletAux.shot = true
 	bulletAux.direction = -lastDir

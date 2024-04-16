@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://djkq6d6qsj3ee"]
+[gd_scene load_steps=12 format=3 uid="uid://djkq6d6qsj3ee"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/bulletScript.gd" id="1_in27w"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_sx14f"]
-[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_nkj74"]
+[ext_resource type="Texture2D" uid="uid://dbdeav0spkbv5" path="res://Sprites/Cagayon/Bullet1.png" id="3_mod3v"]
+[ext_resource type="Texture2D" uid="uid://lpnh0jtxbrmv" path="res://Sprites/Cagayon/Bullet2.png" id="4_71e1y"]
+[ext_resource type="Texture2D" uid="uid://copnmb03m52ux" path="res://Sprites/Cagayon/Bullet3.png" id="5_x5w5q"]
+[ext_resource type="Texture2D" uid="uid://bxgmj87g53kj8" path="res://Sprites/Cagayon/Bullet4.png" id="6_7p8i7"]
+[ext_resource type="Texture2D" uid="uid://ghdn1je7c0ul" path="res://Sprites/Cagayon/Bullet5.png" id="7_tus8x"]
+[ext_resource type="Texture2D" uid="uid://dy7j5tuyekni8" path="res://Sprites/Cagayon/Bullet6.png" id="8_5xem4"]
+[ext_resource type="Texture2D" uid="uid://e20vv5pgv38x" path="res://Sprites/Cagayon/Bullet7.png" id="9_qk6ba"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
@@ -16,7 +22,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_nkj74")
+"texture": ExtResource("3_mod3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_71e1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x5w5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7p8i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tus8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5xem4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qk6ba")
 }],
 "loop": true,
 "name": &"default",
@@ -24,15 +48,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(128, 128)
+size = Vector2(10, 4)
 
 [node name="bullet" type="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
 collision_layer = 2
 script = ExtResource("1_in27w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
+autoplay = "default"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_43enp")
