@@ -706,6 +706,7 @@ rightFootRaycast = NodePath("RightFootRayCast")
 max_speed = 200.0
 max_sprinting_speed = 400.0
 acceleration = 500.0
+DashSpeed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.4, 2)
@@ -783,7 +784,7 @@ layer_0/tile_data = PackedInt32Array(131053, 131072, 16, 196589, 131072, 17, 262
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="enemy" parent="enemies" instance=ExtResource("29_7pkxv")]
-position = Vector2(-49, -282)
+position = Vector2(-138, -57)
 scale = Vector2(0.2, 0.2)
 direction = -1
 horizontalSpeed = 50
@@ -798,8 +799,8 @@ position = Vector2(-418, -156)
 scale = Vector2(0.2, 0.2)
 
 [node name="enemy4" parent="enemies" instance=ExtResource("32_0pqmg")]
-position = Vector2(-216, 19)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-362, 26)
+scale = Vector2(1, 1)
 
 [node name="HookTarget" parent="." instance=ExtResource("34_otlv5")]
 position = Vector2(-116, -132)

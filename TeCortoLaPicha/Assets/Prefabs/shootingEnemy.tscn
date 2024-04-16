@@ -1,12 +1,80 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxw328csmcn03"]
+[gd_scene load_steps=31 format=3 uid="uid://bxw328csmcn03"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/shootingEnemy.gd" id="1_icnvq"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_gjwiw"]
-[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_yilw1"]
+[ext_resource type="Texture2D" uid="uid://bkb5t0ncmddd7" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque1.png" id="3_tye6k"]
+[ext_resource type="Texture2D" uid="uid://brm7hjb0ctq6u" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle1.png" id="4_blqjt"]
+[ext_resource type="Texture2D" uid="uid://dbcgt8cf1obbq" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque2.png" id="4_fyl8c"]
 [ext_resource type="PackedScene" uid="uid://djkq6d6qsj3ee" path="res://Assets/Prefabs/bullet.tscn" id="4_u60i7"]
+[ext_resource type="Texture2D" uid="uid://d2op5xvrlwnyj" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque3.png" id="5_k8pjv"]
+[ext_resource type="Texture2D" uid="uid://crsxuf1seh8ml" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle2.png" id="5_xxh11"]
+[ext_resource type="Texture2D" uid="uid://xxewh1vxe362" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle3.png" id="6_2o8gl"]
+[ext_resource type="Texture2D" uid="uid://df88runw3e5we" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque4.png" id="6_rx1x3"]
+[ext_resource type="Texture2D" uid="uid://dg71gkakbk0xc" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque5.png" id="7_fktn8"]
+[ext_resource type="Texture2D" uid="uid://daspdjj4usckl" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle4.png" id="7_qgx6r"]
+[ext_resource type="Texture2D" uid="uid://c2dgipu7lcbhi" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque6.png" id="8_3mq0s"]
+[ext_resource type="Texture2D" uid="uid://pa1uhceqowir" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle5.png" id="8_cjr5s"]
+[ext_resource type="Texture2D" uid="uid://dybj10nhn8lpr" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque7.png" id="9_88f8y"]
+[ext_resource type="Texture2D" uid="uid://c6jg8pnnn83ij" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle6.png" id="9_te0a0"]
+[ext_resource type="Texture2D" uid="uid://ddlieadp58054" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle7.png" id="10_knnjs"]
+[ext_resource type="Texture2D" uid="uid://d3fdwjs64jw6q" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque8.png" id="10_mdn6u"]
+[ext_resource type="Texture2D" uid="uid://dnmdf4b5pbl4x" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque9.png" id="11_b70co"]
+[ext_resource type="Texture2D" uid="uid://be4ai3jwwnkp7" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle8.png" id="11_f0000"]
+[ext_resource type="Texture2D" uid="uid://b4iehl77iruh1" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque10.png" id="12_e1ho6"]
+[ext_resource type="Texture2D" uid="uid://y5u6crfiilwb" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle9.png" id="12_fdpl6"]
+[ext_resource type="Texture2D" uid="uid://bohf61wx3e1cs" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle10.png" id="13_nshgn"]
+[ext_resource type="Texture2D" uid="uid://b6dx6gfjhvjh" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque11.png" id="13_sj6k4"]
+[ext_resource type="Texture2D" uid="uid://jxcxbr0d36mk" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle11.png" id="14_hciw5"]
+[ext_resource type="Texture2D" uid="uid://wwfum1kim3y3" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque12.png" id="14_vqjl5"]
+[ext_resource type="Texture2D" uid="uid://c04d2s2pr8syy" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle12.png" id="15_a0ryo"]
+[ext_resource type="Texture2D" uid="uid://75laq0vhvhrn" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque13.png" id="15_ind7y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tye6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fyl8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k8pjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rx1x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fktn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3mq0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_88f8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mdn6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b70co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e1ho6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sj6k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vqjl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ind7y")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_gjwiw")
@@ -17,7 +85,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yilw1")
+"texture": ExtResource("4_blqjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xxh11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2o8gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qgx6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cjr5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_te0a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_knnjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_f0000")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fdpl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nshgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hciw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a0ryo")
 }],
 "loop": true,
 "name": &"default",
@@ -27,17 +128,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
 size = Vector2(128, 128)
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_icnvq")
+sprite = NodePath("AnimatedSprite2D")
 bullet = ExtResource("4_u60i7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
+autoplay = "default"
+speed_scale = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="floor_checker" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
 target_position = Vector2(300, 0)
 collision_mask = 4

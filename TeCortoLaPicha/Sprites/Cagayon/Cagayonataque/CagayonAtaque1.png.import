@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tmycc4aqvoff"
-path="res://.godot/imported/Cagayon10.png-a117f8a5713bcc1ef14d5ef1d653c9d9.ctex"
+uid="uid://bkb5t0ncmddd7"
+path="res://.godot/imported/CagayonAtaque1.png-028393030be487f24c92cb2beb3935e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Cagayon/Cagayon10.png"
-dest_files=["res://.godot/imported/Cagayon10.png-a117f8a5713bcc1ef14d5ef1d653c9d9.ctex"]
+source_file="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque1.png"
+dest_files=["res://.godot/imported/CagayonAtaque1.png-028393030be487f24c92cb2beb3935e1.ctex"]
 
 [params]
 
