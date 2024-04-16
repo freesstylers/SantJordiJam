@@ -6,17 +6,16 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("roomDepleted", roomDepletedFunc)
-	connect("roomCompleted", roomCompletedFunc)
-	connect("roomStarted", roomStartFunc)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	Globals.connect("roomDepleted", roomDepletedFunc)
+	Globals.connect("roomStarted", roomStartFunc)
+	Globals.connect("doorAttempt", doorAttempt)
+	
+	roomStartFunc()
 
 func roomStartFunc():
 	#Set position for character
 	get_parent().get_parent().get_child(1).position = startingCharacterPosition
+	get_parent().get_parent().get_child(1).velocity = Vector2(0,0)
 	
 	#Reset timer
 	
@@ -26,8 +25,11 @@ func roomStartFunc():
 func roomDepletedFunc():
 	#Desbloquear puerta
 	pass
-	
-func roomCompletedFunc():
-	#Mover a RoomManager?
-	#Transición libro, descargar esta sala, cargar una nueva
+
+func doorAttempt():
+	if EnemiesArray.size() == 0:
+		Globals.roomCompleted.emit()
+	else:
+		#PlaySound o algo
+		pass
 	pass

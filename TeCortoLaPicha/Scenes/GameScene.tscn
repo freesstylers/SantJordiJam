@@ -8,8 +8,12 @@
 
 [node name="RoomContainer" type="Node2D" parent="."]
 script = ExtResource("1_dy84q")
+Rooms = Array[PackedScene]([ExtResource("1_u1wxi")])
 
 [node name="PruebaTilesets" parent="RoomContainer" instance=ExtResource("1_u1wxi")]
 
 [node name="Player" parent="." instance=ExtResource("1_2dcnp")]
 position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(464, -249)
