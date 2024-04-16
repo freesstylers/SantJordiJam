@@ -55,10 +55,10 @@ func Launch():
 	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	localTween.tween_property(body_to_launch, "position",hook_target_pos, launch_duration)
 	localTween.tween_callback(func():
-			#body_to_launch.linear_velocity= Vector2(0,0)
 			launch = false
 			grappling_rope.HideRope()
 			hook_shot = false
+			(body_to_launch as Player).Launch(launch_impulse_dir*75)
 			#body_to_launch.apply_impulse(launch_impulse_dir*hook_target_object.get_launch_impulse())
 			hook_target_object.update_target_status(false)
 			hook_target_object = null
