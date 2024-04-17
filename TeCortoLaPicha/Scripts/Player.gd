@@ -74,7 +74,7 @@ func jump_border():
 
 func _physics_process(delta):
 	# VERTICAL MOVEMENT CONTROL
-	if not is_on_floor() and canDash:
+	if not is_on_floor() and !dashing:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
 		if coyote_counter > 0.0:
 			coyote_counter -= delta
@@ -120,14 +120,15 @@ func _physics_process(delta):
 	ControlDash(delta, direction)
 		
 	#######Anim hangling
-	if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
-		if Input.is_action_pressed("RTrigger"):
-			animationPlayer.play("Run_Fast")
-		else: 
-			animationPlayer.play("Run")
-	else:
-		if is_on_floor():
-			animationPlayer.play("Idle")
+	if(!dashing):
+		if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
+			if Input.is_action_pressed("RTrigger"):
+				animationPlayer.play("Run_Fast")
+			else: 
+				animationPlayer.play("Run")
+		else:
+			if is_on_floor():
+				animationPlayer.play("Idle")
 			
 	#######Move and simulate collisions
 	
@@ -173,16 +174,19 @@ func ControlDash(delta, direction):
 	if double_tap and canDash:
 		dashing = true
 		canDash = false
-		act_max_speed = DashSpeed		
+		animationPlayer.play("Dash")
+		act_max_speed = DashSpeed	
+		velocity.x = direction * DashSpeed
+			
 	if dashing:
 		auxDashTime += delta	
 		if auxDashTime >= dashDuration:
 			dashing = false
 			auxDashTime = 0.0
 			auxDashCooldown = 0.0
+			
 	elif not canDash:
 		auxDashCooldown += delta
-		if auxDashCooldown >= dashCooldown:
+		if auxDashCooldown >= dashCooldown and is_on_floor():
 			canDash = true
-	if dashing:
-		velocity.x += direction * DashSpeed # move_toward(velocity.x, direction * DashSpeed, acceleration * delta) + flying_vel.x
+	
