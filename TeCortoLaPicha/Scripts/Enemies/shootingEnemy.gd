@@ -49,8 +49,6 @@ func _process(delta):
 	if shooting:
 		auxShootingTime += delta
 	
-	
-		print(sprite.animation.length())
 		if auxShootingTime > sprite.animation.length()/6:
 			shoot()
 			auxShootingTime = 0

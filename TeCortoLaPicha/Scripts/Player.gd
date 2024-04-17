@@ -29,6 +29,10 @@ var border_fall_gravity
 
 var act_max_speed : float = 0
 
+@export var double_press_buffer : float = 0.3
+var double_press_counter : float = 0
+var double_tap = false
+var tap_right = false
 @export var jump_buffer_time : float = 0.2
 var jump_buffer_counter : float = 0
 
@@ -70,7 +74,7 @@ func jump_border():
 
 func _physics_process(delta):
 	# VERTICAL MOVEMENT CONTROL
-	if not is_on_floor():
+	if not is_on_floor() and canDash:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
 		if coyote_counter > 0.0:
 			coyote_counter -= delta
@@ -80,52 +84,40 @@ func _physics_process(delta):
 			animationPlayer.play("Fall")	
 	else:
 		coyote_counter = coyote_time
-			
-	####### INPUT
-	# JUMP INPUT
-	if Input.is_action_just_pressed("ui_accept"):
-		jump_buffer_counter = jump_buffer_time	
-	if jump_buffer_counter > 0:
-		jump_buffer_counter -= delta
-	if jump_buffer_counter > 0 and coyote_counter > 0:
-		jump() 
-		jump_buffer_counter = 0
-		coyote_counter = 0
-	if Input.is_action_just_released("ui_accept"):
-		if velocity.y < 0:
-			velocity.y += 150
-	# ANIM FLIP
-	act_max_speed = max_speed
-	if Input.is_action_pressed("RTrigger"):
-		act_max_speed = max_sprinting_speed
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if Input.get_action_strength("ui_left") > 0.05 and not leftRaycast.is_colliding():
-		animationPlayer.scale.x = abs(animationPlayer.scale.x) * -1
-	elif Input.get_action_strength("ui_right") > 0.05 and not rightRaycast.is_colliding():
-		animationPlayer.scale.x = abs(animationPlayer.scale.x)
-	else:
-		pass
-		#Goes to 0 if not pressing anything in 0.2 seconds
-		#velocity.x = lerp(velocity.x, 0.0, 0.2)
+		velocity.y = 0
 	
-	#######Dash	
-	if Input.is_action_just_pressed("Dash") and canDash:
-		dashing = true
-		canDash = false		
-	if dashing:
-		auxDashTime += delta	
-		if auxDashTime >= dashDuration:
-			dashing = false
-			auxDashTime = 0.0
-			auxDashCooldown = 0.0
-	elif not canDash:
-		auxDashCooldown += delta
-		if auxDashCooldown >= dashCooldown:
-			canDash = true
-	if dashing:
-		velocity.x = move_toward(velocity.x, direction * DashSpeed, acceleration * delta) + flying_vel.x
-	else:
-		velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if (!dashing):
+		####### INPUT
+		# JUMP INPUT
+		if Input.is_action_just_pressed("ui_accept"):
+			jump_buffer_counter = jump_buffer_time	
+		if jump_buffer_counter > 0:
+			jump_buffer_counter -= delta
+		if jump_buffer_counter > 0 and coyote_counter > 0:
+			jump() 
+			jump_buffer_counter = 0
+			coyote_counter = 0
+		if Input.is_action_just_released("ui_accept"):
+			if velocity.y < 0:
+				velocity.y += 70
+		# ANIM FLIP
+		act_max_speed = max_speed
+		if Input.is_action_pressed("RTrigger"):
+			act_max_speed = max_sprinting_speed
+		
+		
+
+		if Input.get_action_strength("ui_left") > 0.05 and not leftRaycast.is_colliding():
+			animationPlayer.scale.x = abs(animationPlayer.scale.x) * -1
+		elif Input.get_action_strength("ui_right") > 0.05 and not rightRaycast.is_colliding():
+			animationPlayer.scale.x = abs(animationPlayer.scale.x)
+		else:
+			pass
+			#Goes to 0 if not pressing anything in 0.2 seconds
+			#velocity.x = lerp(velocity.x, 0.0, 0.2)
+		ControlDoubleTap(delta, direction)
+	ControlDash(delta, direction)
 		
 	#######Anim hangling
 	if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
@@ -138,6 +130,11 @@ func _physics_process(delta):
 			animationPlayer.play("Idle")
 			
 	#######Move and simulate collisions
+	
+	if(dashing):
+		act_max_speed = DashSpeed
+		
+	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -149,3 +146,43 @@ func Launch(launch_vel):
 	flying_vel = launch_vel
 	var local_tween = create_tween()
 	local_tween.tween_property(self, "flying_vel", Vector2(0,0), 0.2)
+
+func ControlDoubleTap(delta, direction):
+	double_press_counter -= delta
+	
+	if double_press_counter <= 0:
+		double_tap = false
+	
+	var currenTapRight = false
+	if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed("ui_right"):
+			currenTapRight = true
+		else:
+			currenTapRight = false
+			
+		if double_press_counter > 0 and tap_right == currenTapRight:
+			double_tap = true
+			print("DOUBLE TAP")
+		
+		elif double_press_counter <= 0:
+			double_press_counter = double_press_buffer
+		
+		tap_right = currenTapRight
+func ControlDash(delta, direction):
+	#######Dash	
+	if double_tap and canDash:
+		dashing = true
+		canDash = false
+		act_max_speed = DashSpeed		
+	if dashing:
+		auxDashTime += delta	
+		if auxDashTime >= dashDuration:
+			dashing = false
+			auxDashTime = 0.0
+			auxDashCooldown = 0.0
+	elif not canDash:
+		auxDashCooldown += delta
+		if auxDashCooldown >= dashCooldown:
+			canDash = true
+	if dashing:
+		velocity.x += direction * DashSpeed # move_toward(velocity.x, direction * DashSpeed, acceleration * delta) + flying_vel.x

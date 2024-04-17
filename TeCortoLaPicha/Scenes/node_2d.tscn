@@ -692,8 +692,8 @@ position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("3_wp61n")
 jump_height = 80.0
-jump_time_to_peak = 0.4
-jump_time_to_descend = 0.5
+jump_time_to_peak = 0.3
+jump_time_to_descend = 0.4
 border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
@@ -705,8 +705,10 @@ leftFootRaycast = NodePath("LeftFootRayCast")
 rightFootRaycast = NodePath("RightFootRayCast")
 max_speed = 200.0
 max_sprinting_speed = 400.0
-acceleration = 500.0
-DashSpeed = 100
+acceleration = 2000.0
+DashSpeed = 350
+dashDuration = 0.05
+dashCooldown = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.4, 2)
@@ -802,6 +804,12 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(-362, 26)
 scale = Vector2(1, 1)
 
+[node name="HookTarget2" parent="." instance=ExtResource("34_otlv5")]
+position = Vector2(115, -144)
+scale = Vector2(0.4, 0.4)
+launch_impulse = 4000.0
+
 [node name="HookTarget" parent="." instance=ExtResource("34_otlv5")]
 position = Vector2(-89, -142)
+scale = Vector2(0.4, 0.4)
 launch_impulse = 4000.0

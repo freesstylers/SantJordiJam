@@ -164,6 +164,7 @@ rightFootRaycast = NodePath("RightFootRayCast")
 max_speed = 200.0
 max_sprinting_speed = 400.0
 acceleration = 500.0
+dashDuration = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.4, 2)

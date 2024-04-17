@@ -126,7 +126,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(128, 128)
+size = Vector2(61, 40.25)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 scale = Vector2(4, 4)
@@ -141,6 +141,7 @@ autoplay = "default"
 speed_scale = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.125)
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="floor_checker" type="RayCast2D" parent="."]

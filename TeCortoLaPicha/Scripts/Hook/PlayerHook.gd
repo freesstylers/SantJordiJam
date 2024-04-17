@@ -41,7 +41,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		var mouse_event = event as InputEventMouseButton
-		if not hook_shot and mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed:
+		if not hook_shot and mouse_event.button_index == MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			if hook_target_object:
 				hook_shot = true
 				hook_target_object.play_anim_or_something()
