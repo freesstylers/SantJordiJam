@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bk4k1a6p7y5mb"]
+[gd_scene load_steps=33 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://bkqm575n8adqw" path="res://Sprites/JV/Fall/Fall1.png" id="2_t7ql1"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://g7xwrexlhry2" path="res://Sprites/JV/Run/JV_Run6.png" id="25_gs683"]
 [ext_resource type="Texture2D" uid="uid://b1dtb213ce4e5" path="res://Sprites/JV/Run/JV_Run7.png" id="26_re5gc"]
 [ext_resource type="Texture2D" uid="uid://bpxedfl6qsq0g" path="res://Sprites/JV/Run/JV_Run8.png" id="27_24782"]
+[ext_resource type="PackedScene" uid="uid://dg1fy4qnt4a4u" path="res://Scenes/Hook.tscn" id="28_cl6vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
 size = Vector2(11.2281, 26.0078)
@@ -150,8 +151,8 @@ position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
 jump_height = 80.0
-jump_time_to_peak = 0.4
-jump_time_to_descend = 0.5
+jump_time_to_peak = 0.3
+jump_time_to_descend = 0.4
 border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
@@ -163,13 +164,18 @@ leftFootRaycast = NodePath("LeftFootRayCast")
 rightFootRaycast = NodePath("RightFootRayCast")
 max_speed = 200.0
 max_sprinting_speed = 400.0
-acceleration = 500.0
-dashDuration = 0.2
+acceleration = 2000.0
+DashSpeed = 350
+dashDuration = 0.05
+dashCooldown = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.4, 2)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0s5v5")
@@ -205,3 +211,7 @@ target_position = Vector2(-13.8, 9.53674e-07)
 position = Vector2(0, 10.8)
 scale = Vector2(1, 2.085)
 target_position = Vector2(12.8, 9.53674e-07)
+
+[node name="Hook" parent="." node_paths=PackedStringArray("body_to_launch") instance=ExtResource("28_cl6vo")]
+body_to_launch = NodePath("..")
+rope_length = 100.0
