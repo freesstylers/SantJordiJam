@@ -32,7 +32,7 @@ func operate(delta):
 		
 		timesShot = timesShot + 1
 		if timesShot >= TimesToShoot:
-			return "IDLE"
+			return "FALL"
 		start_moving_towards_firing_pos()
 	
 	return MyState

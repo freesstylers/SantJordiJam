@@ -10,8 +10,10 @@ size = Vector2(1142, 32)
 [node name="BossFight" type="Node2D"]
 script = ExtResource("1_nn163")
 
-[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions") instance=ExtResource("2_loj10")]
+[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions", "VerticalFlameAttackPosition", "HorizontalAttackPosition") instance=ExtResource("2_loj10")]
 FiringPositions = [NodePath("../FireballFiringPositions/Pos1"), NodePath("../FireballFiringPositions/Pos2"), NodePath("../FireballFiringPositions/Pos3"), NodePath("../FireballFiringPositions/Pos4")]
+VerticalFlameAttackPosition = NodePath("../VerticalFlameAttackPos")
+HorizontalAttackPosition = [NodePath("../HorizontalFlameAttackPos"), NodePath("../HorizontalFlameAttackPos2")]
 
 [node name="FireballFiringPositions" type="Node2D" parent="."]
 
@@ -26,6 +28,15 @@ position = Vector2(739, 109)
 
 [node name="Pos4" type="Node2D" parent="FireballFiringPositions"]
 position = Vector2(1051, 217)
+
+[node name="VerticalFlameAttackPos" type="Node2D" parent="."]
+position = Vector2(632, 577)
+
+[node name="HorizontalFlameAttackPos" type="Node2D" parent="."]
+position = Vector2(89, 567)
+
+[node name="HorizontalFlameAttackPos2" type="Node2D" parent="."]
+position = Vector2(1125, 577)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(548, 642)

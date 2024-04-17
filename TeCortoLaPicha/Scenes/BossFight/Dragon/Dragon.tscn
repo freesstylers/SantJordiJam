@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cphrveb0thd0b"]
+[gd_scene load_steps=12 format=3 uid="uid://cphrveb0thd0b"]
 
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonManager.gd" id="1_fbe06"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonVisualizer.gd" id="2_6up4d"]
@@ -6,10 +6,17 @@
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonIdleState.gd" id="4_tgxiw"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFireBallAttackState.gd" id="5_u0e8l"]
 [ext_resource type="PackedScene" uid="uid://cx0us5yh0f5eu" path="res://Scenes/BossFight/Dragon/Attacks/FireBall.tscn" id="6_kt3uv"]
+[ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFallAttackState.gd" id="7_dte8f"]
+[ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonVerticalAttackState.gd" id="7_oj72r"]
+[ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonHorizontalAttackState.gd" id="8_ei81r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4kp2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
+size = Vector2(183, 20)
+
 [node name="DragonStateMachine" type="Node2D"]
+position = Vector2(237, 186)
 script = ExtResource("1_fbe06")
 currentState = "IDLE"
 
@@ -24,6 +31,13 @@ texture = ExtResource("3_vacna")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_p4kp2")
 
+[node name="FlameHitbox" type="Area2D" parent="HitBox"]
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox/FlameHitbox"]
+position = Vector2(81.5, 0)
+shape = SubResource("RectangleShape2D_bd8ul")
+
 [node name="States" type="Node2D" parent="."]
 
 [node name="IDLE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
@@ -36,3 +50,20 @@ script = ExtResource("5_u0e8l")
 FireballPrefab = ExtResource("6_kt3uv")
 Dragon = NodePath("../..")
 MyState = "FIREBALL"
+
+[node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
+script = ExtResource("7_oj72r")
+FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
+Dragon = NodePath("../..")
+MyState = "VERTICAL"
+
+[node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
+script = ExtResource("8_ei81r")
+Dragon = NodePath("../..")
+MyState = "HORIZONTAL"
+
+[node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
+script = ExtResource("7_dte8f")
+AttackMaxHeight = 300.0
+Dragon = NodePath("../..")
+MyState = "FALL"
