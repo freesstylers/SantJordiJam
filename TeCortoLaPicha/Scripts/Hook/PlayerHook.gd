@@ -8,11 +8,12 @@ class_name PlayerHook
 @export var launch : bool = false
 @export var launch_duration : float = 0.35
 @export var rope_length : float = 400
-
+@export var launch_impulse_force : float = 75
 
 var hook_shot = false
 var hook_target_pos : Vector2 = Vector2.ZERO
 var hook_target_object : HookTarget = null
+var movement_tween : Tween = null
 
 func _ready():
 	($RopeStartingPoint/RayCast2D as RayCast2D).target_position = Vector2(0,rope_length) 
@@ -47,19 +48,27 @@ func _input(event):
 				hook_target_object.play_anim_or_something()
 				hook_target_pos = ray.get_collision_point()
 				grappling_rope.ShootRope(hook_target_pos)
+		elif hook_shot and mouse_event.button_index == MOUSE_BUTTON_RIGHT and not mouse_event.pressed:
+			launch = false
+			hook_shot = false
+			hook_target_object = null
+			grappling_rope.HideRope()
+			if movement_tween != null:
+				movement_tween.kill()
+				movement_tween = null
 
 #Make the player move towards the rope end and launch him into that direction
 func Launch():
 	launch = true
 	var launch_impulse_dir = (hook_target_pos - global_position).normalized()
-	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-	localTween.tween_property(body_to_launch, "position",hook_target_pos, launch_duration)
-	localTween.tween_callback(func():
+	movement_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	movement_tween.tween_property(body_to_launch, "position",hook_target_pos, launch_duration)
+	movement_tween.tween_callback(func():
 			launch = false
 			grappling_rope.HideRope()
 			hook_shot = false
-			(body_to_launch as Player).Launch(launch_impulse_dir*75)
-			#body_to_launch.apply_impulse(launch_impulse_dir*hook_target_object.get_launch_impulse())
+			(body_to_launch as Player).Launch(launch_impulse_dir * launch_impulse_force)
 			hook_target_object.update_target_status(false)
 			hook_target_object = null
+			movement_tween = null
 			)
