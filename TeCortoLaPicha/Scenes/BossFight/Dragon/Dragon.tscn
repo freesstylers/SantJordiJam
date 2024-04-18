@@ -16,8 +16,9 @@
 size = Vector2(183, 20)
 
 [node name="DragonStateMachine" type="Node2D"]
-position = Vector2(237, 186)
+position = Vector2(266, 429)
 script = ExtResource("1_fbe06")
+FlyingSpeed = 750.0
 currentState = "IDLE"
 
 [node name="DragonVisualizer" type="Node2D" parent="."]
@@ -64,6 +65,5 @@ MyState = "HORIZONTAL"
 
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
-AttackMaxHeight = 300.0
 Dragon = NodePath("../..")
 MyState = "FALL"
