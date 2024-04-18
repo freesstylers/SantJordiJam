@@ -19,6 +19,7 @@ func preState():
 	move_on_y = true
 	timesFallen = 0
 	vel = Vector2(Dragon.FlyingSpeed,Dragon.FlyingSpeed)
+	Dragon.getVisualizer().start_flying_effect()
 
 func operate(delta):
 	var target = get_pos_to_attack()
@@ -44,6 +45,7 @@ func operate(delta):
 	
 func attack():
 	attacking = true
+	Dragon.getVisualizer().stop_flying_effect()
 	vel.x = Dragon.FlyingSpeed*3/4
 	var attackLength = 1.0
 	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
@@ -55,6 +57,8 @@ func attack():
 		attacking = false
 		timesFallen = timesFallen + 1
 		vel.x = Dragon.FlyingSpeed
+		if timesFallen < TimesToFall:
+			Dragon.getVisualizer().start_flying_effect()
 		)
 
 func get_pos_to_attack():

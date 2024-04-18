@@ -23,6 +23,8 @@ currentState = "IDLE"
 
 [node name="DragonVisualizer" type="Node2D" parent="."]
 script = ExtResource("2_6up4d")
+flyingFrequency = 10.0
+flyingAmplitude = 7.5
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
 texture = ExtResource("3_vacna")
