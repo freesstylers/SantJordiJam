@@ -1,32 +1,16 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://r36jadpqieh6"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://r36jadpqieh6"]
 
-[ext_resource type="FontFile" uid="uid://bnu0s2kb4sfvc" path="res://Assets/Fonts/Larceny.ttf" id="1_wmgqg"]
+[ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="1_1mk0g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
-bg_color = Color(0.278431, 0.278431, 0.278431, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2s4u7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxj1j"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bywl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ydhi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hc0p6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5exy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eilg"]
 
@@ -97,10 +81,19 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [resource]
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("1_wmgqg")
-Button/styles/hover = SubResource("StyleBoxFlat_s53q5")
-Button/styles/normal = SubResource("StyleBoxFlat_qxj1j")
+default_font = ExtResource("1_1mk0g")
+Button/colors/font_color = Color(0.129412, 0.0784314, 0.25098, 1)
+Button/colors/font_focus_color = Color(0.113725, 0.141176, 0.431373, 1)
+Button/colors/font_hover_color = Color(0.113725, 0.141176, 0.431373, 1)
+Button/colors/font_hover_pressed_color = Color(0.121569, 0.0745098, 0.172549, 1)
+Button/colors/font_outline_color = Color(0.94902, 0.713726, 0.431373, 1)
+Button/colors/font_pressed_color = Color(0.121569, 0.0745098, 0.172549, 1)
+Button/font_sizes/font_size = 75
+Button/styles/disabled = SubResource("StyleBoxEmpty_2s4u7")
+Button/styles/focus = SubResource("StyleBoxEmpty_7bywl")
+Button/styles/hover = SubResource("StyleBoxEmpty_4ydhi")
+Button/styles/normal = SubResource("StyleBoxEmpty_hc0p6")
+Button/styles/pressed = SubResource("StyleBoxEmpty_j5exy")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -110,7 +103,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 24
-Label/fonts/font = ExtResource("1_wmgqg")
+Label/fonts/font = ExtResource("1_1mk0g")
 Label/styles/normal = SubResource("StyleBoxEmpty_8eilg")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5

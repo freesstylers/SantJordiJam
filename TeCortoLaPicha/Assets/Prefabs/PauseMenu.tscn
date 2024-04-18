@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhsjm3o3lbkhl"]
+
+[ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_3q5ko"]
+[ext_resource type="Texture2D" uid="uid://dsx5scuh02qyq" path="res://Sprites/UI/pause.png" id="2_d7t5w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orruf"]
+bg_color = Color(0, 0, 0, 0.309804)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3q5ko")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_orruf")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -69.0
+offset_right = -1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0878268
+pivot_offset = Vector2(665, 33)
+texture = ExtResource("2_d7t5w")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 483.0
+offset_right = -483.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+anchor_left = 0.11465
+anchor_top = 0.355556
+anchor_right = 0.859873
+anchor_bottom = 0.461111
+offset_top = 1.52588e-05
+offset_right = -3.05176e-05
+rotation = 0.119424
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="restart" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+offset_top = 277.0
+offset_right = 312.0
+offset_bottom = 321.0
+text = "Restart"
+metadata/_edit_use_anchors_ = true
+
+[node name="options" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+offset_top = 329.0
+offset_right = 312.0
+offset_bottom = 373.0
+text = "Options"
+metadata/_edit_use_anchors_ = true
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+anchor_left = 0.0636943
+anchor_top = 0.545833
+anchor_right = 0.812102
+anchor_bottom = 0.651389
+offset_top = -3.05176e-05
+rotation = 0.118682
+text = "Exit"
+metadata/_edit_use_anchors_ = true

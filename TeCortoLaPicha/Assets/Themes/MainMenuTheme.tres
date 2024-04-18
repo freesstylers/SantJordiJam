@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccsfly34nw0wv"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ccsfly34nw0wv"]
 
 [ext_resource type="FontFile" uid="uid://xd08wkb6sh3w" path="res://Assets/Fonts/Retro Gaming.ttf" id="1_2g3kf"]
+[ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="2_all4w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
 bg_color = Color(0.278431, 0.278431, 0.278431, 1)
@@ -42,9 +43,8 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [resource]
-default_font = ExtResource("1_2g3kf")
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("1_2g3kf")
+default_font = ExtResource("2_all4w")
+Button/font_sizes/font_size = 60
 Button/styles/hover = SubResource("StyleBoxFlat_s53q5")
 Button/styles/normal = SubResource("StyleBoxFlat_qxj1j")
 Label/colors/font_color = Color(1, 1, 1, 1)
