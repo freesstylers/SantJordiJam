@@ -72,7 +72,13 @@ func jump():
 func jump_border():
 	velocity.y = border_jump_velocity
 
+func _input(event):
+	if (!dashing):
+		ControlDoubleTap(get_physics_process_delta_time(), direction, event)
+
+var direction
 func _physics_process(delta):
+
 	# VERTICAL MOVEMENT CONTROL
 	if not is_on_floor() and !dashing:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
@@ -86,11 +92,12 @@ func _physics_process(delta):
 		coyote_counter = coyote_time
 		velocity.y = 0
 	
-	var direction = Input.get_axis("ui_left", "ui_right")
+	#INPUT MANAGEMENT 
+	
+	direction = Input.get_axis("ui_left", "ui_right")
 	if (!dashing):
-		####### INPUT
 		# JUMP INPUT
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("Jump"):
 			jump_buffer_counter = jump_buffer_time	
 		if jump_buffer_counter > 0:
 			jump_buffer_counter -= delta
@@ -98,7 +105,7 @@ func _physics_process(delta):
 			jump() 
 			jump_buffer_counter = 0
 			coyote_counter = 0
-		if Input.is_action_just_released("ui_accept"):
+		if Input.is_action_just_released("Jump"):
 			if velocity.y < 0:
 				velocity.y += 70
 		# ANIM FLIP
@@ -106,8 +113,6 @@ func _physics_process(delta):
 		if Input.is_action_pressed("RTrigger"):
 			act_max_speed = max_sprinting_speed
 		
-		
-
 		if Input.get_action_strength("ui_left") > 0.05 and not leftRaycast.is_colliding():
 			animationPlayer.scale.x = abs(animationPlayer.scale.x) * -1
 		elif Input.get_action_strength("ui_right") > 0.05 and not rightRaycast.is_colliding():
@@ -116,7 +121,7 @@ func _physics_process(delta):
 			pass
 			#Goes to 0 if not pressing anything in 0.2 seconds
 			#velocity.x = lerp(velocity.x, 0.0, 0.2)
-		ControlDoubleTap(delta, direction)
+		
 	ControlDash(delta, direction)
 		
 	#######Anim hangling
@@ -148,27 +153,37 @@ func Launch(launch_vel):
 	var local_tween = create_tween()
 	local_tween.tween_property(self, "flying_vel", Vector2(0,0), 0.2)
 
-func ControlDoubleTap(delta, direction):
+func ControlDoubleTap(delta, direction, event_):
 	double_press_counter -= delta
 	
 	if double_press_counter <= 0:
 		double_tap = false
-	
+
 	var currenTapRight = false
-	if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
-		if Input.is_action_just_pressed("ui_right"):
-			currenTapRight = true
-		else:
-			currenTapRight = false
+
+	if event_ is InputEventKey:
+		if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
+			if Input.is_action_just_pressed("ui_right"):
+				currenTapRight = true
+			else:
+				currenTapRight = false
+				
+			if double_press_counter > 0 and tap_right == currenTapRight:
+				double_tap = true
+				print("DOUBLE TAP")
 			
-		if double_press_counter > 0 and tap_right == currenTapRight:
-			double_tap = true
-			print("DOUBLE TAP")
+			elif double_press_counter <= 0:
+				double_press_counter = double_press_buffer
+				
+			tap_right = currenTapRight
+	elif event_ is InputEventJoypadButton:
+		if Input.is_action_just_pressed("Dash"):
+			if direction != 0:
+				double_tap = true
+		pass	
 		
-		elif double_press_counter <= 0:
-			double_press_counter = double_press_buffer
+	
 		
-		tap_right = currenTapRight
 func ControlDash(delta, direction):
 	#######Dash	
 	if double_tap and canDash:

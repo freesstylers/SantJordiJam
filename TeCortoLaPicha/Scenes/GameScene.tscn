@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd5qgadjqxig1"]
+[gd_scene load_steps=5 format=3 uid="uid://dd5qgadjqxig1"]
 
-[ext_resource type="PackedScene" uid="uid://bk4k1a6p7y5mb" path="res://Assets/Prefabs/player.tscn" id="1_2dcnp"]
+[ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="1_2dcnp"]
 [ext_resource type="Script" path="res://Scripts/RoomManager.gd" id="1_dy84q"]
 [ext_resource type="PackedScene" uid="uid://c2pwav1vovmhk" path="res://Scenes/PruebaTilesets.tscn" id="1_u1wxi"]
+[ext_resource type="PackedScene" uid="uid://4be3a25mf3qr" path="res://Assets/Prefabs/Rooms/Room1.tscn" id="3_m017o"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -10,10 +11,12 @@
 script = ExtResource("1_dy84q")
 Rooms = Array[PackedScene]([ExtResource("1_u1wxi")])
 
-[node name="PruebaTilesets" parent="RoomContainer" instance=ExtResource("1_u1wxi")]
+[node name="Room1" parent="RoomContainer" instance=ExtResource("3_m017o")]
+startingCharacterPosition = Vector2(210, -100)
 
 [node name="Player" parent="." instance=ExtResource("1_2dcnp")]
-position = Vector2(0, 0)
+position = Vector2(210, -100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(464, -249)
+zoom = Vector2(1.5, 1.5)
