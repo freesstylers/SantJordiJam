@@ -137,6 +137,11 @@ func _physics_process(delta):
 			
 	#######Move and simulate collisions
 	
+	double_press_counter -= delta
+	
+	if double_press_counter <= 0:
+		double_tap = false
+		
 	if(dashing):
 		act_max_speed = DashSpeed
 		
@@ -154,10 +159,7 @@ func Launch(launch_vel):
 	local_tween.tween_property(self, "flying_vel", Vector2(0,0), 0.2)
 
 func ControlDoubleTap(delta, direction, event_):
-	double_press_counter -= delta
 	
-	if double_press_counter <= 0:
-		double_tap = false
 
 	var currenTapRight = false
 
