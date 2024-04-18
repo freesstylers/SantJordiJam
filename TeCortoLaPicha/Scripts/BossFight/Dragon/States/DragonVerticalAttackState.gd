@@ -24,16 +24,34 @@ func operate(delta):
 			preparingAttack = false
 			attack_player_pos()
 	elif timesAttacked >= TimesToAttack:
-		return "FIREBALL"
+		return "IDLE"
 	return MyState
 	
 func attack_player_pos():
+	var position_to_face = get_pos_to_face_towards()
+	var destRot = -45
+	if position_to_face.x < Dragon.global_position.x:
+		FireFlameHitbox.rotation_degrees = 135
+		destRot = 225
+	else:
+		FireFlameHitbox.rotation_degrees = 45
+		destRot = -45
+	
 	var localTween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	var attackLength = 3.0
-	localTween.tween_property(FireFlameHitbox, "rotation", -45 * PI / 180, attackLength).set_delay(DelayBeforeFlameStart)
 	localTween.tween_callback(func():
+		Dragon.getVisualizer().change_fire_particles_state(true, DelayBeforeFlameStart)
+		)
+	localTween.tween_property(FireFlameHitbox, "rotation", destRot * PI / 180, attackLength).set_delay(DelayBeforeFlameStart)
+	localTween.tween_callback(func():
+		Dragon.getVisualizer().change_fire_particles_state(false, 0.5)
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):
 			attack_player_pos
 		)
 	
+func get_pos_to_face_towards():
+	if Dragon.ThePlayer != null:
+		return Dragon.ThePlayer.global_position
+	else:
+		return get_global_mouse_position()
