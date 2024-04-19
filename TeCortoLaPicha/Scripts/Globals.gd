@@ -7,6 +7,8 @@ var RNG = RandomNumberGenerator.new()
 var MAX_PLAYER_LIFE : int = 100
 var GameMan : GameManager = null
 
+
+
 #Gameplay loop
 signal game_init_everything()
 signal game_start_playing()

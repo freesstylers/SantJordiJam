@@ -715,6 +715,7 @@ sources/0 = SubResource("TileSetAtlasSource_nshtt")
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("EnemiesArray")]
 script = ExtResource("1_i5oul")
 EnemiesArray = [NodePath("enemies/enemy")]
+startingCharacterPosition = Vector2(210, -100)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-395, -491)

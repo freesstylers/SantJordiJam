@@ -2,30 +2,22 @@ extends Node2D
 class_name GameManager
 var menu = true
 
+@export var GameScene : PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Timer 
-
+	Globals.connect("game_start_playing", loadLevel)
 	pass # Replace with function body.	
 
 func loadLevel():
 
-	$CurrentScene.get_child(0).queue_free()
+	$CurrentScene.remove_child($CurrentScene.get_child(0))
 	
+	$CurrentScene.add_child(GameScene.instantiate())
 		
 	if get_tree().paused:
 		get_tree().paused = false
-	
-	if menu:
-		return
-		
-	var rng = RandomNumberGenerator.new()
-	var level = rng.randi_range(0,1)
-		
-	if level == 0:
-
-		pass
-	elif level == 1:
 
 		pass
 

@@ -121,6 +121,7 @@ theme_override_font_sizes/font_size = 40
 text = "Credits"
 
 [node name="credits" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.177778

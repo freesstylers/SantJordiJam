@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk43jhsw5sywy"]
+[gd_scene load_steps=7 format=3 uid="uid://bk43jhsw5sywy"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_ifnhu"]
+[ext_resource type="PackedScene" uid="uid://dd5qgadjqxig1" path="res://Scenes/GameScene.tscn" id="2_04snq"]
 [ext_resource type="PackedScene" uid="uid://d1oae8ne04f66" path="res://Scenes/MainMenu.tscn" id="2_hk2fo"]
 [ext_resource type="PackedScene" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
 
@@ -15,6 +16,7 @@ packet_sequence = SubResource("OggPacketSequence_p5rrj")
 [node name="SceneManager" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_ifnhu")
+GameScene = ExtResource("2_04snq")
 
 [node name="CurrentScene" type="Node2D" parent="."]
 process_mode = 1

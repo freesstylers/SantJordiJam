@@ -9,7 +9,9 @@ var rng
 func _ready():
 	Globals.connect("roomCompleted", roomCompletedFunc)
 	rng = RandomNumberGenerator.new()
-
+	
+	add_child(Rooms[0].instantiate())
+	
 	pass # Replace with function body.
 
 
