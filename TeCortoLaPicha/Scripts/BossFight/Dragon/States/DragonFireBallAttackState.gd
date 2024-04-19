@@ -10,7 +10,6 @@ class_name DragonFireballAttackState
 @onready var DelayBeforeFiringTimer : Timer = $DelayBeforeFiring
 @onready var DelayBetweanFireballsTimer : Timer = $DelayBetweanFireballs
 
-var movingTowardsFiringPos : bool = false
 var firingPos : Vector2 = Vector2(0,0)
 var timesShotThisAttack : int = 0
 
@@ -18,23 +17,23 @@ func preState():
 	StateToReturn = MyState
 	timesAttacked = 0
 	timesShotThisAttack = 0
+	preparingAttack = true
 	select_firing_pos()
 	
 func postState():
 	DelayBeforeFiringTimer.stop()
 
 func operate(delta):
-	if movingTowardsFiringPos:
+	if preparingAttack:
 		var dir : Vector2 =  (firingPos - Dragon.global_position).normalized()
 		Dragon.global_position = Dragon.global_position + (dir*Dragon.getFlyingSpeed()*delta)
 		#Reached firing pos
 		if (Dragon.global_position - firingPos).length() < 30:
-			movingTowardsFiringPos = false
+			preparingAttack = false
 			DelayBeforeFiringTimer.start(delayBeforeFireball)
 	return StateToReturn
 	
 func select_firing_pos():
-	movingTowardsFiringPos = true
 	#Set the next firing position if any, if there are no positions available shot from your current pos
 	var firingPositions = Dragon.getFiringPositions() as Array[Vector2]
 	if firingPositions.size() > 0:
@@ -45,7 +44,7 @@ func select_firing_pos():
 	else:
 		firingPos = Dragon.global_position
 
-func shoot_fireball():
+func Attack():
 	#Instantiate fireball
 	var target_dir = (get_pos_to_shoot_fireball() - Dragon.global_position).normalized()
 	var instance = FireballPrefab.instantiate()
@@ -64,6 +63,7 @@ func shoot_fireball():
 		timesShotThisAttack = 0
 		#Check if the state should continue
 		if timesAttacked < TimesToAttack:
+			preparingAttack = true
 			select_firing_pos()
 		else:
 			StateToReturn = NextState

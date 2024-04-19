@@ -7,3 +7,4 @@ class_name DragonStateBase
 
 var timesAttacked : int = 0
 var StateToReturn : String = "IDLE"
+var preparingAttack : bool = false

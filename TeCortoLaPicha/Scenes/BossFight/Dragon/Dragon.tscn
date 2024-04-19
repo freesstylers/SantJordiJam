@@ -71,6 +71,7 @@ color = Color(0, 0.333333, 0.698039, 0.372549)
 [node name="IDLE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("4_tgxiw")
 Dragon = NodePath("../..")
+NextState = "HORIZONTAL"
 MyState = "IDLE"
 
 [node name="FIREBALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
@@ -89,11 +90,17 @@ wait_time = 5.0
 
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
+AttackSpeed = null
+AttackMaxHeight = null
 FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
 DelayBeforeFlameStart = 1.0
+DelayBeforeAttack = null
 Dragon = NodePath("../..")
-TimesToAttack = 1
+TimesToAttack = 2
+NextState = null
 MyState = "VERTICAL"
+
+[node name="DelayBeforeAttack" type="Timer" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
 [node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("8_ei81r")
@@ -101,10 +108,14 @@ Dragon = NodePath("../..")
 TimesToAttack = 1
 MyState = "HORIZONTAL"
 
+[node name="DelayBeforeAttackTimer" type="Timer" parent="States/HORIZONTAL_FLAME_ATTACK_STATE"]
+
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
 Dragon = NodePath("../..")
 MyState = "FALL"
 
-[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="shoot_fireball"]
-[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="shoot_fireball"]
+[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
+[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
+[connection signal="timeout" from="States/VERTICAL_FLAME_ATTACK_STATE/DelayBeforeAttack" to="States/VERTICAL_FLAME_ATTACK_STATE" method="Attack"]
+[connection signal="timeout" from="States/HORIZONTAL_FLAME_ATTACK_STATE/DelayBeforeAttackTimer" to="States/HORIZONTAL_FLAME_ATTACK_STATE" method="Attack"]

@@ -10,7 +10,6 @@ class_name DragonVisualizer
 @onready var DragonAnimation : Sprite2D = $Dragon
 
 var face_player : bool = true
-
 var flying_effect_active : bool = false
 enum ANIM_STATE { IDLE, ATTACK, FALL, DEATH }
 
@@ -50,6 +49,7 @@ func stop_flying_effect(duration = 0):
 		localTween.tween_property(self, "flyingPhase", 0, duration)
 	else:
 		flyingPhase = 0
+		
 func start_flying_effect():
 	flying_effect_active = true
 	
