@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4be3a25mf3qr"]
+[gd_scene load_steps=7 format=3 uid="uid://4be3a25mf3qr"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="Texture2D" uid="uid://b02o131rs4qnj" path="res://Sprites/Tilesets/TilesetPrincipal.png" id="2_vvi58"]
+[ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="4_b0st7"]
 [ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nshtt"]
@@ -711,8 +712,9 @@ terrain_set_0/terrain_2/name = "SueloLadrillo 2"
 terrain_set_0/terrain_2/color = Color(1, 0.501961, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_nshtt")
 
-[node name="Room1" type="Node2D"]
+[node name="Room1" type="Node2D" node_paths=PackedStringArray("EnemiesArray")]
 script = ExtResource("1_i5oul")
+EnemiesArray = [NodePath("enemies/enemy")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-395, -491)
@@ -729,3 +731,8 @@ layer_2/tile_data = PackedInt32Array(786466, 458752, 4, 1441822, 262144, 2, 1507
 
 [node name="Door" parent="." instance=ExtResource("4_frspx")]
 position = Vector2(876, -81)
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="enemy" parent="enemies" instance=ExtResource("4_b0st7")]
+position = Vector2(288, -195)

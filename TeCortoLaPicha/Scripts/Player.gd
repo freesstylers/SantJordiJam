@@ -224,4 +224,5 @@ func ControlDash(delta, direction):
 
 func _on_sword_collider_body_entered(body):
 	print("te pegue")
+	body.die()
 	pass # Replace with function body.
