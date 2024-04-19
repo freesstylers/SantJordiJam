@@ -11,5 +11,5 @@ func preState():
 func operate(delta):
 	timeLeftInIdle -= delta
 	if timeLeftInIdle <= 0:
-		return "FALL"
+		return "VERTICAL"
 	return MyState

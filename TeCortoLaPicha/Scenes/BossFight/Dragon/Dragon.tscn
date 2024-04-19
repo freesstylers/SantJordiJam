@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cphrveb0thd0b"]
+[gd_scene load_steps=14 format=3 uid="uid://cphrveb0thd0b"]
 
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonManager.gd" id="1_fbe06"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonVisualizer.gd" id="2_6up4d"]
 [ext_resource type="Texture2D" uid="uid://d0mp624bdf5km" path="res://Sprites/JV/Idle/JV_Idle1.png" id="3_vacna"]
+[ext_resource type="Texture2D" uid="uid://6vfyvfq8fls4" path="res://Assets/MainMenu/Twitter.png" id="4_j2hio"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonIdleState.gd" id="4_tgxiw"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFireBallAttackState.gd" id="5_u0e8l"]
 [ext_resource type="PackedScene" uid="uid://cx0us5yh0f5eu" path="res://Scenes/BossFight/Dragon/Attacks/FireBall.tscn" id="6_kt3uv"]
@@ -15,16 +16,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
 size = Vector2(183, 20)
 
+[sub_resource type="Curve" id="Curve_mxlvr"]
+_data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0, Vector2(0.266129, 1), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="DragonStateMachine" type="Node2D"]
 position = Vector2(266, 429)
 script = ExtResource("1_fbe06")
 FlyingSpeed = 750.0
 currentState = "IDLE"
 
-[node name="DragonVisualizer" type="Node2D" parent="."]
+[node name="DragonVisualizer" type="Node2D" parent="." node_paths=PackedStringArray("FireParticles", "DragonMngr")]
 script = ExtResource("2_6up4d")
 flyingFrequency = 10.0
 flyingAmplitude = 7.5
+FireParticles = NodePath("../HitBox/FlameHitbox/CPUParticles2D")
+DragonMngr = NodePath("..")
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
 texture = ExtResource("3_vacna")
@@ -35,11 +42,29 @@ texture = ExtResource("3_vacna")
 shape = SubResource("RectangleShape2D_p4kp2")
 
 [node name="FlameHitbox" type="Area2D" parent="HitBox"]
-rotation = 0.785398
+rotation = 2.35619
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox/FlameHitbox"]
 position = Vector2(81.5, 0)
 shape = SubResource("RectangleShape2D_bd8ul")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HitBox/FlameHitbox"]
+position = Vector2(0.707107, -0.707107)
+amount = 50
+lifetime = 0.5
+texture = ExtResource("4_j2hio")
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_mxlvr")
+color = Color(0, 0.333333, 0.698039, 0.372549)
 
 [node name="States" type="Node2D" parent="."]
 
