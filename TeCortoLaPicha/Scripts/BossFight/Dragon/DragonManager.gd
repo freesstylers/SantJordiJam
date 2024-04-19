@@ -23,7 +23,7 @@ func _ready():
 func operate(delta):
 	if currentState == "":
 		return
-	print(currentState)
+	#print(currentState)
 	var nextState = states.get(currentState).operate(delta)
 	if currentState != nextState:
 		states.get(currentState).postState()

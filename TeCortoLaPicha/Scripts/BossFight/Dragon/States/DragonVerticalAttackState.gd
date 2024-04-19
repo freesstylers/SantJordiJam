@@ -1,14 +1,12 @@
 extends DragonStateBase
 class_name DragonVerticalAttackState
 
-@export var TimesToAttack : int = 1
 @export var AttackSpeed : float = 500
 @export var AttackMaxHeight : float = 0
 @export var FireFlameHitbox : Node2D = null
 @export var DelayBeforeFlameStart : float = 2
 
 var preparingAttack : bool = false
-var timesAttacked : int = 0
 
 func preState():
 	preparingAttack=true

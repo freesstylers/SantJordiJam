@@ -1,12 +1,10 @@
 extends DragonStateBase
 class_name DragonHorizontalAttackState
 
-@export var TimesToAttack : int = 1
 @export var AttackSpeed : float = 500
 @export var DelayBeforeAttack : float = 2
 
 var preparingAttack : bool = false
-var timesAttacked : int = 0
 var attackStartingPos : Vector2 = Vector2(0,0)
 var attackEndPos : Vector2 = Vector2(0,0)
 

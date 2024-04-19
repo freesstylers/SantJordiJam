@@ -75,22 +75,36 @@ MyState = "IDLE"
 
 [node name="FIREBALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("5_u0e8l")
+FireBallSpeed = 700.0
 FireballPrefab = ExtResource("6_kt3uv")
+delayBetweanFireballs = 0.2
+ShotsPerAttack = 3
 Dragon = NodePath("../..")
 MyState = "FIREBALL"
+
+[node name="DelayBeforeFiring" type="Timer" parent="States/FIREBALL_ATTACK_STATE"]
+wait_time = 5.0
+
+[node name="DelayBetweanFireballs" type="Timer" parent="States/FIREBALL_ATTACK_STATE"]
 
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
 FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
+DelayBeforeFlameStart = 1.0
 Dragon = NodePath("../..")
+TimesToAttack = 1
 MyState = "VERTICAL"
 
 [node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("8_ei81r")
 Dragon = NodePath("../..")
+TimesToAttack = 1
 MyState = "HORIZONTAL"
 
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
 Dragon = NodePath("../..")
 MyState = "FALL"
+
+[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="shoot_fireball"]
+[connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="shoot_fireball"]
