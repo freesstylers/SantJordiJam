@@ -73,8 +73,21 @@ func jump_border():
 	velocity.y = border_jump_velocity
 
 func _input(event):
-	if (!dashing):
+	if (!dashing and !attacking):
 		ControlDoubleTap(get_physics_process_delta_time(), direction, event)
+		
+	if Input.is_action_just_pressed("Attack"):
+		animationPlayer.play("Attack")
+		attacking = true
+
+func _on_animated_sprite_2d_animation_finished():
+	if animationPlayer.animation == "Attack":
+		attacking = false
+		print("end attack")
+	pass # Replace with function body.
+
+
+var attacking = false
 
 var direction
 func _physics_process(delta):
@@ -124,8 +137,8 @@ func _physics_process(delta):
 		
 	ControlDash(delta, direction)
 		
-	#######Anim hangling
-	if(!dashing):
+	#######Anim handling
+	if(!dashing and !attacking):
 		if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
 			if Input.is_action_pressed("RTrigger"):
 				animationPlayer.play("Run_Fast")
@@ -159,8 +172,6 @@ func Launch(launch_vel):
 	local_tween.tween_property(self, "flying_vel", Vector2(0,0), 0.2)
 
 func ControlDoubleTap(delta, direction, event_):
-	
-
 	var currenTapRight = false
 
 	if event_ is InputEventKey:
@@ -206,4 +217,3 @@ func ControlDash(delta, direction):
 		auxDashCooldown += delta
 		if auxDashCooldown >= dashCooldown and is_on_floor():
 			canDash = true
-	

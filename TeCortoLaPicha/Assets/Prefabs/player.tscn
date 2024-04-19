@@ -1,22 +1,30 @@
-[gd_scene load_steps=49 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=58 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://t7rvnnrc8cst" path="res://Sprites/Witiza/Dash/Witiza_Dash1.png" id="2_5pypx"]
+[ext_resource type="Texture2D" uid="uid://dehia2smsqwbv" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms1.png" id="2_15acs"]
 [ext_resource type="Texture2D" uid="uid://ltaha7rr1yda" path="res://Sprites/Witiza/Fall/Witiza_Fall1.png" id="2_lkrni"]
+[ext_resource type="Texture2D" uid="uid://gbi21o1sqtci" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms2.png" id="3_1w05p"]
 [ext_resource type="Texture2D" uid="uid://bq0mnga0j6qfp" path="res://Sprites/Witiza/Idle/Witiza_Idle1.png" id="3_wehff"]
 [ext_resource type="Texture2D" uid="uid://deac000aqk3fg" path="res://Sprites/Witiza/Dash/Witiza_Dash2.png" id="3_wrynh"]
 [ext_resource type="Texture2D" uid="uid://dgsh51kg0nuad" path="res://Sprites/Witiza/Fall/Witiza_Fall2.png" id="3_ywdep"]
 [ext_resource type="Texture2D" uid="uid://bmpew7g5wd5sc" path="res://Sprites/Witiza/Dash/Witiza_Dash3.png" id="4_67hul"]
 [ext_resource type="Texture2D" uid="uid://djnxgvp2lgawj" path="res://Sprites/Witiza/Idle/Witiza_Idle2.png" id="4_n4k0x"]
+[ext_resource type="Texture2D" uid="uid://bbs6647k08t6f" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms3.png" id="4_qg5gs"]
 [ext_resource type="Texture2D" uid="uid://c2cdi7rhdgin8" path="res://Sprites/Witiza/Fall/Witiza_Fall3.png" id="4_vi6f1"]
+[ext_resource type="Texture2D" uid="uid://chh8p1efwno5j" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms4.png" id="5_frp7t"]
 [ext_resource type="Texture2D" uid="uid://br6d2trwf8ct7" path="res://Sprites/Witiza/Dash/Witiza_Dash4.png" id="5_fufku"]
 [ext_resource type="Texture2D" uid="uid://dheh4plluetlj" path="res://Sprites/Witiza/Idle/Witiza_Idle3.png" id="5_p4gpu"]
 [ext_resource type="Texture2D" uid="uid://dw4jn5i0eb2je" path="res://Sprites/Witiza/Dash/Witiza_Dash5.png" id="6_1kgvr"]
+[ext_resource type="Texture2D" uid="uid://bvkhb8f3eywrg" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms5.png" id="6_5er4l"]
 [ext_resource type="Texture2D" uid="uid://yom82wfnbiup" path="res://Sprites/Witiza/Idle/Witiza_Idle4.png" id="6_fd57f"]
 [ext_resource type="Texture2D" uid="uid://bi2jueu8qhodw" path="res://Sprites/Witiza/Idle/Witiza_Idle5.png" id="7_aoe2j"]
+[ext_resource type="Texture2D" uid="uid://b2d2q8gjv72cp" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms6.png" id="7_imcls"]
 [ext_resource type="Texture2D" uid="uid://dfrb2kh43n64r" path="res://Sprites/Witiza/Dash/Witiza_Dash6.png" id="7_ky27n"]
 [ext_resource type="Texture2D" uid="uid://6f1ugbu4chey" path="res://Sprites/Witiza/Dash/Witiza_Dash7.png" id="8_4d8sp"]
+[ext_resource type="Texture2D" uid="uid://bbwy43pckf0ce" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms7.png" id="8_7yk2u"]
 [ext_resource type="Texture2D" uid="uid://b7km7pftvx4u6" path="res://Sprites/Witiza/Idle/Witiza_Idle6.png" id="8_x0kn8"]
+[ext_resource type="Texture2D" uid="uid://q8q85yy16k7y" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms8.png" id="9_2ef46"]
 [ext_resource type="Texture2D" uid="uid://dcyjk2f7ljgbo" path="res://Sprites/Witiza/Jump/Witiza_Jump1.png" id="9_dfhtb"]
 [ext_resource type="Texture2D" uid="uid://dfoknteq05igy" path="res://Sprites/Witiza/Dash/Witiza_Dash8.png" id="9_upoy8"]
 [ext_resource type="Texture2D" uid="uid://cmueca8lppbm4" path="res://Sprites/Witiza/Jump/Witiza_Jump2.png" id="10_w0iu5"]
@@ -50,6 +58,35 @@ size = Vector2(11.2281, 32.5098)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0s5v5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_15acs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1w05p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qg5gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_frp7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5er4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_imcls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7yk2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2ef46")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_5pypx")
@@ -207,6 +244,8 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4175r"]
+
 [sub_resource type="FontVariation" id="FontVariation_i3n8k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2hdyn"]
@@ -243,12 +282,18 @@ position = Vector2(-0.4, 4.5)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0s5v5")
-animation = &"Jump"
-autoplay = "Idle"
-frame_progress = 0.740208
+animation = &"Attack"
 speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+shape = SubResource("CapsuleShape2D_4175r")
+disabled = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -41.6
@@ -283,3 +328,5 @@ target_position = Vector2(12.8, 9.53674e-07)
 [node name="Hook" parent="." node_paths=PackedStringArray("body_to_launch") instance=ExtResource("28_cl6vo")]
 body_to_launch = NodePath("..")
 rope_length = 100.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
