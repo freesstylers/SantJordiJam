@@ -8,21 +8,17 @@ var menu = true
 func _ready():
 	#Timer 
 	Globals.connect("game_start_playing", loadLevel)
-	pass # Replace with function body.	
 
-func loadLevel():
 
-	$CurrentScene.remove_child($CurrentScene.get_child(0))
-	
+func loadLevel():	
 	$CurrentScene.add_child(GameScene.instantiate())
 		
 	if get_tree().paused:
 		get_tree().paused = false
 
-		pass
-
 func startGame():
 	menu = false
+	$CurrentScene.remove_child($CurrentScene.get_child(0))
 	$TransitionScreen.transition()
 	pass
 

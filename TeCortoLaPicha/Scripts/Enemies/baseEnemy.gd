@@ -3,6 +3,16 @@ extends CharacterBody2D
 
 var Room_: Room = null
 
+@export var life : int = 50
+
+func takeDamage(damage):
+	life -= damage
+	
+	print(life)
+	
+	if life <= 0:
+		die()
+
 func die():
 	Room_ = get_parent().get_parent()
 	

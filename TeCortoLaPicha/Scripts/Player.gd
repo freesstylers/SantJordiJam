@@ -51,6 +51,8 @@ var canDash = true
 
 var flying_vel : Vector2 = Vector2(0,0)
 
+@export var damage : int = 20
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -224,5 +226,5 @@ func ControlDash(delta, direction):
 
 func _on_sword_collider_body_entered(body):
 	print("te pegue")
-	body.die()
+	body.takeDamage(damage)
 	pass # Replace with function body.
