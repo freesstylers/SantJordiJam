@@ -1,250 +1,933 @@
-[gd_scene load_steps=58 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=22 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
-[ext_resource type="Texture2D" uid="uid://t7rvnnrc8cst" path="res://Sprites/Witiza/Dash/Witiza_Dash1.png" id="2_5pypx"]
-[ext_resource type="Texture2D" uid="uid://dehia2smsqwbv" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms1.png" id="2_15acs"]
-[ext_resource type="Texture2D" uid="uid://ltaha7rr1yda" path="res://Sprites/Witiza/Fall/Witiza_Fall1.png" id="2_lkrni"]
-[ext_resource type="Texture2D" uid="uid://gbi21o1sqtci" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms2.png" id="3_1w05p"]
-[ext_resource type="Texture2D" uid="uid://bq0mnga0j6qfp" path="res://Sprites/Witiza/Idle/Witiza_Idle1.png" id="3_wehff"]
-[ext_resource type="Texture2D" uid="uid://deac000aqk3fg" path="res://Sprites/Witiza/Dash/Witiza_Dash2.png" id="3_wrynh"]
-[ext_resource type="Texture2D" uid="uid://dgsh51kg0nuad" path="res://Sprites/Witiza/Fall/Witiza_Fall2.png" id="3_ywdep"]
-[ext_resource type="Texture2D" uid="uid://bmpew7g5wd5sc" path="res://Sprites/Witiza/Dash/Witiza_Dash3.png" id="4_67hul"]
-[ext_resource type="Texture2D" uid="uid://djnxgvp2lgawj" path="res://Sprites/Witiza/Idle/Witiza_Idle2.png" id="4_n4k0x"]
-[ext_resource type="Texture2D" uid="uid://bbs6647k08t6f" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms3.png" id="4_qg5gs"]
-[ext_resource type="Texture2D" uid="uid://c2cdi7rhdgin8" path="res://Sprites/Witiza/Fall/Witiza_Fall3.png" id="4_vi6f1"]
-[ext_resource type="Texture2D" uid="uid://chh8p1efwno5j" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms4.png" id="5_frp7t"]
-[ext_resource type="Texture2D" uid="uid://br6d2trwf8ct7" path="res://Sprites/Witiza/Dash/Witiza_Dash4.png" id="5_fufku"]
-[ext_resource type="Texture2D" uid="uid://dheh4plluetlj" path="res://Sprites/Witiza/Idle/Witiza_Idle3.png" id="5_p4gpu"]
-[ext_resource type="Texture2D" uid="uid://dw4jn5i0eb2je" path="res://Sprites/Witiza/Dash/Witiza_Dash5.png" id="6_1kgvr"]
-[ext_resource type="Texture2D" uid="uid://bvkhb8f3eywrg" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms5.png" id="6_5er4l"]
-[ext_resource type="Texture2D" uid="uid://yom82wfnbiup" path="res://Sprites/Witiza/Idle/Witiza_Idle4.png" id="6_fd57f"]
-[ext_resource type="Texture2D" uid="uid://bi2jueu8qhodw" path="res://Sprites/Witiza/Idle/Witiza_Idle5.png" id="7_aoe2j"]
-[ext_resource type="Texture2D" uid="uid://b2d2q8gjv72cp" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms6.png" id="7_imcls"]
-[ext_resource type="Texture2D" uid="uid://dfrb2kh43n64r" path="res://Sprites/Witiza/Dash/Witiza_Dash6.png" id="7_ky27n"]
-[ext_resource type="Texture2D" uid="uid://6f1ugbu4chey" path="res://Sprites/Witiza/Dash/Witiza_Dash7.png" id="8_4d8sp"]
-[ext_resource type="Texture2D" uid="uid://bbwy43pckf0ce" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms7.png" id="8_7yk2u"]
-[ext_resource type="Texture2D" uid="uid://b7km7pftvx4u6" path="res://Sprites/Witiza/Idle/Witiza_Idle6.png" id="8_x0kn8"]
-[ext_resource type="Texture2D" uid="uid://q8q85yy16k7y" path="res://Sprites/Witiza/Hit/Witiza_attack_No_Arms8.png" id="9_2ef46"]
-[ext_resource type="Texture2D" uid="uid://dcyjk2f7ljgbo" path="res://Sprites/Witiza/Jump/Witiza_Jump1.png" id="9_dfhtb"]
-[ext_resource type="Texture2D" uid="uid://dfoknteq05igy" path="res://Sprites/Witiza/Dash/Witiza_Dash8.png" id="9_upoy8"]
-[ext_resource type="Texture2D" uid="uid://cmueca8lppbm4" path="res://Sprites/Witiza/Jump/Witiza_Jump2.png" id="10_w0iu5"]
-[ext_resource type="Texture2D" uid="uid://blis4taax88yk" path="res://Sprites/Witiza/Jump/Witiza_Jump3.png" id="11_s08cl"]
-[ext_resource type="Texture2D" uid="uid://cim5qb73sd8va" path="res://Sprites/Witiza/Run/Witiza_Run1.png" id="12_ieg5h"]
-[ext_resource type="Texture2D" uid="uid://064x7pcyciuv" path="res://Sprites/Witiza/Walk/Witiza_Walk1.png" id="12_nh084"]
-[ext_resource type="Texture2D" uid="uid://kta65m612xyl" path="res://Sprites/Witiza/Fall/Witiza_Fall4.png" id="13_j6w7q"]
-[ext_resource type="Texture2D" uid="uid://bkn6ef5d1p11u" path="res://Sprites/Witiza/Walk/Witiza_Walk2.png" id="13_ld6b2"]
-[ext_resource type="Texture2D" uid="uid://dxvss7xr72bo8" path="res://Sprites/Witiza/Run/Witiza_Run2.png" id="13_yd35i"]
-[ext_resource type="Texture2D" uid="uid://ccgwrtmqulodb" path="res://Sprites/Witiza/Fall/Witiza_Fall5.png" id="14_ikrwj"]
-[ext_resource type="Texture2D" uid="uid://dhv6rxko4hpw4" path="res://Sprites/Witiza/Walk/Witiza_Walk3.png" id="14_mojw1"]
-[ext_resource type="Texture2D" uid="uid://de4xn7fsr1odb" path="res://Sprites/Witiza/Run/Witiza_Run3.png" id="14_ryw2u"]
-[ext_resource type="Texture2D" uid="uid://cq7a4dj7cryl0" path="res://Sprites/Witiza/Walk/Witiza_Walk4.png" id="15_lp0bp"]
-[ext_resource type="Texture2D" uid="uid://7f7uvru2g13a" path="res://Sprites/Witiza/Fall/Witiza_Fall6.png" id="15_ruiyh"]
-[ext_resource type="Texture2D" uid="uid://c5fc356b0qn07" path="res://Sprites/Witiza/Run/Witiza_Run4.png" id="15_tbj2k"]
-[ext_resource type="Texture2D" uid="uid://cs6m8vygcoqhp" path="res://Sprites/Witiza/Walk/Witiza_Walk5.png" id="16_6va46"]
-[ext_resource type="Texture2D" uid="uid://drhtu4m3hrtp4" path="res://Sprites/Witiza/Run/Witiza_Run5.png" id="16_bor0o"]
-[ext_resource type="Texture2D" uid="uid://c2udcm6uoiwwp" path="res://Sprites/Witiza/Run/Witiza_Run6.png" id="17_iqaia"]
-[ext_resource type="Texture2D" uid="uid://c1o0w7jch564a" path="res://Sprites/Witiza/Walk/Witiza_Walk6.png" id="17_uysld"]
-[ext_resource type="Texture2D" uid="uid://dvoe6t8v7bmlh" path="res://Sprites/Witiza/Run/Witiza_Run7.png" id="18_56kdi"]
-[ext_resource type="Texture2D" uid="uid://cjvjcvrg7p0mg" path="res://Sprites/Witiza/Walk/Witiza_Walk7.png" id="18_v1k7t"]
-[ext_resource type="Texture2D" uid="uid://q1uhc2i22sj0" path="res://Sprites/Witiza/Run/Witiza_Run8.png" id="19_bvylf"]
-[ext_resource type="Texture2D" uid="uid://b8s6ql6ppkrom" path="res://Sprites/Witiza/Walk/Witiza_Walk8.png" id="19_nr0fd"]
-[ext_resource type="Texture2D" uid="uid://bv8rasobuj6qn" path="res://Sprites/Witiza/Jump/Witiza_Jump4.png" id="25_7yv2n"]
-[ext_resource type="Texture2D" uid="uid://tk1pvoqhxnbe" path="res://Sprites/Witiza/Jump/Witiza_Jump5.png" id="26_hk71h"]
-[ext_resource type="Texture2D" uid="uid://b5i7as5iu15a0" path="res://Sprites/Witiza/Jump/Witiza_Jump6.png" id="27_4ishl"]
+[ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
+[ext_resource type="Texture2D" uid="uid://der2etnq3yokh" path="res://Sprites/Witiza/Jump/Witiza_Jump_Spritesheet.png" id="3_c4ru2"]
+[ext_resource type="Texture2D" uid="uid://5i6s83hvyayl" path="res://Sprites/Witiza/Run/Witiza_Run_Spritesheet.png" id="4_3vshq"]
+[ext_resource type="Texture2D" uid="uid://brxe08f5ijegl" path="res://Sprites/Witiza/Walk/Witiza_Walk_Spritesheet.png" id="5_qh2w6"]
+[ext_resource type="Texture2D" uid="uid://6d8704yqp6pc" path="res://Sprites/Witiza/Hit/Witiza_attack_Spritesheet.png" id="6_j6lf5"]
+[ext_resource type="Texture2D" uid="uid://cc5rssn8b02eh" path="res://Sprites/Witiza/Dash/Witiza_Dash_Spritesheet.png" id="7_gv7pb"]
 [ext_resource type="PackedScene" uid="uid://dg1fy4qnt4a4u" path="res://Scenes/Hook.tscn" id="28_cl6vo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
-size = Vector2(11.2281, 32.5098)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0s5v5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_15acs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_1w05p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_qg5gs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_frp7t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5er4l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_imcls")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_7yk2u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2ef46")
-}],
-"loop": false,
-"name": &"Attack",
-"speed": 16.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_5pypx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_wrynh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_67hul")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fufku")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_1kgvr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ky27n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_4d8sp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_upoy8")
-}],
-"loop": true,
-"name": &"Dash",
-"speed": 14.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_lkrni")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ywdep")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_vi6f1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_j6w7q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_ikrwj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_ruiyh")
-}],
-"loop": true,
-"name": &"Fall",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_wehff")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_n4k0x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_p4gpu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_fd57f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_aoe2j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_x0kn8")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_dfhtb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_w0iu5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_s08cl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_7yv2n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_hk71h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_4ishl")
-}],
-"loop": true,
-"name": &"Jump",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_nh084")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_ld6b2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_mojw1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_lp0bp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_6va46")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_uysld")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_v1k7t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_nr0fd")
-}],
-"loop": true,
-"name": &"Run",
-"speed": 14.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_ieg5h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_yd35i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_ryw2u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_tbj2k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_bor0o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_iqaia")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_56kdi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_bvylf")
-}],
-"loop": true,
-"name": &"Run_Fast",
-"speed": 16.0
-}]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4175r"]
+radius = 6.87265
+height = 34.4002
+
+[sub_resource type="Animation" id="Animation_75s8e"]
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tdyuv")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_4175r")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterCollider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.35, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterCollider:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.855, 0.769)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharacterCollider:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.02887, 1.06566)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.23807]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, -1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.02381]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.02887, 1.06566)]
+}
+
+[sub_resource type="Animation" id="Animation_drlfs"]
+resource_name = "witiza_attack_anim"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j6lf5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 4), Vector2(-9, 6), Vector2(-3, 6), Vector2(1, 9), Vector2(9, 7), Vector2(13, 8), Vector2(9, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterCollider:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7, 1.5), Vector2(-6.875, 2), Vector2(-6, 2), Vector2(-5.5, 3), Vector2(-5.5, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterCollider:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterCollider:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.833, 0.75)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.02887, 1.06566), Vector2(1.02887, 1.06566)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.23807, -1.23807, -1.23807, -1.71069, -1.71069, -1.71069, -1.71069]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13, -1), Vector2(-1, -6)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.02381, -1.02381]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.02887, 1.06566)]
+}
+
+[sub_resource type="Animation" id="Animation_8my65"]
+resource_name = "witiza_dash_anim"
+length = 0.7045
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_gv7pb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterCollider:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterCollider:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, -1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterCollider:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.855, 0.769)]
+}
+
+[sub_resource type="Animation" id="Animation_3v2oe"]
+resource_name = "witiza_fall_anim"
+length = 0.5015
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_c4ru2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_4175r")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterCollider:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 0.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterCollider:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.855, 0.769)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterCollider:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_p60x2"]
+resource_name = "witiza_idle_anim"
+length = 0.5015
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tdyuv")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oc1p6"]
+resource_name = "witiza_jump_anim"
+length = 0.5015
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_c4ru2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterCollider:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterCollider:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.855, 0.769)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterCollider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 0.375)]
+}
+
+[sub_resource type="Animation" id="Animation_q2x7x"]
+resource_name = "witiza_run_anim"
+length = 0.7045
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3vshq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterCollider:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 0), Vector2(5.1, -0.05), Vector2(5.05, -1.16875), Vector2(5.025, -2.5), Vector2(5, -0.5), Vector2(5, 1.5), Vector2(5, 0.0430603)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterCollider:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769), Vector2(0.855, 0.769)]
+}
+
+[sub_resource type="Animation" id="Animation_d6owj"]
+resource_name = "witiza_walk_anim"
+length = 0.7045
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_qh2w6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/SwordCollider/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xk6j3"]
+_data = {
+"RESET": SubResource("Animation_75s8e"),
+"witiza_attack_anim": SubResource("Animation_drlfs"),
+"witiza_dash_anim": SubResource("Animation_8my65"),
+"witiza_fall_anim": SubResource("Animation_3v2oe"),
+"witiza_idle_anim": SubResource("Animation_p60x2"),
+"witiza_jump_anim": SubResource("Animation_oc1p6"),
+"witiza_run_anim": SubResource("Animation_q2x7x"),
+"witiza_walk_anim": SubResource("Animation_d6owj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
+size = Vector2(27.6608, 32.5098)
 
 [sub_resource type="FontVariation" id="FontVariation_i3n8k"]
 
@@ -254,7 +937,7 @@ font_size = 10
 font_color = Color(0, 0.756863, 0.529412, 1)
 outline_size = 4
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast")]
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
@@ -265,7 +948,8 @@ border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
 labelText = NodePath("Label")
-animationPlayer = NodePath("AnimatedSprite2D")
+animationPlayer = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
 leftRaycast = NodePath("RayCastLeft")
 rightRaycast = NodePath("RayCastRight")
 leftFootRaycast = NodePath("LeftFootRayCast")
@@ -277,23 +961,38 @@ DashSpeed = 500
 dashDuration = 0.2
 dashCooldown = 0.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.4, 4.5)
-scale = Vector2(0.855, 0.769)
-shape = SubResource("RectangleShape2D_uawjx")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tdyuv")
+hframes = 6
+frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SwordCollider" type="Area2D" parent="Sprite2D"]
+visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_0s5v5")
-animation = &"Attack"
-speed_scale = 2.0
-
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordCollider"]
+position = Vector2(-13, 3)
+rotation = -1.23807
+scale = Vector2(1.02887, 1.06566)
 shape = SubResource("CapsuleShape2D_4175r")
 disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/SwordCollider"]
+position = Vector2(13, -1)
+rotation = -1.02381
+scale = Vector2(1.02887, 1.06566)
+shape = SubResource("CapsuleShape2D_4175r")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xk6j3")
+}
+autoplay = "witiza_idle_anim"
+
+[node name="CharacterCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-4.35, 0)
+scale = Vector2(0.855, 0.769)
+shape = SubResource("RectangleShape2D_uawjx")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -41.6
@@ -306,21 +1005,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -0.705)
 scale = Vector2(1.647, 4.635)
 target_position = Vector2(-10.2, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -0.705)
 scale = Vector2(1.647, 4.635)
 target_position = Vector2(9.8, 0)
 
 [node name="LeftFootRayCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, 10.8)
 scale = Vector2(1, 2.085)
 target_position = Vector2(-13.8, 9.53674e-07)
 
 [node name="RightFootRayCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, 10.8)
 scale = Vector2(1, 2.085)
 target_position = Vector2(12.8, 9.53674e-07)
@@ -329,4 +1032,5 @@ target_position = Vector2(12.8, 9.53674e-07)
 body_to_launch = NodePath("..")
 rope_length = 100.0
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Sprite2D/SwordCollider" to="." method="_on_sword_collider_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

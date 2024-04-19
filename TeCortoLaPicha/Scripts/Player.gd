@@ -18,7 +18,8 @@ var border_jump_gravity
 var border_fall_gravity
 
 @export var labelText : Label
-@export var animationPlayer : AnimatedSprite2D
+@export var animationPlayer : AnimationPlayer
+@export var sprite : Sprite2D
 @export var leftRaycast : RayCast2D
 @export var rightRaycast : RayCast2D
 @export var leftFootRaycast : RayCast2D
@@ -77,15 +78,14 @@ func _input(event):
 		ControlDoubleTap(get_physics_process_delta_time(), direction, event)
 		
 	if Input.is_action_just_pressed("Attack"):
-		animationPlayer.play("Attack")
+		animationPlayer.play("witiza_attack_anim")
 		attacking = true
 
-func _on_animated_sprite_2d_animation_finished():
-	if animationPlayer.animation == "Attack":
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "witiza_attack_anim":
 		attacking = false
 		print("end attack")
 	pass # Replace with function body.
-
 
 var attacking = false
 
@@ -93,14 +93,14 @@ var direction
 func _physics_process(delta):
 
 	# VERTICAL MOVEMENT CONTROL
-	if not is_on_floor() and !dashing:
+	if not is_on_floor() and !dashing and !attacking:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
 		if coyote_counter > 0.0:
 			coyote_counter -= delta
 		if velocity.y < 0:
-			animationPlayer.play("Jump")
+			animationPlayer.play("witiza_jump_anim")
 		elif velocity.y > 0 and !is_on_floor():
-			animationPlayer.play("Fall")	
+			animationPlayer.play("witiza_fall_anim")	
 	else:
 		coyote_counter = coyote_time
 		velocity.y = 0
@@ -108,7 +108,7 @@ func _physics_process(delta):
 	#INPUT MANAGEMENT 
 	
 	direction = Input.get_axis("ui_left", "ui_right")
-	if (!dashing):
+	if (!dashing and !attacking):
 		# JUMP INPUT
 		if Input.is_action_just_pressed("Jump"):
 			jump_buffer_counter = jump_buffer_time	
@@ -127,9 +127,9 @@ func _physics_process(delta):
 			act_max_speed = max_sprinting_speed
 		
 		if Input.get_action_strength("ui_left") > 0.05 and not leftRaycast.is_colliding():
-			animationPlayer.scale.x = abs(animationPlayer.scale.x) * -1
+			sprite.flip_h = true
 		elif Input.get_action_strength("ui_right") > 0.05 and not rightRaycast.is_colliding():
-			animationPlayer.scale.x = abs(animationPlayer.scale.x)
+			sprite.flip_h = false
 		else:
 			pass
 			#Goes to 0 if not pressing anything in 0.2 seconds
@@ -141,12 +141,12 @@ func _physics_process(delta):
 	if(!dashing and !attacking):
 		if is_on_floor() and (velocity.x <= -3.0 or velocity.x >= 3.0):
 			if Input.is_action_pressed("RTrigger"):
-				animationPlayer.play("Run_Fast")
+				animationPlayer.play("witiza_run_anim")
 			else: 
-				animationPlayer.play("Run")
+				animationPlayer.play("witiza_walk_anim")
 		else:
 			if is_on_floor():
-				animationPlayer.play("Idle")
+				animationPlayer.play("witiza_idle_anim")
 			
 	#######Move and simulate collisions
 	
@@ -159,7 +159,10 @@ func _physics_process(delta):
 		act_max_speed = DashSpeed
 		
 	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
-	move_and_slide()
+	
+	if !attacking:
+		move_and_slide()
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "Door":
@@ -202,7 +205,7 @@ func ControlDash(delta, direction):
 	if double_tap and canDash:
 		dashing = true
 		canDash = false
-		animationPlayer.play("Dash")
+		animationPlayer.play("witiza_dash_anim")
 		act_max_speed = DashSpeed	
 		velocity.x = direction * DashSpeed
 			
@@ -217,3 +220,8 @@ func ControlDash(delta, direction):
 		auxDashCooldown += delta
 		if auxDashCooldown >= dashCooldown and is_on_floor():
 			canDash = true
+
+
+func _on_sword_collider_body_entered(body):
+	print("te pegue")
+	pass # Replace with function body.

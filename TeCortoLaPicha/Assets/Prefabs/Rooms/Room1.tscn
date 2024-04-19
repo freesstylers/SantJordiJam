@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="Texture2D" uid="uid://b02o131rs4qnj" path="res://Sprites/Tilesets/TilesetPrincipal.png" id="2_vvi58"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
+[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nshtt"]
 texture = ExtResource("2_vvi58")
