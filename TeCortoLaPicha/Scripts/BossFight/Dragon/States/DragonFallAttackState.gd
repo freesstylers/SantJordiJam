@@ -50,6 +50,7 @@ func Attack():
 	localTween.tween_property(self, "vel:x", Dragon.getFlyingSpeed()/3, attackLength*4/5)
 	localTween.tween_property(Dragon, "position:y", FloorHeight, attackLength)
 	localTween.chain().tween_callback(func():
+		Dragon.CamShaker.apply_shake()
 		move_on_y=true
 		attacking = false
 		timesAttacked = timesAttacked + 1

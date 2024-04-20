@@ -14,6 +14,7 @@ func preState():
 	preparingAttack=true
 	timesAttacked = 0
 	FireFlameHitbox.rotation_degrees = 45
+	Dragon.getVisualizer().start_flying_effect()
 
 func operate(delta):
 	if preparingAttack:
@@ -23,6 +24,7 @@ func operate(delta):
 		if (Dragon.global_position - Dragon.VerticalFlameAttackPosition.global_position).length() < 30:
 			preparingAttack = false
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)
+			Dragon.getVisualizer().stop_flying_effect(DelayBeforeAttack)
 	return StateToReturn
 	
 func Attack():

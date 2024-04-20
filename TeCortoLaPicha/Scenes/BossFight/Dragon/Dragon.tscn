@@ -71,7 +71,7 @@ color = Color(0, 0.333333, 0.698039, 0.372549)
 [node name="IDLE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("4_tgxiw")
 Dragon = NodePath("../..")
-NextState = "HORIZONTAL"
+NextState = "FIREBALL"
 MyState = "IDLE"
 
 [node name="FIREBALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
@@ -81,6 +81,7 @@ FireballPrefab = ExtResource("6_kt3uv")
 delayBetweanFireballs = 0.2
 ShotsPerAttack = 3
 Dragon = NodePath("../..")
+NextState = "FALL"
 MyState = "FIREBALL"
 
 [node name="DelayBeforeFiring" type="Timer" parent="States/FIREBALL_ATTACK_STATE"]
@@ -90,22 +91,20 @@ wait_time = 5.0
 
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
-AttackSpeed = null
-AttackMaxHeight = null
 FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
 DelayBeforeFlameStart = 1.0
-DelayBeforeAttack = null
 Dragon = NodePath("../..")
 TimesToAttack = 2
-NextState = null
 MyState = "VERTICAL"
 
 [node name="DelayBeforeAttack" type="Timer" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
 [node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("8_ei81r")
+DelayBeforeAttack = 1.5
 Dragon = NodePath("../..")
 TimesToAttack = 1
+NextState = "VERTICAL"
 MyState = "HORIZONTAL"
 
 [node name="DelayBeforeAttackTimer" type="Timer" parent="States/HORIZONTAL_FLAME_ATTACK_STATE"]
@@ -113,6 +112,7 @@ MyState = "HORIZONTAL"
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
 Dragon = NodePath("../..")
+NextState = "HORIZONTAL"
 MyState = "FALL"
 
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]

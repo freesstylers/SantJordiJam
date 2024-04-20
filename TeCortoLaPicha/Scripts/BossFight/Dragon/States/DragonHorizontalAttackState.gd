@@ -1,7 +1,6 @@
 extends DragonStateBase
 class_name DragonHorizontalAttackState
 
-@export var AttackSpeed : float = 500
 @export var DelayBeforeAttack : float = 0.5
 @onready var DelayBeforeAttackTimer : Timer = $DelayBeforeAttackTimer
 
@@ -23,18 +22,21 @@ func operate(delta):
 		if (Dragon.global_position - attackStartingPos).length() < 30:
 			preparingAttack = false
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)
+			Dragon.getVisualizer().stop_flying_effect(DelayBeforeAttack)
 	return StateToReturn
 	
 func Attack():
 	DelayBeforeAttackTimer.stop()
 	Dragon.getVisualizer().change_face_player_condition(false)
-	Dragon.getVisualizer().stop_flying_effect(0.25)
 	var localTween = create_tween()
-	var attackLength = 0.5
+	var attackLength = 1.25
 	localTween.tween_property(Dragon, "position", attackEndPos, attackLength)
-	localTween.tween_property(Dragon, "position", attackEndPos - Vector2(0,200), 0.3)
+	localTween.tween_callback(
+		func():
+			Dragon.getVisualizer().change_face_player_condition(true)
+)
+	localTween.tween_property(Dragon, "position", attackEndPos - Vector2(0,200), attackLength)
 	localTween.tween_callback(func():
-		Dragon.getVisualizer().change_face_player_condition(true)
 		Dragon.getVisualizer().start_flying_effect()
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):

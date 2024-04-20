@@ -19,6 +19,7 @@ func preState():
 	timesShotThisAttack = 0
 	preparingAttack = true
 	select_firing_pos()
+	Dragon.getVisualizer().start_flying_effect()
 	
 func postState():
 	DelayBeforeFiringTimer.stop()

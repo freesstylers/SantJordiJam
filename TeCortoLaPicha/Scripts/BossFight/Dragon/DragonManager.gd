@@ -7,6 +7,7 @@ class_name DragonManager
 @export var VerticalFlameAttackPosition : Node2D = null
 @export var HorizontalAttackPosition : Array[Node2D] = []
 @export var ThePlayer : Player = null
+@export var CamShaker : CameraShaker = null
 @onready var Visualizer : DragonVisualizer = $DragonVisualizer
 
 var lifesLeft : int = Lifes
