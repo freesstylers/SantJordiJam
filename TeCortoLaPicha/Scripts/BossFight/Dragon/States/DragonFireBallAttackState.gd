@@ -72,4 +72,6 @@ func Attack():
 			StateToReturn = NextState
 
 func get_pos_to_shoot_fireball():
+	if Dragon.ThePlayer != null:
+		return Dragon.ThePlayer.global_position
 	return get_global_mouse_position()

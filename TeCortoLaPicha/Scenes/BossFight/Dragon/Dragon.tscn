@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cphrveb0thd0b"]
+[gd_scene load_steps=19 format=3 uid="uid://cphrveb0thd0b"]
 
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonManager.gd" id="1_fbe06"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonVisualizer.gd" id="2_6up4d"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFallAttackState.gd" id="7_dte8f"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonVerticalAttackState.gd" id="7_oj72r"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonHorizontalAttackState.gd" id="8_ei81r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4kp2"]
+[ext_resource type="AudioStream" uid="uid://dj1pvs4w0c52b" path="res://Assets/Audio/SFX/Dragon/FireballShot.wav" id="8_xxgqo"]
+[ext_resource type="AudioStream" uid="uid://pfmbuockpf5r" path="res://Assets/Audio/SFX/Dragon/FallHitSound.wav" id="10_ovmjx"]
+[ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonLifeManager.gd" id="14_wlc6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
 size = Vector2(183, 20)
@@ -20,35 +21,43 @@ size = Vector2(183, 20)
 _data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0, Vector2(0.266129, 1), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4r37l"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("8_xxgqo")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2bhy0"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("10_ovmjx")
+stream_0/weight = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3gk"]
+
 [node name="DragonStateMachine" type="Node2D"]
 position = Vector2(266, 429)
 script = ExtResource("1_fbe06")
 FlyingSpeed = 750.0
-currentState = "IDLE"
 
 [node name="DragonVisualizer" type="Node2D" parent="." node_paths=PackedStringArray("FireParticles", "DragonMngr")]
 script = ExtResource("2_6up4d")
 flyingFrequency = 10.0
 flyingAmplitude = 7.5
-FireParticles = NodePath("../HitBox/FlameHitbox/CPUParticles2D")
+FireParticles = NodePath("FlameHitbox/CPUParticles2D")
 DragonMngr = NodePath("..")
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
 texture = ExtResource("3_vacna")
 
-[node name="HitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_p4kp2")
-
-[node name="FlameHitbox" type="Area2D" parent="HitBox"]
+[node name="FlameHitbox" type="Area2D" parent="DragonVisualizer"]
 rotation = 2.35619
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox/FlameHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonVisualizer/FlameHitbox"]
 position = Vector2(81.5, 0)
 shape = SubResource("RectangleShape2D_bd8ul")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="HitBox/FlameHitbox"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DragonVisualizer/FlameHitbox"]
 position = Vector2(0.707107, -0.707107)
 amount = 50
 lifetime = 0.5
@@ -57,12 +66,12 @@ emission_shape = 1
 emission_sphere_radius = 10.0
 spread = 10.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 300.0
-initial_velocity_max = 500.0
+initial_velocity_min = 700.0
+initial_velocity_max = 1000.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_mxlvr")
 color = Color(0, 0.333333, 0.698039, 0.372549)
 
@@ -90,14 +99,19 @@ wait_time = 5.0
 [node name="DelayBetweanFireballs" type="Timer" parent="States/FIREBALL_ATTACK_STATE"]
 
 [node name="FireballShotSound" type="AudioStreamPlayer2D" parent="States/FIREBALL_ATTACK_STATE"]
+stream = SubResource("AudioStreamRandomizer_4r37l")
+max_polyphony = 5
 
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
+AttackStartingHeight = 275.0
+FloorHeight = 575.0
 Dragon = NodePath("../..")
 NextState = "IDLE2"
 MyState = "FALL"
 
 [node name="FallHitSound" type="AudioStreamPlayer2D" parent="States/FALL_ATTACK_STATE"]
+stream = SubResource("AudioStreamRandomizer_2bhy0")
 
 [node name="IDLE2" type="Node2D" parent="States"]
 script = ExtResource("4_tgxiw")
@@ -118,7 +132,7 @@ MyState = "HORIZONTAL"
 
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
-FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
+FireFlameHitbox = NodePath("../../DragonVisualizer/FlameHitbox")
 DelayBeforeFlameStart = 1.0
 Dragon = NodePath("../..")
 TimesToAttack = 2
@@ -127,6 +141,17 @@ MyState = "VERTICAL"
 [node name="DelayBeforeAttack" type="Timer" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
 [node name="FireBeamSound" type="AudioStreamPlayer2D" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
+
+[node name="Hitbox" type="CharacterBody2D" parent="." node_paths=PackedStringArray("DragonMngr")]
+script = ExtResource("14_wlc6i")
+DragonMngr = NodePath("..")
+DeathAnimLength = null
+life = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_ou3gk")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Hitbox"]
 
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="Attack"]

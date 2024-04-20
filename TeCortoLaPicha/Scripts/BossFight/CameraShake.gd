@@ -11,8 +11,8 @@ func apply_shake():
 	shake_strength = randomStrength
 	
 func _process(delta):
-	if Input.is_action_just_pressed("Jump"):
-		apply_shake()
+	#if Input.is_action_just_pressed("Jump"):
+		#apply_shake()
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength, 0, shakeFade * delta)
 		offset = randomOffset()

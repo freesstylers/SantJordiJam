@@ -10,8 +10,6 @@ class_name DragonManager
 @export var CamShaker : CameraShaker = null
 @onready var Visualizer : DragonVisualizer = $DragonVisualizer
 
-var lifesLeft : int = Lifes
-
 func _ready():
 	states = {
 		($States/IDLE as State).MyState : $States/IDLE as State,
@@ -25,7 +23,6 @@ func _ready():
 func operate(delta):
 	if currentState == "":
 		return
-	print(currentState)
 	var nextState = states.get(currentState).operate(delta)
 	if currentState != nextState:
 		states.get(currentState).postState()
@@ -48,3 +45,8 @@ func getFiringPositions():
 func getFlyingSpeed():
 	return FlyingSpeed
 	
+func Reset():
+	currentState = ""
+	
+func StartFight():
+	currentState = "FIREBALL"

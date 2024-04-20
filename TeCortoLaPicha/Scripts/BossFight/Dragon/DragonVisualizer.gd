@@ -16,6 +16,9 @@ enum ANIM_STATE { IDLE, ATTACK, FALL, DEATH }
 func _ready():
 	FireParticles.emitting = false
 	FireParticles.scale = Vector2(0,0)
+	var localTween = create_tween()
+	localTween.tween_callback(PlayTakeDamageEffect).set_delay(2)
+	localTween.tween_callback(PlayTakeDamageEffect).set_delay(2)
 
 func update_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
@@ -80,3 +83,9 @@ func get_pos_to_face_towards():
 		return DragonMngr.ThePlayer.global_position
 	else:
 		return get_global_mouse_position()
+
+func PlayTakeDamageEffect():
+	var effectDuration : float = 0.25
+	var localTween = create_tween()
+	localTween.tween_property(DragonAnimation, "modulate", Color.CRIMSON, effectDuration/2)
+	localTween.tween_property(DragonAnimation, "modulate", Color.WHITE, effectDuration/2)
