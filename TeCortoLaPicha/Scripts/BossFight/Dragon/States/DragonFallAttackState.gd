@@ -5,6 +5,8 @@ class_name DragonFallAttackState
 @export var AttackStartingHeight : float = 300
 @export var FloorHeight : float = 650
 
+@onready var FallHitSound : AudioStreamPlayer2D = $FallHitSound
+
 var attacking : bool = false
 var move_on_x : bool = true
 var move_on_y : bool = true
@@ -51,6 +53,7 @@ func Attack():
 	localTween.tween_property(Dragon, "position:y", FloorHeight, attackLength)
 	localTween.chain().tween_callback(func():
 		Dragon.CamShaker.apply_shake()
+		FallHitSound.play()
 		move_on_y=true
 		attacking = false
 		timesAttacked = timesAttacked + 1

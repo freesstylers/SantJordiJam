@@ -9,6 +9,7 @@ class_name DragonFireballAttackState
 
 @onready var DelayBeforeFiringTimer : Timer = $DelayBeforeFiring
 @onready var DelayBetweanFireballsTimer : Timer = $DelayBetweanFireballs
+@onready var FireballShotSound : AudioStreamPlayer2D = $FireballShotSound
 
 var firingPos : Vector2 = Vector2(0,0)
 var timesShotThisAttack : int = 0
@@ -50,8 +51,9 @@ func Attack():
 	var target_dir = (get_pos_to_shoot_fireball() - Dragon.global_position).normalized()
 	var instance = FireballPrefab.instantiate()
 	instance.global_position = Dragon.global_position
-	(instance as Fireball).shoot(target_dir, FireBallSpeed)
 	get_parent().get_parent().get_parent().add_child(instance)
+	(instance as Fireball).shoot(target_dir, FireBallSpeed)
+	FireballShotSound.play()
 	#Reset timers just in case
 	DelayBeforeFiringTimer.stop()
 	DelayBetweanFireballsTimer.stop()

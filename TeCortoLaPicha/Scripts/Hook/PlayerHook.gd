@@ -18,7 +18,7 @@ var movement_tween : Tween = null
 func _ready():
 	($RopeStartingPoint/RayCast2D as RayCast2D).target_position = Vector2(0,rope_length) 
 	
-func _process(delta):
+func _process(_delta):
 	if launch:
 		return
 	

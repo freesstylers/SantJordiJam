@@ -2,7 +2,9 @@ extends DragonStateBase
 class_name DragonHorizontalAttackState
 
 @export var DelayBeforeAttack : float = 0.5
+
 @onready var DelayBeforeAttackTimer : Timer = $DelayBeforeAttackTimer
+@onready var ThrustSound : AudioStreamPlayer2D = $ThrustSound
 
 var attackStartingPos : Vector2 = Vector2(0,0)
 var attackEndPos : Vector2 = Vector2(0,0)
@@ -30,6 +32,7 @@ func Attack():
 	Dragon.getVisualizer().change_face_player_condition(false)
 	var localTween = create_tween()
 	var attackLength = 1.25
+	ThrustSound.play()
 	localTween.tween_property(Dragon, "position", attackEndPos, attackLength)
 	localTween.tween_callback(
 		func():
@@ -40,7 +43,8 @@ func Attack():
 		Dragon.getVisualizer().start_flying_effect()
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):
-			DelayBeforeAttackTimer.start(DelayBeforeAttack)
+			set_attack_positions()
+			preparingAttack = true
 		else:
 			StateToReturn = NextState
 		)

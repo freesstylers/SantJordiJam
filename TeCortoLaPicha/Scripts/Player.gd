@@ -176,7 +176,7 @@ func Launch(launch_vel):
 	var local_tween = create_tween()
 	local_tween.tween_property(self, "flying_vel", Vector2(0,0), 0.2)
 
-func ControlDoubleTap(delta, direction, event_):
+func ControlDoubleTap(_delta, direction, event_):
 	var currenTapRight = false
 
 	if event_ is InputEventKey:

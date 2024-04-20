@@ -89,6 +89,33 @@ wait_time = 5.0
 
 [node name="DelayBetweanFireballs" type="Timer" parent="States/FIREBALL_ATTACK_STATE"]
 
+[node name="FireballShotSound" type="AudioStreamPlayer2D" parent="States/FIREBALL_ATTACK_STATE"]
+
+[node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
+script = ExtResource("7_dte8f")
+Dragon = NodePath("../..")
+NextState = "IDLE2"
+MyState = "FALL"
+
+[node name="FallHitSound" type="AudioStreamPlayer2D" parent="States/FALL_ATTACK_STATE"]
+
+[node name="IDLE2" type="Node2D" parent="States"]
+script = ExtResource("4_tgxiw")
+NextState = "HORIZONTAL"
+MyState = "IDLE2"
+
+[node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
+script = ExtResource("8_ei81r")
+DelayBeforeAttack = 1.5
+Dragon = NodePath("../..")
+TimesToAttack = 2
+NextState = "VERTICAL"
+MyState = "HORIZONTAL"
+
+[node name="DelayBeforeAttackTimer" type="Timer" parent="States/HORIZONTAL_FLAME_ATTACK_STATE"]
+
+[node name="ThrustSound" type="AudioStreamPlayer2D" parent="States/HORIZONTAL_FLAME_ATTACK_STATE"]
+
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
 FireFlameHitbox = NodePath("../../HitBox/FlameHitbox")
@@ -99,23 +126,9 @@ MyState = "VERTICAL"
 
 [node name="DelayBeforeAttack" type="Timer" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
-[node name="HORIZONTAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
-script = ExtResource("8_ei81r")
-DelayBeforeAttack = 1.5
-Dragon = NodePath("../..")
-TimesToAttack = 1
-NextState = "VERTICAL"
-MyState = "HORIZONTAL"
-
-[node name="DelayBeforeAttackTimer" type="Timer" parent="States/HORIZONTAL_FLAME_ATTACK_STATE"]
-
-[node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
-script = ExtResource("7_dte8f")
-Dragon = NodePath("../..")
-NextState = "HORIZONTAL"
-MyState = "FALL"
+[node name="FireBeamSound" type="AudioStreamPlayer2D" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
-[connection signal="timeout" from="States/VERTICAL_FLAME_ATTACK_STATE/DelayBeforeAttack" to="States/VERTICAL_FLAME_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/HORIZONTAL_FLAME_ATTACK_STATE/DelayBeforeAttackTimer" to="States/HORIZONTAL_FLAME_ATTACK_STATE" method="Attack"]
+[connection signal="timeout" from="States/VERTICAL_FLAME_ATTACK_STATE/DelayBeforeAttack" to="States/VERTICAL_FLAME_ATTACK_STATE" method="Attack"]

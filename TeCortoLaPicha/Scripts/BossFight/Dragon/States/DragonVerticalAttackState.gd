@@ -5,9 +5,10 @@ class_name DragonVerticalAttackState
 @export var AttackMaxHeight : float = 0
 @export var FireFlameHitbox : Node2D = null
 @export var DelayBeforeFlameStart : float = 2
-
 @export var DelayBeforeAttack : float = 1
+
 @onready var DelayBeforeAttackTimer : Timer = $DelayBeforeAttack
+@onready var FireBeamSound : AudioStreamPlayer2D = $FireBeamSound
 
 func preState():
 	StateToReturn = MyState
@@ -41,12 +42,14 @@ func Attack():
 	#Stop turning and start the particles effect
 	Dragon.getVisualizer().change_face_player_condition(false)
 	Dragon.getVisualizer().change_fire_particles_state(true, DelayBeforeFlameStart)
+	FireBeamSound.play()
 	var attackLength = 3.0
 	var localTween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	localTween.tween_property(FireFlameHitbox, "rotation", destRot * PI / 180, attackLength).set_delay(DelayBeforeFlameStart)
 	localTween.tween_callback(func():
 		Dragon.getVisualizer().change_face_player_condition(true)
 		Dragon.getVisualizer().change_fire_particles_state(false, 0.25)
+		FireBeamSound.stop()		
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)

@@ -17,6 +17,7 @@ func _ready():
 		($States/IDLE as State).MyState : $States/IDLE as State,
 		($States/FIREBALL_ATTACK_STATE as State).MyState : $States/FIREBALL_ATTACK_STATE as State,
 		($States/FALL_ATTACK_STATE as State).MyState : $States/FALL_ATTACK_STATE as State,
+		($States/IDLE2 as State).MyState : $States/IDLE2 as State,
 		($States/VERTICAL_FLAME_ATTACK_STATE as State).MyState : $States/VERTICAL_FLAME_ATTACK_STATE as State,
 		($States/HORIZONTAL_FLAME_ATTACK_STATE as State).MyState : $States/HORIZONTAL_FLAME_ATTACK_STATE as State
 		}
@@ -46,3 +47,4 @@ func getFiringPositions():
 
 func getFlyingSpeed():
 	return FlyingSpeed
+	

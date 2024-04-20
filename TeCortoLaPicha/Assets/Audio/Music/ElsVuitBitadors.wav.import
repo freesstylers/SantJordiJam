@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://hj3cyci8mkev"
-path="res://.godot/imported/ElsVuitBitadors.wav-655f04ccdc033b8949e6be5427f28cc4.sample"
+path="res://.godot/imported/ElsVuitBitadors.wav-1b92d4cc3965470fc17b8778a5b93804.sample"
 
 [deps]
 
-source_file="res://Assets/Music/ElsVuitBitadors.wav"
-dest_files=["res://.godot/imported/ElsVuitBitadors.wav-655f04ccdc033b8949e6be5427f28cc4.sample"]
+source_file="res://Assets/Audio/Music/ElsVuitBitadors.wav"
+dest_files=["res://.godot/imported/ElsVuitBitadors.wav-1b92d4cc3965470fc17b8778a5b93804.sample"]
 
 [params]
 

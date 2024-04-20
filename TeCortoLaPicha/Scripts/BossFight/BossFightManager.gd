@@ -4,7 +4,7 @@ class_name BossFightManager
 func _ready():
 	pass
 	
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func scene_to_default():

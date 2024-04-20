@@ -21,7 +21,7 @@ func shoot(dir, sp):
 	direction = dir.normalized()
 	speed = sp
 
-func on_body_entered(other):
+func on_body_entered(_other):
 	if collided:
 		return
 	collided = true

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cyklu0cxo01r6"
-path="res://.godot/imported/ALaTordera.wav-86464b358d040855178f6cc4a22b927d.sample"
+path="res://.godot/imported/ALaTordera.wav-e809543ade26e44c2158bb4a42180238.sample"
 
 [deps]
 
-source_file="res://Assets/Music/ALaTordera.wav"
-dest_files=["res://.godot/imported/ALaTordera.wav-86464b358d040855178f6cc4a22b927d.sample"]
+source_file="res://Assets/Audio/Music/ALaTordera.wav"
+dest_files=["res://.godot/imported/ALaTordera.wav-e809543ade26e44c2158bb4a42180238.sample"]
 
 [params]
 
