@@ -2,6 +2,9 @@ class_name RoomManager
 extends Node2D
 
 @export var Rooms : Array[PackedScene]
+
+@export var Textures : Array[Texture2D]
+
 var currentRoom : int = 0
 var rng
 #@export var EnemiesArray : Array[PackedScene]
@@ -11,6 +14,8 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	
 	add_child(Rooms[0].instantiate())
+	
+	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[rng.randi_range(0, Textures.size()-1)]
 	
 	pass # Replace with function body.
 
