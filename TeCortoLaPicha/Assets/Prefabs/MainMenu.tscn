@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1oae8ne04f66"]
+[gd_scene load_steps=9 format=3 uid="uid://d1oae8ne04f66"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6vfyvfq8fls4" path="res://Assets/MainMenu/Twitter.png" id="5_sxy5r"]
 [ext_resource type="Texture2D" uid="uid://b1dwgpu6404vd" path="res://Assets/MainMenu/GGJ_Logo_TEMP.png" id="6_yrhqi"]
 [ext_resource type="Texture2D" uid="uid://bdqnfpplo87hy" path="res://Assets/MainMenu/LogoDGT.png" id="7_wbon5"]
+[ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="8_8hqlc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -29,10 +30,10 @@ grow_vertical = 2
 [node name="FreeStylers" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.859375
-anchor_top = 0.786111
-anchor_right = 0.992969
-anchor_bottom = 0.973611
+anchor_left = 0.0101562
+anchor_top = 0.804167
+anchor_right = 0.14375
+anchor_bottom = 0.991667
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("4_n67yd")
@@ -43,10 +44,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Twitter" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.884375
-anchor_top = 0.659722
-anchor_right = 0.958
-anchor_bottom = 0.786444
+anchor_left = 0.0421875
+anchor_top = 0.681944
+anchor_right = 0.115813
+anchor_bottom = 0.808666
 offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
@@ -59,10 +60,10 @@ metadata/_edit_use_anchors_ = true
 [node name="jam" type="Button" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0164062
-anchor_top = 0.8125
-anchor_right = 0.1455
-anchor_bottom = 0.958667
+anchor_left = 0.85625
+anchor_top = 0.0513889
+anchor_right = 0.985344
+anchor_bottom = 0.197556
 offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
@@ -109,7 +110,7 @@ text = "Play"
 [node name="play2" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Play - Endless"
+text = "PlayEndless"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
@@ -126,10 +127,10 @@ text = "Credits"
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.177778
-anchor_top = 0.234722
-anchor_right = 0.822222
-anchor_bottom = 0.766667
+anchor_left = 0.178125
+anchor_top = 0.159722
+anchor_right = 0.822656
+anchor_bottom = 0.841667
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -145,14 +146,21 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="credits/container"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 70
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="credits/container/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "CREDITS
---------
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="credits/container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "~~~~~~~~~~~~
 Gonzalo cidoncha - silly goofy
 DAVID CZEPIEL - el becario
 PABLO GROSSI - el machango
@@ -165,7 +173,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="CreditsBack" type="Button" parent="credits/container/VBoxContainer"]
+[node name="Label3" type="Label" parent="credits/container/VBoxContainer"]
+layout_mode = 2
+text = "
+
+
+"
+
+[node name="CreditsBack2" type="Button" parent="credits/container/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Close"
@@ -174,9 +189,9 @@ text = "Close"
 visible = false
 layout_mode = 2
 anchor_left = 0.115625
-anchor_top = 0.0710938
+anchor_top = 0.0166667
 anchor_right = 0.884375
-anchor_bottom = 0.917969
+anchor_bottom = 0.972222
 metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="tutorial"]
@@ -190,18 +205,18 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 75
-text = "---------------------"
+theme_override_font_sizes/font_size = 70
+text = "~~~~~~~~~~~~~~~~~~"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="tutorial"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.296748
-anchor_top = 0.00922509
-anchor_right = 0.703252
-anchor_bottom = 0.126384
+anchor_left = 0.340447
+anchor_top = 0.0098401
+anchor_right = 0.65752
+anchor_bottom = 0.126281
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.137255, 0.137255, 0.137255, 1)
@@ -217,63 +232,176 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 75
-text = "TUTORIAL"
+text = "Tutorial
+"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="tutorial"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 103.595
+offset_right = 480.0
+offset_bottom = 431.595
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 45
+text = "ControlList"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="tutorial"]
+layout_mode = 2
+anchor_left = 0.0345528
+anchor_top = 0.000588872
+anchor_right = 0.0345528
+anchor_bottom = 0.000588883
+offset_left = 505.0
+offset_top = 103.595
+offset_right = 977.0
+offset_bottom = 431.595
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 45
+text = "ControlButtons"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ActionIcon" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 110.0
+offset_right = 546.0
+offset_bottom = 160.82
+script = ExtResource("8_8hqlc")
+action_name = &"ui_left"
+
+[node name="ActionIcon2" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 110.0
+offset_right = 610.0
+offset_bottom = 160.82
+script = ExtResource("8_8hqlc")
+action_name = &"ui_right"
+
+[node name="ActionIcon3" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 164.0
+offset_right = 546.0
+offset_bottom = 214.82
+script = ExtResource("8_8hqlc")
+action_name = &"Jump"
+
+[node name="ActionIcon4" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 218.0
+offset_right = 546.0
+offset_bottom = 268.82
+script = ExtResource("8_8hqlc")
+action_name = &"Attack"
+
+[node name="ActionIcon5" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 271.0
+offset_right = 546.0
+offset_bottom = 321.82
+script = ExtResource("8_8hqlc")
+action_name = &"RTrigger"
+
+[node name="ActionIcon6" type="TextureRect" parent="tutorial"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 379.0
+offset_right = 546.0
+offset_bottom = 429.82
+script = ExtResource("8_8hqlc")
+action_name = &"Dash"
+
+[node name="Label6" type="Label" parent="tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00101626
+anchor_top = 0.574128
+anchor_right = 1.00102
+anchor_bottom = 0.677326
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 66
+text = "_____________________________"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tutorial"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00813008
-anchor_top = 0.141633
-anchor_right = 0.992886
-anchor_bottom = 0.475581
+anchor_left = 0.0172764
+anchor_top = 0.659884
+anchor_right = 0.982724
+anchor_bottom = 0.90407
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="tutorial/HBoxContainer"]
+[node name="Label3" type="Label" parent="tutorial/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 45
-text = "STEER:
-ACCELERATE:
-BRAKE:
-DRIFT:
-???:"
+theme_override_colors/font_color = Color(0.678431, 0.184314, 0.270588, 1)
+theme_override_font_sizes/font_size = 35
+text = "Story1"
 horizontal_alignment = 2
 vertical_alignment = 1
+text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="tutorial/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 45
-text = "A/D
-W
-S
-SPACE
-E"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="tutorial"]
-layout_mode = 2
-anchor_left = 0.0180668
-anchor_top = 0.734727
-anchor_right = 0.982836
-anchor_bottom = 0.902009
-theme_override_colors/font_color = Color(0.890196, 0.0705882, 0, 1)
+size_flags_stretch_ratio = 0.05
+theme_override_colors/font_color = Color(0.678431, 0.184314, 0.270588, 1)
+theme_override_constants/line_spacing = -25
 theme_override_font_sizes/font_size = 35
-text = "FUN IS DEAD
-BLOOD IS FUEL
-STREETS ARE FULL"
+text = "+
++
++
++
++
++
+++
++
++
++
++
++
++"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="tutorial/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.678431, 0.184314, 0.270588, 1)
+theme_override_font_sizes/font_size = 35
+text = "Story2"
+vertical_alignment = 1
+text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CreditsBack" type="Button" parent="tutorial"]
@@ -296,6 +424,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play2" to="." method="TogglePlayMenu" binds= [true]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
-[connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]

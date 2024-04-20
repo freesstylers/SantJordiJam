@@ -1,6 +1,5 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ccsfly34nw0wv"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccsfly34nw0wv"]
 
-[ext_resource type="FontFile" uid="uid://xd08wkb6sh3w" path="res://Assets/Fonts/Retro Gaming.ttf" id="1_2g3kf"]
 [ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="2_all4w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
@@ -56,7 +55,6 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 24
-Label/fonts/font = ExtResource("1_2g3kf")
 Label/styles/normal = SubResource("StyleBoxEmpty_8eilg")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5

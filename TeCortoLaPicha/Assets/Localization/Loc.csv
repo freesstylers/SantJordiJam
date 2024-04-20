@@ -4,3 +4,48 @@ Resume,Continuar,Resume,,,,,,
 Exit,Salir,Exit,,,,,,
 Restart,Reiniciar,Restart,,,,,,
 Options,Opciones,Options,,,,,,
+Tutorial,Tutorial,Tutorial,,,,,,
+TutorialBlurb,"¡Se te acaba el tiempo!
+[Contar el lío de la historia]
+Avanza por los libros y  acaba con el dragón antes de que la última
+rosa se pudra (idk???)",,,,,,,
+Move,Moverse,Move,,,,,,
+Jump,Salto,Jump,,,,,,
+Attack,Ataque,Attack,,,,,,
+Dash,Esquivar,Dash,,,,,,
+Grapple,Gancho,Grapple,,,,,,
+Close,Cerrar,Close,,,,,,
+Credits,Créditos,Credits,,,,,,
+Play,Jugar,Play,,,,,,
+PlayEndless,Jugar - Infinito,Play - Endless,,,,,,
+Sprint,Correr,Sprint,,,,,,
+ControlList,"Moverse:
+Saltar:
+Atacar:
+Correr:
+Gancho:
+Esquivar:","Move:
+Jump:
+Attack:
+Sprint:
+Grapple:
+Dash:",,,,,,
+ControlButtons,"
+
+
+
+
+/ Doble Toque Mover","
+
+
+
+
+/ Double Tap Move",,,,,,
+Story1,"Palacio un dragón vigila
+Tu misión protegerlo es
+con su espada va Witiza
+Para lentos esto no es",,,,,,,
+Story2,"La rosa requiere sangre
+De enemigos la obtendrás
+Aniquílalos, cobarde
+Así de sala avanzarás",,,,,,,
