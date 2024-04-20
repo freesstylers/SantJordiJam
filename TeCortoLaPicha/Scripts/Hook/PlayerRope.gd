@@ -6,6 +6,7 @@ class_name GrapplingRope
 @export_range(0.01,5) var RopeBaseMovementSpeed : float = 1
 @export_range(0.01,4) var WaveHeightMultiplier : float = 2
 @export_range(0,25) var straightenLineSpeed : float = 0.5
+@export var HookSound : AudioStreamPlayer2D = null
 
 @onready var linePath : Path2D = $RopeVisualPath2
 @onready var waveHeight : float = WaveHeightMultiplier
@@ -64,6 +65,7 @@ func DrawRope(delta):
 		#Rope reached the hook target???
 		if abs(m_lineRenderer.get_point_position(NumRopeSegments).x - rope_target.x) < 30:
 			straightLine = true;
+			HookSound.play()
 		else:
 			DrawRopeWaves();
 	else:

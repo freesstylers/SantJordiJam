@@ -4,6 +4,8 @@ extends baseEnemy
 @export var DeathAnimLength : float = 0.5
 @onready var DeathSound : AudioStreamPlayer2D = $DeathSound
 
+@export var damageToCharacter: int = 1
+
 func takeDamage(damage):
 	life -= damage
 	print("DRAGON LIFE:",life)
@@ -23,3 +25,7 @@ func die():
 		func():
 			Globals.roomDepleted.emit()
 	)
+	
+func other_collided(other):
+	if other.name == "Player":
+		other.characterTakeLife(damageToCharacter)

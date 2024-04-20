@@ -49,7 +49,7 @@ func Attack():
 	var attackLength = 1.0
 	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	localTween.set_parallel(true)
-	localTween.tween_property(self, "vel:x", Dragon.getFlyingSpeed()/3, attackLength*4/5)
+	localTween.tween_property(self, "vel:x", Dragon.getFlyingSpeed()/4, attackLength*3/4)
 	localTween.tween_property(Dragon, "position:y", FloorHeight, attackLength)
 	localTween.chain().tween_callback(func():
 		Dragon.CamShaker.apply_shake()

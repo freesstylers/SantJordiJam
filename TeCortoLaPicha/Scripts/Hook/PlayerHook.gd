@@ -3,6 +3,7 @@ class_name PlayerHook
 @onready var rope_starting_point : Sprite2D = $RopeStartingPoint
 @onready var grappling_rope : GrapplingRope = $RopeStartingPoint/Rope
 @onready var ray : RayCast2D = $RopeStartingPoint/RayCast2D
+@export var ImpulseSound : AudioStreamPlayer2D = null
 
 @export var body_to_launch : PhysicsBody2D = null
 @export var launch : bool = false
@@ -67,6 +68,7 @@ func Launch():
 			launch = false
 			grappling_rope.HideRope()
 			hook_shot = false
+			ImpulseSound.play()
 			(body_to_launch as Player).Launch(launch_impulse_dir * launch_impulse_force)
 			hook_target_object.update_target_status(false)
 			hook_target_object = null
