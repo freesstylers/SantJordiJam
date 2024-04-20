@@ -68,7 +68,7 @@ func Launch():
 			launch = false
 			grappling_rope.HideRope()
 			hook_shot = false
-			ImpulseSound.play()
+			#ImpulseSound.play()
 			(body_to_launch as Player).Launch(launch_impulse_dir * launch_impulse_force)
 			hook_target_object.update_target_status(false)
 			hook_target_object = null

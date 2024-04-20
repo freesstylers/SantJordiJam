@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://4be3a25mf3qr"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
-[ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
+[ext_resource type="TileSet" uid="uid://bm4ybemab65tg" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="4_b0st7"]
-[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("EnemiesArray")]
 script = ExtResource("1_i5oul")

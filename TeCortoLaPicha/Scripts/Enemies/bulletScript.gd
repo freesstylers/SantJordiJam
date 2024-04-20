@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends baseEnemy
 
 @export var speed = 200
 var direction = 1

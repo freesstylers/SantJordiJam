@@ -817,8 +817,8 @@ acceleration = 2000.0
 DashSpeed = 500
 dashDuration = 0.2
 dashCooldown = 0.3
-damageForceX = 500
-damageForceY = 600
+damageForceX = 300
+damageForceY = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tdyuv")

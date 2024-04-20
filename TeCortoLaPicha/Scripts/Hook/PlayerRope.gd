@@ -65,7 +65,7 @@ func DrawRope(delta):
 		#Rope reached the hook target???
 		if abs(m_lineRenderer.get_point_position(NumRopeSegments).x - rope_target.x) < 30:
 			straightLine = true;
-			HookSound.play()
+			#dHookSound.play()
 		else:
 			DrawRopeWaves();
 	else:

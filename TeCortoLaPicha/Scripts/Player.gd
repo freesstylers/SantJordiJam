@@ -97,14 +97,15 @@ var direction
 func _physics_process(delta):
 
 	# VERTICAL MOVEMENT CONTROL
-	if not is_on_floor() and !dashing and !attacking:
+	if not is_on_floor() and !dashing:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
-		if coyote_counter > 0.0:
-			coyote_counter -= delta
-		if velocity.y < 0:
-			animationPlayer.play("witiza_jump_anim")
-		elif velocity.y > 0 and !is_on_floor():
-			animationPlayer.play("witiza_fall_anim")	
+		if !attacking:
+			if coyote_counter > 0.0:
+				coyote_counter -= delta
+			if velocity.y < 0:
+				animationPlayer.play("witiza_jump_anim")
+			elif velocity.y > 0 and !is_on_floor():
+				animationPlayer.play("witiza_fall_anim")	
 	else:
 		coyote_counter = coyote_time
 		velocity.y = 0
@@ -112,7 +113,7 @@ func _physics_process(delta):
 	#INPUT MANAGEMENT 
 	
 	direction = Input.get_axis("ui_left", "ui_right")
-	if (!dashing and !attacking):
+	if (!dashing):
 		# JUMP INPUT
 		if Input.is_action_just_pressed("Jump"):
 			jump_buffer_counter = jump_buffer_time	
@@ -164,8 +165,8 @@ func _physics_process(delta):
 		
 	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
 	
-	if !attacking:
-		move_and_slide()
+
+	move_and_slide()
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -233,13 +234,14 @@ func _on_sword_collider_body_entered(body):
 	pass # Replace with function body.
 
 func characterTakeLife(value, enemy):
-	characterLife -= value
-	applyForce(enemy)
-	print(characterLife)
-	
-	if characterLife <= 0:
-		#@Javi aqui pantalla de muerte
-		pass
+	if !attacking and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):
+		characterLife -= value
+		applyForce(enemy)
+		print(characterLife)
+		
+		if characterLife <= 0:
+			#@Javi aqui pantalla de muerte
+			pass
 		
 func applyForce(enemy):
 	var dir = clamp(position.x - enemy.x, -1, 1)
