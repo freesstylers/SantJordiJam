@@ -52,6 +52,7 @@ var canDash = true
 var flying_vel : Vector2 = Vector2(0,0)
 
 @export var damage : int = 20
+@export var characterLife : int = 15 #Time + Life
 
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
@@ -228,3 +229,12 @@ func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
 	pass # Replace with function body.
+
+func characterTakeLife(value):
+	characterLife -= value
+	
+	print(characterLife)
+	
+	if characterLife <= 0:
+		#@Javi aqui pantalla de muerte
+		pass

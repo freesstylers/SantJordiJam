@@ -1,5 +1,7 @@
 extends baseEnemy
 
+class_name  basic_enemy
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -7,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 @export var horizontalSpeed = 50
 @export var detect_cliffs = true
 
+@export var damageToCharacter: int = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -26,3 +29,8 @@ func _physics_process(delta):
 	velocity.x = horizontalSpeed * direction		 
 
 	move_and_slide()
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.characterTakeLife(damageToCharacter)
+	pass # Replace with function body.

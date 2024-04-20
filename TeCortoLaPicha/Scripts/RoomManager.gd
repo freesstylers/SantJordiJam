@@ -19,7 +19,7 @@ func roomCompletedFunc():
 
 	#Mover a RoomManager?
 	#Transición libro, descargar esta sala, cargar una nueva
-	
+	get_tree().root.get_node("SceneManager/TransitionScreen").transition()
 	#Transition
 	
 	
@@ -27,14 +27,14 @@ func roomCompletedFunc():
 	get_child(0).queue_free()
 		
 	#Add Room
-	var aux = currentRoom
+	#var aux = currentRoom
 		
 	#while aux == currentRoom:
 		#aux = rng.randi_range(0, Rooms.size())
 		
-	var newRoom : Room
-	newRoom = Rooms[aux].instantiate()
-	add_child(newRoom)		
+	#var newRoom : Room
+	#newRoom = Rooms[aux].instantiate()
+	#add_child(newRoom)		
 	
 	#Reset State
 	pass

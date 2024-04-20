@@ -4,7 +4,7 @@ extends CharacterBody2D
 var direction = 1
 var shot = false
 var Player
-
+@export var damageToCharacter: int = 1
 
 func _ready():
 	pass
@@ -15,11 +15,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	detectCollisions()
+	#detectCollisions()
 
-func detectCollisions():
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is Player:
-			pass
-		queue_free()
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.characterTakeLife(damageToCharacter)
+		
+	queue_free()
+	pass # Replace with function body.

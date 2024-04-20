@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 @export var direction = -1
 @export var horizontalSpeed = 50
-
+@export var damageToCharacter: int = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,3 +28,9 @@ func _physics_process(delta):
 	velocity.y = sin(PI/2 + time*freq)*amplitude
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.characterTakeLife(damageToCharacter)
+	pass # Replace with function body.

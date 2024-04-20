@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc4jvnkk0fh31"]
+[gd_scene load_steps=7 format=3 uid="uid://dc4jvnkk0fh31"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flyingEnemy.gd" id="1_ymp45"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
@@ -26,6 +26,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0uk7"]
+size = Vector2(52, 42)
+
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ymp45")
@@ -38,3 +41,13 @@ shape = SubResource("RectangleShape2D_43enp")
 
 [node name="wall_checker" type="RayCast2D" parent="."]
 target_position = Vector2(70, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 12)
+shape = SubResource("RectangleShape2D_n0uk7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -9,7 +9,6 @@ func _ready():
 	#Timer 
 	Globals.connect("game_start_playing", loadLevel)
 
-
 func loadLevel():	
 	$CurrentScene.add_child(GameScene.instantiate())
 		

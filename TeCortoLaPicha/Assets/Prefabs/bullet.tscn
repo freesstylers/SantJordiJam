@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djkq6d6qsj3ee"]
+[gd_scene load_steps=13 format=3 uid="uid://djkq6d6qsj3ee"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/bulletScript.gd" id="1_in27w"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_sx14f"]
@@ -50,6 +50,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
 size = Vector2(10, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw5pb"]
+size = Vector2(12, 6)
+
 [node name="bullet" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_in27w")
@@ -61,3 +64,11 @@ speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_43enp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_rw5pb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
