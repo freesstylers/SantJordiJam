@@ -145,7 +145,6 @@ MyState = "VERTICAL"
 [node name="Hitbox" type="CharacterBody2D" parent="." node_paths=PackedStringArray("DragonMngr")]
 script = ExtResource("14_wlc6i")
 DragonMngr = NodePath("..")
-DeathAnimLength = null
 life = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

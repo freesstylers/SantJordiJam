@@ -2,7 +2,7 @@ extends baseEnemy
 
 @export var DragonMngr : DragonManager  = null
 @export var DeathAnimLength : float = 0.5
-@export var DeathSound : AudioStreamPlayer2D = $DeathSound
+@onready var DeathSound : AudioStreamPlayer2D = $DeathSound
 
 func takeDamage(damage):
 	life -= damage
