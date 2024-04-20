@@ -26,9 +26,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
 size = Vector2(128, 128)
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("player_detector")]
 collision_layer = 2
 script = ExtResource("1_efae3")
+direction = 1
+player_detector = NodePath("player_checker")
+charge_velocity = 300
+decelration = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
@@ -37,5 +41,5 @@ sprite_frames = SubResource("SpriteFrames_efgdt")
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="player_checker" type="RayCast2D" parent="."]
+position = Vector2(65, 0)
 target_position = Vector2(500, 0)
-collision_mask = 4

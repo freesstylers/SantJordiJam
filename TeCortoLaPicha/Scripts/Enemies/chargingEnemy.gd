@@ -4,46 +4,72 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @export var direction = -1
-@export var horizontalSpeed = 50
+@export var horizontalSpeed = 50.0
 @export var detect_cliffs = true
-
+@export var player_detector : RayCast2D
+@export var damageToCharacter: int = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var Player
+@export var charge_velocity = 400
+@export var decelration = 100
+@export var wait_before_charge = 0.5
+@export var charge_time = 1.2
 
-func _ready():
-	Player = get_parent().get_parent().get_node("Player")
-	auxLaunchCooldown = launchingCooldown
+var charge_time_buffer = 0
+var waiting_buffer = 0
+var charging = false
+
+var yPosition = 0
+#func _ready():
+	#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+	#$floor_checker.enabled = detect_cliffs
 	
-var angle_to_player
-var launching = false
-@export var launchSpeed = 5
-@export var launchingCooldown : float = 5.0
-@export var launchingMaxTime : float = 5.0
-var auxLaunchCooldown = 0
-var auxLaunching = 0
-#var targetPos : Vector2
-
 func _physics_process(delta):
-	if $player_checker.is_colliding() and not launching and auxLaunchCooldown > launchingCooldown:
-		launching = true
-		auxLaunching = 0.0
-		print ("Start Launch")
-		#targetPos = Player.position
+
+	if current_move_buffer > 0:
+		current_move_buffer -= delta
+	
+	if is_on_floor():
+		if !charging:
+			if player_detector.is_colliding() and waiting_buffer <= 0:
+				if player_detector.get_collider().is_in_group("player"):
+					waiting_buffer = wait_before_charge
+					velocity.x = 0.0
+					
+			if waiting_buffer > 0:
+				waiting_buffer -= delta
+				if waiting_buffer <= 0:
+					charge()
+		else:		
+			charge_time_buffer -= delta
+			position.y = yPosition
+			if charge_time_buffer <= 0:
+				charging = false
+				charge_time_buffer = 0
+				
+	# Add the gravity.	
+	if not is_on_floor():
+		velocity.y += gravity * delta
 		
-	if not launching:
-		$player_checker.target_position.move_toward(Player.position, 0.1)
-		angle_to_player = global_position.direction_to(Player.position).angle()
-		rotation = move_toward(rotation, angle_to_player, delta)
-		auxLaunchCooldown += delta
-	elif auxLaunching < launchingMaxTime:
-		position.x = move_toward(position.x, Player.position.x, 0.5 * launchSpeed)
-		position.y = move_toward(position.y, Player.position.y, 0.5 * launchSpeed)
-		auxLaunching += delta
-	else:
-		print("launch ended")
-		auxLaunchCooldown = 0.0
-		launching = false
-		
+	elif is_on_wall(): #or (detect_cliffs and not $floor_checker.is_colliding()):
+		direction *= -1
+		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+		player_detector.target_position.x = -player_detector.target_position.x
+		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+	
+	if !charging and waiting_buffer <= 0:
+		velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
+
 	move_and_slide()
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.characterTakeLife(damageToCharacter, position)
+	pass # Replace with function body.
+	
+func charge():
+	velocity.x = charge_velocity * direction
+	charge_time_buffer = charge_time
+	charging = true
+	yPosition = position.y

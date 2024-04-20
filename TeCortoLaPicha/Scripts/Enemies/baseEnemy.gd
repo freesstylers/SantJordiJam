@@ -4,7 +4,11 @@ extends CharacterBody2D
 var Room_: Room = null
 
 @export var life : int = 50
+@export var damageForceX = 300
+@export var damageForceY = 300
 
+var canMoveCD = 0.5
+var current_move_buffer = 0
 func takeDamage(damage):
 	life -= damage
 	
@@ -36,3 +40,11 @@ func die():
 		
 	if Room_.EnemiesArray.size() == 0:
 		Globals.roomDepleted.emit()
+		
+func applyForce(player):
+	var dir = clamp(position.x - player.x, -1, 1)
+	velocity.x = dir * damageForceX
+	velocity.y -= damageForceY
+	current_move_buffer = canMoveCD
+	
+	

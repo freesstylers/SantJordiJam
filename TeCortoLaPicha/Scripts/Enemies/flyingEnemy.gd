@@ -32,5 +32,5 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		body.characterTakeLife(damageToCharacter)
+		body.characterTakeLife(damageToCharacter, position)
 	pass # Replace with function body.

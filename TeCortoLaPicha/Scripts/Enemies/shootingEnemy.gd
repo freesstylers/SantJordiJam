@@ -24,6 +24,8 @@ var timesShot = 0
 var lookingRight = true
 var lastDir = 0
 
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	Player = get_parent().get_parent().get_node("Player")
 	pass
@@ -59,7 +61,14 @@ func _process(delta):
 				timesShot = 0
 				auxShootingTime = 0	
 				timeSinceCooldown = 0
+	
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	move_and_slide()
 
+func _physics_process(delta):
+	lerp(velocity.x, 0.0, 300 * delta)
+		
 func shoot():
 	var bulletAux = bullet.instantiate()
 	bulletAux.position = position + Vector2(instantationOffsett.x * -lastDir, instantationOffsett.y)

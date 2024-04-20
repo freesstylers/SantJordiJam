@@ -134,6 +134,7 @@ collision_layer = 2
 script = ExtResource("1_icnvq")
 sprite = NodePath("AnimatedSprite2D")
 bullet = ExtResource("4_u60i7")
+damageForceX = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
