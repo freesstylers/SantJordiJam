@@ -24,7 +24,9 @@ func preState():
 	
 func postState():
 	DelayBeforeFiringTimer.stop()
-
+	DelayBeforeFiringTimer.stop()
+	DelayBetweanFireballsTimer.stop()
+	
 func operate(delta):
 	if preparingAttack:
 		var dir : Vector2 =  (firingPos - Dragon.global_position).normalized()

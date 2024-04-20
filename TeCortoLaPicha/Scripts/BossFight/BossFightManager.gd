@@ -14,6 +14,7 @@ func _ready():
 			scene_to_default()
 	).set_delay(2)
 	localTween.tween_callback(start_fight).set_delay(2)
+	Globals.roomCompleted.connect(PlayerWon)
 	
 func scene_to_default():
 	#Reset the dragon
@@ -28,7 +29,7 @@ func start_fight():
 	Dragon.setState("FIREBALL")	
 
 func PlayerWon():
-	pass
+	print("VICTORIA")
 	
 func PlayerLost():
-	pass
+	print("DERROTA")

@@ -12,6 +12,7 @@ var move_on_x : bool = true
 var move_on_y : bool = true
 var dist_to_target : float = 30
 var vel : Vector2 = Vector2(0,0)
+var localTween  = null
 
 func preState():
 	attacking=false
@@ -21,6 +22,11 @@ func preState():
 	vel = Vector2(Dragon.FlyingSpeed,Dragon.FlyingSpeed)
 	StateToReturn = MyState
 	Dragon.getVisualizer().start_flying_effect()
+
+func postState():
+	if localTween != null:
+		(localTween as Tween).kill()
+		localTween = null
 
 func operate(delta):
 	var target = get_pos_to_attack()
@@ -47,7 +53,7 @@ func Attack():
 	Dragon.getVisualizer().stop_flying_effect()
 	vel.x = Dragon.FlyingSpeed*3/4
 	var attackLength = 1.0
-	var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	localTween.set_parallel(true)
 	localTween.tween_property(self, "vel:x", Dragon.getFlyingSpeed()/4, attackLength*3/4)
 	localTween.tween_property(Dragon, "position:y", FloorHeight, attackLength)
@@ -62,6 +68,7 @@ func Attack():
 			Dragon.getVisualizer().start_flying_effect()
 		else:
 			StateToReturn = NextState
+		localTween = null
 		)
 
 func get_pos_to_attack():

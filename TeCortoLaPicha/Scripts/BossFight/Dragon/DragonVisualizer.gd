@@ -6,6 +6,7 @@ class_name DragonVisualizer
 @export var flyingPhase = 0.0
 @export var FireParticles : CPUParticles2D = null
 @export var DragonMngr : DragonManager = null
+@export var DeathAnimLength : float = 0.5
 
 @onready var DragonAnimation : Sprite2D = $Dragon
 
@@ -89,3 +90,13 @@ func PlayTakeDamageEffect():
 	var localTween = create_tween()
 	localTween.tween_property(DragonAnimation, "modulate", Color.CRIMSON, effectDuration/2)
 	localTween.tween_property(DragonAnimation, "modulate", Color.WHITE, effectDuration/2)
+
+func DieAnim():
+	var localTween = create_tween()
+	localTween.set_parallel(true)
+	localTween.tween_property(DragonMngr, "scale", Vector2(0,0), DeathAnimLength)
+	localTween.tween_property(DragonMngr, "rotatio", 2*PI, DeathAnimLength)
+	localTween.chain().tween_callback(
+		func():
+			Globals.roomDepleted.emit()
+	)

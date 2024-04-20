@@ -10,12 +10,22 @@ class_name DragonVerticalAttackState
 @onready var DelayBeforeAttackTimer : Timer = $DelayBeforeAttack
 @onready var FireBeamSound : AudioStreamPlayer2D = $FireBeamSound
 
+var playerHitOnThisAttack : bool = false
+var localTween  = null
+
 func preState():
 	StateToReturn = MyState
 	preparingAttack=true
+	playerHitOnThisAttack = false
 	timesAttacked = 0
 	FireFlameHitbox.rotation_degrees = 45
 	Dragon.getVisualizer().start_flying_effect()
+
+func postState():
+	if localTween != null:
+		(localTween as Tween).kill()
+		localTween = null
+	DelayBeforeAttackTimer.stop()
 
 func operate(delta):
 	if preparingAttack:
@@ -62,3 +72,8 @@ func get_pos_to_face_towards():
 		return Dragon.ThePlayer.global_position
 	else:
 		return get_global_mouse_position()
+
+func other_collided_with_dragon(other):
+	if other.is_in_group("player") and not playerHitOnThisAttack and not preparingAttack:
+		playerHitOnThisAttack = true
+		(other as Player).characterTakeLife(1)

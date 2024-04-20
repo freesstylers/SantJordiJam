@@ -1,7 +1,6 @@
 extends StateMachine
 class_name DragonManager
 
-@export var Lifes : int = 5
 @export var FlyingSpeed : float = 500
 @export var FiringPositions : Array[Node2D] = []
 @export var VerticalFlameAttackPosition : Node2D = null
@@ -32,8 +31,8 @@ func operate(delta):
 func setState(new_state : String):
 	if currentState != "":
 		states.get(currentState).postState()
+	currentState = new_state
 	if(states.has(new_state)):
-		currentState = new_state
 		states.get(currentState).preState()
 
 func getVisualizer():

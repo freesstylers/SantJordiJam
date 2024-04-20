@@ -1,10 +1,15 @@
 extends baseEnemy
 
 @export var DragonMngr : DragonManager  = null
-@export var DeathAnimLength : float = 0.5
-@onready var DeathSound : AudioStreamPlayer2D = $DeathSound
-
 @export var damageToCharacter: int = 1
+@export var ImpulseOnPlayerHit : float = 75
+
+@onready var DeathSound : AudioStreamPlayer2D = $DeathSound
+@onready var DamageOnHitTimer : Timer = $DamageOnHitTimer
+@onready var HurtBoxTimer : Timer = $HurtBox/GetHurtTimer
+
+var canDamagePlayer : bool = true
+var canGetDamaged : bool = true
 
 func takeDamage(damage):
 	life -= damage
@@ -17,15 +22,25 @@ func takeDamage(damage):
 func die():
 	DragonMngr.setState("")
 	DeathSound.play()
-	var localTween = create_tween()
-	localTween.set_parallel(true)
-	localTween.tween_property(DragonMngr, "scale", Vector2(0,0), DeathAnimLength)
-	localTween.tween_property(DragonMngr, "rotatio", 2*PI, DeathAnimLength)
-	localTween.chain().tween_callback(
-		func():
-			Globals.roomDepleted.emit()
-	)
-	
+	DragonMngr.getVisualizer().DieAnim()
+
+###################DEAL DAMAGE TO THE PLAYER
 func other_collided(other):
-	if other.name == "Player":
+	if other.is_in_group("player") and canDamagePlayer:
+		canDamagePlayer = false
+		#print("Damaged player")
 		other.characterTakeLife(damageToCharacter)
+		(other as Player).Launch(Vector2(sign(other.global_position.x-global_position.x)*2, 1) * ImpulseOnPlayerHit)
+		DamageOnHitTimer.start()
+func damage_timer_finished():
+	canDamagePlayer = true
+
+##################GET DAMAGED BY THE PLAYER'S SWORD
+func other_area_entered_hurtbox(other):
+	if other.is_in_group("sword") and canGetDamaged:
+		canGetDamaged = false
+		takeDamage(1)
+		DragonMngr.getVisualizer().PlayTakeDamageEffect()
+		HurtBoxTimer.start()
+func hurtbox_timer_finished():
+	canGetDamaged = true

@@ -8,6 +8,7 @@ class_name DragonHorizontalAttackState
 
 var attackStartingPos : Vector2 = Vector2(0,0)
 var attackEndPos : Vector2 = Vector2(0,0)
+var localTween  = null
 
 func preState():
 	StateToReturn = MyState
@@ -16,6 +17,12 @@ func preState():
 	set_attack_positions()	
 	Dragon.getVisualizer().start_flying_effect()
 
+func postState():
+	if localTween != null:
+		(localTween as Tween).kill()
+		localTween = null
+	DelayBeforeAttackTimer.stop()
+	
 func operate(delta):
 	if preparingAttack:
 		var dir : Vector2 =  (attackStartingPos - Dragon.global_position).normalized()
@@ -30,7 +37,7 @@ func operate(delta):
 func Attack():
 	DelayBeforeAttackTimer.stop()
 	Dragon.getVisualizer().change_face_player_condition(false)
-	var localTween = create_tween()
+	localTween = create_tween()
 	var attackLength = 1.25
 	ThrustSound.play()
 	localTween.tween_property(Dragon, "position", attackEndPos, attackLength)
