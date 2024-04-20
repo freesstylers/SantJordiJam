@@ -1,7 +1,7 @@
 class_name Room
 extends Node2D
 
-@export var EnemiesArray : Array[baseEnemy]
+@export var EnemiesArray : Array[Node]
 @export var startingCharacterPosition: Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -9,6 +9,8 @@ func _ready():
 	Globals.connect("roomDepleted", roomDepletedFunc)
 	Globals.connect("roomStarted", roomStartFunc)
 	Globals.connect("doorAttempt", doorAttempt)
+	
+	EnemiesArray = $enemies.get_children() #Set enemies automatically
 	
 	roomStartFunc()
 

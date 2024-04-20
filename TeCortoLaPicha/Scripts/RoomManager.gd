@@ -11,11 +11,11 @@ var rng
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.connect("roomCompleted", roomCompletedFunc)
+	
 	rng = RandomNumberGenerator.new()
 	
-	add_child(Rooms[0].instantiate())
-	
-	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[rng.randi_range(0, Textures.size()-1)]
+	add_child(Rooms[rng.randi_range(0, Rooms.size()-1)].instantiate()) #Random Room
+	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[rng.randi_range(0, Textures.size()-1)] #Random Tileset
 	
 	pass # Replace with function body.
 

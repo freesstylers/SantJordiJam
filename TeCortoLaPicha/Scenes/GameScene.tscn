@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd5qgadjqxig1"]
+[gd_scene load_steps=10 format=3 uid="uid://dd5qgadjqxig1"]
 
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="1_2dcnp"]
 [ext_resource type="Script" path="res://Scripts/RoomManager.gd" id="1_dy84q"]
+[ext_resource type="PackedScene" uid="uid://cdwogn2brm8w7" path="res://Assets/Prefabs/Rooms/Room2.tscn" id="2_4t8vj"]
 [ext_resource type="Texture2D" uid="uid://dqbqlq7g5ftpj" path="res://Sprites/Tilesets/Tileset-Bosque.png" id="3_g4hnb"]
 [ext_resource type="PackedScene" uid="uid://4be3a25mf3qr" path="res://Assets/Prefabs/Rooms/Room1.tscn" id="3_m017o"]
 [ext_resource type="Texture2D" uid="uid://drqkubs8r36tj" path="res://Sprites/Tilesets/Tileset-HarryPotter.png" id="4_ii3gx"]
@@ -13,7 +14,7 @@
 
 [node name="RoomContainer" type="Node2D" parent="."]
 script = ExtResource("1_dy84q")
-Rooms = Array[PackedScene]([ExtResource("3_m017o")])
+Rooms = Array[PackedScene]([ExtResource("2_4t8vj"), ExtResource("3_m017o")])
 Textures = Array[Texture2D]([ExtResource("3_g4hnb"), ExtResource("4_ii3gx"), ExtResource("5_fyq48"), ExtResource("6_g8irv"), ExtResource("7_g25vb")])
 
 [node name="Player" parent="." instance=ExtResource("1_2dcnp")]
