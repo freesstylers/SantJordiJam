@@ -1,8 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc4jvnkk0fh31"]
+[gd_scene load_steps=16 format=3 uid="uid://dc4jvnkk0fh31"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flyingEnemy.gd" id="1_ymp45"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
-[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_d3vg0"]
+[ext_resource type="Texture2D" uid="uid://comihu85bgx3t" path="res://Sprites/Tijeritas/Tijeritas.png" id="3_1310h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epq8i"]
+atlas = ExtResource("3_1310h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehbem"]
+atlas = ExtResource("3_1310h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a280q"]
+atlas = ExtResource("3_1310h")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24m20"]
+atlas = ExtResource("3_1310h")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq8v3"]
+atlas = ExtResource("3_1310h")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amnpr"]
+atlas = ExtResource("3_1310h")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqi1k"]
+atlas = ExtResource("3_1310h")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
@@ -16,27 +44,59 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_d3vg0")
+"texture": SubResource("AtlasTexture_epq8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehbem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a280q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24m20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq8v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amnpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqi1k")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(128, 128)
+size = Vector2(52, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0uk7"]
-size = Vector2(52, 42)
+size = Vector2(62, 48)
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="Curve" id="Curve_hxtw6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986784, 0.21978), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_17udc"]
+colors = PackedColorArray(0.752214, 0.399433, 0.52133, 1, 0.86486, 0.639414, 1, 1)
+
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("wall_checker", "particles")]
 collision_layer = 2
 script = ExtResource("1_ymp45")
+direction = 1
+wall_checker = NodePath("wall_checker")
+particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0914033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="wall_checker" type="RayCast2D" parent="."]
@@ -46,7 +106,26 @@ target_position = Vector2(70, 0)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 12)
+position = Vector2(-2, 4)
 shape = SubResource("RectangleShape2D_n0uk7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -1)
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+scale_amount_min = 1.7
+scale_amount_max = 1.7
+scale_amount_curve = SubResource("Curve_hxtw6")
+color = Color(0.913725, 0.176471, 0.301961, 1)
+color_ramp = SubResource("Gradient_17udc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -2,8 +2,8 @@ class_name Room
 extends Node2D
 
 @export var EnemiesArray : Array[Node]
-@export var startingCharacterPosition: Vector2
-
+@export var startingCharacterPosition: Node2D
+@export var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.connect("roomDepleted", roomDepletedFunc)
@@ -16,8 +16,8 @@ func _ready():
 
 func roomStartFunc():
 	#Set position for character
-	get_parent().get_parent().get_child(1).position = startingCharacterPosition
-	get_parent().get_parent().get_child(1).velocity = Vector2(0,0)
+	player.position = startingCharacterPosition.position
+	player.velocity = Vector2(0,0)
 	
 	#Reset timer
 	

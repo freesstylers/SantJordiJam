@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1oae8ne04f66"]
+[gd_scene load_steps=9 format=3 uid="uid://beofrpr4iik7b"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -425,5 +425,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]

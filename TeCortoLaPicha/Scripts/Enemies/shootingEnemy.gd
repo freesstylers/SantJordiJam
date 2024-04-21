@@ -26,16 +26,16 @@ var lastDir = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+
 func _ready():
 	Player = get_parent().get_parent().get_node("Player")
-	pass
-	
 func _process(delta):
-	if not $floor_checker.is_colliding():
+	
+	if not $floor_checker.is_colliding() and not Player == null:
 		$floor_checker.target_position.move_toward(Player.position, 0.01)
 		angle_to_player = global_position.direction_to(Player.position).angle()
 		#rotation = move_toward(rotation, angle_to_player, delta)
-		
 	if not shooting: #No restart
 		sprite.play("default")
 		timeSinceCooldown += delta
@@ -78,13 +78,14 @@ func shoot():
 	get_parent().add_child((bulletAux))
 	
 func flip():
-	var dir = position.x - Player.position.x
-	if dir > 0:
-		lookingRight = true
-	else:
-		lookingRight = false
-	
-	if lookingRight && lastDir < 0 || !lookingRight && lastDir > 0:
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+	if Player != null:
+		var dir = position.x - Player.position.x
+		if dir > 0:
+			lookingRight = true
+		else:
+			lookingRight = false
 		
-	lastDir = clamp(dir, -1, 1)
+		if lookingRight && lastDir < 0 || !lookingRight && lastDir > 0:
+			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+			
+		lastDir = clamp(dir, -1, 1)

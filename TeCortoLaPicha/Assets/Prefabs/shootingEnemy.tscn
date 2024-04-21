@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxw328csmcn03"]
+[gd_scene load_steps=33 format=3 uid="uid://bxw328csmcn03"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/shootingEnemy.gd" id="1_icnvq"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_gjwiw"]
@@ -128,13 +128,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
 size = Vector2(61, 40.25)
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
-scale = Vector2(4, 4)
+[sub_resource type="Curve" id="Curve_av0gr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986784, 0.21978), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ets53"]
+colors = PackedColorArray(0.752214, 0.399433, 0.52133, 1, 0.86486, 0.639414, 1, 1)
+
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "particles")]
 collision_layer = 2
 script = ExtResource("1_icnvq")
 sprite = NodePath("AnimatedSprite2D")
 bullet = ExtResource("4_u60i7")
 damageForceX = 200
+particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
@@ -149,3 +156,22 @@ shape = SubResource("RectangleShape2D_43enp")
 position = Vector2(0, 20)
 target_position = Vector2(300, 0)
 collision_mask = 4
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -1)
+emitting = false
+amount = 70
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+scale_amount_min = 1.7
+scale_amount_max = 1.7
+scale_amount_curve = SubResource("Curve_av0gr")
+color = Color(0.913725, 0.176471, 0.301961, 1)
+color_ramp = SubResource("Gradient_ets53")

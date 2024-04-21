@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=23 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
@@ -463,6 +463,34 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_aywwx"]
+resource_name = "witiza_get_hit"
+length = 0.602
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_p60x2"]
 resource_name = "witiza_idle_anim"
 length = 0.5015
@@ -777,6 +805,7 @@ _data = {
 "witiza_attack_anim": SubResource("Animation_drlfs"),
 "witiza_dash_anim": SubResource("Animation_8my65"),
 "witiza_fall_anim": SubResource("Animation_3v2oe"),
+"witiza_get_hit": SubResource("Animation_aywwx"),
 "witiza_idle_anim": SubResource("Animation_p60x2"),
 "witiza_jump_anim": SubResource("Animation_oc1p6"),
 "witiza_run_anim": SubResource("Animation_q2x7x"),
@@ -811,17 +840,17 @@ leftRaycast = NodePath("RayCastLeft")
 rightRaycast = NodePath("RayCastRight")
 leftFootRaycast = NodePath("LeftFootRayCast")
 rightFootRaycast = NodePath("RightFootRayCast")
-max_speed = 200.0
+max_speed = 400.0
 max_sprinting_speed = 400.0
-acceleration = 2000.0
+acceleration = 1000.0
 DashSpeed = 500
 dashDuration = 0.2
 dashCooldown = 0.3
-damageForceX = 300
-damageForceY = 0
+damageForceX = 400
+damageForceY = 150
+time_hit = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
 texture = ExtResource("2_tdyuv")
 hframes = 6
 frame = 5

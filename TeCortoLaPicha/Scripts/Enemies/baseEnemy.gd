@@ -7,11 +7,28 @@ var Room_: Room = null
 @export var damageForceX = 300
 @export var damageForceY = 300
 
+@export var particles : CPUParticles2D
 var canMoveCD = 0.5
 var current_move_buffer = 0
+
+func _process(delta):
+	if current_move_buffer <= 0:
+		var localTween : Tween = self.create_tween()
+		localTween.set_trans(Tween.TRANS_LINEAR)
+		localTween.set_ease(Tween.EASE_IN)
+		localTween.tween_property(self, "modulate", Color(1.0,1.0,1.0), 0.1)
+		localTween.tween_property(self, "modulate", Color.WHITE, 1.0)
+		
 func takeDamage(damage):
 	life -= damage
+	particles.emitting = true
 	
+	var localTween : Tween = self.create_tween()
+	localTween.set_trans(Tween.TRANS_LINEAR)
+	localTween.set_ease(Tween.EASE_IN)
+	localTween.tween_property(self, "modulate", Color(1.0,100.0/255.0,100.0/255.0), 0.1)
+	localTween.tween_property(self, "modulate", Color.RED, 0.1)
+			
 	print(life)
 	
 	if life <= 0:
@@ -43,8 +60,9 @@ func die():
 		
 func applyForce(player):
 	var dir = clamp(position.x - player.x, -1, 1)
+	var dirY = clamp(position.y - player.y, -1, 1)
 	velocity.x = dir * damageForceX
-	velocity.y -= damageForceY
+	velocity.y -= dirY * damageForceY
 	current_move_buffer = canMoveCD
 	
 	

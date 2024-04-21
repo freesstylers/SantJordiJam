@@ -554,6 +554,7 @@ sources/0 = SubResource("TileSetAtlasSource_kb6vc")
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4x140")]
+damageForceY = 100
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_q0mjk")
@@ -588,15 +589,12 @@ position = Vector2(199, 17)
 
 [node name="enemy2" parent="enemies" instance=ExtResource("30_0c1d7")]
 position = Vector2(175, -158)
-scale = Vector2(0.2, 0.2)
 
 [node name="enemy3" parent="enemies" instance=ExtResource("31_coglb")]
 position = Vector2(-227, 33)
-scale = Vector2(0.2, 0.2)
 
 [node name="enemy4" parent="enemies" instance=ExtResource("32_0pqmg")]
 position = Vector2(-428, -154)
-scale = Vector2(1, 1)
 
 [node name="HookTarget2" parent="." instance=ExtResource("34_otlv5")]
 position = Vector2(115, -144)

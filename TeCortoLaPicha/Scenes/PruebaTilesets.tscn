@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b02o131rs4qnj" path="res://Sprites/Tilesets/TilesetPrincipal.png" id="1_4sa5i"]
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_yntmu"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="3_2w8xv"]
-[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="4_0v76t"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/door.tscn" id="4_0v76t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nshtt"]
 texture = ExtResource("1_4sa5i")
@@ -730,8 +730,5 @@ layer_2/tile_data = PackedInt32Array(1835036, 196608, 2, 1900572, 196608, 3, 170
 
 [node name="enemy" parent="." instance=ExtResource("3_2w8xv")]
 position = Vector2(151, -107)
-direction = -1
-horizontalSpeed = 50
-detect_cliffs = true
 
 [node name="Door" parent="." instance=ExtResource("4_0v76t")]
