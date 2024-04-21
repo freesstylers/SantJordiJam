@@ -14,8 +14,13 @@ func _ready():
 	
 	rng = RandomNumberGenerator.new()
 	
-	add_child(Rooms[rng.randi_range(0, Rooms.size()-1)].instantiate()) #Random Room
-	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[rng.randi_range(0, Textures.size()-1)] #Random Tileset
+	var room = Rooms[rng.randi_range(0, Rooms.size()-1)].instantiate()
+	add_child(room) #Random Room
+	
+	var tileset = rng.randi_range(0, Textures.size()-1)
+	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+	
+	room.changeWormSprite(tileset)
 	
 	pass # Replace with function body.
 

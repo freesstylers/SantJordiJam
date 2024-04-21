@@ -14,6 +14,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #func _ready():
+	#pass
 	#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
 	#$floor_checker.enabled = detect_cliffs
 	
@@ -39,3 +40,18 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player" and not dead:
 		body.characterTakeLife(damageToCharacter, position)
 	pass # Replace with function body.
+
+func changeWormAnim(anim):
+	match anim:
+		0:
+			$AnimatedSprite2D.set_animation("caperucita")
+		1:
+			$AnimatedSprite2D.set_animation("hatsune")
+		2: 
+			$AnimatedSprite2D.set_animation("jorgemadresalvajewild")
+		3:
+			$AnimatedSprite2D.set_animation("quijote")
+		4:
+			$AnimatedSprite2D.set_animation("marx")
+		#5:
+			#$AnimatedSprite2D.set_anim("Marx")

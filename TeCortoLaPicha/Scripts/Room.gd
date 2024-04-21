@@ -27,6 +27,12 @@ func roomStartFunc():
 func roomDepletedFunc():
 	#Desbloquear puerta
 	pass
+	
+func changeWormSprite(tileset):
+	for i in range(0, EnemiesArray.size()):
+		if EnemiesArray[i] is basic_enemy:
+			EnemiesArray[i].changeWormAnim(tileset)
+	pass
 
 func doorAttempt():
 	if EnemiesArray.size() == 0:
