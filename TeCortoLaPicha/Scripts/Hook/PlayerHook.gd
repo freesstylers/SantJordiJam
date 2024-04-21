@@ -20,10 +20,12 @@ func _ready():
 	($RopeStartingPoint/RayCast2D as RayCast2D).target_position = Vector2(0,rope_length) 
 	
 func _process(_delta):
+	var rope_end : Vector2 = Vector2(0,0)
 	if launch:
+		rope_end = hook_target_pos
+		rope_starting_point.global_rotation = (rope_end-global_position).angle()
 		return
 	
-	var rope_end : Vector2 = Vector2(0,0)
 	if not hook_shot:
 		rope_end = get_global_mouse_position()
 		if hook_target_object == null:
@@ -47,7 +49,8 @@ func _input(event):
 			if hook_target_object:
 				hook_shot = true
 				hook_target_object.play_anim_or_something()
-				hook_target_pos = ray.get_collision_point()
+				hook_target_pos = hook_target_object.global_position #ray.get_collision_point()
+				rope_starting_point.global_rotation = (hook_target_object.global_position-global_position).angle()
 				grappling_rope.ShootRope(hook_target_pos)
 		elif hook_shot and mouse_event.button_index == MOUSE_BUTTON_RIGHT and not mouse_event.pressed:
 			launch = false
@@ -69,7 +72,7 @@ func Launch():
 			grappling_rope.HideRope()
 			hook_shot = false
 			#ImpulseSound.play()
-			(body_to_launch as Player).Launch(launch_impulse_dir * launch_impulse_force)
+			#(body_to_launch as Player).Launch(launch_impulse_dir * launch_impulse_force)
 			hook_target_object.update_target_status(false)
 			hook_target_object = null
 			movement_tween = null

@@ -146,16 +146,21 @@ position = Vector2(27.9812, 0.0207214)
 shape = SubResource("RectangleShape2D_udioh")
 
 [node name="HookTarget" parent="." instance=ExtResource("4_pqx3o")]
+z_index = -1
 position = Vector2(1022, 315)
 
 [node name="HookTarget2" parent="." instance=ExtResource("4_pqx3o")]
+z_index = -1
 position = Vector2(814, 157)
 
 [node name="HookTarget3" parent="." instance=ExtResource("4_pqx3o")]
+z_index = -1
 position = Vector2(381, 367)
 
 [node name="HookTarget4" parent="." instance=ExtResource("4_pqx3o")]
+z_index = -1
 position = Vector2(128, 427)
 
 [node name="HookTarget5" parent="." instance=ExtResource("4_pqx3o")]
+z_index = -1
 position = Vector2(347, 178)
