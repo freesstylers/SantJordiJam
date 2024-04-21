@@ -32,19 +32,18 @@ func roomCompletedFunc():
 	get_tree().root.get_node("SceneManager/TransitionScreen").transition()
 	#Transition
 	
-	
 	#Delete Room
 	get_child(0).queue_free()
 		
-	#Add Room
-	#var aux = currentRoom
 		
-	#while aux == currentRoom:
-		#aux = rng.randi_range(0, Rooms.size())
+func addNewRoom():
+	var aux = currentRoom
 		
-	#var newRoom : Room
-	#newRoom = Rooms[aux].instantiate()
-	#add_child(newRoom)		
+	while aux == currentRoom:
+		aux = rng.randi_range(0, Rooms.size()-1)
+		
+	currentRoom = aux
 	
-	#Reset State
-	pass
+	var newRoom : Room
+	newRoom = Rooms[aux].instantiate()
+	add_child(newRoom)		

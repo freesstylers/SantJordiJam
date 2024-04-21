@@ -6,6 +6,7 @@ var pauseEnabled = false
 @export var GameScene : PackedScene
 @export var MainMenuScene : PackedScene
 
+var GameSceneInstance = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Timer 
@@ -16,7 +17,12 @@ func loadLevel():
 	get_tree().paused = false
 	
 	if not menu:
-		$CurrentScene.add_child(GameScene.instantiate())
+		if GameSceneInstance == null:
+			GameSceneInstance = GameScene.instantiate()
+			$CurrentScene.add_child(GameSceneInstance)
+		else:
+			pass
+			
 		pauseEnabled = true
 	else:
 		$CurrentScene.add_child(MainMenuScene.instantiate())

@@ -20,9 +20,11 @@ func _on_animation_player_animation_finished(anim_name):
 		$Text/Button.visible = true
 		pass
 	if anim_name == "fade_to_normal":
-		Globals.game_start_playing.emit()
+		if get_tree().root.get_child(1).GameSceneInstance == null:
+			Globals.game_start_playing.emit()
+		else:
+			get_tree().root.get_child(1).get_child(1).get_child(0).get_child(0).addNewRoom()
 		print("Fading to normal")
-
 
 func _on_button_pressed():
 	$AnimationPlayer.play("fade_to_normal")

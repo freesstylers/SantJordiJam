@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo7aqldm6mdsp"]
+[gd_scene load_steps=8 format=3 uid="uid://bo7aqldm6mdsp"]
 
 [ext_resource type="Script" path="res://Assets/Prefabs/TransitionScreen/TransitionScreen.gd" id="1_0m4s3"]
-[ext_resource type="Texture2D" uid="uid://c22mxujodiyrj" path="res://Sprites/MainMenu.png" id="2_jjyj2"]
 [ext_resource type="Texture2D" uid="uid://yjnx7oqrygwo" path="res://Sprites/Libro/book_sheet2.png" id="2_ki4nb"]
 [ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="4_abebw"]
 
@@ -30,30 +29,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Text:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gqmng"]
@@ -157,14 +132,6 @@ _data = {
 [node name="TransitionScreen" type="CanvasLayer"]
 layer = 128
 script = ExtResource("1_0m4s3")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 1271.0
-offset_bottom = 720.0
-texture = ExtResource("2_jjyj2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
