@@ -44,9 +44,11 @@ particles = NodePath("../enemy/CPUParticles2D")
 
 [node name="enemy4" parent="enemies" instance=ExtResource("5_2jfxx")]
 position = Vector2(102.667, -436.667)
+direction = 1
 
 [node name="enemy3" parent="enemies" instance=ExtResource("5_2jfxx")]
 position = Vector2(394, -388)
+direction = 1
 
 [node name="enemy5" parent="enemies" instance=ExtResource("6_oydw0")]
 position = Vector2(216.667, -298)
@@ -58,7 +60,7 @@ position = Vector2(605.333, -304.667)
 position = Vector2(581.333, -90)
 
 [node name="HookTarget2" parent="." instance=ExtResource("5_jgflv")]
-position = Vector2(386, -235)
+position = Vector2(386, -284)
 scale = Vector2(0.5, 0.5)
 
 [node name="HookTarget3" parent="." instance=ExtResource("5_jgflv")]

@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	elif is_on_wall(): #or (detect_cliffs and not $floor_checker.is_colliding()):
+	elif is_on_wall() or (detect_cliffs and not $floor_checker.is_colliding()):
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 		player_detector.target_position.x = -player_detector.target_position.x

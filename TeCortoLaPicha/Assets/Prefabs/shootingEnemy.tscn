@@ -140,7 +140,8 @@ collision_layer = 2
 script = ExtResource("1_icnvq")
 sprite = NodePath("AnimatedSprite2D")
 bullet = ExtResource("4_u60i7")
-damageForceX = 200
+damageForceX = 100
+damageForceY = 200
 particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

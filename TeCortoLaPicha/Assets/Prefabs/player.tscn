@@ -1,17 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=24 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
 [ext_resource type="Texture2D" uid="uid://der2etnq3yokh" path="res://Sprites/Witiza/Jump/Witiza_Jump_Spritesheet.png" id="3_c4ru2"]
 [ext_resource type="Texture2D" uid="uid://5i6s83hvyayl" path="res://Sprites/Witiza/Run/Witiza_Run_Spritesheet.png" id="4_3vshq"]
+[ext_resource type="Texture2D" uid="uid://cy172bxp1nk4n" path="res://Sprites/Witiza/Hit/Witiza_attack.png" id="4_ikvyj"]
 [ext_resource type="Texture2D" uid="uid://brxe08f5ijegl" path="res://Sprites/Witiza/Walk/Witiza_Walk_Spritesheet.png" id="5_qh2w6"]
-[ext_resource type="Texture2D" uid="uid://6d8704yqp6pc" path="res://Sprites/Witiza/Hit/Witiza_attack_Spritesheet.png" id="6_j6lf5"]
+[ext_resource type="Texture2D" uid="uid://dqfikn7ovourh" path="res://Sprites/Witiza/GetHit/Witiza_GetHit1-sheet.png" id="7_2o2y7"]
 [ext_resource type="Texture2D" uid="uid://cc5rssn8b02eh" path="res://Sprites/Witiza/Dash/Witiza_Dash_Spritesheet.png" id="7_gv7pb"]
 [ext_resource type="PackedScene" uid="uid://dg1fy4qnt4a4u" path="res://Scenes/Hook.tscn" id="28_cl6vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4175r"]
 radius = 6.87265
-height = 34.4002
+height = 54.7156
 
 [sub_resource type="Animation" id="Animation_75s8e"]
 length = 0.55
@@ -164,7 +165,7 @@ tracks/11/keys = {
 [sub_resource type="Animation" id="Animation_drlfs"]
 resource_name = "witiza_attack_anim"
 length = 0.3
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -172,10 +173,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_j6lf5")]
+"values": [ExtResource("4_ikvyj"), ExtResource("4_ikvyj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -208,7 +209,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"times": PackedFloat32Array(0, 0.03, 0.07, 0.11, 0.15, 0.2, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
@@ -465,30 +466,55 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_aywwx"]
 resource_name = "witiza_get_hit"
-length = 0.602
+length = 0.3
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 0, 0, 0]
+"values": [ExtResource("7_2o2y7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 6, 6, 6, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 1,
 "values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.09, 0.14, 0.19, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_p60x2"]
@@ -827,12 +853,13 @@ outline_size = 4
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
-jump_height = 80.0
+jump_height = 100.0
 jump_time_to_peak = 0.3
 jump_time_to_descend = 0.4
 border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
+reduce_jump_velocity = 200
 labelText = NodePath("Label")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
@@ -840,17 +867,18 @@ leftRaycast = NodePath("RayCastLeft")
 rightRaycast = NodePath("RayCastRight")
 leftFootRaycast = NodePath("LeftFootRayCast")
 rightFootRaycast = NodePath("RightFootRayCast")
-max_speed = 400.0
+max_speed = 300.0
 max_sprinting_speed = 400.0
-acceleration = 1000.0
+acceleration = 2000.0
 DashSpeed = 500
 dashDuration = 0.2
 dashCooldown = 0.3
-damageForceX = 400
-damageForceY = 150
+damageForceX = 600
+damageForceY = 200
 time_hit = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, 0)
 texture = ExtResource("2_tdyuv")
 hframes = 6
 frame = 5

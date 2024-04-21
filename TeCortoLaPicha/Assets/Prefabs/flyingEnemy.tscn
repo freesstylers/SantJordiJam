@@ -87,6 +87,8 @@ collision_layer = 2
 script = ExtResource("1_ymp45")
 direction = 1
 wall_checker = NodePath("wall_checker")
+damageForceX = 100
+damageForceY = 200
 particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

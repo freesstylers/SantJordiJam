@@ -17,4 +17,4 @@ Rooms = Array[PackedScene]([ExtResource("2_4t8vj"), ExtResource("3_m017o")])
 Textures = Array[Texture2D]([ExtResource("3_g4hnb"), ExtResource("4_ii3gx"), ExtResource("5_fyq48"), ExtResource("6_g8irv"), ExtResource("7_g25vb")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(703, -390)
+position = Vector2(703, -371)

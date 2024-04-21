@@ -21,7 +21,7 @@ func _process(delta):
 		
 func takeDamage(damage):
 	life -= damage
-	particles.emitting = true
+	#particles.emitting = true
 	
 	var localTween : Tween = self.create_tween()
 	localTween.set_trans(Tween.TRANS_LINEAR)

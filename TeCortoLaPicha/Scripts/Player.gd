@@ -9,6 +9,8 @@ class_name Player
 @export var border_jump_time_to_peak : float
 @export var border_jump_time_to_descend : float
 
+@export var reduce_jump_velocity = 100
+
 var jump_velocity : float
 var jump_gravity : float
 var fall_gravity : float
@@ -131,7 +133,7 @@ func _physics_process(delta):
 			coyote_counter = 0
 		if Input.is_action_just_released("Jump"):
 			if velocity.y < 0:
-				velocity.y += 70
+				velocity.y += reduce_jump_velocity
 		# ANIM FLIP
 		act_max_speed = max_speed
 		

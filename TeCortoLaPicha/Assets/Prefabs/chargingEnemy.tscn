@@ -44,6 +44,8 @@ direction = 1
 player_detector = NodePath("player_checker")
 charge_velocity = 300
 decelration = 1
+damageForceX = 100
+damageForceY = 200
 particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -55,6 +57,11 @@ shape = SubResource("RectangleShape2D_43enp")
 [node name="player_checker" type="RayCast2D" parent="."]
 position = Vector2(65, 0)
 target_position = Vector2(500, 0)
+
+[node name="floor_checker" type="RayCast2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(1, 1)
+target_position = Vector2(0, 17)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
