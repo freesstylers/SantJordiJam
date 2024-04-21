@@ -31,6 +31,7 @@ func _ready():
 		add_child(instance)
 		ChainVisualLinks.append(instance)
 	LinePointsToFirePoint()
+	scale = Vector2(1,1)/global_scale
 
 func _process(delta):
 	if not rope_shot:

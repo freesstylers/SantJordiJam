@@ -65,8 +65,9 @@ func _input(event):
 func Launch():
 	launch = true
 	var launch_impulse_dir = (hook_target_pos - global_position).normalized()
+	#print("Target pos: ",hook_target_pos, "GlobalPos: ", global_position)
 	movement_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-	movement_tween.tween_property(body_to_launch, "position",hook_target_pos, launch_duration)
+	movement_tween.tween_property(body_to_launch, "global_position",hook_target_pos, launch_duration)
 	movement_tween.tween_callback(func():
 			launch = false
 			grappling_rope.HideRope()
