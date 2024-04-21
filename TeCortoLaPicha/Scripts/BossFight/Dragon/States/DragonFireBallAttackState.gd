@@ -20,7 +20,9 @@ func preState():
 	timesShotThisAttack = 0
 	preparingAttack = true
 	select_firing_pos()
+	Dragon.getVisualizer().change_face_player_condition(true)
 	Dragon.getVisualizer().start_flying_effect()
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 	
 func postState():
 	DelayBeforeFiringTimer.stop()
@@ -49,6 +51,7 @@ func select_firing_pos():
 		firingPos = Dragon.global_position
 
 func Attack():
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.FIREBALL)
 	#Instantiate fireball
 	var target_dir = (get_pos_to_shoot_fireball() - Dragon.global_position).normalized()
 	var instance = FireballPrefab.instantiate()
@@ -70,6 +73,7 @@ func Attack():
 		if timesAttacked < TimesToAttack:
 			preparingAttack = true
 			select_firing_pos()
+			Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 		else:
 			StateToReturn = NextState
 

@@ -15,7 +15,9 @@ func preState():
 	preparingAttack=true
 	timesAttacked = 0
 	set_attack_positions()	
+	Dragon.getVisualizer().change_face_player_condition(true)
 	Dragon.getVisualizer().start_flying_effect()
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 
 func postState():
 	if localTween != null:
@@ -31,12 +33,15 @@ func operate(delta):
 		if (Dragon.global_position - attackStartingPos).length() < 30:
 			preparingAttack = false
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)
-			Dragon.getVisualizer().stop_flying_effect(DelayBeforeAttack)
 	return StateToReturn
 	
 func Attack():
 	DelayBeforeAttackTimer.stop()
+	
 	Dragon.getVisualizer().change_face_player_condition(false)
+	Dragon.getVisualizer().stop_flying_effect(0.5)
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.HORIZONTAL)
+	
 	localTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	var attackLength = 1.25
 	ThrustSound.play()
@@ -44,6 +49,8 @@ func Attack():
 	localTween.tween_callback(
 		func():
 			Dragon.getVisualizer().change_face_player_condition(true)
+			Dragon.getVisualizer().start_flying_effect()
+			Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 			localTween = create_tween()
 			localTween.tween_property(Dragon, "position", attackEndPos - Vector2(0,200), attackLength)
 			localTween.tween_callback(

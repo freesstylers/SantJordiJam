@@ -12,20 +12,30 @@ class_name DragonVisualizer
 
 var face_player : bool = true
 var flying_effect_active : bool = false
-enum ANIM_STATE { IDLE, ATTACK, FALL, DEATH }
+enum ANIM_STATE { IDLE, IDLE_FLY, FIREBALL, FALL, HORIZONTAL, VERTICAL }
 
 func _ready():
 	FireParticles.emitting = false
 
-func update_animation(new_anim_state : ANIM_STATE):
+func play_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
 		ANIM_STATE.IDLE:
+			#PLAY A LOOP
 			pass
-		ANIM_STATE.ATTACK:
+		ANIM_STATE.IDLE_FLY:
+			#PLAY A LOOP
+			pass
+		ANIM_STATE.FIREBALL:
+			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.FALL:
+			#PLAY ONCE, adjust speed to logic
 			pass
-		ANIM_STATE.DEATH:
+		ANIM_STATE.HORIZONTAL:
+			#PLAY ONCE, adjust speed to logic
+			pass
+		ANIM_STATE.VERTICAL:
+			#PLAY ONCE, adjust speed to logic
 			pass
 
 func _process(delta):

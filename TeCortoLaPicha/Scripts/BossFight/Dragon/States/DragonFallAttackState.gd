@@ -21,7 +21,9 @@ func preState():
 	timesAttacked = 0
 	vel = Vector2(Dragon.FlyingSpeed,Dragon.FlyingSpeed)
 	StateToReturn = MyState
+	Dragon.getVisualizer().change_face_player_condition(true)
 	Dragon.getVisualizer().start_flying_effect()
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 
 func postState():
 	if localTween != null:
@@ -51,6 +53,7 @@ func operate(delta):
 func Attack():
 	attacking = true
 	Dragon.getVisualizer().stop_flying_effect()
+	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.FALL)
 	vel.x = Dragon.FlyingSpeed*3/4
 	var attackLength = 1.0
 	localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
@@ -66,6 +69,7 @@ func Attack():
 		vel.x = Dragon.FlyingSpeed
 		if timesAttacked < TimesToAttack:
 			Dragon.getVisualizer().start_flying_effect()
+			Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 		else:
 			StateToReturn = NextState
 		localTween = null
