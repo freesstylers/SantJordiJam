@@ -17,10 +17,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihvi8"]
-size = Vector2(24, 24)
+size = Vector2(117, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf1hk"]
-size = Vector2(100, 61)
+size = Vector2(157, 123)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
 size = Vector2(413.758, 20)
@@ -60,6 +60,7 @@ shape = SubResource("RectangleShape2D_ou3gk")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/DamageToPlayerHitbox"]
+position = Vector2(-6.5, -14)
 shape = SubResource("RectangleShape2D_ihvi8")
 debug_color = Color(0.976471, 0, 0.403922, 0.419608)
 
@@ -72,6 +73,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/HurtBox"]
+position = Vector2(-7.5, -13.5)
 shape = SubResource("RectangleShape2D_gf1hk")
 debug_color = Color(0, 0.647059, 0.227451, 0.419608)
 
@@ -86,6 +88,7 @@ FireParticles = NodePath("FlameHitbox/FireParticles")
 DragonMngr = NodePath("..")
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
+scale = Vector2(4, 4)
 texture = ExtResource("3_vacna")
 
 [node name="FlameHitbox" type="Area2D" parent="DragonVisualizer"]

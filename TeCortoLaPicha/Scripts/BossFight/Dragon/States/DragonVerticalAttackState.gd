@@ -6,6 +6,7 @@ class_name DragonVerticalAttackState
 @export var FireFlameHitbox : Node2D = null
 @export var DelayBeforeFlameStart : float = 2
 @export var DelayBeforeAttack : float = 1
+@export var FlameDamage : int = 1
 
 @onready var DelayBeforeAttackTimer : Timer = $DelayBeforeAttack
 @onready var FireBeamSound : AudioStreamPlayer2D = $FireBeamSound
@@ -88,4 +89,4 @@ func get_pos_to_face_towards():
 func other_collided_with_dragon(other):
 	if thisStateIsActive and other.is_in_group("player") and not playerHitOnThisAttack and not preparingAttack:
 		playerHitOnThisAttack = true
-		(other as Player).characterTakeLife(1, global_position)
+		(other as Player).characterTakeLife(FlameDamage, global_position)

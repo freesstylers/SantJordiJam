@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_ifnhu"]
 [ext_resource type="PackedScene" uid="uid://dd5qgadjqxig1" path="res://Scenes/GameScene.tscn" id="2_04snq"]
-[ext_resource type="PackedScene" uid="uid://beofrpr4iik7b" path="res://Assets/Prefabs/MainMenu.tscn" id="2_hk2fo"]
+[ext_resource type="PackedScene" uid="uid://d1oae8ne04f66" path="res://Assets/Prefabs/MainMenu.tscn" id="2_hk2fo"]
 [ext_resource type="PackedScene" uid="uid://bo7aqldm6mdsp" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
 [ext_resource type="Texture2D" uid="uid://c22mxujodiyrj" path="res://Sprites/MainMenu.png" id="3_dmmbn"]
 [ext_resource type="PackedScene" uid="uid://dhsjm3o3lbkhl" path="res://Assets/Prefabs/PauseMenu.tscn" id="5_5arp3"]

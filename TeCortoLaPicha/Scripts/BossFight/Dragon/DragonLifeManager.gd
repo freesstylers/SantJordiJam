@@ -2,7 +2,6 @@ extends baseEnemy
 
 @export var DragonMngr : DragonManager  = null
 @export var damageToCharacter: int = 1
-@export var ImpulseOnPlayerHit : float = 75
 
 @onready var DeathSound : AudioStreamPlayer2D = $DeathSound
 @onready var DamageOnHitTimer : Timer = $DamageOnHitTimer
@@ -28,9 +27,7 @@ func die():
 func other_collided(other):
 	if other.is_in_group("player") and canDamagePlayer:
 		canDamagePlayer = false
-		#print("Damaged player")
-		#other.characterTakeLife(damageToCharacter)
-		(other as Player).Launch(Vector2(sign(other.global_position.x-global_position.x)*2, 1) * ImpulseOnPlayerHit)
+		(other as Player).characterTakeLife(damageToCharacter, global_position)
 		DamageOnHitTimer.start()
 func damage_timer_finished():
 	canDamagePlayer = true

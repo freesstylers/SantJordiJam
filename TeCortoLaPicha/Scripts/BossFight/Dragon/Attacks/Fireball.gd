@@ -2,8 +2,8 @@ extends Node2D
 class_name Fireball
 
 @export var rotationSpeed : float = 180
-@export var post_hit_timer : Timer = null
 @export var max_life_time_timer : Timer = null
+@export var Damage : int = 1
 
 @onready var visualizer : Sprite2D = $FireballVisualizer
 @onready var hit_sound : AudioStreamPlayer2D = $HitSound
@@ -21,11 +21,12 @@ func shoot(dir, sp):
 	direction = dir.normalized()
 	speed = sp
 
-func on_body_entered(_other):
+func on_body_entered(other):
 	if collided:
 		return
-	collided = true
-	post_hit_timer.start()
+	if other.is_in_group("player"):
+		collided = true
+		(other as Player).characterTakeLife(Damage, global_position)
 
 func Destroy():
 	queue_free()

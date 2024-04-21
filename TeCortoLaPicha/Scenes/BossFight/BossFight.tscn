@@ -71,22 +71,31 @@ position = Vector2(770, 400)
 [node name="FireballFiringPositions" type="Node2D" parent="FightPositions"]
 
 [node name="Pos1" type="Node2D" parent="FightPositions/FireballFiringPositions"]
-position = Vector2(107, 256)
+position = Vector2(109, 112)
 
 [node name="Pos2" type="Node2D" parent="FightPositions/FireballFiringPositions"]
-position = Vector2(251, 146)
+position = Vector2(198, 192)
 
 [node name="Pos3" type="Node2D" parent="FightPositions/FireballFiringPositions"]
-position = Vector2(593, 145)
+position = Vector2(306, 115)
 
 [node name="Pos4" type="Node2D" parent="FightPositions/FireballFiringPositions"]
-position = Vector2(757, 243)
+position = Vector2(436, 186)
+
+[node name="Pos5" type="Node2D" parent="FightPositions/FireballFiringPositions"]
+position = Vector2(557, 121)
+
+[node name="Pos6" type="Node2D" parent="FightPositions/FireballFiringPositions"]
+position = Vector2(669, 185)
+
+[node name="Pos7" type="Node2D" parent="FightPositions/FireballFiringPositions"]
+position = Vector2(771, 126)
 
 [node name="VerticalFlameAttackPos" type="Node2D" parent="FightPositions"]
 position = Vector2(437, 411)
 
 [node name="HorizontalFlameAttackPos" type="Node2D" parent="FightPositions"]
-position = Vector2(92, 403)
+position = Vector2(92, 375)
 
 [node name="HorizontalFlameAttackPos2" type="Node2D" parent="FightPositions"]
-position = Vector2(773, 404)
+position = Vector2(773, 375)

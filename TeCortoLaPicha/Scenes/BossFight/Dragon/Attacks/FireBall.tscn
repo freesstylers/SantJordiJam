@@ -5,10 +5,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjxl3"]
 
-[node name="FireBall" type="Node2D" node_paths=PackedStringArray("post_hit_timer", "max_life_time_timer")]
+[node name="FireBall" type="Node2D" node_paths=PackedStringArray("max_life_time_timer")]
 position = Vector2(53, 23)
 script = ExtResource("1_my72o")
-post_hit_timer = NodePath("PostHitFreeTimer")
 max_life_time_timer = NodePath("MaxLifeTimeTimer")
 
 [node name="FireballVisualizer" type="Sprite2D" parent="."]
@@ -16,20 +15,16 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_a6wn6")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_yjxl3")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 
-[node name="PostHitFreeTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="MaxLifeTimeTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]
-[connection signal="timeout" from="PostHitFreeTimer" to="." method="Destroy"]
 [connection signal="timeout" from="MaxLifeTimeTimer" to="." method="Destroy"]
