@@ -15,6 +15,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var decelration = 100
 @export var wait_before_charge = 0.5
 @export var charge_time = 1.2
+@export var rotation_speed = 60
+@export var animationPlayer : AnimatedSprite2D
 
 var charge_time_buffer = 0
 var waiting_buffer = 0
@@ -36,16 +38,19 @@ func _physics_process(delta):
 				if player_detector.get_collider().is_in_group("player"):
 					waiting_buffer = wait_before_charge
 					velocity.x = 0.0
+					animationPlayer.play("charge")
 					
 			if waiting_buffer > 0:
 				waiting_buffer -= delta
 				if waiting_buffer <= 0:
 					charge()
-		else:		
+		else:
+			animationPlayer.rotate(direction * rotation_speed * delta)		
 			charge_time_buffer -= delta
 			#position.y = yPosition
 			if charge_time_buffer <= 0:
 				charging = false
+				animationPlayer.rotation = 0
 				charge_time_buffer = 0
 				
 	# Add the gravity.	
@@ -59,6 +64,7 @@ func _physics_process(delta):
 		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
 	
 	if !charging and waiting_buffer <= 0:
+		animationPlayer.play("default")
 		velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
 
 	move_and_slide()
@@ -70,6 +76,7 @@ func _on_area_2d_body_entered(body):
 	
 func charge():
 	velocity.x = charge_velocity * direction
+	animationPlayer.play("wheel")
 	charge_time_buffer = charge_time
 	charging = true
 	yPosition = position.y

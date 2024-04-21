@@ -1,13 +1,98 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs7ciwbxs3u7x"]
+[gd_scene load_steps=26 format=3 uid="uid://bs7ciwbxs3u7x"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/chargingEnemy.gd" id="1_efae3"]
 [ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_ikmpt"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_xexob"]
-[ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_u22wj"]
+[ext_resource type="Texture2D" uid="uid://cf088m7055xor" path="res://Sprites/La Chikinchilla/La Chikinchilla-Charge.png" id="3_4i0ir"]
+[ext_resource type="Texture2D" uid="uid://dop1yqdfvqovf" path="res://Sprites/La Chikinchilla/La Chikinchilla-sheet.png" id="4_avagn"]
 [ext_resource type="AudioStream" uid="uid://iwwmusjq65m4" path="res://Assets/Audio/SFX/miau2.mp3" id="5_5ft2j"]
+[ext_resource type="Texture2D" uid="uid://fe75mc3qpipk" path="res://Sprites/La Chikinchilla/La Chikinchilla-Wheel1.png" id="6_foiry"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4bge"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lde6x"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4s8x"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvm1x"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg7lx"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq2gt"]
+atlas = ExtResource("3_4i0ir")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2o8o"]
+atlas = ExtResource("4_avagn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq56j"]
+atlas = ExtResource("4_avagn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osnju"]
+atlas = ExtResource("4_avagn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7eo7"]
+atlas = ExtResource("4_avagn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjf0p"]
+atlas = ExtResource("4_avagn")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iofk2"]
+atlas = ExtResource("4_avagn")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuwwd"]
+atlas = ExtResource("4_avagn")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe5ib"]
+atlas = ExtResource("4_avagn")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tabkc"]
+atlas = ExtResource("6_foiry")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4bge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lde6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4s8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvm1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg7lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq2gt")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_xexob")
@@ -18,50 +103,84 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_u22wj")
+"texture": SubResource("AtlasTexture_e2o8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq56j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osnju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7eo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjf0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iofk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuwwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe5ib")
 }],
 "loop": true,
 "name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tabkc")
+}],
+"loop": true,
+"name": &"wheel",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(128, 128)
+size = Vector2(49, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0uhn"]
-size = Vector2(136, 137)
+size = Vector2(54, 47)
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("player_detector", "damageSound")]
-scale = Vector2(0.2, 0.2)
+[node name="enemy2" type="CharacterBody2D" node_paths=PackedStringArray("player_detector", "animationPlayer", "damageSound")]
 collision_layer = 2
 script = ExtResource("1_efae3")
 direction = 1
 horizontalSpeed = 100.0
 player_detector = NodePath("player_checker")
 charge_velocity = 300
+animationPlayer = NodePath("AnimatedSprite2D")
 damageForceX = 150
 particles = ExtResource("2_ikmpt")
 damageSound = NodePath("recieveDamage")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
+animation = &"charge"
+autoplay = "default"
+offset = Vector2(-0.49, -16.51)
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -5)
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="player_checker" type="RayCast2D" parent="."]
-position = Vector2(65, 0)
+position = Vector2(24, 0)
 target_position = Vector2(500, 0)
 
 [node name="floor_checker" type="RayCast2D" parent="."]
-position = Vector2(0, 60)
+position = Vector2(0, 32)
 target_position = Vector2(0, 25)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.5)
+position = Vector2(-1, -6.5)
 shape = SubResource("RectangleShape2D_p0uhn")
 
 [node name="recieveDamage" type="AudioStreamPlayer2D" parent="."]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="4_b0st7"]
-[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
+[ext_resource type="PackedScene" uid="uid://b5ie836riqf2k" path="res://Assets/Prefabs/door.tscn" id="4_frspx"]
 [ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="5_qu8e2"]
 [ext_resource type="PackedScene" uid="uid://bxw328csmcn03" path="res://Assets/Prefabs/shootingEnemy.tscn" id="6_f82dg"]
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="7_l680d"]
@@ -23,9 +23,10 @@ max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.442748, -148.378), 0.0, 0.0, 0, 0, Vector2(1, 0.141037), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Room1" type="Node2D" node_paths=PackedStringArray("startingCharacterPosition", "player")]
+[node name="Room1" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_i5oul")
+EnemiesArray = [NodePath("enemies/enemy")]
 startingCharacterPosition = NodePath("SpawnPos")
 player = NodePath("Player")
 
