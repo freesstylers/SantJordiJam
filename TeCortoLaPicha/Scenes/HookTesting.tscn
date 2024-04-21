@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
-[ext_resource type="PackedScene" uid="uid://cjfgebscai36k" path="res://Scenes/RopeChain.tscn" id="4_72b62"]
+[ext_resource type="PackedScene" uid="uid://b22h04q50qqvn" path="res://Scenes/RopeChain.tscn" id="4_72b62"]
 [ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="4_pqx3o"]
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerRope.gd" id="5_4riq8"]
 
