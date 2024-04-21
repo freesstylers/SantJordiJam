@@ -8,6 +8,7 @@ var Room_: Room = null
 @export var damageForceY = 300
 
 @export var particles : CPUParticles2D
+var dead = false
 var canMoveCD = 0.5
 var current_move_buffer = 0
 
@@ -35,6 +36,7 @@ func takeDamage(damage):
 		die()
 
 func die():
+	dead = true
 	Room_ = get_parent().get_parent()
 	
 	var animLength : float = 0.5
@@ -62,7 +64,7 @@ func applyForce(player):
 	var dir = clamp(position.x - player.x, -1, 1)
 	var dirY = clamp(position.y - player.y, -1, 1)
 	velocity.x = dir * damageForceX
-	velocity.y -= dirY * damageForceY
+	velocity.y -=  damageForceY
 	current_move_buffer = canMoveCD
 	
 	

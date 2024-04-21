@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -400.0
 @export var bullet: PackedScene
 @export var shootingTime: float = 3.0
 @export var cooldown = 3.0
+@export var damageToCharacter: int = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var Player
@@ -89,3 +90,10 @@ func flip():
 			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 			
 		lastDir = clamp(dir, -1, 1)
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player" and not dead:
+		body.characterTakeLife(damageToCharacter, position)
+	pass # Replace with function body.
+	pass # Replace with function body.

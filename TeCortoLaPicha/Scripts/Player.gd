@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var jump_rotation = 100
 @export var jump_height : float
 @export var jump_time_to_peak : float
 @export var jump_time_to_descend : float
@@ -90,6 +91,7 @@ func _input(event):
 	if Input.is_action_just_pressed("Attack") and !hit_buffer > 0:
 		animationPlayer.play("witiza_attack_anim")
 		attacking = true
+		get_node("Sprite2D").rotation = 0
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":
@@ -102,6 +104,7 @@ var attacking = false
 var direction
 func _physics_process(delta):
 
+	direction = Input.get_axis("ui_left", "ui_right")
 	# VERTICAL MOVEMENT CONTROL
 	if not is_on_floor() and !dashing:
 		velocity.y += ((get_gravity() * delta)+flying_vel.y)
@@ -110,16 +113,21 @@ func _physics_process(delta):
 				coyote_counter -= delta
 			if hit_buffer <= 0:
 				if velocity.y < 0:
+					if sprite.flip_h:
+						get_node("Sprite2D").rotate(-jump_rotation * delta)
+					else:
+						get_node("Sprite2D").rotate(jump_rotation * delta)
 					animationPlayer.play("witiza_jump_anim")
 				elif velocity.y > 0 and !is_on_floor():
+					get_node("Sprite2D").rotation = 0
 					animationPlayer.play("witiza_fall_anim")	
 	else:
 		coyote_counter = coyote_time
+		get_node("Sprite2D").rotation = 0
 		velocity.y = 0
 	
 	#INPUT MANAGEMENT 
 	
-	direction = Input.get_axis("ui_left", "ui_right")
 	if (!dashing and hit_buffer <= 0):
 
 		# JUMP INPUT
@@ -196,6 +204,7 @@ func ControlDoubleTap(_delta, direction, event_):
 		if Input.is_action_just_pressed("Dash"):
 			if direction != 0:
 				double_tap = true
+				get_node("Sprite2D").rotation = 0
 		#if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
 			#if Input.is_action_just_pressed("ui_right"):
 				#currenTapRight = true
@@ -214,6 +223,7 @@ func ControlDoubleTap(_delta, direction, event_):
 		if Input.is_action_just_pressed("Dash"):
 			if direction != 0:
 				double_tap = true
+				get_node("Sprite2D").rotation = 0
 		pass	
 		
 	
@@ -243,12 +253,17 @@ func ControlDash(delta, direction):
 func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
+
 	body.applyForce(position)
+
 	pass # Replace with function body.
 
 func characterTakeLife(value, enemy):
 	if !attacking and hit_buffer <= 0:# and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):
 		characterLife -= value
+		velocity = Vector2.ZERO
+		dashing = false
+		auxDashCooldown = dashCooldown
 		applyForce(enemy)
 		animationPlayer.play("witiza_get_hit")
 		print(characterLife)

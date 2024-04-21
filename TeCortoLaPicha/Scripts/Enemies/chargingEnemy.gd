@@ -43,7 +43,7 @@ func _physics_process(delta):
 					charge()
 		else:		
 			charge_time_buffer -= delta
-			position.y = yPosition
+			#position.y = yPosition
 			if charge_time_buffer <= 0:
 				charging = false
 				charge_time_buffer = 0
@@ -64,7 +64,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not dead:
 		body.characterTakeLife(damageToCharacter, position)
 	pass # Replace with function body.
 	

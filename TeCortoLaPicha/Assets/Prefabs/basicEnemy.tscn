@@ -288,8 +288,7 @@ colors = PackedColorArray(0.752214, 0.399433, 0.52133, 1, 0.86486, 0.639414, 1, 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("particles")]
 collision_layer = 2
 script = ExtResource("1_ogqn0")
-damageForceX = 100
-damageForceY = 200
+damageForceX = 400
 particles = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -25,7 +25,7 @@ func _physics_process(delta):
 	# Add the gravity.	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	elif is_on_wall() or (detect_cliffs and not $floor_checker.is_colliding()):
+	if is_on_wall() or (not $floor_checker.is_colliding() && is_on_floor()):
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 		$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
@@ -36,6 +36,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not dead:
 		body.characterTakeLife(damageToCharacter, position)
 	pass # Replace with function body.

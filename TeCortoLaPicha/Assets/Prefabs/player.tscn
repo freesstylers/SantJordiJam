@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=25 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://brxe08f5ijegl" path="res://Sprites/Witiza/Walk/Witiza_Walk_Spritesheet.png" id="5_qh2w6"]
 [ext_resource type="Texture2D" uid="uid://dqfikn7ovourh" path="res://Sprites/Witiza/GetHit/Witiza_GetHit1-sheet.png" id="7_2o2y7"]
 [ext_resource type="Texture2D" uid="uid://cc5rssn8b02eh" path="res://Sprites/Witiza/Dash/Witiza_Dash_Spritesheet.png" id="7_gv7pb"]
+[ext_resource type="Texture2D" uid="uid://dt55wruvyimng" path="res://Sprites/Witiza/Jump/Witiza_Jump_Rotate-Wheel.png" id="7_yuiq8"]
 [ext_resource type="PackedScene" uid="uid://dg1fy4qnt4a4u" path="res://Scenes/Hook.tscn" id="28_cl6vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4175r"]
@@ -605,10 +606,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_c4ru2")]
+"values": [ExtResource("7_yuiq8"), ExtResource("7_yuiq8"), ExtResource("7_yuiq8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -620,7 +621,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -853,7 +854,8 @@ outline_size = 4
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
-jump_height = 100.0
+jump_rotation = 35
+jump_height = 150.0
 jump_time_to_peak = 0.3
 jump_time_to_descend = 0.4
 border_jump_height = 4.0
@@ -867,10 +869,10 @@ leftRaycast = NodePath("RayCastLeft")
 rightRaycast = NodePath("RayCastRight")
 leftFootRaycast = NodePath("LeftFootRayCast")
 rightFootRaycast = NodePath("RightFootRayCast")
-max_speed = 300.0
+max_speed = 450.0
 max_sprinting_speed = 400.0
 acceleration = 2000.0
-DashSpeed = 500
+DashSpeed = 750
 dashDuration = 0.2
 dashCooldown = 0.3
 damageForceX = 600
