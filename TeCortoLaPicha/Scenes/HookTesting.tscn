@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://drdf566oul36v"]
+[gd_scene load_steps=15 format=3 uid="uid://drdf566oul36v"]
 
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
+[ext_resource type="PackedScene" uid="uid://cjfgebscai36k" path="res://Scenes/RopeChain.tscn" id="4_72b62"]
 [ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="4_pqx3o"]
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerRope.gd" id="5_4riq8"]
 
@@ -64,23 +65,30 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Rope" type="Line2D" parent="RigidBody2D/RopeStartingPoint" node_paths=PackedStringArray("grapplingGun")]
+default_color = Color(1, 1, 1, 0)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("5_4riq8")
+ChainLink = ExtResource("4_72b62")
 grapplingGun = NodePath("../..")
 RopeBaseMovementSpeed = 0.35
 WaveHeightMultiplier = 0.5
 straightenLineSpeed = 10.0
+DistPerLink = 20.0
 
-[node name="RopeVisualPath" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
-position = Vector2(1, 0)
+[node name="RopeCurves" type="Node" parent="RigidBody2D/RopeStartingPoint/Rope"]
+
+[node name="RopeVisualPath" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope/RopeCurves"]
+position = Vector2(818, 466)
 curve = SubResource("Curve2D_o2trt")
 
-[node name="RopeVisualPath2" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
+[node name="RopeVisualPath2" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope/RopeCurves"]
+position = Vector2(817, 466)
 curve = SubResource("Curve2D_vmmks")
 
-[node name="RopeVisualPath3" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope"]
+[node name="RopeVisualPath3" type="Path2D" parent="RigidBody2D/RopeStartingPoint/Rope/RopeCurves"]
+position = Vector2(817, 466)
 curve = SubResource("Curve2D_rm8rj")
 
 [node name="Ceiling6" type="StaticBody2D" parent="."]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg1fy4qnt4a4u"]
+[gd_scene load_steps=12 format=3 uid="uid://dg1fy4qnt4a4u"]
 
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerHook.gd" id="1_7sjhh"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_2dfxj"]
+[ext_resource type="PackedScene" uid="uid://cjfgebscai36k" path="res://Scenes/RopeChain.tscn" id="4_52854"]
 [ext_resource type="Script" path="res://Scripts/Hook/PlayerRope.gd" id="5_4riq8"]
+[ext_resource type="AudioStream" uid="uid://bgdp3m7vhf23a" path="res://Assets/Audio/SFX/Player/HookSound.wav" id="5_xtog5"]
+[ext_resource type="AudioStream" uid="uid://bgm48ccfy6uo7" path="res://Assets/Audio/SFX/Player/WhipSound.wav" id="6_jmadl"]
 
 [sub_resource type="Curve2D" id="Curve2D_o2trt"]
 bake_interval = 0.01
@@ -23,8 +26,21 @@ _data = {
 }
 point_count = 9
 
-[node name="Hook" type="Node2D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_orx1t"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("5_xtog5")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8mhr8"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("6_jmadl")
+stream_0/weight = 1.0
+
+[node name="Hook" type="Node2D" node_paths=PackedStringArray("ImpulseSound")]
 script = ExtResource("1_7sjhh")
+ImpulseSound = NodePath("ImpulseSound")
 
 [node name="RopeStartingPoint" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -37,22 +53,35 @@ target_position = Vector2(0, 400)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Rope" type="Line2D" parent="RopeStartingPoint" node_paths=PackedStringArray("grapplingGun")]
+[node name="Rope" type="Line2D" parent="RopeStartingPoint" node_paths=PackedStringArray("grapplingGun", "HookSound")]
+default_color = Color(1, 1, 1, 0)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("5_4riq8")
+ChainLink = ExtResource("4_52854")
 grapplingGun = NodePath("../..")
 RopeBaseMovementSpeed = 0.35
 WaveHeightMultiplier = 0.5
 straightenLineSpeed = 10.0
+HookSound = NodePath("HookSound")
+DistPerLink = 10.0
 
-[node name="RopeVisualPath" type="Path2D" parent="RopeStartingPoint/Rope"]
+[node name="RopeCurves" type="Node" parent="RopeStartingPoint/Rope"]
+
+[node name="RopeVisualPath" type="Path2D" parent="RopeStartingPoint/Rope/RopeCurves"]
 position = Vector2(1, 0)
 curve = SubResource("Curve2D_o2trt")
 
-[node name="RopeVisualPath2" type="Path2D" parent="RopeStartingPoint/Rope"]
+[node name="RopeVisualPath2" type="Path2D" parent="RopeStartingPoint/Rope/RopeCurves"]
 curve = SubResource("Curve2D_vmmks")
 
-[node name="RopeVisualPath3" type="Path2D" parent="RopeStartingPoint/Rope"]
+[node name="RopeVisualPath3" type="Path2D" parent="RopeStartingPoint/Rope/RopeCurves"]
 curve = SubResource("Curve2D_rm8rj")
+
+[node name="HookSound" type="AudioStreamPlayer2D" parent="RopeStartingPoint/Rope"]
+stream = SubResource("AudioStreamRandomizer_orx1t")
+volume_db = -15.0
+
+[node name="ImpulseSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8mhr8")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjfgebscai36k"]
+
+[ext_resource type="Texture2D" uid="uid://cs2he5e2errqs" path="res://Scenes/Eslabon.png" id="1_tjykx"]
+
+[node name="RopeChain" type="Node2D"]
+rotation = -1.5708
+
+[node name="ChainLink" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_tjykx")

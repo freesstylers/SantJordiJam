@@ -76,4 +76,4 @@ func get_pos_to_face_towards():
 func other_collided_with_dragon(other):
 	if other.is_in_group("player") and not playerHitOnThisAttack and not preparingAttack:
 		playerHitOnThisAttack = true
-		(other as Player).characterTakeLife(1)
+		(other as Player).characterTakdeLife(1, Dragon)
