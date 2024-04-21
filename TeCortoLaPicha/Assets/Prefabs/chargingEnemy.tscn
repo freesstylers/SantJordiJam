@@ -60,7 +60,6 @@ target_position = Vector2(500, 0)
 
 [node name="floor_checker" type="RayCast2D" parent="."]
 position = Vector2(0, 60)
-scale = Vector2(1, 1)
 target_position = Vector2(0, 17)
 
 [node name="Area2D" type="Area2D" parent="."]

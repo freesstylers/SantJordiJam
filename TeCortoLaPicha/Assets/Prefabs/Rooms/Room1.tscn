@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4be3a25mf3qr"]
+[gd_scene load_steps=9 format=3 uid="uid://4be3a25mf3qr"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="5_qu8e2"]
 [ext_resource type="PackedScene" uid="uid://bxw328csmcn03" path="res://Assets/Prefabs/shootingEnemy.tscn" id="6_f82dg"]
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="7_l680d"]
+[ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="8_to6y4"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_i5oul")
 EnemiesArray = [NodePath("enemies/enemy")]
 startingCharacterPosition = NodePath("SpawnPos")
@@ -56,3 +57,7 @@ position = Vector2(185.333, -48)
 
 [node name="Player" parent="." instance=ExtResource("7_l680d")]
 position = Vector2(128, -85.3333)
+
+[node name="HookTarget2" parent="." instance=ExtResource("8_to6y4")]
+position = Vector2(436, -323)
+scale = Vector2(0.5, 0.5)

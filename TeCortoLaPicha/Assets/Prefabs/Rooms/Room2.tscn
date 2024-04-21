@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="9_4ns87"]
 
 [node name="Room2" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_iu516")
 EnemiesArray = [NodePath("enemies/enemy")]
 startingCharacterPosition = NodePath("Spawn")
