@@ -33,6 +33,9 @@ func _ready():
 	Player = get_parent().get_parent().get_node("Player")
 func _process(delta):
 	
+	if current_move_buffer > 0:
+		current_move_buffer -= delta
+		
 	if not $floor_checker.is_colliding() and not Player == null:
 		$floor_checker.target_position.move_toward(Player.position, 0.01)
 		angle_to_player = global_position.direction_to(Player.position).angle()

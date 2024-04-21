@@ -62,6 +62,8 @@ var flying_vel : Vector2 = Vector2(0,0)
 @export var time_hit = 0.5
 var hit_buffer = 0
 
+@export var attackSound : AudioStreamPlayer2D
+@export var hitSound : AudioStreamPlayer2D
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -91,6 +93,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Attack") and !hit_buffer > 0:
 		animationPlayer.play("witiza_attack_anim")
 		attacking = true
+		attackSound.pitch_scale = randf_range(1, 1.5)
+		attackSound.play()
 		get_node("Sprite2D").rotation = 0
 
 func _on_animation_player_animation_finished(anim_name):
@@ -263,6 +267,8 @@ func characterTakeLife(value, enemy):
 		characterLife -= value
 		velocity = Vector2.ZERO
 		dashing = false
+		hitSound.pitch_scale = randf_range(-0.95, 1.05)
+		hitSound.play()
 		auxDashCooldown = dashCooldown
 		applyForce(enemy)
 		animationPlayer.play("witiza_get_hit")

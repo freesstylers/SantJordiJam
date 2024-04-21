@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=28 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dqfikn7ovourh" path="res://Sprites/Witiza/GetHit/Witiza_GetHit1-sheet.png" id="7_2o2y7"]
 [ext_resource type="Texture2D" uid="uid://cc5rssn8b02eh" path="res://Sprites/Witiza/Dash/Witiza_Dash_Spritesheet.png" id="7_gv7pb"]
 [ext_resource type="Texture2D" uid="uid://dt55wruvyimng" path="res://Sprites/Witiza/Jump/Witiza_Jump_Rotate-Wheel.png" id="7_yuiq8"]
+[ext_resource type="AudioStream" uid="uid://d1y5oxqru01hf" path="res://Assets/Audio/SFX/Player/chainsaw_loop.wav" id="11_1o6x5"]
+[ext_resource type="AudioStream" uid="uid://7ycwmj6jc8id" path="res://Assets/Audio/SFX/Player/chainsaw_hit.wav" id="12_jxa2i"]
+[ext_resource type="AudioStream" uid="uid://chpntcgxek3hs" path="res://Assets/Audio/SFX/Player/a1.mp3" id="13_iim3p"]
 [ext_resource type="PackedScene" uid="uid://dg1fy4qnt4a4u" path="res://Scenes/Hook.tscn" id="28_cl6vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4175r"]
@@ -850,7 +853,7 @@ font_size = 10
 font_color = Color(0, 0.756863, 0.529412, 1)
 outline_size = 4
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound") groups=["player"]]
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
@@ -878,6 +881,8 @@ dashCooldown = 0.3
 damageForceX = 600
 damageForceY = 200
 time_hit = 0.3
+attackSound = NodePath("Attack")
+hitSound = NodePath("A")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)
@@ -951,6 +956,16 @@ target_position = Vector2(12.8, 9.53674e-07)
 [node name="Hook" parent="." node_paths=PackedStringArray("body_to_launch") instance=ExtResource("28_cl6vo")]
 body_to_launch = NodePath("..")
 rope_length = 100.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_1o6x5")
+autoplay = true
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_jxa2i")
+
+[node name="A" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_iim3p")
 
 [connection signal="body_entered" from="Sprite2D/SwordCollider" to="." method="_on_sword_collider_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

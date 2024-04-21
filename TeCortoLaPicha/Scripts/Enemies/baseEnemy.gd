@@ -12,6 +12,8 @@ var dead = false
 var canMoveCD = 0.5
 var current_move_buffer = 0
 
+@export var damageSound : AudioStreamPlayer2D
+
 func _process(delta):
 	if current_move_buffer <= 0:
 		var localTween : Tween = self.create_tween()
@@ -19,19 +21,23 @@ func _process(delta):
 		localTween.set_ease(Tween.EASE_IN)
 		localTween.tween_property(self, "modulate", Color(1.0,1.0,1.0), 0.1)
 		localTween.tween_property(self, "modulate", Color.WHITE, 1.0)
+	else:
+		var localTween : Tween = self.create_tween()
+		localTween.set_trans(Tween.TRANS_LINEAR)
+		localTween.set_ease(Tween.EASE_IN)
+		localTween.tween_property(self, "modulate", Color(1.0,100.0/255.0,100.0/255.0), 0.1)
+		localTween.tween_property(self, "modulate", Color.RED, 0.1)
 		
 func takeDamage(damage):
 	life -= damage
+	if damageSound != null:
+		damageSound.pitch_scale = randf_range(-0.95, 1.05)
+		damageSound.play()
 	if particles != null:
 		var partAux = particles.instantiate()
 		get_parent().add_child((partAux))
 		partAux.position = position
-	
-	var localTween : Tween = self.create_tween()
-	localTween.set_trans(Tween.TRANS_LINEAR)
-	localTween.set_ease(Tween.EASE_IN)
-	localTween.tween_property(self, "modulate", Color(1.0,100.0/255.0,100.0/255.0), 0.1)
-	localTween.tween_property(self, "modulate", Color.RED, 0.1)
+		
 			
 	print(life)
 	

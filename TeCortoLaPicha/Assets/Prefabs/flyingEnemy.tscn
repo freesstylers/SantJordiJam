@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dc4jvnkk0fh31"]
+[gd_scene load_steps=16 format=3 uid="uid://dc4jvnkk0fh31"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flyingEnemy.gd" id="1_ymp45"]
 [ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_f0xvu"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
 [ext_resource type="Texture2D" uid="uid://comihu85bgx3t" path="res://Sprites/Tijeritas/Tijeritas.png" id="3_1310h"]
+[ext_resource type="AudioStream" uid="uid://iwwmusjq65m4" path="res://Assets/Audio/SFX/miau2.mp3" id="5_ien4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epq8i"]
 atlas = ExtResource("3_1310h")
@@ -76,7 +77,7 @@ size = Vector2(52, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0uk7"]
 size = Vector2(62, 48)
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("wall_checker")]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("wall_checker", "damageSound")]
 collision_layer = 2
 script = ExtResource("1_ymp45")
 direction = 1
@@ -84,6 +85,7 @@ horizontalSpeed = 150
 wall_checker = NodePath("wall_checker")
 damageForceX = 150
 particles = ExtResource("2_f0xvu")
+damageSound = NodePath("recieveDamage")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
@@ -104,5 +106,8 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 4)
 shape = SubResource("RectangleShape2D_n0uk7")
+
+[node name="recieveDamage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ien4k")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

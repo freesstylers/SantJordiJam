@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://41l0llw5ppgq"]
+[gd_scene load_steps=13 format=3 uid="uid://41l0llw5ppgq"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_iu516"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_cekt1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7ciwbxs3u7x" path="res://Assets/Prefabs/chargingEnemy.tscn" id="6_oydw0"]
 [ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="7_cwybp"]
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="9_4ns87"]
+[ext_resource type="AudioStream" uid="uid://cyklu0cxo01r6" path="res://Assets/Audio/Music/ALaTordera.wav" id="10_dtivf"]
 
 [sub_resource type="Curve" id="Curve_70gbr"]
 min_value = -360.0
@@ -56,10 +57,6 @@ position = Vector2(793.333, -253.333)
 position = Vector2(102.667, -436.667)
 direction = 1
 
-[node name="enemy3" parent="enemies" instance=ExtResource("5_2jfxx")]
-position = Vector2(394, -388)
-direction = 1
-
 [node name="enemy5" parent="enemies" instance=ExtResource("6_oydw0")]
 position = Vector2(216.667, -298)
 
@@ -68,6 +65,12 @@ position = Vector2(605.333, -304.667)
 
 [node name="enemy7" parent="enemies" instance=ExtResource("6_oydw0")]
 position = Vector2(581.333, -90)
+
+[node name="enemy8" parent="enemies" node_paths=PackedStringArray("sprite", "damageSound") instance=ExtResource("5_2jfxx")]
+position = Vector2(394, -390)
+direction = 1
+sprite = NodePath("../enemy4/AnimatedSprite2D")
+damageSound = NodePath("../enemy4/recieveDamage")
 
 [node name="HookTarget2" parent="." instance=ExtResource("5_jgflv")]
 position = Vector2(386, -284)
@@ -128,3 +131,7 @@ damping_max = 33.088
 angle_min = -107.5
 angle_max = 386.5
 color = Color(0.996078, 0.827451, 0.639216, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_dtivf")
+autoplay = true
