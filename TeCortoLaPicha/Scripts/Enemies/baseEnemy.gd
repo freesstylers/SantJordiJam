@@ -7,7 +7,7 @@ var Room_: Room = null
 @export var damageForceX = 300
 @export var damageForceY = 300
 
-@export var particles : CPUParticles2D
+@export var particles : PackedScene
 var dead = false
 var canMoveCD = 0.5
 var current_move_buffer = 0
@@ -22,7 +22,10 @@ func _process(delta):
 		
 func takeDamage(damage):
 	life -= damage
-	#particles.emitting = true
+	if particles != null:
+		var partAux = particles.instantiate()
+		get_parent().add_child((partAux))
+		partAux.position = position
 	
 	var localTween : Tween = self.create_tween()
 	localTween.set_trans(Tween.TRANS_LINEAR)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs7ciwbxs3u7x"]
+[gd_scene load_steps=8 format=3 uid="uid://bs7ciwbxs3u7x"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/chargingEnemy.gd" id="1_efae3"]
+[ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_ikmpt"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_xexob"]
 [ext_resource type="Texture2D" uid="uid://c4e8nhlyremn3" path="res://icon.svg" id="3_u22wj"]
 
@@ -29,14 +30,7 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0uhn"]
 size = Vector2(136, 137)
 
-[sub_resource type="Curve" id="Curve_a5nnd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986784, 0.21978), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_3aoxx"]
-colors = PackedColorArray(0.752214, 0.399433, 0.52133, 1, 0.86486, 0.639414, 1, 1)
-
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("player_detector", "particles")]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("player_detector")]
 scale = Vector2(0.2, 0.2)
 collision_layer = 2
 script = ExtResource("1_efae3")
@@ -45,7 +39,7 @@ horizontalSpeed = 100.0
 player_detector = NodePath("player_checker")
 charge_velocity = 300
 damageForceX = 150
-particles = NodePath("CPUParticles2D")
+particles = ExtResource("2_ikmpt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
@@ -67,24 +61,5 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_p0uhn")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -1)
-emitting = false
-amount = 30
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 1.0
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 20.0
-initial_velocity_max = 100.0
-scale_amount_min = 1.7
-scale_amount_max = 1.7
-scale_amount_curve = SubResource("Curve_a5nnd")
-color = Color(0.913725, 0.176471, 0.301961, 1)
-color_ramp = SubResource("Gradient_3aoxx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

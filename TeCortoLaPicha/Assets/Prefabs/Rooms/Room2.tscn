@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://41l0llw5ppgq"]
+[gd_scene load_steps=12 format=3 uid="uid://41l0llw5ppgq"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_iu516"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_cekt1"]
@@ -9,6 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://bs7ciwbxs3u7x" path="res://Assets/Prefabs/chargingEnemy.tscn" id="6_oydw0"]
 [ext_resource type="PackedScene" uid="uid://dc4jvnkk0fh31" path="res://Assets/Prefabs/flyingEnemy.tscn" id="7_cwybp"]
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="9_4ns87"]
+
+[sub_resource type="Curve" id="Curve_70gbr"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 62.9619), 0.0, 0.0, 0, 0, Vector2(0.994275, -240.677), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fjwnn"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.442748, -148.378), 0.0, 0.0, 0, 0, Vector2(1, 0.141037), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Room2" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
 scale = Vector2(2, 2)
@@ -37,9 +49,8 @@ position = Vector2(883.333, -64.6667)
 [node name="enemy" parent="enemies" instance=ExtResource("4_h1dtu")]
 position = Vector2(388, -140)
 
-[node name="enemy2" parent="enemies" node_paths=PackedStringArray("particles") instance=ExtResource("4_h1dtu")]
+[node name="enemy2" parent="enemies" instance=ExtResource("4_h1dtu")]
 position = Vector2(793.333, -253.333)
-particles = NodePath("../enemy/CPUParticles2D")
 
 [node name="enemy4" parent="enemies" instance=ExtResource("5_2jfxx")]
 position = Vector2(102.667, -436.667)
@@ -96,3 +107,24 @@ layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Decoracion"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(480.5, -511.5)
+amount = 800
+lifetime = 10.0
+speed_scale = 0.53
+emission_shape = 3
+emission_rect_extents = Vector2(700, 1)
+spread = 83.55
+gravity = Vector2(-200, 300)
+angular_velocity_curve = SubResource("Curve_70gbr")
+linear_accel_min = -16.7
+linear_accel_curve = SubResource("Curve_fjwnn")
+radial_accel_min = -84.53
+radial_accel_max = -84.53
+tangential_accel_max = 13.35
+damping_max = 33.088
+angle_min = -107.5
+angle_max = 386.5
+color = Color(0.996078, 0.827451, 0.639216, 1)
