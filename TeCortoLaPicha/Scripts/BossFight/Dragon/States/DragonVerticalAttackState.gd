@@ -12,8 +12,10 @@ class_name DragonVerticalAttackState
 
 var playerHitOnThisAttack : bool = false
 var localTween  = null
+var thisStateIsActive : bool = false
 
 func preState():
+	thisStateIsActive = true
 	StateToReturn = MyState
 	preparingAttack=true
 	playerHitOnThisAttack = false
@@ -22,6 +24,7 @@ func preState():
 	Dragon.getVisualizer().start_flying_effect()
 
 func postState():
+	thisStateIsActive = false
 	if localTween != null:
 		(localTween as Tween).kill()
 		localTween = null
@@ -62,6 +65,7 @@ func Attack():
 		FireBeamSound.stop()		
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):
+			playerHitOnThisAttack=false
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)
 		else:
 			StateToReturn = NextState
@@ -74,6 +78,6 @@ func get_pos_to_face_towards():
 		return get_global_mouse_position()
 
 func other_collided_with_dragon(other):
-	if other.is_in_group("player") and not playerHitOnThisAttack and not preparingAttack:
+	if thisStateIsActive and other.is_in_group("player") and not playerHitOnThisAttack and not preparingAttack:
 		playerHitOnThisAttack = true
-		(other as Player).characterTakdeLife(1, Dragon)
+		(other as Player).characterTakeLife(1, global_position)

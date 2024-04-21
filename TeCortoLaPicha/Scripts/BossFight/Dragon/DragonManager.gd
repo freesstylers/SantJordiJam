@@ -49,3 +49,7 @@ func Reset():
 	
 func StartFight():
 	currentState = "FIREBALL"
+	
+func Die():
+	queue_free()
+	#Go to main menu

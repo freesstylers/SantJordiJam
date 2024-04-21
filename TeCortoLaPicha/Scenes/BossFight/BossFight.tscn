@@ -14,22 +14,6 @@ ThePlayer = NodePath("Player")
 DragonDefaultPos = NodePath("FightPositions/DragonDefaultPos")
 PlayerDefaultPos = NodePath("FightPositions/PlayerDefaultPos")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(430, 240)
-zoom = Vector2(1.5, 1.5)
-script = ExtResource("2_hy2ev")
-randomStrength = 20.0
-shakeFade = 7.0
-
-[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions", "VerticalFlameAttackPosition", "HorizontalAttackPosition", "ThePlayer", "CamShaker") instance=ExtResource("2_loj10")]
-position = Vector2(295, 408)
-FlyingSpeed = 575.0
-FiringPositions = [NodePath("../FightPositions/FireballFiringPositions/Pos1"), NodePath("../FightPositions/FireballFiringPositions/Pos2"), NodePath("../FightPositions/FireballFiringPositions/Pos3"), NodePath("../FightPositions/FireballFiringPositions/Pos4")]
-VerticalFlameAttackPosition = NodePath("../FightPositions/VerticalFlameAttackPos")
-HorizontalAttackPosition = [NodePath("../FightPositions/HorizontalFlameAttackPos"), NodePath("../FightPositions/HorizontalFlameAttackPos2")]
-ThePlayer = NodePath("../Player")
-CamShaker = NodePath("../Camera2D")
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-334, 206)
 tile_set = ExtResource("6_ic76v")
@@ -43,24 +27,46 @@ layer_2/name = "Decoracion"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(430, 240)
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("2_hy2ev")
+randomStrength = 20.0
+shakeFade = 7.0
+
+[node name="Player" parent="." instance=ExtResource("6_3tbiv")]
+position = Vector2(-261, 608)
+
+[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions", "VerticalFlameAttackPosition", "HorizontalAttackPosition", "ThePlayer", "CamShaker") instance=ExtResource("2_loj10")]
+position = Vector2(770, 400)
+FlyingSpeed = 575.0
+FiringPositions = [NodePath("../FightPositions/FireballFiringPositions/Pos1"), NodePath("../FightPositions/FireballFiringPositions/Pos2"), NodePath("../FightPositions/FireballFiringPositions/Pos3"), NodePath("../FightPositions/FireballFiringPositions/Pos4")]
+VerticalFlameAttackPosition = NodePath("../FightPositions/VerticalFlameAttackPos")
+HorizontalAttackPosition = [NodePath("../FightPositions/HorizontalFlameAttackPos"), NodePath("../FightPositions/HorizontalFlameAttackPos2")]
+ThePlayer = NodePath("../Player")
+CamShaker = NodePath("../Camera2D")
+
 [node name="Hooks" type="Node2D" parent="."]
 
 [node name="HookTarget" parent="Hooks" instance=ExtResource("6_a8h10")]
-position = Vector2(189, 272)
+position = Vector2(189, 240)
+scale = Vector2(2, 2)
 
 [node name="HookTarget2" parent="Hooks" instance=ExtResource("6_a8h10")]
-position = Vector2(428, 248)
+position = Vector2(428, 200)
+scale = Vector2(2, 2)
 
 [node name="HookTarget3" parent="Hooks" instance=ExtResource("6_a8h10")]
-position = Vector2(665, 279)
+position = Vector2(665, 247)
+scale = Vector2(2, 2)
 
 [node name="FightPositions" type="Node" parent="."]
 
 [node name="PlayerDefaultPos" type="Node2D" parent="FightPositions"]
-position = Vector2(120, 392)
+position = Vector2(120, 397)
 
 [node name="DragonDefaultPos" type="Node2D" parent="FightPositions"]
-position = Vector2(772, 398)
+position = Vector2(770, 400)
 
 [node name="FireballFiringPositions" type="Node2D" parent="FightPositions"]
 
@@ -84,6 +90,3 @@ position = Vector2(92, 403)
 
 [node name="HorizontalFlameAttackPos2" type="Node2D" parent="FightPositions"]
 position = Vector2(773, 404)
-
-[node name="Player" parent="." instance=ExtResource("6_3tbiv")]
-position = Vector2(127, 398)

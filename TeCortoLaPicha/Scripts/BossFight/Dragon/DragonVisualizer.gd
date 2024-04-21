@@ -16,10 +16,6 @@ enum ANIM_STATE { IDLE, ATTACK, FALL, DEATH }
 
 func _ready():
 	FireParticles.emitting = false
-	FireParticles.scale = Vector2(0,0)
-	var localTween = create_tween()
-	localTween.tween_callback(PlayTakeDamageEffect).set_delay(2)
-	localTween.tween_callback(PlayTakeDamageEffect).set_delay(2)
 
 func update_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
@@ -66,17 +62,17 @@ func change_fire_particles_state(active, duration = 0):
 	FireParticles.emitting = active
 	if duration == 0:
 		if active:
-			FireParticles.scale = Vector2(1,1)
+			FireParticles.scale_amount_min = 3
 		else:
-			FireParticles.scale = Vector2(0,0)
+			FireParticles.scale_amount_max = 0
 	else:
 		var localTween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
 		if active:
-			FireParticles.scale = Vector2(0,0)
-			localTween.tween_property(FireParticles, "scale", Vector2(1,1), duration)
+			FireParticles.scale_amount_min = 0
+			localTween.tween_property(FireParticles, "scale_amount_min", 3, duration)
 		else:
-			FireParticles.scale = Vector2(1,1)
-			localTween.tween_property(FireParticles, "scale", Vector2(0,0), duration)
+			FireParticles.scale_amount_max = 3
+			localTween.tween_property(FireParticles, "scale_amount_max", 0, duration)
 		
 		
 func get_pos_to_face_towards():
@@ -98,5 +94,5 @@ func DieAnim():
 	localTween.tween_property(DragonMngr, "rotatio", 2*PI, DeathAnimLength)
 	localTween.chain().tween_callback(
 		func():
-			Globals.roomDepleted.emit()
+			DragonMngr.Die()
 	)

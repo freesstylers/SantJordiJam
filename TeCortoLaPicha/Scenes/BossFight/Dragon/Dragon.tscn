@@ -23,7 +23,7 @@ size = Vector2(24, 24)
 size = Vector2(100, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
-size = Vector2(183, 20)
+size = Vector2(413.758, 20)
 
 [sub_resource type="Curve" id="Curve_mxlvr"]
 _data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0, Vector2(0.266129, 1), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -42,7 +42,7 @@ stream_0/stream = ExtResource("10_ovmjx")
 stream_0/weight = 1.0
 
 [node name="DragonStateMachine" type="Node2D"]
-position = Vector2(266, 429)
+position = Vector2(645, 641)
 script = ExtResource("1_fbe06")
 FlyingSpeed = 750.0
 
@@ -51,7 +51,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("14_wlc6i")
 DragonMngr = NodePath("..")
-life = 5
+life = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_ou3gk")
@@ -82,7 +82,7 @@ wait_time = 0.25
 script = ExtResource("2_6up4d")
 flyingFrequency = 10.0
 flyingAmplitude = 7.5
-FireParticles = NodePath("FlameHitbox/CPUParticles2D")
+FireParticles = NodePath("FlameHitbox/FireParticles")
 DragonMngr = NodePath("..")
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
@@ -92,24 +92,24 @@ texture = ExtResource("3_vacna")
 rotation = 2.35619
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonVisualizer/FlameHitbox"]
-position = Vector2(81.5, 0)
+position = Vector2(196.879, 0)
 shape = SubResource("RectangleShape2D_bd8ul")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="DragonVisualizer/FlameHitbox"]
+[node name="FireParticles" type="CPUParticles2D" parent="DragonVisualizer/FlameHitbox"]
 position = Vector2(0.707107, -0.707107)
-amount = 50
+amount = 100
 lifetime = 0.5
 texture = ExtResource("4_j2hio")
 emission_shape = 1
 emission_sphere_radius = 10.0
 spread = 10.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 700.0
-initial_velocity_max = 1000.0
+initial_velocity_min = 950.0
+initial_velocity_max = 950.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_mxlvr")
 color = Color(0, 0.333333, 0.698039, 0.372549)
 
@@ -172,7 +172,7 @@ MyState = "HORIZONTAL"
 [node name="VERTICAL_FLAME_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FireFlameHitbox", "Dragon")]
 script = ExtResource("7_oj72r")
 FireFlameHitbox = NodePath("../../DragonVisualizer/FlameHitbox")
-DelayBeforeFlameStart = 1.0
+DelayBeforeFlameStart = 1.5
 Dragon = NodePath("../..")
 TimesToAttack = 2
 MyState = "VERTICAL"
@@ -185,7 +185,7 @@ MyState = "VERTICAL"
 [connection signal="timeout" from="Hitbox/DamageOnHitTimer" to="Hitbox" method="damage_timer_finished"]
 [connection signal="area_entered" from="Hitbox/HurtBox" to="Hitbox" method="other_area_entered_hurtbox"]
 [connection signal="timeout" from="Hitbox/HurtBox/GetHurtTimer" to="Hitbox" method="hurtbox_timer_finished"]
-[connection signal="body_entered" from="DragonVisualizer/FlameHitbox" to="States/VERTICAL_FLAME_ATTACK_STATE" method="other_entered_flame"]
+[connection signal="body_entered" from="DragonVisualizer/FlameHitbox" to="States/VERTICAL_FLAME_ATTACK_STATE" method="other_collided_with_dragon"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/HORIZONTAL_FLAME_ATTACK_STATE/DelayBeforeAttackTimer" to="States/HORIZONTAL_FLAME_ATTACK_STATE" method="Attack"]

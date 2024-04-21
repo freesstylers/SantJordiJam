@@ -52,14 +52,14 @@ func _input(event):
 				hook_target_pos = hook_target_object.global_position #ray.get_collision_point()
 				rope_starting_point.global_rotation = (hook_target_object.global_position-global_position).angle()
 				grappling_rope.ShootRope(hook_target_pos)
-		elif hook_shot and mouse_event.button_index == MOUSE_BUTTON_RIGHT and not mouse_event.pressed:
-			launch = false
-			hook_shot = false
-			hook_target_object = null
-			grappling_rope.HideRope()
-			if movement_tween != null:
-				movement_tween.kill()
-				movement_tween = null
+		#elif hook_shot and mouse_event.button_index == MOUSE_BUTTON_RIGHT and not mouse_event.pressed:
+			#launch = false
+			#hook_shot = false
+			#hook_target_object = null
+			#grappling_rope.HideRope()
+			#if movement_tween != null:
+				#movement_tween.kill()
+				#movement_tween = null
 
 #Make the player move towards the rope end and launch him into that direction
 func Launch():

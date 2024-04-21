@@ -39,7 +39,7 @@ func damage_timer_finished():
 func other_area_entered_hurtbox(other):
 	if other.is_in_group("sword") and canGetDamaged:
 		canGetDamaged = false
-		takeDamage(1)
+		takeDamage(20)
 		DragonMngr.getVisualizer().PlayTakeDamageEffect()
 		HurtBoxTimer.start()
 func hurtbox_timer_finished():

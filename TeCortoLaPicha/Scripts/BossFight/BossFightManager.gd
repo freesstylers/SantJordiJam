@@ -12,7 +12,7 @@ func _ready():
 	localTween.tween_callback(
 		func():
 			scene_to_default()
-	).set_delay(2)
+	).set_delay(1)
 	localTween.tween_callback(start_fight).set_delay(2)
 	Globals.roomCompleted.connect(PlayerWon)
 	
