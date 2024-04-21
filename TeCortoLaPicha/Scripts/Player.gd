@@ -100,8 +100,7 @@ func _input(event):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":
 		attacking = false
-		print("end attack")
-	pass # Replace with function body.
+		#print("end attack")
 
 var attacking = false
 

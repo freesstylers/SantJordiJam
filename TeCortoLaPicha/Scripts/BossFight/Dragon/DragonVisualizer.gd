@@ -8,6 +8,8 @@ class_name DragonVisualizer
 @export var DragonMngr : DragonManager = null
 @export var DeathAnimLength : float = 0.5
 
+@export var DeathSound : AudioStreamPlayer2D = null
+
 @onready var DragonAnimation : Sprite2D = $Dragon
 
 var face_player : bool = true
@@ -42,9 +44,9 @@ func _process(delta):
 	if(face_player):
 		var position_to_face = get_pos_to_face_towards()
 		if position_to_face.x < DragonMngr.global_position.x:
-			DragonAnimation.scale.x = -abs(DragonAnimation.scale.x)
-		else:
 			DragonAnimation.scale.x = abs(DragonAnimation.scale.x)
+		else:
+			DragonAnimation.scale.x = -abs(DragonAnimation.scale.x)
 	
 	if not flying_effect_active:
 		return 
@@ -98,10 +100,12 @@ func PlayTakeDamageEffect():
 	localTween.tween_property(DragonAnimation, "modulate", Color.WHITE, effectDuration/2)
 
 func DieAnim():
+	DeathSound.play()
+	FireParticles.visible=false
 	var localTween = create_tween()
 	localTween.set_parallel(true)
 	localTween.tween_property(DragonMngr, "scale", Vector2(0,0), DeathAnimLength)
-	localTween.tween_property(DragonMngr, "rotatio", 2*PI, DeathAnimLength)
+	localTween.tween_property(DragonMngr, "rotation", 2*PI, DeathAnimLength)
 	localTween.chain().tween_callback(
 		func():
 			DragonMngr.Die()

@@ -8,6 +8,7 @@ class_name DragonManager
 @export var ThePlayer : Player = null
 @export var CamShaker : CameraShaker = null
 @onready var Visualizer : DragonVisualizer = $DragonVisualizer
+@export var bossFightMngr : BossFightManager = null
 
 func _ready():
 	states = {
@@ -51,5 +52,5 @@ func StartFight():
 	currentState = "FIREBALL"
 	
 func Die():
+	bossFightMngr.PlayerWon()
 	queue_free()
-	#Go to main menu

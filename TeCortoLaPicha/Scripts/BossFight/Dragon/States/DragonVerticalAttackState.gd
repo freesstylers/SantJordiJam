@@ -71,6 +71,7 @@ func Attack():
 		Dragon.getVisualizer().change_face_player_condition(true)
 		Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE)
 		Dragon.getVisualizer().change_fire_particles_state(false, 0.25)
+		playerHitOnThisAttack=true #Esto es para evitar que te pegue cuando el fuego ya se apagó
 		FireBeamSound.stop()		
 		timesAttacked = timesAttacked +1
 		if(timesAttacked < TimesToAttack):

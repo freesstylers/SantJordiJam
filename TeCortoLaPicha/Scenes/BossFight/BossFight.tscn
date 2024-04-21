@@ -37,7 +37,7 @@ shakeFade = 7.0
 [node name="Player" parent="." instance=ExtResource("6_3tbiv")]
 position = Vector2(-261, 608)
 
-[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions", "VerticalFlameAttackPosition", "HorizontalAttackPosition", "ThePlayer", "CamShaker") instance=ExtResource("2_loj10")]
+[node name="DragonStateMachine" parent="." node_paths=PackedStringArray("FiringPositions", "VerticalFlameAttackPosition", "HorizontalAttackPosition", "ThePlayer", "CamShaker", "bossFightMngr") instance=ExtResource("2_loj10")]
 position = Vector2(770, 400)
 FlyingSpeed = 575.0
 FiringPositions = [NodePath("../FightPositions/FireballFiringPositions/Pos1"), NodePath("../FightPositions/FireballFiringPositions/Pos2"), NodePath("../FightPositions/FireballFiringPositions/Pos3"), NodePath("../FightPositions/FireballFiringPositions/Pos4")]
@@ -45,6 +45,7 @@ VerticalFlameAttackPosition = NodePath("../FightPositions/VerticalFlameAttackPos
 HorizontalAttackPosition = [NodePath("../FightPositions/HorizontalFlameAttackPos"), NodePath("../FightPositions/HorizontalFlameAttackPos2")]
 ThePlayer = NodePath("../Player")
 CamShaker = NodePath("../Camera2D")
+bossFightMngr = NodePath("..")
 
 [node name="Hooks" type="Node2D" parent="."]
 
@@ -92,10 +93,10 @@ position = Vector2(669, 185)
 position = Vector2(771, 126)
 
 [node name="VerticalFlameAttackPos" type="Node2D" parent="FightPositions"]
-position = Vector2(437, 411)
+position = Vector2(437, 400)
 
 [node name="HorizontalFlameAttackPos" type="Node2D" parent="FightPositions"]
-position = Vector2(92, 375)
+position = Vector2(92, 390)
 
 [node name="HorizontalFlameAttackPos2" type="Node2D" parent="FightPositions"]
-position = Vector2(773, 375)
+position = Vector2(773, 390)

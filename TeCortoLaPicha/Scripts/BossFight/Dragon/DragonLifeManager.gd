@@ -3,7 +3,6 @@ extends baseEnemy
 @export var DragonMngr : DragonManager  = null
 @export var damageToCharacter: int = 1
 
-@onready var DeathSound : AudioStreamPlayer2D = $DeathSound
 @onready var DamageOnHitTimer : Timer = $DamageOnHitTimer
 @onready var HurtBoxTimer : Timer = $HurtBox/GetHurtTimer
 
@@ -20,7 +19,6 @@ func takeDamage(damage):
 
 func die():
 	DragonMngr.setState("")
-	DeathSound.play()
 	DragonMngr.getVisualizer().DieAnim()
 
 ###################DEAL DAMAGE TO THE PLAYER

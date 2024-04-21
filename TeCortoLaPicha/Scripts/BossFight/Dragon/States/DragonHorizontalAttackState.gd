@@ -30,7 +30,7 @@ func operate(delta):
 		var dir : Vector2 =  (attackStartingPos - Dragon.global_position).normalized()
 		Dragon.global_position = Dragon.global_position + (dir*Dragon.getFlyingSpeed()*delta)
 		#Reached firing pos
-		if (Dragon.global_position - attackStartingPos).length() < 30:
+		if (Dragon.global_position - attackStartingPos).length() < 10:
 			preparingAttack = false
 			DelayBeforeAttackTimer.start(DelayBeforeAttack)
 	return StateToReturn
