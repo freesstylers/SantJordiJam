@@ -22,25 +22,19 @@ Sprint,Correr,Sprint,,,,,,
 ControlList,"Moverse:
 Saltar:
 Atacar:
-Correr:
-Gancho:
-Esquivar:","Move:
+Esquivar:
+Gancho:","Move:
 Jump:
 Attack:
-Sprint:
-Grapple:
-Dash:",,,,,,
+Dash:
+Grapple:",,,,,,
 ControlButtons,"
 
+/ Doble Toque Mover
+","
 
-
-
-/ Doble Toque Mover","
-
-
-
-
-/ Double Tap Move",,,,,,
+/ Double Tap Move
+",,,,,,
 Story1,"Palacio un dragón vigila
 Tu misión protegerlo es
 con su espada va Witiza
