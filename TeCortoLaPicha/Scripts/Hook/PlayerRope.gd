@@ -10,7 +10,7 @@ class_name GrapplingRope
 @export var HookSound : AudioStreamPlayer2D = null
 @export var DistPerLink : float = 5
 
-@onready var linePath : Path2D = $RopeVisualPath2
+@onready var linePath : Path2D = $RopeCurves/RopeVisualPath2
 @onready var waveHeight : float = WaveHeightMultiplier
 @onready var m_lineRenderer : Line2D = self
 
