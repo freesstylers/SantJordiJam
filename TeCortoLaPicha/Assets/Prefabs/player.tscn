@@ -959,6 +959,7 @@ rope_length = 100.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_1o6x5")
+volume_db = -10.0
 autoplay = true
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]

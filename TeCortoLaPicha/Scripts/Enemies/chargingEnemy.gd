@@ -55,14 +55,18 @@ func _physics_process(delta):
 				
 	# Add the gravity.	
 	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-	elif is_on_wall() or (detect_cliffs and not $floor_checker.is_colliding()):
+		velocity.y += gravity * delta		
+	elif not $floor_checker.is_colliding():
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 		player_detector.target_position.x = -player_detector.target_position.x
 		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
-	
+	elif is_on_wall():
+		direction *= -1
+		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+		player_detector.target_position.x = -player_detector.target_position.x
+		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+		
 	if !charging and waiting_buffer <= 0:
 		animationPlayer.play("default")
 		velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)

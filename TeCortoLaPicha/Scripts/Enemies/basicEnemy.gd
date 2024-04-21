@@ -27,11 +27,24 @@ func _physics_process(delta):
 	# Add the gravity.	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if is_on_wall() or (not $floor_checker.is_colliding() && is_on_floor()):
+		#$floor_checker.visible = true
+	if not $floor_checker.is_colliding() && is_on_floor():
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-		$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
-	
+		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+	elif is_on_wall():
+		direction *= -1
+		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+		#$floor_checker.visible = false
+	#and not $floor_checker.is_colliding():
+		#direction *= -1
+		#$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+	#if is_on_floor():
+		#direction *= -1
+		#$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+		
 	if current_move_buffer <= 0:
 		velocity.x = horizontalSpeed * direction		 
 

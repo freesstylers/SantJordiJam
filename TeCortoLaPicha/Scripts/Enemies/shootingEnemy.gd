@@ -38,7 +38,7 @@ func _process(delta):
 		
 	if not $floor_checker.is_colliding() and not Player == null:
 		$floor_checker.target_position.move_toward(Player.position, 0.01)
-		angle_to_player = global_position.direction_to(Player.position).angle()
+		#angle_to_player = global_position.direction_to(Player.position).angle()
 		#rotation = move_toward(rotation, angle_to_player, delta)
 	if not shooting: #No restart
 		sprite.play("default")
@@ -84,19 +84,16 @@ func shoot():
 func flip():
 	if Player != null:
 		var dir = position.x - Player.position.x
-		if dir > 0:
+		if dir < 0:
 			lookingRight = true
+			$AnimatedSprite2D.flip_h = false
 		else:
 			lookingRight = false
-		
-		if lookingRight && lastDir < 0 || !lookingRight && lastDir > 0:
-			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+			$AnimatedSprite2D.flip_h = true		
 			
 		lastDir = clamp(dir, -1, 1)
 
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" and not dead:
-		body.characterTakeLife(damageToCharacter, position)
-	pass # Replace with function body.
-	pass # Replace with function body.
+		body.characterTakeLife(damageToCharacter, position) 

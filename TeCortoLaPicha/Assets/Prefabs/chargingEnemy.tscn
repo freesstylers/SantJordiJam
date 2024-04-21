@@ -140,7 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(49, 40)
+size = Vector2(42, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0uhn"]
 size = Vector2(54, 47)
@@ -165,7 +165,7 @@ offset = Vector2(-0.49, -16.51)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -5)
+position = Vector2(-2, -5)
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="player_checker" type="RayCast2D" parent="."]
@@ -173,8 +173,8 @@ position = Vector2(24, 0)
 target_position = Vector2(500, 0)
 
 [node name="floor_checker" type="RayCast2D" parent="."]
-position = Vector2(0, 32)
-target_position = Vector2(0, 25)
+position = Vector2(0, 15)
+target_position = Vector2(0, 15)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

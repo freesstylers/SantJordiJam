@@ -275,7 +275,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43enp"]
-size = Vector2(48, 38)
+size = Vector2(27, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af36k"]
 size = Vector2(52, 42)
@@ -294,10 +294,11 @@ frame_progress = 0.965424
 speed_scale = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 12)
+position = Vector2(-7.5, 12)
 shape = SubResource("RectangleShape2D_43enp")
 
 [node name="floor_checker" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, 25)
 target_position = Vector2(0, 17)
 
