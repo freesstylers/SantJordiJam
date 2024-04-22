@@ -140,6 +140,7 @@ text = "Credits"
 [node name="OptionButton" type="OptionButton" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+alignment = 1
 script = ExtResource("8_iw4xy")
 
 [node name="credits" type="Panel" parent="."]
@@ -180,21 +181,24 @@ uppercase = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "~~~~~~~~~~~~
-Gonzalo cidoncha - Gusano Quijote
-DAVID CZEPIEL - Cocollona legendaria
-PABLO GROSSI - Gusano Jorge Madresalvaje
-IGNACIO ORY - Gusano Marx
-Adán Sánchez - Papelosaurio
-JAVIER ARIAS - Gusano Hatsune Miku
+Gonzalo cidoncha - silly goofy
+DAVID CZEPIEL - el becario
+PABLO GROSSI - el machango
+IGNACIO ORY - superviviente
+Adán - el creador
+JAVIER ARIAS - kumquat konnoisseur
 
-Extra Assets: Gokhan Solak
-Loc:  "
+Gokhan Solak - el librero"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="Label3" type="Label" parent="credits/container/VBoxContainer"]
 layout_mode = 2
+text = "
+
+
+"
 
 [node name="CreditsBack2" type="Button" parent="credits/container/VBoxContainer"]
 layout_mode = 2
@@ -269,6 +273,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="tutorial"]
+visible = false
 layout_mode = 2
 anchor_left = 0.0345528
 anchor_top = 0.000588872
@@ -441,5 +446,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]

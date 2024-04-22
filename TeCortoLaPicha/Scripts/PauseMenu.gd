@@ -19,9 +19,6 @@ func TogglePause(state):
 
 
 func TweenIn():
-	for b in buttons:
-		b.disabled = false
-		pass
 		
 	if tween:
 		tween.kill()
@@ -30,10 +27,14 @@ func TweenIn():
 	tween = create_tween()
 	tween.tween_property($UI, "rotation_degrees", 0, t).set_trans(Tween.TRANS_LINEAR)
 	tween.parallel().tween_property($UI, "global_position", Vector2(0, 0), t).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(TweenInEnd)
 	pass
 
 
 func TweenOut():
+	for b in buttons:
+		get_node(b).disabled = true
+		pass
 	if tween:
 		tween.kill()
 		pass
@@ -47,8 +48,12 @@ func TweenOut():
 
 func TweenOutEnd():
 	visible = false
+	pass
+	
+func TweenInEnd():
+		
 	for b in buttons:
-		b.disabled = true
+		get_node(b).disabled = false
 		pass
 	pass
 

@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://d24fnwcuigbo0"]
+[gd_scene load_steps=4 format=3 uid="uid://d24fnwcuigbo0"]
 
-[ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_13e7u"]
+[ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_tk2jt"]
+[ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_45mbt"]
 [ext_resource type="Texture2D" uid="uid://b2g1mja2pqxjq" path="res://Sprites/UI/Petalo1.png" id="2_qhi53"]
 
-[node name="GameUi" type="Control"]
+[node name="GameUi" type="Control" node_paths=PackedStringArray("attack", "dash")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_13e7u")
+theme = ExtResource("1_tk2jt")
+script = ExtResource("2_45mbt")
+attack = NodePath("abilities/Atk/ProgressBar")
+dash = NodePath("abilities/dash/ProgressBar")
 metadata/_edit_use_anchors_ = true
 
 [node name="rosatimer" type="TextureRect" parent="."]
@@ -45,6 +49,13 @@ texture = ExtResource("2_qhi53")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="ProgressBar" type="ProgressBar" parent="abilities/Atk"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="dash" type="PanelContainer" parent="abilities"]
 layout_mode = 2
 size_flags_horizontal = 5
@@ -56,6 +67,13 @@ texture = ExtResource("2_qhi53")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="ProgressBar" type="ProgressBar" parent="abilities/dash"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="grapple" type="PanelContainer" parent="abilities"]
 layout_mode = 2
 size_flags_horizontal = 5
@@ -66,3 +84,11 @@ layout_mode = 2
 texture = ExtResource("2_qhi53")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="abilities/grapple"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+fill_mode = 3
+show_percentage = false

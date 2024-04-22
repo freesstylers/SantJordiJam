@@ -70,6 +70,11 @@ var hit_buffer = 0
 @export var camera : CameraShaker
 @export var timer: Timer
 
+signal attack_start
+signal attack_cancel
+signal dash_start
+signal dash_cancel
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -104,11 +109,13 @@ func _input(event):
 		attacking = true
 		attackSound.pitch_scale = randf_range(1, 1.5)
 		attackSound.play()
+		attack_start.emit()
 		get_node("Sprite2D").rotation = 0
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":
 		attacking = false
+		attack_cancel.emit()
 		#print("end attack")
 
 var attacking = false
@@ -218,7 +225,8 @@ func ControlDoubleTap(_delta, direction, event_):
 		if direction != 0:
 			double_tap = true
 			dashSound.play()
-			get_node("Sprite2D").rotation = 0	
+			get_node("Sprite2D").rotation = 0
+			dash_start.emit()
 
 func ControlDash(delta, direction):
 	#######Dash	
@@ -235,6 +243,7 @@ func ControlDash(delta, direction):
 			dashing = false
 			auxDashTime = 0.0
 			auxDashCooldown = 0.0
+			dash_cancel.emit()
 			
 	elif not canDash:
 		auxDashCooldown += delta
@@ -257,6 +266,7 @@ func characterTakeLife(value, enemy):
 		if(camera != null):
 			camera.apply_shake()
 		dashing = false
+		dash_cancel.emit()
 		hitSound.play()
 		auxDashCooldown = dashCooldown
 		applyForce(enemy)

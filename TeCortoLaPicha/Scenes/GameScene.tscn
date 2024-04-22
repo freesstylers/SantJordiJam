@@ -1,15 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd5qgadjqxig1"]
+[gd_scene load_steps=11 format=3 uid="uid://dd5qgadjqxig1"]
 
 [ext_resource type="Script" path="res://Scripts/RoomManager.gd" id="1_dy84q"]
 [ext_resource type="PackedScene" uid="uid://41l0llw5ppgq" path="res://Assets/Prefabs/Rooms/Room2.tscn" id="2_4t8vj"]
-[ext_resource type="PackedScene" uid="uid://t18ut1uhyfuh" path="res://Assets/Prefabs/Rooms/Room6.tscn" id="2_og3jo"]
 [ext_resource type="Texture2D" uid="uid://dqbqlq7g5ftpj" path="res://Sprites/Tilesets/Tileset-Bosque.png" id="3_g4hnb"]
 [ext_resource type="PackedScene" uid="uid://4be3a25mf3qr" path="res://Assets/Prefabs/Rooms/Room1.tscn" id="3_m017o"]
 [ext_resource type="Texture2D" uid="uid://drqkubs8r36tj" path="res://Sprites/Tilesets/Tileset-HarryPotter.png" id="4_ii3gx"]
 [ext_resource type="PackedScene" uid="uid://chxnx4k6jbyn4" path="res://Assets/Prefabs/Rooms/Room3.tscn" id="4_ka1km"]
 [ext_resource type="Texture2D" uid="uid://c58titycuvl87" path="res://Sprites/Tilesets/Tileset-JordiWild.png" id="5_fyq48"]
-[ext_resource type="PackedScene" uid="uid://dvjyh5w86swuv" path="res://Assets/Prefabs/Rooms/Room4.tscn" id="5_uyd0i"]
-[ext_resource type="PackedScene" uid="uid://cprrymfrusjgq" path="res://Assets/Prefabs/Rooms/Room5.tscn" id="6_c0g6x"]
 [ext_resource type="Texture2D" uid="uid://s6masaiq4odk" path="res://Sprites/Tilesets/Tileset-Quijote.png" id="6_g8irv"]
 [ext_resource type="Texture2D" uid="uid://cs8734tt2y05a" path="res://Sprites/Tilesets/Tileset-URSS.png" id="7_g25vb"]
 [ext_resource type="PackedScene" uid="uid://d24fnwcuigbo0" path="res://Assets/Prefabs/GameUI.tscn" id="10_bkl3a"]
@@ -18,9 +15,12 @@
 
 [node name="RoomContainer" type="Node2D" parent="."]
 script = ExtResource("1_dy84q")
-Rooms = Array[PackedScene]([ExtResource("2_og3jo"), ExtResource("3_m017o"), ExtResource("2_4t8vj"), ExtResource("4_ka1km"), ExtResource("5_uyd0i"), ExtResource("6_c0g6x")])
+Rooms = Array[PackedScene]([ExtResource("2_4t8vj"), ExtResource("3_m017o"), ExtResource("4_ka1km")])
 Textures = Array[Texture2D]([ExtResource("3_g4hnb"), ExtResource("4_ii3gx"), ExtResource("5_fyq48"), ExtResource("6_g8irv"), ExtResource("7_g25vb")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameUi" parent="CanvasLayer" instance=ExtResource("10_bkl3a")]
+[node name="GameUi" parent="CanvasLayer" node_paths=PackedStringArray("roomManager") instance=ExtResource("10_bkl3a")]
+roomManager = NodePath("../../RoomContainer")
+
+[connection signal="new_room" from="RoomContainer" to="CanvasLayer/GameUi" method="UpdateRoom"]
