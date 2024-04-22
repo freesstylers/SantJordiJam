@@ -855,7 +855,7 @@ font_size = 10
 font_color = Color(0, 0.756863, 0.529412, 1)
 outline_size = 4
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound", "timer") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound") groups=["player"]]
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
@@ -887,7 +887,7 @@ attackSound = NodePath("Attack")
 hitSound = NodePath("A")
 jumpSound = NodePath("Jump")
 dashSound = NodePath("Dash")
-timer = NodePath("Timer")
+timeLimit = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)

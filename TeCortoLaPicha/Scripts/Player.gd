@@ -55,7 +55,7 @@ var canDash = true
 var flying_vel : Vector2 = Vector2(0,0)
 
 @export var damage : int = 20
-@export var characterLife : float = 15 #Time + Life
+@export var characterLife : float = timeLimit #Time + Life
 @export var damageForceX = 50
 @export var damageForceY = 50
 
@@ -68,12 +68,13 @@ var hit_buffer = 0
 @export var dashSound : AudioStreamPlayer2D
 
 @export var camera : CameraShaker
-@export var timer: Timer
+@export var timeLimit: float
 
 signal attack_start
 signal attack_cancel
 signal dash_start
 signal dash_cancel
+signal refresh_hp
 
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
@@ -84,7 +85,8 @@ func _ready():
 	border_jump_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_peak * border_jump_time_to_peak)) * -1
 	border_fall_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_descend * border_jump_time_to_descend)) * -1
 	
-	timer.autostart = true
+	characterLife = timeLimit
+	
 	print (characterLife)
 	
 func get_gravity() -> float:
@@ -262,7 +264,9 @@ func _on_sword_collider_body_entered(body):
 	body.takeDamage(damage)
 	
 	if(body.life <= 0):
-		characterLife += 15.0 / 9.0
+		characterLife += timeLimit / 9.0
+		
+		refresh_hp.emit()
 		pass
 
 	body.applyForce(position)
@@ -286,10 +290,10 @@ func characterTakeLife(value, enemy):
 		
 		print (characterLife)
 		
-		timer.start(characterLife)
+		refresh_hp.emit()
 		
 		if characterLife <= 0:
-			#@Javi aqui pantalla de muerte
+			Death()
 			pass
 		
 func applyForce(enemy):
@@ -303,13 +307,14 @@ func _process(delta):
 	
 	characterLife -= delta
 	
-	if timer.time_left > 15:
-		timer.start(15)
-	#elif timer < 12: #Valores para movidas de la rosa
+	refresh_hp.emit()
+	
+	if characterLife <= 0:
+		Death()
 	
 	
 	pass
 
-func _on_timer_timeout():
-	#@Javi pantalla de muerte aquí
+func Death():
+	print("fuggg...")
 	pass # Replace with function body.

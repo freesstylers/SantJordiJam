@@ -2,6 +2,9 @@ extends Node
 
 @export var attack : ProgressBar
 @export var dash : ProgressBar
+@export var hp : AnimationPlayer
+
+var hpState = 8
 
 @export var roomManager : RoomManager
 var player : Player
@@ -24,6 +27,9 @@ func UpdateRoom():
 	player.attack_cancel.connect(AttackOver)
 	player.dash_start.connect(Dash)
 	player.dash_cancel.connect(DashOver)
+	player.refresh_hp.connect(HPMonitor)
+	
+	HPReset()
 	pass
 
 
@@ -59,4 +65,75 @@ func DashOver():
 	if tweenDash:
 		tweenDash.kill()
 	dash.value = 0
+	pass
+
+func HPReset():
+	hp.play("RESET")
+	hpState = 9
+	pass
+
+func HPMonitor():
+	var health = player.characterLife
+	var aux = player.timeLimit * ((hpState - 1) / 9.0)
+	var aux_up = player.timeLimit * ((hpState) / 9.0)
+	
+	var up = false
+	
+	if(health < aux):
+		hpState -= 1
+	elif(health >= aux_up):
+		hpState += 1
+		up = true
+	else:
+		return
+		
+	hp.stop(true)
+	
+	match hpState:
+		7:
+			if up:
+				hp.play("ocho_reset")
+			else:
+				hp.play("ocho_down")
+		6:
+			if up:
+				hp.play("siete_reset")
+			else:
+				hp.play("siete_down")
+		5:
+			if up:
+				hp.play("seis_reset")
+			else:
+				hp.play("seis_down")
+			
+		4:
+			if up:
+				hp.play("cinco_reset")
+			else:
+				hp.play("cinco_down")
+			
+		3:
+			if up:
+				hp.play("cuatro_reset")
+			else:
+				hp.play("cuatro_down")
+			
+		2:
+			if up:
+				hp.play("tres_reset")
+			else:
+				hp.play("tres_down")
+			
+		1:
+			if up:
+				hp.play("dos_reset")
+			else:
+				hp.play("dos_down")
+			
+		0:
+			if up:
+				hp.play("uno_reset")
+			else:
+				hp.play("uno_down")
+			
 	pass
