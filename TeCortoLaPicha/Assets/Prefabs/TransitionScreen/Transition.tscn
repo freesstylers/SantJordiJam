@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo7aqldm6mdsp"]
+[gd_scene load_steps=8 format=3 uid="uid://bo7aqldm6mdsp"]
 
 [ext_resource type="Script" path="res://Assets/Prefabs/TransitionScreen/TransitionScreen.gd" id="1_0m4s3"]
 [ext_resource type="Texture2D" uid="uid://yjnx7oqrygwo" path="res://Sprites/Libro/book_sheet2.png" id="2_ki4nb"]
+[ext_resource type="AudioStream" uid="uid://d2bq2e8wk34nn" path="res://Assets/Audio/SFX/pageturn-102978.mp3" id="3_5nobn"]
 
 [sub_resource type="Animation" id="Animation_teugn"]
 length = 0.001
@@ -118,5 +119,8 @@ hframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_a78hi")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5nobn")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

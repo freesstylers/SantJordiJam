@@ -100,6 +100,8 @@ func jump():
 func jump_border():
 	velocity.y = border_jump_velocity
 
+var mouse_pos : Vector2
+
 func _input(event):
 	if (!dashing and !attacking and !hit_buffer > 0):
 		ControlDoubleTap(get_physics_process_delta_time(), direction, event)
@@ -111,6 +113,10 @@ func _input(event):
 		attackSound.play()
 		attack_start.emit()
 		get_node("Sprite2D").rotation = 0
+	
+	if Input.get_connected_joypads().size() > 0 and event is InputEventJoypadMotion:
+		mouse_pos += Vector2((-Input.get_action_strength("Rightstick Left") + Input.get_action_strength("Rightstick right")) * 5, (-Input.get_action_strength("Rightstick Up") + Input.get_action_strength("Rightstick down")) * 5)
+		Input.warp_mouse(mouse_pos)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":

@@ -37,6 +37,7 @@ anchor_right = 0.14375
 anchor_bottom = 0.991667
 grow_horizontal = 0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../Twitter")
 theme = ExtResource("4_n67yd")
 icon = ExtResource("4_de44m")
 expand_icon = true
@@ -53,6 +54,8 @@ offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_neighbor_right = NodePath("../MainButtonContainer/tutorial")
+focus_neighbor_bottom = NodePath("../FreeStylers")
 theme = ExtResource("4_n67yd")
 icon = ExtResource("5_sxy5r")
 expand_icon = true
@@ -118,27 +121,44 @@ metadata/_edit_use_anchors_ = true
 
 [node name="play" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_right = NodePath("../../jam")
+focus_neighbor_bottom = NodePath("../play2")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="play2" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_top = NodePath("../play")
+focus_neighbor_right = NodePath("../../jam")
+focus_neighbor_bottom = NodePath("../tutorial")
 theme_override_font_sizes/font_size = 40
 text = "PlayEndless"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_top = NodePath("../play2")
+focus_neighbor_right = NodePath("../../jam")
+focus_neighbor_bottom = NodePath("../Credits")
 theme_override_font_sizes/font_size = 40
 text = "Tutorial
 "
 
 [node name="Credits" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_top = NodePath("../tutorial")
+focus_neighbor_right = NodePath("../../jam")
+focus_neighbor_bottom = NodePath("../OptionButton")
 theme_override_font_sizes/font_size = 40
 text = "Credits"
 
 [node name="OptionButton" type="OptionButton" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../FreeStylers")
+focus_neighbor_top = NodePath("../Credits")
 theme_override_font_sizes/font_size = 40
 alignment = 1
 script = ExtResource("8_iw4xy")
