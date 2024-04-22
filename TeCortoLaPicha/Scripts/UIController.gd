@@ -56,6 +56,7 @@ func Dash():
 	pass
 
 func DashOver():
-	tweenDash.kill()
+	if tweenDash:
+		tweenDash.kill()
 	dash.value = 0
 	pass

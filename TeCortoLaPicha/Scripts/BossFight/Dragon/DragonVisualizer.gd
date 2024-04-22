@@ -22,9 +22,11 @@ func _ready():
 func play_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
 		ANIM_STATE.IDLE:
+			$AnimatedSprite2D.set_animation("floor")
 			#PLAY A LOOP
 			pass
 		ANIM_STATE.IDLE_FLY:
+			$AnimatedSprite2D.set_animation("flying")
 			#PLAY A LOOP
 			pass
 		ANIM_STATE.FIREBALL:
@@ -44,9 +46,11 @@ func _process(delta):
 	if(face_player):
 		var position_to_face = get_pos_to_face_towards()
 		if position_to_face.x < DragonMngr.global_position.x:
-			DragonAnimation.scale.x = abs(DragonAnimation.scale.x)
+			$AnimatedSprite2D.flip_h = false
+			#DragonAnimation.scale.x = abs(DragonAnimation.scale.x)
 		else:
-			DragonAnimation.scale.x = -abs(DragonAnimation.scale.x)
+			$AnimatedSprite2D.flip_h = true
+			#DragonAnimation.scale.x = -abs(DragonAnimation.scale.x)
 	
 	if not flying_effect_active:
 		return 

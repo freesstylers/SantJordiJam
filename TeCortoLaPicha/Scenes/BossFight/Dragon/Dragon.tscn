@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cphrveb0thd0b"]
+[gd_scene load_steps=23 format=3 uid="uid://cphrveb0thd0b"]
 
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonManager.gd" id="1_fbe06"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonVisualizer.gd" id="2_6up4d"]
 [ext_resource type="Texture2D" uid="uid://bwxirb3ifvgy3" path="res://Sprites/Dragon/DragonEstático.png" id="4_30nth"]
 [ext_resource type="Texture2D" uid="uid://6vfyvfq8fls4" path="res://Assets/MainMenu/Twitter.png" id="4_j2hio"]
+[ext_resource type="SpriteFrames" uid="uid://d1nenvo04wdar" path="res://Sprites/Dragon/dragon_anim.tres" id="4_rswvd"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonIdleState.gd" id="4_tgxiw"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFireBallAttackState.gd" id="5_u0e8l"]
 [ext_resource type="PackedScene" uid="uid://cx0us5yh0f5eu" path="res://Scenes/BossFight/Dragon/Attacks/FireBall.tscn" id="6_kt3uv"]
@@ -87,7 +88,14 @@ FireParticles = NodePath("FlameHitbox/FireParticles")
 DragonMngr = NodePath("..")
 DeathSound = NodePath("DeathSound")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonVisualizer"]
+sprite_frames = ExtResource("4_rswvd")
+animation = &"floor"
+autoplay = "flying"
+frame_progress = 0.32006
+
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
+visible = false
 z_index = 10
 position = Vector2(-7, -13)
 texture = ExtResource("4_30nth")

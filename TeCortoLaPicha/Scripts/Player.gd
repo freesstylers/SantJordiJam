@@ -104,7 +104,7 @@ func _input(event):
 	if (!dashing and !attacking and !hit_buffer > 0):
 		ControlDoubleTap(get_physics_process_delta_time(), direction, event)
 		
-	if Input.is_action_just_pressed("Attack") and !hit_buffer > 0:
+	if Input.is_action_just_pressed("Attack") and !hit_buffer > 0 and !attacking:
 		animationPlayer.play("witiza_attack_anim")
 		attacking = true
 		attackSound.pitch_scale = randf_range(1, 1.5)
