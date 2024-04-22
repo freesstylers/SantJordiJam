@@ -260,6 +260,10 @@ func ControlDash(delta, direction):
 func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
+	
+	if(body.life <= 0):
+		characterLife += 15.0 / 9.0
+		pass
 
 	body.applyForce(position)
 	Engine.time_scale = 0.5

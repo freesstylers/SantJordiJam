@@ -244,7 +244,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 152.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -309,7 +309,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 152.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -374,7 +374,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 157.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -504,7 +504,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 150.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -569,7 +569,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 154.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -612,6 +612,22 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_5qjuj"]
+resource_name = "tallo_reset"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tallo:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dbh6d")]
+}
+
 [sub_resource type="Animation" id="Animation_rlsc2"]
 resource_name = "tres_down"
 length = 2.0
@@ -634,7 +650,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 152.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -699,7 +715,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 153.5, -0.4, -0.932816, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
 }
 tracks/2/type = "value"
@@ -740,22 +756,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_5qjuj"]
-resource_name = "tallo_reset"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tallo:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_dbh6d")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvvf4"]

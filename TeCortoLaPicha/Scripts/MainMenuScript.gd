@@ -18,7 +18,7 @@ func FreeStylers():
 
 func Jam():
 	get_tree().root.get_node("SceneManager/ButtonSFX").play()
-	OS.shell_open("https://globalgamejam.org/")
+	OS.shell_open("https://itch.io/jam/sant-jordi-24")
 	pass # Replace with function body.
 
 func Twitter():
