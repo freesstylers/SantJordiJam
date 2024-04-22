@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://beofrpr4iik7b"]
+[gd_scene load_steps=10 format=3 uid="uid://beofrpr4iik7b"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dwgpu6404vd" path="res://Assets/MainMenu/GGJ_Logo_TEMP.png" id="6_yrhqi"]
 [ext_resource type="Texture2D" uid="uid://bdqnfpplo87hy" path="res://Assets/MainMenu/LogoDGT.png" id="7_wbon5"]
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="8_8hqlc"]
+[ext_resource type="Script" path="res://Scripts/LocaleOption.gd" id="8_iw4xy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -86,6 +87,19 @@ offset_bottom = -0.12001
 texture = ExtResource("7_wbon5")
 stretch_mode = 5
 
+[node name="TabBar" type="TabBar" parent="MainButtonContainer"]
+visible = false
+layout_mode = 2
+offset_left = 360.0
+offset_top = 675.0
+offset_right = 920.0
+offset_bottom = 706.0
+tab_count = 3
+tab_alignment = 1
+tab_0/title = ""
+tab_1/title = ""
+tab_2/title = ""
+
 [node name="MainButtonContainer" type="VBoxContainer" parent="MainButtonContainer"]
 layout_mode = 1
 anchors_preset = -1
@@ -122,6 +136,11 @@ text = "Tutorial
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Credits"
+
+[node name="OptionButton" type="OptionButton" parent="MainButtonContainer/MainButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+script = ExtResource("8_iw4xy")
 
 [node name="credits" type="Panel" parent="."]
 visible = false
@@ -423,6 +442,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play2" to="." method="TogglePlayMenu" binds= [true]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
+[connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]

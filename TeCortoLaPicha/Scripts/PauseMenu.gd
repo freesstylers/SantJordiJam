@@ -1,6 +1,7 @@
 extends Control
 
 @export var t : float
+@export var buttons : Array
 
 var tween : Tween
 
@@ -18,6 +19,10 @@ func TogglePause(state):
 
 
 func TweenIn():
+	for b in buttons:
+		b.disabled = false
+		pass
+		
 	if tween:
 		tween.kill()
 		pass
@@ -42,6 +47,9 @@ func TweenOut():
 
 func TweenOutEnd():
 	visible = false
+	for b in buttons:
+		b.disabled = true
+		pass
 	pass
 
 

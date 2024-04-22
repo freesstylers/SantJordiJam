@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3q5ko")
 script = ExtResource("2_oqxe6")
+buttons = [NodePath("UI/VBoxContainer/resume"), NodePath("UI/VBoxContainer/exit")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
