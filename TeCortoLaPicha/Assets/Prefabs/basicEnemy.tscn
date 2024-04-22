@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djpu6m3m0w60g" path="res://Sprites/Gusanos/Gusano6.png" id="6_acg11"]
 [ext_resource type="Texture2D" uid="uid://mf40qc1ytnq6" path="res://Sprites/Gusanos/Gusano5.png" id="7_08guw"]
 [ext_resource type="Texture2D" uid="uid://bwiqgj4b1kp3c" path="res://Sprites/Gusanos/Gusano4.png" id="7_hdxgw"]
-[ext_resource type="AudioStream" uid="uid://kl2o4o2tmv0j" path="res://Assets/Audio/SFX/slime.wav" id="9_yxnum"]
+[ext_resource type="AudioStream" uid="uid://ci8o361ffvnys" path="res://Assets/Audio/SFX/slime_07.ogg" id="9_24o3q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt201"]
 atlas = ExtResource("3_mii5w")
@@ -543,6 +543,6 @@ position = Vector2(1, 12)
 shape = SubResource("RectangleShape2D_af36k")
 
 [node name="recieveDamage2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_yxnum")
+stream = ExtResource("9_24o3q")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
