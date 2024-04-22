@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="1_647xm"]
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_nswfm"]
-[ext_resource type="PackedScene" uid="uid://b5ie836riqf2k" path="res://Assets/Prefabs/door.tscn" id="2_g0xs0"]
+[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="2_g0xs0"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="3_6c31i"]
 [ext_resource type="PackedScene" uid="uid://bxw328csmcn03" path="res://Assets/Prefabs/shootingEnemy.tscn" id="4_hfxrw"]
 [ext_resource type="PackedScene" uid="uid://bs7ciwbxs3u7x" path="res://Assets/Prefabs/chargingEnemy.tscn" id="5_2i2md"]

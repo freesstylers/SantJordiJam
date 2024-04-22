@@ -1,4 +1,5 @@
 extends baseEnemy
+class_name ShootingEnemy
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -35,6 +36,7 @@ func _process(delta):
 	if !dead:
 		if current_move_buffer > 0:
 			current_move_buffer -= delta
+		check_current_move_buffer_tween()
 			
 		if not $floor_checker.is_colliding() and not Player == null:
 			$floor_checker.target_position.move_toward(Player.position, 0.01)
@@ -69,6 +71,20 @@ func _process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		move_and_slide()
+
+func check_current_move_buffer_tween():
+	if current_move_buffer <= 0:
+		var localTween : Tween = self.create_tween()
+		localTween.set_trans(Tween.TRANS_LINEAR)
+		localTween.set_ease(Tween.EASE_IN)
+		localTween.tween_property(self, "modulate", Color(1.0,1.0,1.0), 0.1)
+		localTween.tween_property(self, "modulate", Color.WHITE, 1.0)
+	else:
+		var localTween : Tween = self.create_tween()
+		localTween.set_trans(Tween.TRANS_LINEAR)
+		localTween.set_ease(Tween.EASE_IN)
+		localTween.tween_property(self, "modulate", Color(1.0,100.0/255.0,100.0/255.0), 0.1)
+		localTween.tween_property(self, "modulate", Color.RED, 0.1)
 
 func _physics_process(delta):
 	lerp(velocity.x, 0.0, 300 * delta)

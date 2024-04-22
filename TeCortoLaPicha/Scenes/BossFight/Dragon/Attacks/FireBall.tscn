@@ -6,7 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjxl3"]
 
 [node name="FireBall" type="Node2D" node_paths=PackedStringArray("max_life_time_timer")]
-position = Vector2(53, 23)
 script = ExtResource("1_my72o")
 max_life_time_timer = NodePath("MaxLifeTimeTimer")
 

@@ -90,8 +90,11 @@ DeathSound = NodePath("DeathSound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonVisualizer"]
 sprite_frames = ExtResource("4_rswvd")
-animation = &"dash"
+animation = &"fire"
 autoplay = "flying"
+
+[node name="FiringPos" type="Node2D" parent="DragonVisualizer/AnimatedSprite2D"]
+position = Vector2(-53, -3)
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
 visible = false
@@ -135,12 +138,13 @@ Dragon = NodePath("../..")
 NextState = "FIREBALL"
 MyState = "IDLE"
 
-[node name="FIREBALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
+[node name="FIREBALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("FiringPosMouth", "Dragon")]
 script = ExtResource("5_u0e8l")
 FireBallSpeed = 700.0
 FireballPrefab = ExtResource("6_kt3uv")
 delayBetweanFireballs = 0.2
 ShotsPerAttack = 3
+FiringPosMouth = NodePath("../../DragonVisualizer/AnimatedSprite2D/FiringPos")
 Dragon = NodePath("../..")
 NextState = "FALL"
 MyState = "FIREBALL"
@@ -156,8 +160,8 @@ max_polyphony = 5
 
 [node name="FALL_ATTACK_STATE" type="Node2D" parent="States" node_paths=PackedStringArray("Dragon")]
 script = ExtResource("7_dte8f")
-AttackStartingHeight = 135.0
-FloorHeight = 400.0
+AttackStartingHeight = 350.0
+FloorHeight = 720.0
 Dragon = NodePath("../..")
 NextState = "IDLE2"
 MyState = "FALL"
