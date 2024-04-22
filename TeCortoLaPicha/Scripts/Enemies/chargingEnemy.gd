@@ -28,50 +28,47 @@ var yPosition = 0
 	#$floor_checker.enabled = detect_cliffs
 	
 func _physics_process(delta):
-
-	if current_move_buffer > 0:
-		current_move_buffer -= delta
-	
-	if is_on_floor():
-		if !charging:
-			if player_detector.is_colliding() and waiting_buffer <= 0:
-				if player_detector.get_collider().is_in_group("player"):
-					waiting_buffer = wait_before_charge
-					velocity.x = 0.0
-					animationPlayer.play("charge")
-					
-			if waiting_buffer > 0:
-				waiting_buffer -= delta
-				if waiting_buffer <= 0:
-					charge()
-		else:
-			animationPlayer.rotate(direction * rotation_speed * delta)		
-			charge_time_buffer -= delta
-			#position.y = yPosition
-			if charge_time_buffer <= 0:
-				charging = false
-				animationPlayer.rotation = 0
-				charge_time_buffer = 0
-				
-	# Add the gravity.	
-	if not is_on_floor():
-		velocity.y += gravity * delta		
-	elif not $floor_checker.is_colliding():
-		direction *= -1
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-		player_detector.target_position.x = -player_detector.target_position.x
-		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
-	elif is_on_wall():
-		direction *= -1
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-		player_detector.target_position.x = -player_detector.target_position.x
-		#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+	if !dead:
+		if current_move_buffer > 0:
+			current_move_buffer -= delta
 		
-	if !charging and waiting_buffer <= 0:
-		animationPlayer.play("default")
-		velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
+		if is_on_floor():
+			if !charging:
+				if player_detector.is_colliding() and waiting_buffer <= 0:
+					if player_detector.get_collider().is_in_group("player"):
+						waiting_buffer = wait_before_charge
+						velocity.x = 0.0
+						animationPlayer.play("charge")
+						
+				if waiting_buffer > 0:
+					waiting_buffer -= delta
+					if waiting_buffer <= 0:
+						charge()
+			else:
+				animationPlayer.rotate(direction * rotation_speed * delta)		
+				charge_time_buffer -= delta
+				velocity.x = charge_velocity * direction
+				#position.y = yPosition
+				if charge_time_buffer <= 0:
+					charging = false
+					animationPlayer.rotation = 0
+					charge_time_buffer = 0
+					
+		# Add the gravity.	
+		if not is_on_floor():
+			velocity.y += gravity * delta		
+		elif not $floor_checker.is_colliding() or is_on_wall():
+			direction *= -1
+			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+			player_detector.target_position.x = -player_detector.target_position.x
+			#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
+		
+			
+		if !charging and waiting_buffer <= 0:
+			animationPlayer.play("default")
+			velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
 
-	move_and_slide()
+		move_and_slide()
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" and not dead:

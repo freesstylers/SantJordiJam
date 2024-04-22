@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://wwfum1kim3y3" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque12.png" id="14_vqjl5"]
 [ext_resource type="Texture2D" uid="uid://c04d2s2pr8syy" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle12.png" id="15_a0ryo"]
 [ext_resource type="Texture2D" uid="uid://75laq0vhvhrn" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque13.png" id="15_ind7y"]
-[ext_resource type="AudioStream" uid="uid://kl2o4o2tmv0j" path="res://Assets/Audio/SFX/slime.wav" id="30_viqt3"]
+[ext_resource type="AudioStream" uid="uid://dtuhluvotuba7" path="res://Assets/Audio/SFX/slime.wav" id="30_viqt3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{

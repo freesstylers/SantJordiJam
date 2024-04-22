@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_f0xvu"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
 [ext_resource type="Texture2D" uid="uid://comihu85bgx3t" path="res://Sprites/Tijeritas/Tijeritas.png" id="3_1310h"]
-[ext_resource type="AudioStream" uid="uid://kl2o4o2tmv0j" path="res://Assets/Audio/SFX/slime.wav" id="5_l0rc0"]
+[ext_resource type="AudioStream" uid="uid://dtuhluvotuba7" path="res://Assets/Audio/SFX/slime.wav" id="5_l0rc0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epq8i"]
 atlas = ExtResource("3_1310h")

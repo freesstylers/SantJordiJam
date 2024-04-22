@@ -33,42 +33,43 @@ func _ready():
 	Player = get_parent().get_parent().get_node("Player")
 func _process(delta):
 	
-	if current_move_buffer > 0:
-		current_move_buffer -= delta
-		
-	if not $floor_checker.is_colliding() and not Player == null:
-		$floor_checker.target_position.move_toward(Player.position, 0.01)
-		#angle_to_player = global_position.direction_to(Player.position).angle()
-		#rotation = move_toward(rotation, angle_to_player, delta)
-	if not shooting: #No restart
-		sprite.play("default")
-		timeSinceCooldown += delta
-		
-		flip()
-				
-		if timeSinceCooldown > cooldown:
-			shooting = true
-			sprite.play("Attack")
-		
-
-		
-	if shooting:
-		auxShootingTime += delta
-	
-		if auxShootingTime > sprite.animation.length()/6:
-			shoot()
-			auxShootingTime = 0
-			timesShot += 1
+	if !dead:
+		if current_move_buffer > 0:
+			current_move_buffer -= delta
 			
-			if timesShot > 2:
-				shooting = false
-				timesShot = 0
-				auxShootingTime = 0	
-				timeSinceCooldown = 0
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	move_and_slide()
+		if not $floor_checker.is_colliding() and not Player == null:
+			$floor_checker.target_position.move_toward(Player.position, 0.01)
+			#angle_to_player = global_position.direction_to(Player.position).angle()
+			#rotation = move_toward(rotation, angle_to_player, delta)
+		if not shooting: #No restart
+			sprite.play("default")
+			timeSinceCooldown += delta
+			
+			flip()
+					
+			if timeSinceCooldown > cooldown:
+				shooting = true
+				sprite.play("Attack")
+			
+
+			
+		if shooting:
+			auxShootingTime += delta
+		
+			if auxShootingTime > sprite.animation.length()/6:
+				shoot()
+				auxShootingTime = 0
+				timesShot += 1
+				
+				if timesShot > 2:
+					shooting = false
+					timesShot = 0
+					auxShootingTime = 0	
+					timeSinceCooldown = 0
+		
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		move_and_slide()
 
 func _physics_process(delta):
 	lerp(velocity.x, 0.0, 300 * delta)

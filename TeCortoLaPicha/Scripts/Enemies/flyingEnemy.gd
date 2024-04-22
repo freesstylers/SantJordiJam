@@ -18,22 +18,22 @@ var freq = 3
 var amplitude = 20
 
 func _physics_process(delta):
-	
-	if current_move_buffer > 0:
-		current_move_buffer -= delta
+	if !dead:
+		if current_move_buffer > 0:
+			current_move_buffer -= delta
+			
+		if is_on_wall() or (wall_checker.is_colliding() and !wall_checker.get_collider().is_in_group("player")):
+			direction *= -1
+			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+			$wall_checker.target_position.x *= -direction
+
+		time += delta
 		
-	if is_on_wall() or (wall_checker.is_colliding() and !wall_checker.get_collider().is_in_group("player")):
-		direction *= -1
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-		$wall_checker.target_position.x *= -direction
+		if(current_move_buffer <= 0):
+			velocity.x = horizontalSpeed * direction		 
+			velocity.y = sin(PI/2 + time*freq)*amplitude
 
-	time += delta
-	
-	if(current_move_buffer <= 0):
-		velocity.x = horizontalSpeed * direction		 
-		velocity.y = sin(PI/2 + time*freq)*amplitude
-
-	move_and_slide()
+		move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
