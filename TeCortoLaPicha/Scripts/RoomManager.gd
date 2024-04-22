@@ -23,7 +23,7 @@ func _ready():
 	add_child(room) #Random Room
 	
 	var tileset = Textures.pick_random()
-	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+	get_child(0).get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
 	
 	room.changeWormSprite(tileset)
 	new_room.emit()
