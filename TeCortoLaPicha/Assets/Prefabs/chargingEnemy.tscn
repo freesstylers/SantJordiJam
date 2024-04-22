@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cf088m7055xor" path="res://Sprites/La Chikinchilla/La Chikinchilla-Charge.png" id="3_4i0ir"]
 [ext_resource type="Texture2D" uid="uid://dop1yqdfvqovf" path="res://Sprites/La Chikinchilla/La Chikinchilla-sheet.png" id="4_avagn"]
 [ext_resource type="Texture2D" uid="uid://fe75mc3qpipk" path="res://Sprites/La Chikinchilla/La Chikinchilla-Wheel1.png" id="6_foiry"]
-[ext_resource type="AudioStream" path="res://Assets/Audio/SFX/slime.mp3" id="7_7toxj"]
+[ext_resource type="AudioStream" uid="uid://kl2o4o2tmv0j" path="res://Assets/Audio/SFX/slime.wav" id="7_7toxj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4bge"]
 atlas = ExtResource("3_4i0ir")

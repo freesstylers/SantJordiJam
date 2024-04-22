@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4be3a25mf3qr"]
+[gd_scene load_steps=16 format=3 uid="uid://4be3a25mf3qr"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
@@ -11,6 +11,22 @@
 [ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="8_to6y4"]
 [ext_resource type="AudioStream" uid="uid://hj3cyci8mkev" path="res://Assets/Audio/Music/ElsVuitBitadors.wav" id="10_1tw6a"]
 [ext_resource type="Script" path="res://Scripts/BossFight/CameraShake.gd" id="10_kvemf"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="11_ba1lm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o58yr"]
+shader = ExtResource("11_ba1lm")
+shader_parameter/screen_height = 720.0
+shader_parameter/speed = 3.0
+shader_parameter/frequency = 0.1
+shader_parameter/amplitude = 0.01
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 1.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 1.0
+shader_parameter/enable_palette_cycling = false
+shader_parameter/enable_scan_lines = false
+shader_parameter/palette_speed = 0.1
 
 [sub_resource type="Curve" id="Curve_0fv06"]
 min_value = -360.0
@@ -44,7 +60,7 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(1310764, 196608, 2, 1376300, 196608, 3, 983097, 196608, 2, 1048633, 196608, 3, 1310783, 196608, 2, 1376319, 196608, 3, 786496, 196608, 2, 852032, 196608, 3, 655418, 196608, 2, 720954, 196608, 3, 196672, 196608, 2, 262208, 196608, 3, 589869, 196608, 2, 655405, 196608, 3, 786468, 196608, 2, 852004, 196608, 3, 655392, 196608, 2, 720928, 196608, 3, 1310777, 196608, 2, 1376313, 196608, 3, 1310799, 196608, 2, 1376335, 196608, 3, 76, 196608, 2, 65612, 196608, 3, 1507402, 196608, 4, 1507403, 262144, 4, 1507404, 327680, 4, 1245254, 196608, 4, 1245255, 262144, 4, 1245256, 327680, 4, 983114, 196608, 4, 983115, 262144, 4, 983116, 327680, 4, 1310785, 327680, 1, 852034, 327680, 1, 655422, 327680, 1, 524334, 65536, 4, 524335, 131072, 4, 327732, 262144, 4, 327733, 262144, 4, 327734, 262144, 4, 327735, 262144, 4, 327736, 262144, 4, 327731, 196608, 4, 327737, 327680, 4, 1703980, 65536, 4, 1703981, 131072, 4, 1703967, 196608, 4, 1703968, 262144, 4, 1703969, 327680, 4, 1507364, 196608, 4, 1507365, 262144, 4, 1507366, 327680, 4, 589864, 0, 4, 589865, 65536, 4, 1310760, 327680, 1, 1835046, 327680, 1, 1835040, 327680, 1, 589857, 327680, 1, 1245237, 393216, 4, 1310773, 393216, 5, 1245238, 458752, 4, 1310774, 458752, 5, 1835054, 327680, 5, 1835066, 393216, 1, 1835063, 327680, 0, 78, 196608, 2, 65614, 196608, 3, 852035, 327680, 0, 852023, 327680, 0, 589859, 327680, 0, 1835081, 327680, 0, 1245264, 327680, 3, 786512, 327680, 3, 1966156, 327680, 3, 1966151, 327680, 3, 1245244, 327680, 3, 852030, 327680, 3, 786491, 327680, 3, 1048637, 393216, 3, 458796, 393216, 3, 131115, 393216, 3, 1572906, 393216, 3, 1835050, 393216, 3, 1835036, 393216, 3, 1310761, 327680, 2, 65602, 327680, 3, 1179677, 65536, 4, 1179678, 131072, 4)
 
 [node name="Door" parent="." instance=ExtResource("4_frspx")]
-position = Vector2(893.333, -52)
+position = Vector2(912.5, -51.5)
 
 [node name="enemies" type="Node2D" parent="."]
 
@@ -88,6 +104,7 @@ script = ExtResource("10_kvemf")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="TileMap" type="TileMap" parent="ParallaxBackground"]
+material = SubResource("ShaderMaterial_o58yr")
 position = Vector2(-1186, -27)
 tile_set = ExtResource("2_2ews5")
 format = 2
