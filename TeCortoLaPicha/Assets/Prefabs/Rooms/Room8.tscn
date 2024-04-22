@@ -41,7 +41,7 @@ point_count = 3
 [node name="Room9" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_ykc3q")
-EnemiesArray = [NodePath("enemies/enemy"), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+EnemiesArray = [NodePath("enemies/enemy"), null, null, null, null, null, null, null, null]
 startingCharacterPosition = NodePath("Spawn")
 player = NodePath("Player")
 

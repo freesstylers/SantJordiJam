@@ -90,9 +90,8 @@ DeathSound = NodePath("DeathSound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonVisualizer"]
 sprite_frames = ExtResource("4_rswvd")
-animation = &"floor"
+animation = &"dash"
 autoplay = "flying"
-frame_progress = 0.32006
 
 [node name="Dragon" type="Sprite2D" parent="DragonVisualizer"]
 visible = false
@@ -200,6 +199,7 @@ MyState = "VERTICAL"
 [connection signal="timeout" from="Hitbox/DamageOnHitTimer" to="Hitbox" method="damage_timer_finished"]
 [connection signal="area_entered" from="Hitbox/HurtBox" to="Hitbox" method="other_area_entered_hurtbox"]
 [connection signal="timeout" from="Hitbox/HurtBox/GetHurtTimer" to="Hitbox" method="hurtbox_timer_finished"]
+[connection signal="animation_finished" from="DragonVisualizer/AnimatedSprite2D" to="DragonVisualizer" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DragonVisualizer/FlameHitbox" to="States/VERTICAL_FLAME_ATTACK_STATE" method="other_collided_with_dragon"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBetweanFireballs" to="States/FIREBALL_ATTACK_STATE" method="Attack"]

@@ -19,6 +19,11 @@ enum ANIM_STATE { IDLE, IDLE_FLY, FIREBALL, FALL, HORIZONTAL, VERTICAL }
 func _ready():
 	FireParticles.emitting = false
 
+func _on_animated_sprite_2d_animation_finished():
+	if $AnimatedSprite2D.animation == "fire" or $AnimatedSprite2D.animation == "dash":
+		$AnimatedSprite2D.set_animation("flying")
+
+
 func play_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
 		ANIM_STATE.IDLE:
@@ -30,12 +35,14 @@ func play_animation(new_anim_state : ANIM_STATE):
 			#PLAY A LOOP
 			pass
 		ANIM_STATE.FIREBALL:
+			$AnimatedSprite2D.set_animation("fire")
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.FALL:
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.HORIZONTAL:
+			$AnimatedSprite2D.set_animation("dash")
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.VERTICAL:
