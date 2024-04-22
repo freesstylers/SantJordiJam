@@ -8,7 +8,7 @@ extends Node2D
 var currentRoom : int = 0
 var currentRoomCont : Room = null
 var rng
-
+var roomList : Array[int] = [0,1,2,3,4,5,6,7,8,9]
 
 signal new_room
 #@export var EnemiesArray : Array[PackedScene]
@@ -18,7 +18,11 @@ func _ready():
 	
 	rng = RandomNumberGenerator.new()
 	
-	var room = Rooms[rng.randi_range(0, Rooms.size()-1)].instantiate()
+	var aux = roomList.pick_random()
+	roomList.erase(aux)
+	
+	var room = Rooms[aux].instantiate()
+	roomList.append(room)
 	currentRoomCont = room
 	add_child(room) #Random Room
 	
@@ -43,11 +47,9 @@ func roomCompletedFunc():
 		
 		
 func addNewRoom():
-	var aux = currentRoom
-		
-	while aux == currentRoom:
-		aux = rng.randi_range(0, Rooms.size()-1)
-		
+	var aux = roomList.pick_random()
+	roomList.erase(aux)
+	
 	currentRoom = aux
 	
 	currentRoomCont = Rooms[aux].instantiate()

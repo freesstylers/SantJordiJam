@@ -43,7 +43,7 @@ func _physics_process(delta):
 				if charge_cd_buffer > 0:
 					charge_cd_buffer -= delta
 					
-				if player_detector.is_colliding() and waiting_buffer <= 0 and charge_cd_buffer <= 0:
+				if player_detector != null and player_detector.is_colliding() and waiting_buffer <= 0 and charge_cd_buffer <= 0:
 					if player_detector.get_collider().is_in_group("player"):
 						waiting_buffer = wait_before_charge
 						velocity.x = 0.0
@@ -54,7 +54,8 @@ func _physics_process(delta):
 					if waiting_buffer <= 0:
 						charge()
 			else:
-				animationPlayer.rotate(direction * rotation_speed * delta)		
+				if animationPlayer != null:
+					animationPlayer.rotate(direction * rotation_speed * delta)		
 				charge_time_buffer -= delta
 				velocity.x = charge_velocity * direction
 				#position.y = yPosition
@@ -75,7 +76,8 @@ func _physics_process(delta):
 		
 			
 		if !charging and waiting_buffer <= 0:
-			animationPlayer.play("default")
+			if animationPlayer != null:
+				animationPlayer.play("default")
 			velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
 
 		move_and_slide()
@@ -93,7 +95,8 @@ func _on_area_2d_body_entered(body):
 	
 func charge():
 	velocity.x = charge_velocity * direction
-	animationPlayer.play("wheel")
+	if animationPlayer != null:
+		animationPlayer.play("wheel")
 	charge_time_buffer = charge_time
 	charging = true
 	yPosition = position.y
