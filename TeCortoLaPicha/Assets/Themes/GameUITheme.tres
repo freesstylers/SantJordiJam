@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://r36jadpqieh6"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://r36jadpqieh6"]
 
 [ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="1_1mk0g"]
-[ext_resource type="Texture2D" uid="uid://nq87im5c1stj" path="res://addons/ActionIcon/Joypad/DS4/LT.png" id="2_m4rwh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2s4u7"]
 
@@ -22,8 +21,15 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kk0gr"]
-texture = ExtResource("2_m4rwh")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfpvs"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scmdd"]
 bg_color = Color(1, 0, 0, 0)
@@ -96,7 +102,7 @@ MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
 MarginContainer/constants/margin_top = 5
 Panel/styles/panel = SubResource("StyleBoxFlat_055lk")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_kk0gr")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_pfpvs")
 ProgressBar/constants/outline_size = 8
 ProgressBar/styles/background = SubResource("StyleBoxFlat_scmdd")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_by12p")

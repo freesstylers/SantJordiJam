@@ -466,5 +466,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]

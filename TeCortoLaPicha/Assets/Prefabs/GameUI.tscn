@@ -1,8 +1,319 @@
-[gd_scene load_steps=4 format=3 uid="uid://d24fnwcuigbo0"]
+[gd_scene load_steps=33 format=3 uid="uid://d24fnwcuigbo0"]
 
 [ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_tk2jt"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_45mbt"]
 [ext_resource type="Texture2D" uid="uid://b2g1mja2pqxjq" path="res://Sprites/UI/Petalo1.png" id="2_qhi53"]
+[ext_resource type="Texture2D" uid="uid://bhqypp77q1rpr" path="res://Sprites/UI/Tallo.png" id="3_dbh6d"]
+[ext_resource type="Texture2D" uid="uid://dnn4gj6v2wki8" path="res://Sprites/UI/Petalo2.png" id="5_raq6t"]
+[ext_resource type="Texture2D" uid="uid://70xtopn14rwm" path="res://Sprites/UI/Petalo3.png" id="6_a8oav"]
+[ext_resource type="Texture2D" uid="uid://bmxr1d8hjdcd" path="res://Sprites/UI/Petalo4.png" id="7_vwff5"]
+[ext_resource type="Texture2D" uid="uid://dtxsyluqep2uj" path="res://Sprites/UI/Petalo5.png" id="8_61rmp"]
+[ext_resource type="Texture2D" uid="uid://dwnrdecxqhve4" path="res://Sprites/UI/Petalo6.png" id="9_tfitx"]
+[ext_resource type="Texture2D" uid="uid://ba5lyqr5jqfl4" path="res://Sprites/UI/Petalo7.png" id="10_vmlyo"]
+[ext_resource type="Texture2D" uid="uid://lc1i1jee4nuv" path="res://Sprites/UI/Petalo8.png" id="11_y4cj7"]
+[ext_resource type="Texture2D" uid="uid://b7qqcmnya7f68" path="res://Sprites/UI/Attack_UI.png" id="12_asaoh"]
+[ext_resource type="Texture2D" uid="uid://diuvsx8m3748c" path="res://Sprites/UI/Dash_UI.png" id="13_rkyo0"]
+[ext_resource type="Texture2D" uid="uid://buf7qxv50hey8" path="res://Sprites/UI/Gancho_UI.png" id="14_sovy2"]
+
+[sub_resource type="Animation" id="Animation_wetmi"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_s3p6q"]
+resource_name = "ocho"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo8:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.00035, -0.25, 0, 0.2, 15.551, -30.327, -0.3, -8.61816, 0.3, 12.4484, 15.0007, -0.3, 10.9293, 0.3, -14.2068, -33.9993, -0.2, -4.70654, 0.2, 7.26306, 9.00072, -0.3, 16.2112, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Petalo8:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1.99999, -0.25, 0, 0.1, 0.00769424, 22.8175, -0.4, 0.51054, 0.1, 0.0317574, 33.8175, -0.4, 0.28318, 0.1, 0.28318, 61.8175, -0.4, -0.186752, 0.1, 0.0526428, 135.818, -0.4, -0.932816, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.4, 1.9)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Petalo8:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bfuq1"]
+resource_name = "ocho_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo8:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Petalo8:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tm2ir"]
+resource_name = "siete_down"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo7:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_na3v3"]
+resource_name = "siete_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo7:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ag8ed"]
+resource_name = "seis_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo6:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_qboqh"]
+resource_name = "seis_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo6:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_bl2hx"]
+resource_name = "cinco_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo5:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_hjbyi"]
+resource_name = "cinco_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo5:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_cbe0y"]
+resource_name = "cuatro_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_i7tf3"]
+resource_name = "cuatro_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_rlsc2"]
+resource_name = "tres_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_n6tp6"]
+resource_name = "tres_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5sy5x"]
+resource_name = "dos_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_cobn7"]
+resource_name = "dos_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_nchvm"]
+resource_name = "uno_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_0ov5o"]
+resource_name = "uno_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Petalo1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvvf4"]
+_data = {
+"RESET": SubResource("Animation_wetmi"),
+"cinco_down": SubResource("Animation_bl2hx"),
+"cinco_reset": SubResource("Animation_hjbyi"),
+"cuatro_down": SubResource("Animation_cbe0y"),
+"cuatro_reset": SubResource("Animation_i7tf3"),
+"dos_down": SubResource("Animation_5sy5x"),
+"dos_reset": SubResource("Animation_cobn7"),
+"ocho_down": SubResource("Animation_s3p6q"),
+"ocho_reset": SubResource("Animation_bfuq1"),
+"seis_down": SubResource("Animation_ag8ed"),
+"seis_reset": SubResource("Animation_qboqh"),
+"siete_down": SubResource("Animation_tm2ir"),
+"siete_reset": SubResource("Animation_na3v3"),
+"tres_down": SubResource("Animation_rlsc2"),
+"tres_reset": SubResource("Animation_n6tp6"),
+"uno_down": SubResource("Animation_nchvm"),
+"uno_reset": SubResource("Animation_0ov5o")
+}
 
 [node name="GameUi" type="Control" node_paths=PackedStringArray("attack", "dash")]
 layout_mode = 3
@@ -17,7 +328,9 @@ attack = NodePath("abilities/Atk/ProgressBar")
 dash = NodePath("abilities/dash/ProgressBar")
 metadata/_edit_use_anchors_ = true
 
-[node name="rosatimer" type="TextureRect" parent="."]
+[node name="rosatimer" type="PanelContainer" parent="."]
+clip_children = 2
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.857031
@@ -26,16 +339,59 @@ anchor_right = 0.985156
 anchor_bottom = 0.254167
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rosatimer"]
+libraries = {
+"": SubResource("AnimationLibrary_hvvf4")
+}
+
+[node name="Tallo" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("3_dbh6d")
+
+[node name="Petalo1" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("2_qhi53")
+
+[node name="Petalo2" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("5_raq6t")
+
+[node name="Petalo3" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("6_a8oav")
+
+[node name="Petalo4" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("7_vwff5")
+
+[node name="Petalo5" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("8_61rmp")
+
+[node name="Petalo6" type="TextureRect" parent="rosatimer"]
+layout_mode = 2
+texture = ExtResource("9_tfitx")
+
+[node name="Petalo7" type="TextureRect" parent="rosatimer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_vmlyo")
+
+[node name="Petalo8" type="TextureRect" parent="rosatimer"]
+visible = false
+modulate = Color(1, 1, 1, 0.1)
+layout_mode = 2
+texture = ExtResource("11_y4cj7")
+
 [node name="abilities" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0109375
-anchor_top = 0.815278
-anchor_right = 0.425
+anchor_top = 0.870833
+anchor_right = 0.2375
 anchor_bottom = 0.981944
 grow_vertical = 0
-theme_override_constants/separation = 85
-alignment = 1
+theme_override_constants/separation = 25
 metadata/_edit_use_anchors_ = true
 
 [node name="Atk" type="PanelContainer" parent="abilities"]
@@ -45,7 +401,7 @@ size_flags_vertical = 5
 
 [node name="TextureRect" type="TextureRect" parent="abilities/Atk"]
 layout_mode = 2
-texture = ExtResource("2_qhi53")
+texture = ExtResource("12_asaoh")
 expand_mode = 2
 stretch_mode = 5
 
@@ -63,7 +419,7 @@ size_flags_vertical = 5
 
 [node name="TextureRect" type="TextureRect" parent="abilities/dash"]
 layout_mode = 2
-texture = ExtResource("2_qhi53")
+texture = ExtResource("13_rkyo0")
 expand_mode = 2
 stretch_mode = 5
 
@@ -81,7 +437,7 @@ size_flags_vertical = 5
 
 [node name="TextureRect" type="TextureRect" parent="abilities/grapple"]
 layout_mode = 2
-texture = ExtResource("2_qhi53")
+texture = ExtResource("14_sovy2")
 expand_mode = 2
 stretch_mode = 5
 

@@ -36,13 +36,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="Control" parent="CurrentScene" instance=ExtResource("2_hk2fo")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1280.0
-offset_bottom = 720.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="MenuHolder" type="CanvasLayer" parent="."]
 metadata/_edit_use_anchors_ = true
