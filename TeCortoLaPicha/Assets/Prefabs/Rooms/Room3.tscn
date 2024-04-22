@@ -43,7 +43,7 @@ point_count = 3
 [node name="Room3" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_nswfm")
-EnemiesArray = [NodePath("enemies/enemy"), NodePath("enemies/enemy2"), NodePath("enemies/enemy3"), NodePath("enemies/enemy4"), NodePath("enemies/enemy5"), NodePath("enemies/enemy6"), NodePath("enemies/enemy7")]
+EnemiesArray = [NodePath("enemies/enemy"), NodePath("enemies/enemy2"), NodePath("enemies/enemy3"), NodePath("enemies/enemy5"), NodePath("enemies/enemy6"), NodePath("enemies/enemy7")]
 startingCharacterPosition = NodePath("Spawn")
 player = NodePath("Player")
 
@@ -75,14 +75,11 @@ damageSound = NodePath("../enemy/recieveDamage2")
 position = Vector2(396, -77)
 damageSound = NodePath("../enemy/recieveDamage2")
 
-[node name="enemy4" parent="enemies" instance=ExtResource("5_2i2md")]
-position = Vector2(501, -237)
-
 [node name="enemy5" parent="enemies" node_paths=PackedStringArray("player_detector", "animationPlayer", "damageSound") instance=ExtResource("5_2i2md")]
-position = Vector2(620, -62)
-player_detector = NodePath("../enemy4/player_checker")
-animationPlayer = NodePath("../enemy4/AnimatedSprite2D")
-damageSound = NodePath("../enemy4/recieveDamage")
+position = Vector2(510, -237)
+player_detector = NodePath("")
+animationPlayer = NodePath("")
+damageSound = NodePath("")
 
 [node name="enemy6" parent="enemies" instance=ExtResource("6_k1cql")]
 position = Vector2(637, -334)
