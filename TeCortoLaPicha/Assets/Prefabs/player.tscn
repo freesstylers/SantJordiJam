@@ -855,7 +855,7 @@ font_size = 10
 font_color = Color(0, 0.756863, 0.529412, 1)
 outline_size = 4
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound", "timer") groups=["player"]]
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
@@ -887,6 +887,7 @@ attackSound = NodePath("Attack")
 hitSound = NodePath("A")
 jumpSound = NodePath("Jump")
 dashSound = NodePath("Dash")
+timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)
@@ -979,5 +980,10 @@ stream = ExtResource("14_bdgi8")
 [node name="Dash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_pski4")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [connection signal="body_entered" from="Sprite2D/SwordCollider" to="." method="_on_sword_collider_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

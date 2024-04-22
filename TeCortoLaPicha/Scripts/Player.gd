@@ -55,7 +55,7 @@ var canDash = true
 var flying_vel : Vector2 = Vector2(0,0)
 
 @export var damage : int = 20
-@export var characterLife : int = 15 #Time + Life
+@export var characterLife : float = 15 #Time + Life
 @export var damageForceX = 50
 @export var damageForceY = 50
 
@@ -68,6 +68,7 @@ var hit_buffer = 0
 @export var dashSound : AudioStreamPlayer2D
 
 @export var camera : CameraShaker
+@export var timer: Timer
 
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
@@ -78,6 +79,8 @@ func _ready():
 	border_jump_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_peak * border_jump_time_to_peak)) * -1
 	border_fall_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_descend * border_jump_time_to_descend)) * -1
 	
+	timer.autostart = true
+	print (characterLife)
 	
 func get_gravity() -> float:
 	#if ((rightFootRaycast.is_colliding() and not rightRaycast.is_colliding()) and 
@@ -211,36 +214,12 @@ func Launch(launch_vel):
 func ControlDoubleTap(_delta, direction, event_):
 	var currenTapRight = false
 
-	if event_ is InputEventKey:
-		if Input.is_action_just_pressed("Dash"):
-			if direction != 0:
-				double_tap = true
-				dashSound.play()
-				get_node("Sprite2D").rotation = 0
-		#if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
-			#if Input.is_action_just_pressed("ui_right"):
-				#currenTapRight = true
-			#else:
-				#currenTapRight = false
-				#
-			#if double_press_counter > 0 and tap_right == currenTapRight:
-				#double_tap = true
-				#print("DOUBLE TAP")
-			#
-			#elif double_press_counter <= 0:
-				#double_press_counter = double_press_buffer
-				#
-			#tap_right = currenTapRight
-	elif event_ is InputEventJoypadButton:
-		if Input.is_action_just_pressed("Dash"):
-			if direction != 0:
-				dashSound.play()
-				double_tap = true
-				get_node("Sprite2D").rotation = 0
-		pass	
-		
-	
-		
+	if Input.is_action_just_pressed("Dash"):
+		if direction != 0:
+			double_tap = true
+			dashSound.play()
+			get_node("Sprite2D").rotation = 0	
+
 func ControlDash(delta, direction):
 	#######Dash	
 	if double_tap and canDash and !dashing:
@@ -282,9 +261,13 @@ func characterTakeLife(value, enemy):
 		auxDashCooldown = dashCooldown
 		applyForce(enemy)
 		animationPlayer.play("witiza_get_hit")
-		print(characterLife)
 		
 		hit_buffer = time_hit
+		
+		print (characterLife)
+		
+		timer.start(characterLife)
+		
 		if characterLife <= 0:
 			#@Javi aqui pantalla de muerte
 			pass
@@ -295,3 +278,18 @@ func applyForce(enemy):
 	if !is_on_floor():
 		var dirY = clamp(position.y - enemy.y, -1, 1)
 		velocity.y = dirY * damageForceY
+
+func _process(delta):
+	
+	characterLife -= delta
+	
+	if timer.time_left > 15:
+		timer.start(15)
+	#elif timer < 12: #Valores para movidas de la rosa
+	
+	
+	pass
+
+func _on_timer_timeout():
+	#@Javi pantalla de muerte aquí
+	pass # Replace with function body.
