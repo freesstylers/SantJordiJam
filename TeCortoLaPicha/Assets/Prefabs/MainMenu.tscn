@@ -180,24 +180,21 @@ uppercase = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "~~~~~~~~~~~~
-Gonzalo cidoncha - silly goofy
-DAVID CZEPIEL - el becario
-PABLO GROSSI - el machango
-IGNACIO ORY - superviviente
-Adán - el creador
-JAVIER ARIAS - kumquat konnoisseur
+Gonzalo cidoncha - Gusano Quijote
+DAVID CZEPIEL - Cocollona legendaria
+PABLO GROSSI - Gusano Jorge Madresalvaje
+IGNACIO ORY - Gusano Marx
+Adán Sánchez - Papelosaurio
+JAVIER ARIAS - Gusano Hatsune Miku
 
-Gokhan Solak - el librero"
+Extra Assets: Gokhan Solak
+Loc:  "
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="Label3" type="Label" parent="credits/container/VBoxContainer"]
 layout_mode = 2
-text = "
-
-
-"
 
 [node name="CreditsBack2" type="Button" parent="credits/container/VBoxContainer"]
 layout_mode = 2
@@ -444,5 +441,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
