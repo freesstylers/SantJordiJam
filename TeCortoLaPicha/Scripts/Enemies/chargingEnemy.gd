@@ -31,6 +31,7 @@ var yPosition = 0
 
 func _ready():
 	charge_cd_buffer = charge_cd
+	
 func _physics_process(delta):
 	if !dead:
 

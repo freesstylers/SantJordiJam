@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dd5qgadjqxig1"]
+[gd_scene load_steps=19 format=3 uid="uid://dd5qgadjqxig1"]
 
 [ext_resource type="Script" path="res://Scripts/RoomManager.gd" id="1_dy84q"]
 [ext_resource type="PackedScene" uid="uid://41l0llw5ppgq" path="res://Assets/Prefabs/Rooms/Room2.tscn" id="2_4t8vj"]
@@ -17,12 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://bb67xvel3d5n0" path="res://Assets/Prefabs/Rooms/Room9.tscn" id="10_4rd8w"]
 [ext_resource type="PackedScene" uid="uid://d24fnwcuigbo0" path="res://Assets/Prefabs/GameUI.tscn" id="10_bkl3a"]
 [ext_resource type="PackedScene" uid="uid://cprrymfrusjgq" path="res://Assets/Prefabs/Rooms/Room10.tscn" id="11_xyow6"]
+[ext_resource type="PackedScene" uid="uid://cgk316k267s27" path="res://Scenes/BossFight/BossFight.tscn" id="12_2swi3"]
 
 [node name="GameScene" type="Node2D"]
 
 [node name="RoomContainer" type="Node2D" parent="."]
 script = ExtResource("1_dy84q")
 Rooms = Array[PackedScene]([ExtResource("2_4t8vj"), ExtResource("3_m017o"), ExtResource("4_ka1km"), ExtResource("5_ilo8l"), ExtResource("6_wyv8n"), ExtResource("7_4awth"), ExtResource("8_7yhmv"), ExtResource("9_1u23d"), ExtResource("10_4rd8w"), ExtResource("11_xyow6")])
+BossRoom = ExtResource("12_2swi3")
 Textures = Array[Texture2D]([ExtResource("3_g4hnb"), ExtResource("4_ii3gx"), ExtResource("5_fyq48"), ExtResource("6_g8irv"), ExtResource("7_g25vb")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

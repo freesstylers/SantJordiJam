@@ -1,8 +1,8 @@
-extends Node
+extends Room
 class_name BossFightManager
 
 @export var Dragon : DragonManager = null
-@export var ThePlayer : Player = null
+#@export var ThePlayer : Player = null
 
 @export var DragonDefaultPos : Node2D = null
 @export var PlayerDefaultPos : Node2D = null
@@ -22,8 +22,8 @@ func scene_to_default():
 		Dragon.Reset()
 		Dragon.global_position = DragonDefaultPos.global_position
 	#Reset the player
-	if ThePlayer != null:
-		ThePlayer.global_position = PlayerDefaultPos.global_position
+	if player != null:
+		player.global_position = PlayerDefaultPos.global_position
 		
 func start_fight():
 	Dragon.setState("FIREBALL")	

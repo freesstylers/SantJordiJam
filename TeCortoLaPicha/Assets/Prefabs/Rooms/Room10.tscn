@@ -42,7 +42,7 @@ point_count = 3
 [node name="Room10" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_0qxrx")
-EnemiesArray = [NodePath("enemies/enemy"), NodePath("enemies/enemy2"), NodePath(""), NodePath(""), NodePath(""), NodePath("enemies/enemy6"), NodePath(""), NodePath("enemies/enemy8"), NodePath("")]
+EnemiesArray = [NodePath("enemies/enemy"), NodePath("enemies/enemy2"), null, null, null, NodePath("enemies/enemy6"), null, NodePath("enemies/enemy8"), null]
 startingCharacterPosition = NodePath("Spawn")
 player = NodePath("Player")
 
@@ -74,17 +74,14 @@ damageSound = NodePath("../enemy/recieveDamage")
 [node name="enemy2" parent="enemies" instance=ExtResource("4_pxdk3")]
 position = Vector2(879, -421.5)
 
-[node name="enemy8" parent="enemies" node_paths=PackedStringArray("damageSound") instance=ExtResource("5_wsxrg")]
+[node name="enemy8" parent="enemies" instance=ExtResource("5_wsxrg")]
 position = Vector2(430, -77.5)
-damageSound = NodePath("")
 
-[node name="enemy6" parent="enemies" node_paths=PackedStringArray("damageSound") instance=ExtResource("5_wsxrg")]
+[node name="enemy6" parent="enemies" instance=ExtResource("5_wsxrg")]
 position = Vector2(305.5, -303.5)
-damageSound = NodePath("")
 
-[node name="enemy7" parent="enemies" node_paths=PackedStringArray("damageSound") instance=ExtResource("5_wsxrg")]
+[node name="enemy7" parent="enemies" instance=ExtResource("5_wsxrg")]
 position = Vector2(712, -431.5)
-damageSound = NodePath("")
 
 [node name="enemy3" parent="enemies" instance=ExtResource("6_ugdr2")]
 position = Vector2(870.5, -163.5)
