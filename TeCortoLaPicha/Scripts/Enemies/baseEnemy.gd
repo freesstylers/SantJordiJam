@@ -15,6 +15,9 @@ var current_move_buffer = 0
 @export var damageSound : AudioStreamPlayer2D
 
 func _process(delta):
+	check_current_move_buffer_tween()
+
+func check_current_move_buffer_tween():
 	if current_move_buffer <= 0:
 		var localTween : Tween = self.create_tween()
 		localTween.set_trans(Tween.TRANS_LINEAR)

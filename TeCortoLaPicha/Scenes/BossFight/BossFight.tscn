@@ -93,13 +93,13 @@ position = Vector2(991, 440)
 position = Vector2(1300, 344)
 
 [node name="VerticalFlameAttackPos" type="Node2D" parent="FightPositions"]
-position = Vector2(861, 188)
+position = Vector2(856, 720)
 
 [node name="HorizontalFlameAttackPos" type="Node2D" parent="FightPositions"]
-position = Vector2(460, 476)
+position = Vector2(379, 700)
 
 [node name="HorizontalFlameAttackPos2" type="Node2D" parent="FightPositions"]
-position = Vector2(1281, 468)
+position = Vector2(1300, 700)
 
 [node name="enemies" type="Node2D" parent="."]
 

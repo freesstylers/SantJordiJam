@@ -53,10 +53,12 @@ func _process(delta):
 	if(face_player):
 		var position_to_face = get_pos_to_face_towards()
 		if position_to_face.x < DragonMngr.global_position.x:
-			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
+			#$AnimatedSprite2D.flip_h = false
 			#DragonAnimation.scale.x = abs(DragonAnimation.scale.x)
 		else:
-			$AnimatedSprite2D.flip_h = true
+			$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
+			#$AnimatedSprite2D.flip_h = true
 			#DragonAnimation.scale.x = -abs(DragonAnimation.scale.x)
 	
 	if not flying_effect_active:
@@ -107,8 +109,8 @@ func get_pos_to_face_towards():
 func PlayTakeDamageEffect():
 	var effectDuration : float = 0.25
 	var localTween = create_tween()
-	localTween.tween_property(DragonAnimation, "modulate", Color.CRIMSON, effectDuration/2)
-	localTween.tween_property(DragonAnimation, "modulate", Color.WHITE, effectDuration/2)
+	localTween.tween_property($AnimatedSprite2D, "modulate", Color.CRIMSON, effectDuration/2)
+	localTween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, effectDuration/2)
 
 func DieAnim():
 	DeathSound.play()

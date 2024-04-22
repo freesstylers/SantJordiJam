@@ -45,14 +45,14 @@ func Attack():
 	localTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	var attackLength = 1.25
 	ThrustSound.play()
-	localTween.tween_property(Dragon, "position", attackEndPos, attackLength)
+	localTween.tween_property(Dragon, "global_position", attackEndPos, attackLength)
 	localTween.tween_callback(
 		func():
 			Dragon.getVisualizer().change_face_player_condition(true)
 			Dragon.getVisualizer().start_flying_effect()
 			Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.IDLE_FLY)
 			localTween = create_tween()
-			localTween.tween_property(Dragon, "position", attackEndPos - Vector2(0,200), attackLength)
+			localTween.tween_property(Dragon, "global_position", attackEndPos - Vector2(0,200), attackLength)
 			localTween.tween_callback(
 				func():
 					Dragon.getVisualizer().start_flying_effect()

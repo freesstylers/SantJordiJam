@@ -6,6 +6,7 @@ class_name DragonFireballAttackState
 @export var delayBeforeFireball : float = 0.5
 @export var delayBetweanFireballs : float = 0.1
 @export var ShotsPerAttack : int = 1
+@export var FiringPosMouth : Node2D = null
 
 @onready var DelayBeforeFiringTimer : Timer = $DelayBeforeFiring
 @onready var DelayBetweanFireballsTimer : Timer = $DelayBetweanFireballs
@@ -53,10 +54,10 @@ func select_firing_pos():
 func Attack():
 	Dragon.getVisualizer().play_animation(DragonVisualizer.ANIM_STATE.FIREBALL)
 	#Instantiate fireball
-	var target_dir = (get_pos_to_shoot_fireball() - Dragon.global_position).normalized()
+	var target_dir = (get_pos_to_shoot_fireball() - FiringPosMouth.global_position).normalized()
 	var instance = FireballPrefab.instantiate()
-	instance.global_position = Dragon.global_position
-	get_parent().get_parent().get_parent().add_child(instance)
+	get_parent().get_parent().get_parent().get_parent().add_child(instance)
+	instance.global_position = FiringPosMouth.global_position
 	(instance as Fireball).shoot(target_dir, FireBallSpeed)
 	FireballShotSound.play()
 	#Reset timers just in case
