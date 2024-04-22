@@ -73,18 +73,14 @@ position = Vector2(482.5, -396)
 [node name="enemy3" parent="enemies" instance=ExtResource("4_j202m")]
 position = Vector2(713.5, -347.5)
 
-[node name="enemy4" parent="enemies" node_paths=PackedStringArray("player_detector") instance=ExtResource("5_wu1ry")]
+[node name="enemy4" parent="enemies" instance=ExtResource("5_wu1ry")]
 position = Vector2(216, -59.5)
-player_detector = NodePath("")
 
-[node name="enemy5" parent="enemies" node_paths=PackedStringArray("player_detector", "damageSound") instance=ExtResource("5_wu1ry")]
+[node name="enemy5" parent="enemies" instance=ExtResource("5_wu1ry")]
 position = Vector2(745.5, -60)
-player_detector = NodePath("")
-damageSound = NodePath("")
 
-[node name="enemy6" parent="enemies" node_paths=PackedStringArray("wall_checker") instance=ExtResource("6_fxpyj")]
+[node name="enemy6" parent="enemies" instance=ExtResource("6_fxpyj")]
 position = Vector2(710.5, -199.5)
-wall_checker = NodePath("")
 
 [node name="enemy7" parent="enemies" instance=ExtResource("7_q8d7m")]
 position = Vector2(67, -116)
