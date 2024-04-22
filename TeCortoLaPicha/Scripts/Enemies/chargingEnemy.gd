@@ -19,6 +19,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var animationPlayer : AnimatedSprite2D
 
 var charge_time_buffer = 0
+var charge_cd = 2
+var charge_cd_buffer = 0
 var waiting_buffer = 0
 var charging = false
 
@@ -26,15 +28,22 @@ var yPosition = 0
 #func _ready():
 	#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
 	#$floor_checker.enabled = detect_cliffs
-	
+
+func _ready():
+	charge_cd_buffer = charge_cd
 func _physics_process(delta):
 	if !dead:
+
+			
 		if current_move_buffer > 0:
 			current_move_buffer -= delta
 		
 		if is_on_floor():
 			if !charging:
-				if player_detector.is_colliding() and waiting_buffer <= 0:
+				if charge_cd_buffer > 0:
+					charge_cd_buffer -= delta
+					
+				if player_detector.is_colliding() and waiting_buffer <= 0 and charge_cd_buffer <= 0:
 					if player_detector.get_collider().is_in_group("player"):
 						waiting_buffer = wait_before_charge
 						velocity.x = 0.0
@@ -51,13 +60,14 @@ func _physics_process(delta):
 				#position.y = yPosition
 				if charge_time_buffer <= 0:
 					charging = false
+					charge_cd_buffer = charge_cd
 					animationPlayer.rotation = 0
 					charge_time_buffer = 0
 					
 		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta		
-		elif not $floor_checker.is_colliding() or is_on_wall():
+		elif (not $floor_checker.is_colliding() or is_on_wall()) and !charging:
 			direction *= -1
 			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 			player_detector.target_position.x = -player_detector.target_position.x
@@ -73,6 +83,12 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" and not dead:
 		body.characterTakeLife(damageToCharacter, position)
+		if charging:
+			charging = false
+			animationPlayer.rotation = 0
+			charge_cd_buffer = charge_cd
+			charge_time_buffer = 0
+			
 	pass # Replace with function body.
 	
 func charge():

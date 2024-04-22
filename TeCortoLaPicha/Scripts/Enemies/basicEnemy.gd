@@ -32,7 +32,7 @@ func _physics_process(delta):
 			direction *= -1
 			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 			#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
-		elif is_on_wall():
+		elif is_on_wall() and is_on_floor():
 			direction *= -1
 			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 			#$floor_checker.visible = false

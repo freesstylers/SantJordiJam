@@ -509,7 +509,7 @@ animations = [{
 size = Vector2(26, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af36k"]
-size = Vector2(52, 42)
+size = Vector2(30, 42)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("damageSound")]
 collision_layer = 2
@@ -539,7 +539,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 12)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_af36k")
 
 [node name="recieveDamage2" type="AudioStreamPlayer2D" parent="."]

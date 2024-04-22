@@ -845,7 +845,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
-size = Vector2(21.0526, 39.0578)
+size = Vector2(16.3743, 22.1066)
 
 [sub_resource type="FontVariation" id="FontVariation_i3n8k"]
 
@@ -920,7 +920,7 @@ libraries = {
 autoplay = "witiza_idle_anim"
 
 [node name="CharacterCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-5, -0.0177402)
+position = Vector2(-6.99999, 6.49999)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
 
