@@ -41,19 +41,21 @@ func _process(delta):
 			#angle_to_player = global_position.direction_to(Player.position).angle()
 			#rotation = move_toward(rotation, angle_to_player, delta)
 		if not shooting: #No restart
-			sprite.play("default")
+			if sprite != null:
+				sprite.play("default")
 			timeSinceCooldown += delta
 			
 			flip()
 					
 			if timeSinceCooldown > cooldown:
 				shooting = true
-				sprite.play("Attack")
+				if sprite != null:
+					sprite.play("Attack")
 			
 		if shooting:
 			auxShootingTime += delta
 		
-			if auxShootingTime > sprite.animation.length()/6:
+			if sprite != null and auxShootingTime > sprite.animation.length()/6:
 				shoot()
 				auxShootingTime = 0
 				timesShot += 1
