@@ -64,6 +64,11 @@ var hit_buffer = 0
 
 @export var attackSound : AudioStreamPlayer2D
 @export var hitSound : AudioStreamPlayer2D
+@export var jumpSound : AudioStreamPlayer2D
+@export var dashSound : AudioStreamPlayer2D
+
+@export var camera : CameraShaker
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -72,6 +77,7 @@ func _ready():
 	border_jump_velocity = ((2.0 * border_jump_height) / border_jump_time_to_peak) * -1
 	border_jump_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_peak * border_jump_time_to_peak)) * -1
 	border_fall_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_descend * border_jump_time_to_descend)) * -1
+	
 	
 func get_gravity() -> float:
 	#if ((rightFootRaycast.is_colliding() and not rightRaycast.is_colliding()) and 
@@ -136,6 +142,7 @@ func _physics_process(delta):
 		# JUMP INPUT
 		if Input.is_action_just_pressed("Jump"):
 			jump_buffer_counter = jump_buffer_time	
+			jumpSound.play()
 		if jump_buffer_counter > 0:
 			jump_buffer_counter -= delta
 		if jump_buffer_counter > 0 and coyote_counter > 0:
@@ -186,7 +193,8 @@ func _physics_process(delta):
 		
 	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
 	
-
+	Engine.time_scale = lerp(Engine.time_scale, 1.0, 10 * delta)
+	
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
@@ -207,6 +215,7 @@ func ControlDoubleTap(_delta, direction, event_):
 		if Input.is_action_just_pressed("Dash"):
 			if direction != 0:
 				double_tap = true
+				dashSound.play()
 				get_node("Sprite2D").rotation = 0
 		#if Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
 			#if Input.is_action_just_pressed("ui_right"):
@@ -225,6 +234,7 @@ func ControlDoubleTap(_delta, direction, event_):
 	elif event_ is InputEventJoypadButton:
 		if Input.is_action_just_pressed("Dash"):
 			if direction != 0:
+				dashSound.play()
 				double_tap = true
 				get_node("Sprite2D").rotation = 0
 		pass	
@@ -258,15 +268,16 @@ func _on_sword_collider_body_entered(body):
 	body.takeDamage(damage)
 
 	body.applyForce(position)
-
+	Engine.time_scale = 0.5
 	pass # Replace with function body.
 
 func characterTakeLife(value, enemy):
 	if !attacking and hit_buffer <= 0:# and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):
 		characterLife -= value
 		velocity = Vector2.ZERO
+		if(camera != null):
+			camera.apply_shake()
 		dashing = false
-		hitSound.pitch_scale = randf_range(-0.95, 1.05)
 		hitSound.play()
 		auxDashCooldown = dashCooldown
 		applyForce(enemy)

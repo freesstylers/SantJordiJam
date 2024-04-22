@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_f0xvu"]
 [ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
 [ext_resource type="Texture2D" uid="uid://comihu85bgx3t" path="res://Sprites/Tijeritas/Tijeritas.png" id="3_1310h"]
-[ext_resource type="AudioStream" uid="uid://iwwmusjq65m4" path="res://Assets/Audio/SFX/miau2.mp3" id="5_ien4k"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/SFX/slime.mp3" id="5_l0rc0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epq8i"]
 atlas = ExtResource("3_1310h")
@@ -108,6 +108,6 @@ position = Vector2(-2, 4)
 shape = SubResource("RectangleShape2D_n0uk7")
 
 [node name="recieveDamage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_ien4k")
+stream = ExtResource("5_l0rc0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -40,3 +40,8 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player" and not dead:
 		body.characterTakeLife(damageToCharacter, position)
 	pass # Replace with function body.
+
+func applyForce(player):
+	var dir = clamp(position.x - player.x, -1, 1)
+	velocity.x = dir * damageForceX
+	current_move_buffer = canMoveCD

@@ -31,7 +31,6 @@ func _process(delta):
 func takeDamage(damage):
 	life -= damage
 	if damageSound != null:
-		damageSound.pitch_scale = randf_range(-0.95, 1.05)
 		damageSound.play()
 	if particles != null:
 		var partAux = particles.instantiate()
@@ -74,6 +73,13 @@ func applyForce(player):
 	var dirY = clamp(position.y - player.y, -1, 1)
 	velocity.x = dir * damageForceX
 	velocity.y -=  damageForceY
+	current_move_buffer = canMoveCD
+	
+func applyReducedForce(player):
+	var dir = clamp(position.x - player.x, -1, 1)
+	var dirY = clamp(position.y - player.y, -1, 1)
+	velocity.x = dir * damageForceX/3
+	velocity.y -=  damageForceY/3
 	current_move_buffer = canMoveCD
 	
 	

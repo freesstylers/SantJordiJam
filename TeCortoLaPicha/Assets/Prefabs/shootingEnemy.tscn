@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://wwfum1kim3y3" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque12.png" id="14_vqjl5"]
 [ext_resource type="Texture2D" uid="uid://c04d2s2pr8syy" path="res://Sprites/Cagayon/CagayonIdle/CagayonIdle12.png" id="15_a0ryo"]
 [ext_resource type="Texture2D" uid="uid://75laq0vhvhrn" path="res://Sprites/Cagayon/Cagayonataque/CagayonAtaque13.png" id="15_ind7y"]
-[ext_resource type="AudioStream" uid="uid://iwwmusjq65m4" path="res://Assets/Audio/SFX/miau2.mp3" id="30_58dt8"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/SFX/slime.mp3" id="30_viqt3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
@@ -165,6 +165,7 @@ position = Vector2(-3.5, 4.5)
 shape = SubResource("RectangleShape2D_j2qn0")
 
 [node name="recieveDamage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("30_58dt8")
+stream = ExtResource("30_viqt3")
+volume_db = 2.245
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
