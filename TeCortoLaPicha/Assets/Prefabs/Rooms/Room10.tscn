@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_0qxrx"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_qu04l"]
-[ext_resource type="PackedScene" uid="uid://cxd5v4r4rlokj" path="res://Assets/Prefabs/door.tscn" id="3_xa2al"]
+[ext_resource type="PackedScene" uid="uid://b5ie836riqf2k" path="res://Assets/Prefabs/door.tscn" id="3_xa2al"]
 [ext_resource type="PackedScene" uid="uid://bxw328csmcn03" path="res://Assets/Prefabs/shootingEnemy.tscn" id="4_pxdk3"]
 [ext_resource type="PackedScene" uid="uid://b0gwpb640123l" path="res://Assets/Prefabs/basicEnemy.tscn" id="5_wsxrg"]
 [ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="6_crvrx"]
@@ -84,7 +84,7 @@ position = Vector2(305.5, -303.5)
 position = Vector2(712, -431.5)
 
 [node name="enemy3" parent="enemies" instance=ExtResource("6_ugdr2")]
-position = Vector2(870.5, -163.5)
+position = Vector2(226.5, -170.5)
 
 [node name="enemy9" parent="enemies" node_paths=PackedStringArray("player_detector", "animationPlayer", "damageSound") instance=ExtResource("6_ugdr2")]
 position = Vector2(673.5, -57)
