@@ -22,11 +22,12 @@
 
 [node name="GameScene" type="Node2D"]
 
-[node name="RoomContainer" type="Node2D" parent="."]
+[node name="RoomContainer" type="Node2D" parent="." node_paths=PackedStringArray("Musica")]
 script = ExtResource("1_dy84q")
 Rooms = Array[PackedScene]([ExtResource("2_4t8vj"), ExtResource("3_m017o"), ExtResource("4_ka1km"), ExtResource("5_ilo8l"), ExtResource("6_wyv8n"), ExtResource("7_4awth"), ExtResource("8_7yhmv"), ExtResource("9_1u23d"), ExtResource("10_4rd8w"), ExtResource("11_xyow6")])
 BossRoom = ExtResource("12_2swi3")
 Textures = Array[Texture2D]([ExtResource("3_g4hnb"), ExtResource("4_ii3gx"), ExtResource("5_fyq48"), ExtResource("6_g8irv"), ExtResource("7_g25vb")])
+Musica = NodePath("../AudioStreamPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -5,6 +5,7 @@ extends Node2D
 @export var BossRoom: PackedScene
 @export var Textures : Array[Texture2D]
 @export var Cantares : Array[String]
+@export var Musica : AudioStreamPlayer
 
 var currentRoomCont : Room = null
 var roomList : Array[int] = [0,1,2,3,4,5,6,7,8,9]
@@ -63,6 +64,7 @@ func addNewRoom():
 		else:
 			get_tree().root.get_child(1).get_child(0).visible = false
 			currentRoomCont = BossRoom.instantiate()
+			Musica.stop()
 		
 		add_child(currentRoomCont)
 	else:
