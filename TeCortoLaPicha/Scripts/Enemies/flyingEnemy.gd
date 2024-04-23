@@ -22,10 +22,11 @@ func _physics_process(delta):
 		if current_move_buffer > 0:
 			current_move_buffer -= delta
 			
-		if is_on_wall() or (wall_checker.is_colliding() and !wall_checker.get_collider().is_in_group("player")):
-			direction *= -1
-			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-			$wall_checker.target_position.x *= -direction
+		if(wall_checker != null):
+			if is_on_wall() or (wall_checker.is_colliding() and !wall_checker.get_collider().is_in_group("player")):
+				direction *= -1
+				$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
+				$wall_checker.target_position.x *= -direction
 
 		time += delta
 		
