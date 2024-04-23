@@ -70,3 +70,4 @@ func changeWormAnim(anim):
 			$AnimatedSprite2D.set_animation("marx")
 		#5:
 			#$AnimatedSprite2D.set_anim("Marx")
+	$AnimatedSprite2D.play()

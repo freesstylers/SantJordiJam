@@ -32,9 +32,11 @@ func Endless():
 	pass
 
 func Exit():
-	get_tree().root.get_node("SceneManager/ButtonSFX").play()
-	get_tree().root.get_node("SceneManager").pauseEnabled = false
-	get_tree().paused = true
+	if get_tree() != null and get_tree().root != null:
+		get_tree().root.get_child(1).get_child(0).visible = true
+		get_tree().root.get_node("SceneManager/ButtonSFX").play()
+		get_tree().root.get_node("SceneManager").pauseEnabled = false
+		get_tree().paused = true
 	
 	win.visible = false
 	lose.visible = false

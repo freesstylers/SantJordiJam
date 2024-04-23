@@ -40,7 +40,7 @@ func PlayerWon():
 		get_tree().root.get_child(1).get_child(0).visible = true
 		
 		get_tree().root.get_node("SceneManager/TransitionScreen").transition()
-	
+		Globals.roomCompleted.disconnect(PlayerWon)
 		#Delete Room
 		self.queue_free()
 		

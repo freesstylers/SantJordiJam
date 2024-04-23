@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk43jhsw5sywy"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_ifnhu"]
+[ext_resource type="PackedScene" uid="uid://dd5qgadjqxig1" path="res://Scenes/GameScene.tscn" id="2_04snq"]
+[ext_resource type="PackedScene" uid="uid://beofrpr4iik7b" path="res://Assets/Prefabs/MainMenu.tscn" id="2_hk2fo"]
+[ext_resource type="PackedScene" uid="uid://bo7aqldm6mdsp" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
+[ext_resource type="Texture2D" uid="uid://c22mxujodiyrj" path="res://Sprites/MainMenu.png" id="3_dmmbn"]
+[ext_resource type="PackedScene" uid="uid://dhsjm3o3lbkhl" path="res://Assets/Prefabs/PauseMenu.tscn" id="5_5arp3"]
+[ext_resource type="PackedScene" uid="uid://hpsqluh2elt4" path="res://Assets/Prefabs/EndScreen.tscn" id="6_133m1"]
+[ext_resource type="AudioStream" uid="uid://d2bq2e8wk34nn" path="res://Assets/Audio/SFX/pageturn-102978.mp3" id="7_qcrfi"]
+
+[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("EndScreen")]
+process_mode = 3
+script = ExtResource("1_ifnhu")
+GameScene = ExtResource("2_04snq")
+MainMenuScene = ExtResource("2_hk2fo")
+EndScreen = NodePath("MenuHolder/EndScreen")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_dmmbn")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CurrentScene" type="Control" parent="."]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Control" parent="CurrentScene" instance=ExtResource("2_hk2fo")]
+layout_mode = 1
+
+[node name="MenuHolder" type="CanvasLayer" parent="."]
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="MenuHolder" instance=ExtResource("5_5arp3")]
+visible = false
+t = 0.1
+
+[node name="EndScreen" parent="MenuHolder" instance=ExtResource("6_133m1")]
+mouse_filter = 2
+
+[node name="TransitionScreen" parent="." instance=ExtResource("2_j5f36")]
+process_mode = 3
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+stream = ExtResource("7_qcrfi")
+
+[node name="PageSFX" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+stream = ExtResource("7_qcrfi")
