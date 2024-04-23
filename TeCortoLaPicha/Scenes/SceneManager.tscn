@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bo7aqldm6mdsp" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="2_j5f36"]
 [ext_resource type="Texture2D" uid="uid://c22mxujodiyrj" path="res://Sprites/MainMenu.png" id="3_dmmbn"]
 [ext_resource type="PackedScene" uid="uid://dhsjm3o3lbkhl" path="res://Assets/Prefabs/PauseMenu.tscn" id="5_5arp3"]
-[ext_resource type="PackedScene" uid="uid://hpsqluh2elt4" path="res://Assets/Prefabs/EndScreen.tscn" id="6_133m1"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/EndScreen.tscn" id="6_133m1"]
 [ext_resource type="AudioStream" uid="uid://d2bq2e8wk34nn" path="res://Assets/Audio/SFX/pageturn-102978.mp3" id="7_qcrfi"]
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("EndScreen")]

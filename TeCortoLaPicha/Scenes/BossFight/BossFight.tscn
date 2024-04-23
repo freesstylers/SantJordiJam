@@ -25,14 +25,13 @@ shader_parameter/enable_palette_cycling = false
 shader_parameter/enable_scan_lines = false
 shader_parameter/palette_speed = 0.1
 
-[node name="BossFight" type="Node2D" node_paths=PackedStringArray("Dragon", "DragonDefaultPos", "PlayerDefaultPos", "player", "Door")]
+[node name="BossFight" type="Node2D" node_paths=PackedStringArray("Dragon", "DragonDefaultPos", "PlayerDefaultPos", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_nn163")
 Dragon = NodePath("enemies/DragonStateMachine")
 DragonDefaultPos = NodePath("FightPositions/DragonDefaultPos")
 PlayerDefaultPos = NodePath("FightPositions/PlayerDefaultPos")
 player = NodePath("Player")
-Door = NodePath("")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-334, 206)

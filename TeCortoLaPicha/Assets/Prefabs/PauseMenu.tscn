@@ -78,6 +78,7 @@ anchor_bottom = 0.507824
 offset_top = 1.52588e-05
 offset_right = -3.05176e-05
 rotation = 0.119424
+focus_neighbor_bottom = NodePath("../exit")
 text = "Resume"
 text_overrun_behavior = 1
 metadata/_edit_use_anchors_ = true
@@ -108,6 +109,7 @@ anchor_right = 0.819061
 anchor_bottom = 0.643277
 offset_top = -3.05176e-05
 rotation = 0.118682
+focus_neighbor_top = NodePath("../resume")
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 

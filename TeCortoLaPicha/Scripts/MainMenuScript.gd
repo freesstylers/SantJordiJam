@@ -57,6 +57,7 @@ func _on_credits_back_button_down():
 	get_tree().root.get_node("SceneManager/ButtonSFX").play()
 	get_node("credits").visible = false
 	$"MainButtonContainer".visible = true;
+	$MainButtonContainer/MainButtonContainer/play.grab_focus()
 	pass # Replace with function body.
 
 func TogglePlayMenu(state: bool):
@@ -75,4 +76,5 @@ func _on_tutorial_back_button_down():
 	get_tree().root.get_node("SceneManager/ButtonSFX").play()
 	get_node("tutorial").visible = false
 	$"MainButtonContainer".visible = true;
+	$MainButtonContainer/MainButtonContainer/play.grab_focus()
 	pass # Replace with function body.

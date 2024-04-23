@@ -51,7 +51,9 @@ func TweenOutEnd():
 	pass
 	
 func TweenInEnd():
-		
+	
+	$UI/VBoxContainer/resume.grab_focus()
+	
 	for b in buttons:
 		get_node(b).disabled = false
 		pass

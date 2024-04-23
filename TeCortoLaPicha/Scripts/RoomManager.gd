@@ -7,6 +7,7 @@ extends Node2D
 @export var Cantares : Array[String]
 @export var Musica : AudioStreamPlayer
 
+var roomsCompleted = 0
 var currentRoomCont : Room = null
 var roomList : Array[int] = [0,1,2,3,4,5,6,7,8,9]
 var rng
@@ -16,7 +17,7 @@ signal new_room
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.connect("roomCompleted", roomCompletedFunc)
-	
+	roomsCompleted = 0
 	if get_parent().get_parent().get_parent().endless == false:
 		var aux = roomList.pick_random()
 		roomList.erase(aux)
@@ -56,7 +57,7 @@ func roomCompletedFunc():
 		
 func addNewRoom():
 	if get_parent().get_parent().get_parent().endless == false:
-		if roomList.size() > 0:
+		if roomList.size() < 0:
 			var aux = roomList.pick_random()
 			roomList.erase(aux)
 			currentRoomCont = Rooms[aux].instantiate()
@@ -70,6 +71,8 @@ func addNewRoom():
 		
 		add_child(currentRoomCont)
 	else:
+		roomsCompleted += 1
+		
 		var roomIndex = rng.randi_range(0, Rooms.size())
 		
 		if roomIndex == Rooms.size():

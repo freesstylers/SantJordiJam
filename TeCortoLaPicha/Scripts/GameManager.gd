@@ -42,6 +42,9 @@ func startGame(endless_):
 	pass
 
 func backToMenu():
+	
+	get_tree().root.get_child(1).get_child(0).visible = true
+	
 	if get_tree().paused:
 		TogglePause()
 	menu = true
