@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=28 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
@@ -847,14 +847,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
 size = Vector2(16.3743, 31.2093)
 
-[sub_resource type="FontVariation" id="FontVariation_i3n8k"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_2hdyn"]
-font = SubResource("FontVariation_i3n8k")
-font_size = 10
-font_color = Color(0, 0.756863, 0.529412, 1)
-outline_size = 4
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound") groups=["player"]]
 position = Vector2(0, 32)
 collision_layer = 5
@@ -867,7 +859,7 @@ border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
 reduce_jump_velocity = 200
-labelText = NodePath("Label")
+labelText = NodePath("")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 leftRaycast = NodePath("RayCastLeft")
@@ -923,16 +915,6 @@ autoplay = "witiza_idle_anim"
 position = Vector2(-6.99999, 2.99999)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -41.6
-offset_top = -38.2
-offset_right = 41.4
-offset_bottom = -15.2
-text = "Test"
-label_settings = SubResource("LabelSettings_2hdyn")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 visible = false

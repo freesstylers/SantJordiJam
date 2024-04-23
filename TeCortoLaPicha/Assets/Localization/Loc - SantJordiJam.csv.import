@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c6rwhwdm0u1sf"
+
+[deps]
+
+files=["res://Assets/Localization/Loc - SantJordiJam.es.translation", "res://Assets/Localization/Loc - SantJordiJam.en.translation", "res://Assets/Localization/Loc - SantJordiJam.eu.translation", "res://Assets/Localization/Loc - SantJordiJam.ca.translation", "res://Assets/Localization/Loc - SantJordiJam.ast.translation", "res://Assets/Localization/Loc - SantJordiJam.gl.translation", "res://Assets/Localization/Loc - SantJordiJam.la.translation", "res://Assets/Localization/Loc - SantJordiJam.ca_ES.translation"]
+
+source_file="res://Assets/Localization/Loc - SantJordiJam.csv"
+dest_files=["res://Assets/Localization/Loc - SantJordiJam.es.translation", "res://Assets/Localization/Loc - SantJordiJam.en.translation", "res://Assets/Localization/Loc - SantJordiJam.eu.translation", "res://Assets/Localization/Loc - SantJordiJam.ca.translation", "res://Assets/Localization/Loc - SantJordiJam.ast.translation", "res://Assets/Localization/Loc - SantJordiJam.gl.translation", "res://Assets/Localization/Loc - SantJordiJam.la.translation", "res://Assets/Localization/Loc - SantJordiJam.ca_ES.translation"]
+
+[params]
+
+compress=true
+delimiter=0
