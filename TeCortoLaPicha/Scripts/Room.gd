@@ -37,7 +37,7 @@ func changeWormSprite(tileset):
 	pass
 
 func doorAttempt():
-	if EnemiesArray.size() == 0:
+	if EnemiesArray != null and EnemiesArray.size() == 0:
 		Globals.roomCompleted.emit()
 	else:
 		#PlaySound o algo
