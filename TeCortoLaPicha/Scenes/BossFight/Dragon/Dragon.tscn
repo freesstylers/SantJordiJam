@@ -19,10 +19,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihvi8"]
-size = Vector2(81, 72)
+size = Vector2(89, 82)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf1hk"]
-size = Vector2(85, 78)
+size = Vector2(87, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
 size = Vector2(413.758, 20)
@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_ou3gk")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox/DamageToPlayerHitbox"]
-position = Vector2(-3.5, 3)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_ihvi8")
 debug_color = Color(0.976471, 0, 0.403922, 0.419608)
 
@@ -73,7 +73,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox/HurtBox"]
-position = Vector2(-3.5, 3)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_gf1hk")
 debug_color = Color(0, 0.647059, 0.227451, 0.419608)
 
