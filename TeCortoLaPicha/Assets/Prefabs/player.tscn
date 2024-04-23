@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://whvkq0hg01yt"]
+[gd_scene load_steps=33 format=3 uid="uid://whvkq0hg01yt"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6eukt"]
 [ext_resource type="Texture2D" uid="uid://biy3dps3j82fi" path="res://Sprites/Witiza/Idle/Witiza_Idle_Spritesheet.png" id="2_tdyuv"]
@@ -847,7 +847,65 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawjx"]
 size = Vector2(16.3743, 31.2093)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound") groups=["player"]]
+[sub_resource type="FontVariation" id="FontVariation_i3n8k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2hdyn"]
+font = SubResource("FontVariation_i3n8k")
+font_size = 10
+font_color = Color(0, 0.756863, 0.529412, 1)
+outline_size = 4
+
+[sub_resource type="Animation" id="Animation_umjwh"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_6kyn4"]
+resource_name = "labelFade"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqlwt"]
+_data = {
+"RESET": SubResource("Animation_umjwh"),
+"labelFade": SubResource("Animation_6kyn4")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("labelText", "animationPlayer", "sprite", "leftRaycast", "rightRaycast", "leftFootRaycast", "rightFootRaycast", "attackSound", "hitSound", "jumpSound", "dashSound", "text") groups=["player"]]
 position = Vector2(0, 32)
 collision_layer = 5
 script = ExtResource("1_6eukt")
@@ -859,7 +917,7 @@ border_jump_height = 4.0
 border_jump_time_to_peak = 0.04
 border_jump_time_to_descend = 0.04
 reduce_jump_velocity = 200
-labelText = NodePath("")
+labelText = NodePath("Label")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 leftRaycast = NodePath("RayCastLeft")
@@ -880,6 +938,7 @@ hitSound = NodePath("A")
 jumpSound = NodePath("Jump")
 dashSound = NodePath("Dash")
 timeLimit = 30.0
+text = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)
@@ -915,6 +974,21 @@ autoplay = "witiza_idle_anim"
 position = Vector2(-6.99999, 2.99999)
 scale = Vector2(0.855, 0.769)
 shape = SubResource("RectangleShape2D_uawjx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -41.6
+offset_top = -102.0
+offset_right = 41.4
+offset_bottom = -20.0
+text = "Test"
+label_settings = SubResource("LabelSettings_2hdyn")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+"": SubResource("AnimationLibrary_tqlwt")
+}
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 visible = false

@@ -4,6 +4,7 @@ extends Node2D
 @export var Rooms : Array[PackedScene]
 @export var BossRoom: PackedScene
 @export var Textures : Array[Texture2D]
+@export var Cantares : Array[String]
 
 var currentRoomCont : Room = null
 var roomList : Array[int] = [0,1,2,3,4,5,6,7,8,9]
@@ -20,6 +21,12 @@ func _ready():
 	var room = Rooms[aux].instantiate()
 	currentRoomCont = room
 	add_child(room) #Random Room
+	
+	if Cantares.size() > 0 :
+		aux = Cantares.pick_random()
+		Cantares.erase(aux)
+		room.player.Cantar(aux)
+		pass
 	
 	var tileset = Textures.pick_random()
 	get_child(0).get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d24fnwcuigbo0"]
+[gd_scene load_steps=40 format=3 uid="uid://d24fnwcuigbo0"]
 
 [ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_tk2jt"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_45mbt"]
@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://dwnrdecxqhve4" path="res://Sprites/UI/Petalo6.png" id="9_tfitx"]
 [ext_resource type="Texture2D" uid="uid://ba5lyqr5jqfl4" path="res://Sprites/UI/Petalo7.png" id="10_vmlyo"]
 [ext_resource type="Texture2D" uid="uid://lc1i1jee4nuv" path="res://Sprites/UI/Petalo8.png" id="11_y4cj7"]
-[ext_resource type="Texture2D" uid="uid://bolx3xnjl66xg" path="res://Sprites/UI/Button_Ui.png" id="12_3neyt"]
 [ext_resource type="Texture2D" uid="uid://b7qqcmnya7f68" path="res://Sprites/UI/Attack_UI.png" id="12_asaoh"]
 [ext_resource type="Texture2D" uid="uid://diuvsx8m3748c" path="res://Sprites/UI/Dash_UI.png" id="13_rkyo0"]
 [ext_resource type="Texture2D" uid="uid://buf7qxv50hey8" path="res://Sprites/UI/Gancho_UI.png" id="14_sovy2"]
+[ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="15_a1hs7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n71wf"]
 texture = ExtResource("3_ldu5h")
@@ -793,17 +793,13 @@ _data = {
 "uno_reset": SubResource("Animation_0ov5o")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_co0gm"]
-content_margin_left = 22.0
-content_margin_top = 22.0
-content_margin_right = 22.0
-content_margin_bottom = 22.0
-texture = ExtResource("12_3neyt")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h88on"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxdm1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf7qn"]
+
 [node name="GameUi" type="Control" node_paths=PackedStringArray("attack", "dash", "hp")]
-modulate = Color(1, 1, 1, 0.647059)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -812,26 +808,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_tk2jt")
 script = ExtResource("2_45mbt")
-attack = NodePath("PanelContainer/abilities/Atk/ProgressBar")
-dash = NodePath("PanelContainer/abilities/dash/ProgressBar")
+attack = NodePath("PanelContainer/abilities/Atk/Panel/ProgressBar")
+dash = NodePath("PanelContainer/abilities/dash/Panel/ProgressBar")
 hp = NodePath("rosatimer/AnimationPlayer")
 metadata/_edit_use_anchors_ = true
 
 [node name="rosatimer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0.803922)
 clip_children = 2
 clip_contents = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.44375
-anchor_top = 0.00694444
-anchor_right = 0.55625
-anchor_bottom = 0.206944
-offset_left = 6.0
-offset_right = -6.0
-offset_bottom = -12.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = 7.0
+offset_right = 72.0
+offset_bottom = 151.0
 grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
 theme_override_styles/panel = SubResource("StyleBoxTexture_n71wf")
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="rosatimer"]
 libraries = {
@@ -874,23 +870,29 @@ texture = ExtResource("10_vmlyo")
 layout_mode = 2
 texture = ExtResource("11_y4cj7")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 596.0
-offset_right = 309.0
-offset_bottom = 707.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_co0gm")
+[node name="PanelContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00859375
+anchor_top = 0.865278
+anchor_right = 0.221875
+anchor_bottom = 1.01944
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h88on")
+metadata/_edit_use_anchors_ = true
 
 [node name="abilities" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+anchor_left = 0.0644068
+anchor_top = 0.144144
+anchor_right = 0.0644068
+anchor_bottom = 0.144144
+offset_right = 251.0
+offset_bottom = 67.0
 theme_override_constants/separation = 25
 metadata/_edit_use_anchors_ = true
 
 [node name="Atk" type="PanelContainer" parent="PanelContainer/abilities"]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
 theme_override_styles/panel = SubResource("StyleBoxEmpty_xxdm1")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/abilities/Atk"]
@@ -899,12 +901,40 @@ texture = ExtResource("12_asaoh")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/abilities/Atk"]
+[node name="Panel" type="Panel" parent="PanelContainer/abilities/Atk"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gf7qn")
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/abilities/Atk/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 1
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
+
+[node name="ActionIcon" type="TextureRect" parent="PanelContainer/abilities/Atk/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.149254
+anchor_top = 0.686567
+anchor_right = 0.328
+anchor_bottom = 1.164
+offset_right = 8.024
+offset_bottom = 8.012
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+script = ExtResource("15_a1hs7")
+action_name = &"Attack"
+metadata/_edit_use_anchors_ = true
 
 [node name="dash" type="PanelContainer" parent="PanelContainer/abilities"]
 layout_mode = 2
@@ -918,12 +948,37 @@ texture = ExtResource("13_rkyo0")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/abilities/dash"]
+[node name="Panel" type="Panel" parent="PanelContainer/abilities/dash"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gf7qn")
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/abilities/dash/Panel"]
+layout_mode = 2
+anchor_left = 0.0746269
+anchor_top = 0.0746269
+anchor_right = 0.925373
+anchor_bottom = 0.925373
 size_flags_vertical = 1
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ActionIcon" type="TextureRect" parent="PanelContainer/abilities/dash/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.149254
+anchor_top = 0.686567
+anchor_right = 0.328
+anchor_bottom = 1.164
+offset_left = -1.52588e-05
+offset_right = 8.02398
+offset_bottom = 8.012
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+script = ExtResource("15_a1hs7")
+action_name = &"Dash"
 
 [node name="grapple" type="PanelContainer" parent="PanelContainer/abilities"]
 layout_mode = 2
@@ -937,10 +992,22 @@ texture = ExtResource("14_sovy2")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/abilities/grapple"]
-visible = false
+[node name="Panel" type="Panel" parent="PanelContainer/abilities/grapple"]
 layout_mode = 2
-size_flags_vertical = 1
-max_value = 1.0
-fill_mode = 3
-show_percentage = false
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gf7qn")
+
+[node name="ActionIcon" type="TextureRect" parent="PanelContainer/abilities/grapple/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.149254
+anchor_top = 0.686567
+anchor_right = 0.328
+anchor_bottom = 1.164
+offset_left = -1.52588e-05
+offset_right = 8.02398
+offset_bottom = 8.012
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+script = ExtResource("15_a1hs7")
+action_name = &"Grapple"

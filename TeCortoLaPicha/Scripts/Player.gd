@@ -76,6 +76,8 @@ signal dash_start
 signal dash_cancel
 signal refresh_hp
 
+@export var text : Label
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -88,6 +90,11 @@ func _ready():
 	characterLife = timeLimit
 	
 	print (characterLife)
+
+func Cantar(cantar : String):
+	text.text = cantar
+	$Label/AnimationPlayer.play("labelFade")
+	pass
 	
 func get_gravity() -> float:
 	#if ((rightFootRaycast.is_colliding() and not rightRaycast.is_colliding()) and 
