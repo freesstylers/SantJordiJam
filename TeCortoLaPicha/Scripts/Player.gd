@@ -77,7 +77,8 @@ signal dash_cancel
 signal refresh_hp
 
 @export var text : Label
-
+var cdHit_Engine_Scale = 0.2
+var hit_cd_time_buffer = 0
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity  = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -226,8 +227,8 @@ func _physics_process(delta):
 		hit_buffer -= delta
 		
 	velocity.x = move_toward(velocity.x, direction * act_max_speed, acceleration * delta) + flying_vel.x
-	
-	Engine.time_scale = lerp(Engine.time_scale, 1.0, 10 * delta)
+
+	Engine.time_scale = lerp(Engine.time_scale, 1.0, 0.2)
 	
 	move_and_slide()
 	
@@ -287,7 +288,7 @@ func _on_sword_collider_body_entered(body):
 		refresh_hp.emit()
 
 	body.applyForce(position)
-	Engine.time_scale = 0.5
+	hit_cd_time_buffer = cdHit_Engine_Scale
 
 func characterTakeLife(value, enemy):
 	if !attacking and hit_buffer <= 0:# and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):
@@ -295,6 +296,7 @@ func characterTakeLife(value, enemy):
 		velocity = Vector2.ZERO
 		if(camera != null):
 			camera.apply_shake()
+		Engine.time_scale = 0.00
 		dashing = false
 		dash_cancel.emit()
 		hitSound.play()

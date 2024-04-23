@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dd5qgadjqxig1"]
+[gd_scene load_steps=21 format=3 uid="uid://dd5qgadjqxig1"]
 
 [ext_resource type="Script" path="res://Scripts/RoomManager.gd" id="1_dy84q"]
 [ext_resource type="PackedScene" uid="uid://41l0llw5ppgq" path="res://Assets/Prefabs/Rooms/Room2.tscn" id="2_4t8vj"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cprrymfrusjgq" path="res://Assets/Prefabs/Rooms/Room10.tscn" id="11_xyow6"]
 [ext_resource type="PackedScene" uid="uid://cgk316k267s27" path="res://Scenes/BossFight/BossFight.tscn" id="12_2swi3"]
 [ext_resource type="AudioStream" uid="uid://hj3cyci8mkev" path="res://Assets/Audio/Music/ElsVuitBitadors.wav" id="19_xq0ta"]
+[ext_resource type="Script" path="res://Assets/Themes/AudioStreamPlayerControlSpeed.gd" id="20_wdnhj"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -37,5 +38,6 @@ roomManager = NodePath("../../RoomContainer")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_xq0ta")
 autoplay = true
+script = ExtResource("20_wdnhj")
 
 [connection signal="new_room" from="RoomContainer" to="CanvasLayer/GameUi" method="UpdateRoom"]
