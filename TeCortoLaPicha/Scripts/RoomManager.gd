@@ -47,10 +47,11 @@ func _ready():
 
 func roomCompletedFunc():
 	#Transition
-	if get_tree().root.get_child(1).get_child(1).get_child_count() > 0:
-			get_tree().root.get_child(1).get_child(1).get_child(0).get_child(1).get_child(0).visible = false
+	if(get_tree() != null && get_tree().root != null):
+		if get_tree().root.get_child(1).get_child(1).get_child_count() > 0:
+				get_tree().root.get_child(1).get_child(1).get_child(0).get_child(1).get_child(0).visible = false
 	
-	get_tree().root.get_node("SceneManager/TransitionScreen").transition()
+		get_tree().root.get_node("SceneManager/TransitionScreen").transition()
 	
 	#Delete Room
 	get_child(0).queue_free()
