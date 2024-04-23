@@ -130,8 +130,8 @@ func _input(event):
 		mouse_pos += Vector2((-Input.get_action_strength("Rightstick Left") + Input.get_action_strength("Rightstick right")) * 5, (-Input.get_action_strength("Rightstick Up") + Input.get_action_strength("Rightstick down")) * 5)
 		Input.warp_mouse(mouse_pos)
 		
-	if Input.is_action_pressed("debug1"):
-		Globals.roomCompleted.emit()
+	#if Input.is_action_pressed("debug1"):
+		#Globals.roomCompleted.emit()
 	#	characterLife += timeLimit / 9.0
 	
 	#	if characterLife > timeLimit:
