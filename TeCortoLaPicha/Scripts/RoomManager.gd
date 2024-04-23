@@ -39,9 +39,9 @@ func _ready():
 		currentRoomCont.player.Cantar(aux)
 		pass
 	
-	var tileset = Textures.pick_random()
-	get_child(0).get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
-	currentRoomCont.changeWormSprite(rng.randi_range(0,4))
+	var tileset = rng.randi_range(0,4)
+	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+	currentRoomCont.changeWormSprite(tileset)
 	new_room.emit()
 
 func roomCompletedFunc():
@@ -61,9 +61,9 @@ func addNewRoom():
 			var aux = roomList.pick_random()
 			roomList.erase(aux)
 			currentRoomCont = Rooms[aux].instantiate()
-			var tileset = Textures.pick_random()
-			currentRoomCont.get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
-			currentRoomCont.changeWormSprite(rng.randi_range(0,4))
+			var tileset = rng.randi_range(0,4)
+			get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+			currentRoomCont.changeWormSprite(tileset)
 		else:
 			get_parent().get_child(2).stop()
 			get_tree().root.get_child(1).get_child(0).visible = false
@@ -81,9 +81,9 @@ func addNewRoom():
 			currentRoomCont = BossRoom.instantiate()
 		else:
 			currentRoomCont = Rooms[roomIndex].instantiate()
-			var tileset = Textures.pick_random()
-			currentRoomCont.get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
-			currentRoomCont.changeWormSprite(rng.randi_range(0,4))
+			var tileset = rng.randi_range(0,4)
+			get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+			currentRoomCont.changeWormSprite(tileset)
 	
 		add_child(currentRoomCont)
 		
