@@ -61,9 +61,11 @@ func TweenInEnd():
 
 
 func unpause():
+	get_tree().root.get_node("SceneManager/ButtonSFX").play()
 	get_tree().root.get_node("SceneManager").TogglePause()
 	pass
 	
 func menu():
+	get_tree().root.get_node("SceneManager/ButtonSFX").play()
 	get_tree().root.get_node("SceneManager").backToMenu()
 	pass

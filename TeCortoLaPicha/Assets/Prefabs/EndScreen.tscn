@@ -3,11 +3,15 @@
 [ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_syt0t"]
 [ext_resource type="Script" path="res://Scripts/EndScreen.gd" id="2_0enwi"]
 
-[node name="EndScreen" type="Control" node_paths=PackedStringArray("win", "lose", "endless")]
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("win", "lose", "endless", "endlessAmt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 7.0
+offset_right = 4.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_syt0t")
@@ -15,6 +19,7 @@ script = ExtResource("2_0enwi")
 win = NodePath("Normal")
 lose = NodePath("NormalLose")
 endless = NodePath("Endless")
+endlessAmt = NodePath("Endless/HBoxContainer/Label3")
 
 [node name="Normal" type="Panel" parent="."]
 visible = false
@@ -109,9 +114,9 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.185937
-anchor_top = 0.129167
+anchor_top = 0.255556
 anchor_right = 0.814062
-anchor_bottom = 0.870833
+anchor_bottom = 0.744444
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -133,13 +138,48 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.100746
-anchor_top = 0.0524345
+anchor_top = -0.0113637
 anchor_right = 0.899254
-anchor_bottom = 0.406367
+anchor_bottom = 0.569382
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 186
+text = "Derrota"
 horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Endless"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.300373
+anchor_top = 0.526218
+anchor_right = 0.700871
+anchor_bottom = 0.687267
+offset_left = 101.5
+offset_right = -101.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Endless/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 41
+text = "Salas"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Endless/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 41
+text = "0"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 

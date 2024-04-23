@@ -3,41 +3,42 @@ extends Node
 @export var win : Control
 @export var lose : Control
 @export var endless : Control
-
-@export var gm : GameManager
+@export var endlessAmt : Label
 
 func Win():
-	gm.pauseEnabled = false
+	get_tree().root.get_node("SceneManager").pauseEnabled = false
 	get_tree().paused = true
 	
 	win.visible = true
 	pass
 
 func Lose():
-	if gm.endless:
+	if get_tree().root.get_node("SceneManager").endless:
 		Endless()
 		pass
 	else:
-		gm.pauseEnabled = false
+		get_tree().root.get_node("SceneManager").pauseEnabled = false
 		get_tree().paused = true
 		
 		lose.visible = true
 	pass
 
 func Endless():
-	gm.pauseEnabled = false
+	get_tree().root.get_node("SceneManager").pauseEnabled = false
 	get_tree().paused = true
 	
+	endlessAmt.text = str(get_tree().root.get_node("SceneManager").GameSceneInstance.get_child(0).roomsCompleted)
 	endless.visible = true
 	pass
 
 func Exit():
-	gm.pauseEnabled = false
+	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+	get_tree().root.get_node("SceneManager").pauseEnabled = false
 	get_tree().paused = true
 	
 	win.visible = false
 	lose.visible = false
 	endless.visible = false
 	
-	gm.backToMenu()
+	get_tree().root.get_node("SceneManager").backToMenu()
 	pass

@@ -71,14 +71,15 @@ grow_vertical = 2
 
 [node name="resume" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
-anchor_left = 0.106775
-anchor_top = 0.37449
-anchor_right = 0.851998
-anchor_bottom = 0.507824
+anchor_left = 0.143312
+anchor_top = 0.386111
+anchor_right = 0.808917
+anchor_bottom = 0.498611
 offset_top = 1.52588e-05
 offset_right = -3.05176e-05
 rotation = 0.119424
 focus_neighbor_bottom = NodePath("../exit")
+theme_override_font_sizes/font_size = 45
 text = "Resume"
 text_overrun_behavior = 1
 metadata/_edit_use_anchors_ = true
@@ -103,13 +104,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="exit" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
-anchor_left = 0.0706533
-anchor_top = 0.509943
-anchor_right = 0.819061
-anchor_bottom = 0.643277
+anchor_left = 0.117834
+anchor_top = 0.520833
+anchor_right = 0.767516
+anchor_bottom = 0.636111
 offset_top = -3.05176e-05
 rotation = 0.118682
 focus_neighbor_top = NodePath("../resume")
+theme_override_font_sizes/font_size = 45
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 

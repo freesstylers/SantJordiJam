@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://beofrpr4iik7b"]
+[gd_scene load_steps=14 format=3 uid="uid://beofrpr4iik7b"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -11,7 +11,32 @@
 [ext_resource type="Script" path="res://Scripts/LocaleOption.gd" id="8_iw4xy"]
 [ext_resource type="AudioStream" uid="uid://cyklu0cxo01r6" path="res://Assets/Audio/Music/ALaTordera.wav" id="10_vvgs4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju8ha"]
+bg_color = Color(0.683077, 0.683078, 0.683077, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.898039, 0.333333, 0.407843, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lql6a"]
+bg_color = Color(0.683077, 0.683078, 0.683077, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.952941, 0.623529, 0.545098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30dtb"]
+bg_color = Color(0.54902, 0.54902, 0.54902, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -50,6 +75,7 @@ anchor_bottom = 0.981944
 grow_horizontal = 0
 grow_vertical = 0
 focus_neighbor_top = NodePath("../Twitter")
+focus_neighbor_right = NodePath("../jam")
 theme = ExtResource("4_n67yd")
 icon = ExtResource("4_de44m")
 expand_icon = true
@@ -84,12 +110,13 @@ offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
 size_flags_vertical = 0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath("../MainButtonContainer/Credits")
+focus_neighbor_left = NodePath("../FreeStylers")
+focus_neighbor_right = NodePath("../MainButtonContainer/OptionButton")
 theme = ExtResource("4_n67yd")
-theme_override_styles/normal = SubResource("StyleBoxFlat_lql6a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ju8ha")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lql6a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lql6a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_30dtb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lql6a")
 icon = ExtResource("6_mpask")
 icon_alignment = 1
 expand_icon = true
@@ -141,7 +168,6 @@ metadata/_edit_use_anchors_ = true
 [node name="play" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../Twitter")
-focus_neighbor_right = NodePath("../../jam")
 focus_neighbor_bottom = NodePath("../play2")
 theme_override_font_sizes/font_size = 40
 text = "Play"
@@ -150,16 +176,14 @@ text = "Play"
 layout_mode = 2
 focus_neighbor_left = NodePath("../../Twitter")
 focus_neighbor_top = NodePath("../play")
-focus_neighbor_right = NodePath("../../jam")
 focus_neighbor_bottom = NodePath("../tutorial")
 theme_override_font_sizes/font_size = 40
 text = "PlayEndless"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../jam")
+focus_neighbor_left = NodePath("../../Twitter")
 focus_neighbor_top = NodePath("../play2")
-focus_neighbor_right = NodePath("../../jam")
 focus_neighbor_bottom = NodePath("../Credits")
 theme_override_font_sizes/font_size = 40
 text = "Tutorial
@@ -167,16 +191,15 @@ text = "Tutorial
 
 [node name="Credits" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_left = NodePath("../../jam")
 focus_neighbor_top = NodePath("../tutorial")
-focus_neighbor_right = NodePath("../../jam")
 focus_neighbor_bottom = NodePath("../OptionButton")
 theme_override_font_sizes/font_size = 40
 text = "Credits"
 
 [node name="OptionButton" type="OptionButton" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../FreeStylers")
+focus_neighbor_left = NodePath("../../jam")
 focus_neighbor_top = NodePath("../Credits")
 theme_override_font_sizes/font_size = 40
 alignment = 1
@@ -499,5 +522,5 @@ autoplay = true
 [connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_pressed"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
