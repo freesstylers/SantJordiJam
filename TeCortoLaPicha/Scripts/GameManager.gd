@@ -64,3 +64,8 @@ func TogglePause():
 func EnablePause():
 	pauseEnabled = not menu
 	pass
+	
+func Menu():
+	$CurrentScene.add_child(MainMenuScene.instantiate())
+	GameSceneInstance = null
+	pass

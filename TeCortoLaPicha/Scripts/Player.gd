@@ -127,8 +127,14 @@ func _input(event):
 		mouse_pos += Vector2((-Input.get_action_strength("Rightstick Left") + Input.get_action_strength("Rightstick right")) * 5, (-Input.get_action_strength("Rightstick Up") + Input.get_action_strength("Rightstick down")) * 5)
 		Input.warp_mouse(mouse_pos)
 		
-	if Input.is_action_pressed("debug1"):
-		Globals.roomCompleted.emit()
+	if false and Input.is_action_pressed("debug1"):
+		#Globals.roomCompleted.emit()
+		characterLife += timeLimit / 9.0
+	
+		if characterLife > timeLimit:
+			characterLife = timeLimit
+		refresh_hp.emit()
+		
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":
@@ -273,11 +279,11 @@ func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
 	
-	if body.name == "DragonHitbox":	
+	if body.name == "DragonHitbox" or body.life <= 0:
 		characterLife += timeLimit / 9.0
-		refresh_hp.emit()
-	if(body.life <= 0):
-		characterLife += timeLimit / 9.0
+	
+		if characterLife > timeLimit:
+			characterLife = timeLimit
 		refresh_hp.emit()
 
 	body.applyForce(position)
@@ -321,7 +327,6 @@ func _process(delta):
 	
 	if characterLife <= 0:
 		Death()
-	
 	
 	pass
 

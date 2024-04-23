@@ -86,54 +86,57 @@ func HPMonitor():
 		up = true
 	else:
 		return
-		
-	hp.stop(true)
 	
 	match hpState:
-		7:
+		9:
 			if up:
 				hp.play("ocho_reset")
-			else:
-				hp.play("ocho_down")
-		6:
+			
+		8:
 			if up:
 				hp.play("siete_reset")
 			else:
-				hp.play("siete_down")
-		5:
+				hp.play("ocho_down")
+		7:
 			if up:
 				hp.play("seis_reset")
 			else:
-				hp.play("seis_down")
-			
-		4:
+				hp.play("siete_down")
+		6:
 			if up:
 				hp.play("cinco_reset")
 			else:
-				hp.play("cinco_down")
-			
-		3:
+				hp.play("seis_down")
+		5:
 			if up:
 				hp.play("cuatro_reset")
 			else:
-				hp.play("cuatro_down")
+				hp.play("cinco_down")
 			
-		2:
+		4:
 			if up:
 				hp.play("tres_reset")
 			else:
-				hp.play("tres_down")
+				hp.play("cuatro_down")
 			
-		1:
+		3:
 			if up:
 				hp.play("dos_reset")
 			else:
-				hp.play("dos_down")
+				hp.play("tres_down")
 			
-		0:
+		2:
 			if up:
 				hp.play("uno_reset")
 			else:
+				hp.play("dos_down")
+			
+		1:
+			if up:
+				hp.play("tallo_reset")
+			else:
 				hp.play("uno_down")
 			
+		0:
+			pass
 	pass
