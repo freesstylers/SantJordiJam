@@ -40,7 +40,7 @@ func _ready():
 		pass
 	
 	var tileset = rng.randi_range(0,4)
-	get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+	currentRoomCont.get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
 	currentRoomCont.changeWormSprite(tileset)
 	new_room.emit()
 
@@ -62,7 +62,7 @@ func addNewRoom():
 			roomList.erase(aux)
 			currentRoomCont = Rooms[aux].instantiate()
 			var tileset = rng.randi_range(0,4)
-			get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+			currentRoomCont.get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
 			currentRoomCont.changeWormSprite(tileset)
 		else:
 			get_parent().get_child(2).stop()
@@ -82,7 +82,7 @@ func addNewRoom():
 		else:
 			currentRoomCont = Rooms[roomIndex].instantiate()
 			var tileset = rng.randi_range(0,4)
-			get_child(0).get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
+			currentRoomCont.get_child(0).tile_set.get_source(0).texture = Textures[tileset] #Random Tileset
 			currentRoomCont.changeWormSprite(tileset)
 	
 		add_child(currentRoomCont)
