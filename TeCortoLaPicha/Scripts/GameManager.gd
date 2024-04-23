@@ -2,6 +2,7 @@ extends Node2D
 class_name GameManager
 var menu = true
 var pauseEnabled = false
+var firstTimeLangSetup = false
 
 @export var GameScene : PackedScene
 @export var MainMenuScene : PackedScene

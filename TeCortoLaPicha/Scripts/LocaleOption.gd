@@ -24,9 +24,11 @@ func _ready():
 				add_item("Andalûh")
 			"en":
 				add_item(TranslationServer.get_locale_name(locale))	
-				
-	select(langs.find("es"))
-	TranslationServer.set_locale(langs[langs.find("es")])
+	
+	if not get_tree().root.get_node("SceneManager").firstTimeLangSetup:
+		select(langs.find("ca"))
+		TranslationServer.set_locale(langs[langs.find("ca")])
+		get_tree().root.get_node("SceneManager").firstTimeLangSetup = true
 
 func _on_item_selected(index):
 	TranslationServer.set_locale(langs[index])
