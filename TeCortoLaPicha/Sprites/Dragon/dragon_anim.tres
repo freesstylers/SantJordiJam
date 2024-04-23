@@ -1,9 +1,11 @@
-[gd_resource type="SpriteFrames" load_steps=39 format=3 uid="uid://d1nenvo04wdar"]
+[gd_resource type="SpriteFrames" load_steps=49 format=3 uid="uid://d1nenvo04wdar"]
 
 [ext_resource type="Texture2D" uid="uid://do1oemap42dxo" path="res://Sprites/Dragon/Idle_Suelo.png" id="1_pwxuo"]
 [ext_resource type="Texture2D" uid="uid://g5k85pshsdrw" path="res://Sprites/Dragon/dragondash.png" id="1_yulrp"]
 [ext_resource type="Texture2D" uid="uid://cpp8s4ysvat1e" path="res://Sprites/Dragon/Idle_Vuelo.png" id="2_3558a"]
 [ext_resource type="Texture2D" uid="uid://vf3v3ujc5gjp" path="res://Sprites/Dragon/dragonfuego.png" id="2_eka5f"]
+[ext_resource type="Texture2D" uid="uid://en6nmuu5kssa" path="res://Sprites/Dragon/caida.png" id="2_y6xt3"]
+[ext_resource type="Texture2D" uid="uid://cibfh8u3x27qm" path="res://Sprites/Dragon/barrigazo.png" id="5_v1amu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_reheq"]
 atlas = ExtResource("1_yulrp")
@@ -36,6 +38,18 @@ region = Rect2(1200, 0, 200, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hrfp"]
 atlas = ExtResource("1_yulrp")
 region = Rect2(1400, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7nir"]
+atlas = ExtResource("2_y6xt3")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8dmc"]
+atlas = ExtResource("2_y6xt3")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx2dq"]
+atlas = ExtResource("2_y6xt3")
+region = Rect2(300, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qur4"]
 atlas = ExtResource("2_eka5f")
@@ -141,6 +155,26 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("2_3558a")
 region = Rect2(1050, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivveu"]
+atlas = ExtResource("5_v1amu")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hxe5"]
+atlas = ExtResource("5_v1amu")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuk3q"]
+atlas = ExtResource("5_v1amu")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h588"]
+atlas = ExtResource("5_v1amu")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c75cv"]
+atlas = ExtResource("5_v1amu")
+region = Rect2(600, 0, 150, 150)
+
 [resource]
 animations = [{
 "frames": [{
@@ -171,6 +205,20 @@ animations = [{
 "loop": true,
 "name": &"dash",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7nir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8dmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx2dq")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,4 +312,24 @@ animations = [{
 "loop": true,
 "name": &"flying",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivveu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hxe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuk3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h588")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c75cv")
+}],
+"loop": false,
+"name": &"panza",
+"speed": 6.0
 }]

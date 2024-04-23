@@ -90,7 +90,7 @@ DeathSound = NodePath("DeathSound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonVisualizer"]
 sprite_frames = ExtResource("4_rswvd")
-animation = &"fire"
+animation = &"dash"
 autoplay = "flying"
 
 [node name="FiringPos" type="Node2D" parent="DragonVisualizer/AnimatedSprite2D"]

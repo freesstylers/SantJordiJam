@@ -1,70 +1,54 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc4jvnkk0fh31"]
+[gd_scene load_steps=14 format=3 uid="uid://dc4jvnkk0fh31"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flyingEnemy.gd" id="1_ymp45"]
 [ext_resource type="PackedScene" uid="uid://dyvg2ycmiej1p" path="res://Assets/Prefabs/enemy_particles.tscn" id="2_f0xvu"]
-[ext_resource type="Texture2D" uid="uid://k4d7tq3se1vo" path="res://LogoApruebameEsta.png" id="2_lfxvp"]
-[ext_resource type="Texture2D" uid="uid://comihu85bgx3t" path="res://Sprites/Tijeritas/Tijeritas.png" id="3_1310h"]
+[ext_resource type="Texture2D" uid="uid://tol2531uacp6" path="res://Sprites/Tijeritas/papelosaurio.png" id="4_woonu"]
 [ext_resource type="AudioStream" uid="uid://dtuhluvotuba7" path="res://Assets/Audio/SFX/slime.wav" id="5_l0rc0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_epq8i"]
-atlas = ExtResource("3_1310h")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljqor"]
+atlas = ExtResource("4_woonu")
+region = Rect2(0, 0, 70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehbem"]
-atlas = ExtResource("3_1310h")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_12xtu"]
+atlas = ExtResource("4_woonu")
+region = Rect2(70, 0, 70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a280q"]
-atlas = ExtResource("3_1310h")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_na2pl"]
+atlas = ExtResource("4_woonu")
+region = Rect2(140, 0, 70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24m20"]
-atlas = ExtResource("3_1310h")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq0ui"]
+atlas = ExtResource("4_woonu")
+region = Rect2(210, 0, 70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rq8v3"]
-atlas = ExtResource("3_1310h")
-region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5t22"]
+atlas = ExtResource("4_woonu")
+region = Rect2(280, 0, 70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amnpr"]
-atlas = ExtResource("3_1310h")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqi1k"]
-atlas = ExtResource("3_1310h")
-region = Rect2(384, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlkbe"]
+atlas = ExtResource("4_woonu")
+region = Rect2(350, 0, 70, 70)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efgdt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lfxvp")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epq8i")
+"texture": SubResource("AtlasTexture_ljqor")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ehbem")
+"texture": SubResource("AtlasTexture_12xtu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a280q")
+"texture": SubResource("AtlasTexture_na2pl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_24m20")
+"texture": SubResource("AtlasTexture_mq0ui")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rq8v3")
+"texture": SubResource("AtlasTexture_w5t22")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_amnpr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gqi1k")
+"texture": SubResource("AtlasTexture_qlkbe")
 }],
 "loop": true,
 "name": &"default",
@@ -91,8 +75,6 @@ damageSound = NodePath("recieveDamage")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efgdt")
 autoplay = "default"
-frame = 1
-frame_progress = 0.0914033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 5.5)

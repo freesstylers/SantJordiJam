@@ -22,7 +22,10 @@ func _ready():
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "fire" or $AnimatedSprite2D.animation == "dash":
 		$AnimatedSprite2D.set_animation("flying")
-
+		$AnimatedSprite2D.play()
+	elif $AnimatedSprite2D.animation == "fall":
+		$AnimatedSprite2D.set_animation("panza")
+		$AnimatedSprite2D.play()
 
 func play_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
@@ -39,6 +42,7 @@ func play_animation(new_anim_state : ANIM_STATE):
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.FALL:
+			$AnimatedSprite2D.set_animation("fall")
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.HORIZONTAL:
@@ -48,6 +52,7 @@ func play_animation(new_anim_state : ANIM_STATE):
 		ANIM_STATE.VERTICAL:
 			#PLAY ONCE, adjust speed to logic
 			pass
+	$AnimatedSprite2D.play()
 
 func _process(delta):
 	if(face_player):
