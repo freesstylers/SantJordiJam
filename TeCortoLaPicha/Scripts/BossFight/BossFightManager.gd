@@ -29,8 +29,18 @@ func start_fight():
 	Dragon.setState("FIREBALL")	
 
 func PlayerWon():
-	#get_tree().root.get_child(1).get_child(0).visible = true
-	print("VICTORIA")
+	if get_tree().root.get_child(1).endless == true:
+		if get_tree().root.get_child(1).get_child(1).get_child_count() > 0:
+			get_tree().root.get_child(1).get_child(1).get_child(0).get_child(1).get_child(0).visible = false
+		get_tree().root.get_child(1).get_child(0).visible = true
+		
+		get_tree().root.get_node("SceneManager/TransitionScreen").transition()
+	
+		#Delete Room
+		self.queue_free()
+		
+	else:
+		print("VICTORIA")
 	
 func PlayerLost():
 	print("DERROTA")

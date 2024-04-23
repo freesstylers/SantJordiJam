@@ -123,17 +123,17 @@ func _input(event):
 		attack_start.emit()
 		get_node("Sprite2D").rotation = 0
 	
-	if Input.get_connected_joypads().size() > 0 and event is InputEventJoypadMotion:
+	if Input.get_connected_joypads().size() > 0 and event is InputEventJoypadMotion and abs(event.axis_value) > 0.15:
 		mouse_pos += Vector2((-Input.get_action_strength("Rightstick Left") + Input.get_action_strength("Rightstick right")) * 5, (-Input.get_action_strength("Rightstick Up") + Input.get_action_strength("Rightstick down")) * 5)
 		Input.warp_mouse(mouse_pos)
 		
-	if Input.is_action_pressed("debug1"):
-		Globals.roomCompleted.emit()
-		characterLife += timeLimit / 9.0
+	#if Input.is_action_pressed("debug1"):
+	#	Globals.roomCompleted.emit()
+	#	characterLife += timeLimit / 9.0
 	
-		if characterLife > timeLimit:
-			characterLife = timeLimit
-		refresh_hp.emit()
+	#	if characterLife > timeLimit:
+	#		characterLife = timeLimit
+	#	refresh_hp.emit()
 		
 
 func _on_animation_player_animation_finished(anim_name):

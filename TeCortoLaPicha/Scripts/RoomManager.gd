@@ -62,6 +62,7 @@ func addNewRoom():
 			var tileset = Textures.pick_random()
 			currentRoomCont.get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
 		else:
+			get_parent().get_child(2).stop()
 			get_tree().root.get_child(1).get_child(0).visible = false
 			currentRoomCont = BossRoom.instantiate()
 			Musica.stop()
@@ -71,6 +72,8 @@ func addNewRoom():
 		var roomIndex = rng.randi_range(0, Rooms.size())
 		
 		if roomIndex == Rooms.size():
+			Musica.stop()
+			get_tree().root.get_child(1).get_child(0).visible = false
 			currentRoomCont = BossRoom.instantiate()
 		else:
 			currentRoomCont = Rooms[roomIndex].instantiate()

@@ -125,49 +125,49 @@ region = Rect2(1200, 0, 150, 150)
 atlas = ExtResource("1_pwxuo")
 region = Rect2(1350, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbo3u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye24j"]
 atlas = ExtResource("5_ik126")
-region = Rect2(0, 0, 300, 300)
+region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3he2p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxkq"]
 atlas = ExtResource("5_ik126")
-region = Rect2(300, 0, 300, 300)
+region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q55oy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgen6"]
 atlas = ExtResource("5_ik126")
-region = Rect2(600, 0, 300, 300)
+region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_la5v7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljkjp"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(0, 0, 300, 300)
+region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2nkfd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkwi"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(300, 0, 300, 300)
+region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ddnf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvajq"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(600, 0, 300, 300)
+region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5j8s6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uety"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(900, 0, 300, 300)
+region = Rect2(450, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vkuvq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7kth"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(1200, 0, 300, 300)
+region = Rect2(600, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v8svt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1utei"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(1500, 0, 300, 300)
+region = Rect2(750, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekqkv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_671fk"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(1800, 0, 300, 300)
+region = Rect2(900, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xewdx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aby7n"]
 atlas = ExtResource("5_c5x2e")
-region = Rect2(2100, 0, 300, 300)
+region = Rect2(1050, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj7ha"]
 atlas = ExtResource("2_3558a")
@@ -332,13 +332,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sbo3u")
+"texture": SubResource("AtlasTexture_ye24j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3he2p")
+"texture": SubResource("AtlasTexture_mvxkq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q55oy")
+"texture": SubResource("AtlasTexture_mgen6")
 }],
 "loop": false,
 "name": &"floorfire",
@@ -346,28 +346,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_la5v7")
+"texture": SubResource("AtlasTexture_ljkjp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2nkfd")
+"texture": SubResource("AtlasTexture_cpkwi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ddnf")
+"texture": SubResource("AtlasTexture_pvajq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5j8s6")
+"texture": SubResource("AtlasTexture_6uety")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vkuvq")
+"texture": SubResource("AtlasTexture_m7kth")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v8svt")
+"texture": SubResource("AtlasTexture_1utei")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ekqkv")
+"texture": SubResource("AtlasTexture_671fk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xewdx")
+"texture": SubResource("AtlasTexture_aby7n")
 }],
 "loop": false,
 "name": &"floorfire360",
