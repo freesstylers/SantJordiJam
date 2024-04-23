@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4be3a25mf3qr"]
+[gd_scene load_steps=15 format=3 uid="uid://4be3a25mf3qr"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_i5oul"]
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="2_2ews5"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="7_l680d"]
 [ext_resource type="PackedScene" uid="uid://bs7ciwbxs3u7x" path="res://Assets/Prefabs/chargingEnemy.tscn" id="7_leow0"]
 [ext_resource type="PackedScene" uid="uid://b73d5t3bgq2m8" path="res://Scenes/HookTarget.tscn" id="8_to6y4"]
-[ext_resource type="AudioStream" uid="uid://hj3cyci8mkev" path="res://Assets/Audio/Music/ElsVuitBitadors.wav" id="10_1tw6a"]
 [ext_resource type="Script" path="res://Scripts/BossFight/CameraShake.gd" id="10_kvemf"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="11_ba1lm"]
 
@@ -141,10 +140,6 @@ damping_max = 33.088
 angle_min = -107.5
 angle_max = 386.5
 color = Color(0.996078, 0.827451, 0.639216, 1)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_1tw6a")
-autoplay = true
 
 [node name="HookTarget3" parent="." instance=ExtResource("8_to6y4")]
 position = Vector2(92.5, -403)

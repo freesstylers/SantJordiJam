@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://beofrpr4iik7b"]
+[gd_scene load_steps=12 format=3 uid="uid://beofrpr4iik7b"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpp487mms1q16" path="res://Sprites/UI/Logo.png" id="7_1jr46"]
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="8_8hqlc"]
 [ext_resource type="Script" path="res://Scripts/LocaleOption.gd" id="8_iw4xy"]
+[ext_resource type="AudioStream" uid="uid://cyklu0cxo01r6" path="res://Assets/Audio/Music/ALaTordera.wav" id="10_vvgs4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lql6a"]
 border_width_left = 3
@@ -224,7 +225,7 @@ IGNACIO ORY - Gusano Marx
 DAVID CZEPIEL - Cocollona Legendaria
 Adán Sánchez - Papelosaurio
 JAVIER ARIAS - Gusano Hatsune Miku
-Gonzalo cidoncha - Gusano Don Quijote
+Gonzalo cidoncha - Gusano Quijote
 
 Extra Assets: Gokhan Solak, Hydrogene
 LOC: Álvaro Llusar (VAL & CAT), Diego Freire (GAL)
@@ -483,6 +484,10 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Close"
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vvgs4")
+autoplay = true
 
 [connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="_on_free_stylers_button_down"]
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="_on_twitter_button_down"]

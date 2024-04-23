@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://t18ut1uhyfuh"]
+[gd_scene load_steps=15 format=3 uid="uid://t18ut1uhyfuh"]
 
 [ext_resource type="TileSet" uid="uid://de6vie171x8lr" path="res://Assets/TileMaps/TileSet_Changer.tres" id="1_e8aej"]
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_xukj7"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://whvkq0hg01yt" path="res://Assets/Prefabs/player.tscn" id="6_wuacm"]
 [ext_resource type="Script" path="res://Scripts/BossFight/CameraShake.gd" id="7_vr87x"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="8_fdtw4"]
-[ext_resource type="AudioStream" uid="uid://hj3cyci8mkev" path="res://Assets/Audio/Music/ElsVuitBitadors.wav" id="9_7xux4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n52al"]
 shader = ExtResource("8_fdtw4")
@@ -174,7 +173,3 @@ damping_max = 33.088
 angle_min = -107.5
 angle_max = 386.5
 color = Color(0.996078, 0.827451, 0.639216, 1)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_7xux4")
-autoplay = true
