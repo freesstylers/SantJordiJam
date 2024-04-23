@@ -83,6 +83,8 @@ offset_right = -0.240005
 offset_bottom = -0.240005
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../MainButtonContainer/Credits")
 theme = ExtResource("4_n67yd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lql6a")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lql6a")
@@ -155,7 +157,7 @@ text = "PlayEndless"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../Twitter")
+focus_neighbor_left = NodePath("../../jam")
 focus_neighbor_top = NodePath("../play2")
 focus_neighbor_right = NodePath("../../jam")
 focus_neighbor_bottom = NodePath("../Credits")
@@ -225,7 +227,7 @@ Adán Sánchez - Papelosaurio
 JAVIER ARIAS - Gusano Hatsune Miku
 Gonzalo cidoncha - Gusano Quijote
 
-Extra Assets: Gokhan Solak
+Extra Assets: Gokhan Solak, Hydrogene
 LOC: Álvaro Llusar (VAL & CAT), Diego Freire (GAL)
 Marina Tradugotchi (ENG & LAT),"
 horizontal_alignment = 1

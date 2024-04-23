@@ -62,15 +62,14 @@ func die():
 	localTween.chain().tween_callback(
 		func():
 			Room_.EnemiesArray.erase(self)
+			if Room_.EnemiesArray.size() == 0:
+				Globals.roomDepleted.emit()
 			queue_free()
 	)
 	var alphaTween : Tween = create_tween()
 	alphaTween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	alphaTween.tween_property(self, "modulate:a", 0, animLength)
-		
-	if Room_.EnemiesArray.size() == 0:
-		Globals.roomDepleted.emit()
-		
+			
 func applyForce(player):
 	var dir = clamp(position.x - player.x, -1, 1)
 	var dirY = clamp(position.y - player.y, -1, 1)

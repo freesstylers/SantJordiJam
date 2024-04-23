@@ -18,7 +18,6 @@ func _ready():
 	roomList.erase(aux)
 	
 	var room = Rooms[aux].instantiate()
-	roomList.append(room)
 	currentRoomCont = room
 	add_child(room) #Random Room
 	

@@ -40,12 +40,13 @@ max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.442748, -148.378), 0.0, 0.0, 0, 0, Vector2(1, 0.141037), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Room2" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player")]
+[node name="Room2" type="Node2D" node_paths=PackedStringArray("EnemiesArray", "startingCharacterPosition", "player", "Door")]
 scale = Vector2(2, 2)
 script = ExtResource("1_iu516")
 EnemiesArray = [NodePath("enemies/enemy")]
 startingCharacterPosition = NodePath("Spawn")
 player = NodePath("Player")
+Door = NodePath("Door")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-395, -491)

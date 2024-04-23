@@ -63,7 +63,8 @@ func _physics_process(delta):
 				if charge_time_buffer <= 0:
 					charging = false
 					charge_cd_buffer = charge_cd
-					animationPlayer.rotation = 0
+					if animationPlayer != null:
+						animationPlayer.rotation = 0
 					charge_time_buffer = 0
 					
 		# Add the gravity.	
@@ -72,7 +73,8 @@ func _physics_process(delta):
 		elif (not $floor_checker.is_colliding() or is_on_wall()) and !charging:
 			direction *= -1
 			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-			player_detector.target_position.x = -player_detector.target_position.x
+			if player_detector != null:
+				player_detector.target_position.x = -player_detector.target_position.x
 			#$floor_checker.position.x = $CollisionShape2D.shape.get_rect().position.x * -direction
 		
 			

@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cioe5xip2hjft"]
+
+[ext_resource type="Texture2D" uid="uid://dhf0sk08kcfvp" path="res://Sprites/Puerta/PuertaAbierta1.png" id="1_hei6m"]
+[ext_resource type="Texture2D" uid="uid://87t4qoxsup16" path="res://Sprites/Puerta/PuertaCerrada1.png" id="1_xtci3"]
+[ext_resource type="Texture2D" uid="uid://dsgn8nqve6pxj" path="res://Sprites/Puerta/PuertaAbierta2.png" id="2_3w27b"]
+[ext_resource type="Texture2D" uid="uid://dcqfygqpxc4vl" path="res://Sprites/Puerta/PuertaAbierta3.png" id="3_ujg5q"]
+[ext_resource type="Texture2D" uid="uid://s3x3kv4ugjme" path="res://Sprites/Puerta/PuertaAbierta4.png" id="4_47viq"]
+[ext_resource type="Texture2D" uid="uid://bnk5inl3d4q08" path="res://Sprites/Puerta/PuertaAbierta5.png" id="5_dpqix"]
+[ext_resource type="Texture2D" uid="uid://d0k21kspwcbit" path="res://Sprites/Puerta/PuertaAbierta6.png" id="6_5hroo"]
+[ext_resource type="Texture2D" uid="uid://dsp6nhciy0dbr" path="res://Sprites/Puerta/PuertaAbierta7.png" id="7_sg7tb"]
+[ext_resource type="Texture2D" uid="uid://cb5q0aio4ypve" path="res://Sprites/Puerta/PuertaAbierta8.png" id="8_3cdbi"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xtci3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hei6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3w27b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ujg5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_47viq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dpqix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5hroo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sg7tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3cdbi")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]

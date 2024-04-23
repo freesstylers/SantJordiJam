@@ -4,7 +4,8 @@ extends Node2D
 @export var EnemiesArray : Array[Node]
 @export var startingCharacterPosition: Node2D
 @export var player : Player
-# Called when the node enters the scene tree for the first time.
+@export var Door : Node2D
+# Called when the node enters the scene tree for the first atime.
 func _ready():
 	Globals.connect("roomDepleted", roomDepletedFunc)
 	Globals.connect("roomStarted", roomStartFunc)
@@ -25,6 +26,7 @@ func roomStartFunc():
 	pass
 
 func roomDepletedFunc():
+	Door.get_child(0).set_animation("open")
 	#Desbloquear puerta
 	pass
 	
