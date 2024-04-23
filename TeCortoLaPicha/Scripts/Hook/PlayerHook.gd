@@ -31,7 +31,7 @@ func _process(_delta):
 		if hook_target_object == null:
 			if ray.is_colliding():
 				var collider = ray.get_collider()
-				if collider.is_in_group("hookable"):	
+				if collider != null and collider.is_in_group("hookable"):	
 					hook_target_object = collider as HookTarget
 					hook_target_object.update_target_status(true)
 		elif hook_target_object != null:
