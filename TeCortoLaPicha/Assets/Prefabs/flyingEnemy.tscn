@@ -83,6 +83,7 @@ script = ExtResource("1_ymp45")
 direction = 1
 horizontalSpeed = 150
 wall_checker = NodePath("wall_checker")
+life = 40
 damageForceX = 150
 particles = ExtResource("2_f0xvu")
 damageSound = NodePath("recieveDamage")

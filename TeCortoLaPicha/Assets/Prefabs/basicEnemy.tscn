@@ -514,7 +514,9 @@ size = Vector2(30, 42)
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("damageSound")]
 collision_layer = 2
 script = ExtResource("1_ogqn0")
-damageForceX = 400
+life = 60
+damageForceX = 200
+damageForceY = 200
 particles = ExtResource("2_g1meh")
 damageSound = NodePath("recieveDamage2")
 

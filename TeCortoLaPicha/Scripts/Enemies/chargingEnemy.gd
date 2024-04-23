@@ -79,7 +79,8 @@ func _physics_process(delta):
 		if !charging and waiting_buffer <= 0:
 			if animationPlayer != null:
 				animationPlayer.play("default")
-			velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
+			if current_move_buffer <= 0:
+				velocity.x = lerp(velocity.x, horizontalSpeed * float(direction), decelration * delta)
 
 		move_and_slide()
 
