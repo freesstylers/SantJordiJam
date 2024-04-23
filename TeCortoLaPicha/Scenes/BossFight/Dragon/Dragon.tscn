@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonManager.gd" id="1_fbe06"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/DragonVisualizer.gd" id="2_6up4d"]
 [ext_resource type="Texture2D" uid="uid://bwxirb3ifvgy3" path="res://Sprites/Dragon/DragonEstático.png" id="4_30nth"]
-[ext_resource type="Texture2D" uid="uid://6vfyvfq8fls4" path="res://Assets/MainMenu/Twitter.png" id="4_j2hio"]
 [ext_resource type="SpriteFrames" uid="uid://d1nenvo04wdar" path="res://Sprites/Dragon/dragon_anim.tres" id="4_rswvd"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonIdleState.gd" id="4_tgxiw"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFireBallAttackState.gd" id="5_u0e8l"]
+[ext_resource type="Texture2D" uid="uid://d33xitdvk76mj" path="res://Sprites/Dragon/fuego.png" id="6_12lf5"]
 [ext_resource type="PackedScene" uid="uid://cx0us5yh0f5eu" path="res://Scenes/BossFight/Dragon/Attacks/FireBall.tscn" id="6_kt3uv"]
 [ext_resource type="AudioStream" uid="uid://bwasklvsqcbi8" path="res://Assets/Audio/SFX/Player/o.mp3" id="6_obos7"]
 [ext_resource type="Script" path="res://Scripts/BossFight/Dragon/States/DragonFallAttackState.gd" id="7_dte8f"]
@@ -19,10 +19,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihvi8"]
-size = Vector2(88, 120)
+size = Vector2(81, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf1hk"]
-size = Vector2(157, 123)
+size = Vector2(85, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8ul"]
 size = Vector2(413.758, 20)
@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_ou3gk")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/DamageToPlayerHitbox"]
-position = Vector2(-5, -14)
+position = Vector2(-3.5, 3)
 shape = SubResource("RectangleShape2D_ihvi8")
 debug_color = Color(0.976471, 0, 0.403922, 0.419608)
 
@@ -73,7 +73,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/HurtBox"]
-position = Vector2(-7.5, -13.5)
+position = Vector2(-3.5, 3)
 shape = SubResource("RectangleShape2D_gf1hk")
 debug_color = Color(0, 0.647059, 0.227451, 0.419608)
 
@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_bd8ul")
 position = Vector2(0.707107, -0.707107)
 amount = 100
 lifetime = 0.5
-texture = ExtResource("4_j2hio")
+texture = ExtResource("6_12lf5")
 emission_shape = 1
 emission_sphere_radius = 10.0
 spread = 10.0
