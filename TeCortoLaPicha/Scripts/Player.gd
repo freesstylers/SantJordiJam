@@ -282,15 +282,22 @@ func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
 	
-	if body.name == "DragonHitbox" or body.life <= 0:
-		characterLife += timeLimit / 9.0
-	
-		if characterLife > timeLimit:
-			characterLife = timeLimit
-		refresh_hp.emit()
+	if body.life <= 0:
+		healFunc()
+		pass
 
 	body.applyForce(position)
 	hit_cd_time_buffer = cdHit_Engine_Scale
+	pass
+	
+func healFunc():
+
+	characterLife += timeLimit / 9.0
+
+	if characterLife > timeLimit:
+		characterLife = timeLimit
+	refresh_hp.emit()
+	pass
 
 func characterTakeLife(value, enemy):
 	if !attacking and hit_buffer <= 0:# and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):

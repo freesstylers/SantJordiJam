@@ -37,5 +37,6 @@ func other_area_entered_hurtbox(other):
 		takeDamage(20)
 		DragonMngr.getVisualizer().PlayTakeDamageEffect()
 		HurtBoxTimer.start()
+		other.get_parent().get_parent().healFunc()
 func hurtbox_timer_finished():
 	canGetDamaged = true
