@@ -60,7 +60,7 @@ func addNewRoom():
 	roomsCompleted += 1
 	
 	if get_parent().get_parent().get_parent().endless == false:
-		if roomList.size() > 0 and roomsCompleted < 2:
+		if roomList.size() > 0 and roomsCompleted < 5:
 			var aux = roomList.pick_random()
 			roomList.erase(aux)
 			currentRoomCont = Rooms[aux].instantiate()
