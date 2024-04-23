@@ -937,7 +937,7 @@ attackSound = NodePath("Attack")
 hitSound = NodePath("A")
 jumpSound = NodePath("Jump")
 dashSound = NodePath("Dash")
-timeLimit = 30.0
+timeLimit = 15.0
 text = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
