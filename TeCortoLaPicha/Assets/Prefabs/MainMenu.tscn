@@ -146,7 +146,6 @@ theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="play2" type="Button" parent="MainButtonContainer/MainButtonContainer"]
-visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../../Twitter")
 focus_neighbor_top = NodePath("../play")
@@ -389,6 +388,7 @@ offset_top = 315.405
 offset_right = 546.0
 offset_bottom = 366.225
 script = ExtResource("8_8hqlc")
+action_name = &"Grapple"
 
 [node name="Label6" type="Label" parent="tutorial"]
 layout_mode = 1
@@ -487,11 +487,12 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="_on_free_stylers_button_down"]
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="_on_twitter_button_down"]
 [connection signal="button_down" from="MainButtonContainer/jam" to="." method="_on_gift_jam_button_down"]
-[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="TogglePlayMenu" binds= [true]]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="TogglePlayMenu" binds= [false]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play2" to="." method="TogglePlayMenu" binds= [true]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="item_selected" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_item_selected"]
+[connection signal="pressed" from="MainButtonContainer/MainButtonContainer/OptionButton" to="MainButtonContainer/MainButtonContainer/OptionButton" method="_on_pressed"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack2" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]

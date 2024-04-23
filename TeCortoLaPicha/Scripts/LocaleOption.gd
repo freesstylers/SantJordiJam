@@ -20,13 +20,17 @@ func _ready():
 				add_item("Asturianu")	
 			"la":
 				add_item("Latīnum")	
+			"ang":
+				add_item("Andalûh")
 			"en":
 				add_item(TranslationServer.get_locale_name(locale))	
 				
 	select(langs.find("es"))
-	pass
-
 
 func _on_item_selected(index):
 	TranslationServer.set_locale(langs[index])
-	pass
+	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+
+func _on_pressed():
+	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+	pass # Replace with function body.

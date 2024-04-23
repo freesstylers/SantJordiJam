@@ -7,6 +7,8 @@ var pauseEnabled = false
 @export var MainMenuScene : PackedScene
 
 var GameSceneInstance = null
+
+var endless = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Timer 
@@ -29,9 +31,10 @@ func loadLevel():
 		pass
 	pass
 
-func startGame():
+func startGame(endless_):
 	menu = false
 	pauseEnabled = false
+	endless = endless_
 	$CurrentScene.remove_child($CurrentScene.get_child(0))
 	$TransitionScreen.transition()
 	pass

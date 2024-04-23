@@ -61,7 +61,7 @@ func _on_credits_back_button_down():
 
 func TogglePlayMenu(state: bool):
 	get_tree().root.get_node("SceneManager/ButtonSFX").play()
-	get_tree().root.get_node("SceneManager").startGame()
+	get_tree().root.get_node("SceneManager").startGame(state)
 	pass # Replace with function body.
 
 
