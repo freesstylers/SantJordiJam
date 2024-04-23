@@ -75,8 +75,7 @@ func addNewRoom():
 		
 		var roomIndex = rng.randi_range(0, Rooms.size())
 		
-		if roomIndex == Rooms.size():
-			Musica.stop()
+		if roomIndex == Rooms.size(): 
 			get_tree().root.get_child(1).get_child(0).visible = false
 			currentRoomCont = BossRoom.instantiate()
 		else:

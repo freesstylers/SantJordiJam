@@ -6,7 +6,9 @@ class_name BossFightManager
 
 @export var DragonDefaultPos : Node2D = null
 @export var PlayerDefaultPos : Node2D = null
-	
+
+@export var BossMusic : AudioStreamPlayer2D
+	 
 func _ready():
 	var localTween = create_tween()
 	localTween.tween_callback(
@@ -15,6 +17,9 @@ func _ready():
 	).set_delay(1)
 	localTween.tween_callback(start_fight).set_delay(2)
 	Globals.roomCompleted.connect(PlayerWon)
+	
+	if get_tree().root.get_child(1).endless == false:
+		BossMusic.play()
 	
 func scene_to_default():
 	#Reset the dragon

@@ -25,12 +25,13 @@ shader_parameter/enable_palette_cycling = false
 shader_parameter/enable_scan_lines = false
 shader_parameter/palette_speed = 0.1
 
-[node name="BossFight" type="Node2D" node_paths=PackedStringArray("Dragon", "DragonDefaultPos", "PlayerDefaultPos", "player")]
+[node name="BossFight" type="Node2D" node_paths=PackedStringArray("Dragon", "DragonDefaultPos", "PlayerDefaultPos", "BossMusic", "player")]
 scale = Vector2(2, 2)
 script = ExtResource("1_nn163")
 Dragon = NodePath("enemies/DragonStateMachine")
 DragonDefaultPos = NodePath("FightPositions/DragonDefaultPos")
 PlayerDefaultPos = NodePath("FightPositions/PlayerDefaultPos")
+BossMusic = NodePath("AudioStreamPlayer2D")
 player = NodePath("Player")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -132,7 +133,6 @@ bossFightMngr = NodePath("../..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_mlx0c")
-autoplay = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(2, 2)
