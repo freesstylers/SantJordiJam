@@ -103,6 +103,7 @@ position = Vector2(-7, -13)
 texture = ExtResource("4_30nth")
 
 [node name="FlameHitbox" type="Area2D" parent="DragonVisualizer"]
+position = Vector2(-53, -4)
 rotation = 2.35619
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonVisualizer/FlameHitbox"]
