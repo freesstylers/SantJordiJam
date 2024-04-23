@@ -87,6 +87,9 @@ func HPMonitor():
 	else:
 		return
 	
+	
+	hp.seek(2, true)
+	
 	match hpState:
 		9:
 			if up:

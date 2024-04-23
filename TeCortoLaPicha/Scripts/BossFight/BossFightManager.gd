@@ -40,7 +40,7 @@ func PlayerWon():
 		self.queue_free()
 		
 	else:
-		print("VICTORIA")
+		get_tree().root.get_node("SceneManager").EndScreen.Win()
 	
 func PlayerLost():
 	print("DERROTA")

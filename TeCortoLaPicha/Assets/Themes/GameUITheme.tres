@@ -1,25 +1,62 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://r36jadpqieh6"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://r36jadpqieh6"]
 
 [ext_resource type="FontFile" uid="uid://cuq7d7mh2nfbq" path="res://Assets/Fonts/Alkhemikal.ttf" id="1_1mk0g"]
+[ext_resource type="Texture2D" uid="uid://bolx3xnjl66xg" path="res://Sprites/UI/Button_Ui.png" id="1_3cru6"]
+[ext_resource type="Texture2D" uid="uid://b7w4teb3kt3q8" path="res://Sprites/UI/Window-UI.png" id="3_081gb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2s4u7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bywl"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pokhw"]
+texture = ExtResource("1_3cru6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1, 0.996078, 0.803922, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5exy"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5dwe"]
+texture = ExtResource("1_3cru6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1, 0.996078, 0.803922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6g5kq"]
+texture = ExtResource("1_3cru6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x726h"]
+texture = ExtResource("1_3cru6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.752941, 0.752941, 0.611765, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eilg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_055lk"]
-bg_color = Color(0.137255, 0.137255, 0.137255, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mh02u"]
+texture = ExtResource("3_081gb")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfpvs"]
 border_width_left = 2
@@ -79,10 +116,10 @@ Button/colors/font_outline_color = Color(0.890196, 0.627451, 0.294118, 1)
 Button/colors/font_pressed_color = Color(0.121569, 0.0745098, 0.172549, 1)
 Button/font_sizes/font_size = 75
 Button/styles/disabled = SubResource("StyleBoxEmpty_2s4u7")
-Button/styles/focus = SubResource("StyleBoxEmpty_7bywl")
-Button/styles/hover = SubResource("StyleBoxEmpty_7bywl")
-Button/styles/normal = SubResource("StyleBoxEmpty_7bywl")
-Button/styles/pressed = SubResource("StyleBoxEmpty_j5exy")
+Button/styles/focus = SubResource("StyleBoxTexture_pokhw")
+Button/styles/hover = SubResource("StyleBoxTexture_f5dwe")
+Button/styles/normal = SubResource("StyleBoxTexture_6g5kq")
+Button/styles/pressed = SubResource("StyleBoxTexture_x726h")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -98,7 +135,7 @@ MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
 MarginContainer/constants/margin_top = 5
-Panel/styles/panel = SubResource("StyleBoxFlat_055lk")
+Panel/styles/panel = SubResource("StyleBoxTexture_mh02u")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_pfpvs")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_scmdd")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_by12p")

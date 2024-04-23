@@ -331,5 +331,5 @@ func _process(delta):
 	pass
 
 func Death():
-	print("fuggg...")
-	pass # Replace with function body.
+	get_tree().root.get_node("SceneManager").EndScreen.Lose()
+	pass

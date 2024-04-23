@@ -1,0 +1,148 @@
+[gd_scene load_steps=3 format=3 uid="uid://hpsqluh2elt4"]
+
+[ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_syt0t"]
+[ext_resource type="Script" path="res://Scripts/EndScreen.gd" id="2_0enwi"]
+
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("win", "lose", "endless")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_syt0t")
+script = ExtResource("2_0enwi")
+win = NodePath("Normal")
+lose = NodePath("NormalLose")
+endless = NodePath("Endless")
+
+[node name="Normal" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 274.0
+offset_top = 193.0
+offset_right = -274.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Normal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261194
+anchor_top = 0.747444
+anchor_right = 0.738806
+anchor_bottom = 0.955056
+offset_top = 27.5281
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Normal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100746
+anchor_top = -0.144976
+anchor_right = 0.899254
+anchor_bottom = 0.909681
+offset_top = 58.8979
+offset_bottom = -58.8979
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 186
+text = "Victoria"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NormalLose" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 274.0
+offset_top = 193.0
+offset_right = -274.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="NormalLose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261194
+anchor_top = 0.747444
+anchor_right = 0.738806
+anchor_bottom = 0.955056
+offset_top = 27.5281
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="NormalLose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100746
+anchor_top = -0.144976
+anchor_right = 0.899254
+anchor_bottom = 0.909681
+offset_top = 58.8979
+offset_bottom = -58.8979
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 186
+text = "Derrota"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Endless" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185937
+anchor_top = 0.129167
+anchor_right = 0.814062
+anchor_bottom = 0.870833
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Endless"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261194
+anchor_top = 0.842697
+anchor_right = 0.738806
+anchor_bottom = 0.955056
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Endless"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100746
+anchor_top = 0.0524345
+anchor_right = 0.899254
+anchor_bottom = 0.406367
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 186
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Normal/Button" to="." method="Exit"]
+[connection signal="pressed" from="NormalLose/Button" to="." method="Exit"]
+[connection signal="pressed" from="Endless/Button" to="." method="Exit"]

@@ -6,6 +6,8 @@ var pauseEnabled = false
 @export var GameScene : PackedScene
 @export var MainMenuScene : PackedScene
 
+@export var EndScreen : Control
+
 var GameSceneInstance = null
 
 var endless = false
@@ -67,8 +69,9 @@ func TogglePause():
 func EnablePause():
 	pauseEnabled = not menu
 	pass
-	
+
 func Menu():
 	$CurrentScene.add_child(MainMenuScene.instantiate())
 	GameSceneInstance = null
 	pass
+

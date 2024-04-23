@@ -62,17 +62,19 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 483.0
-offset_right = -483.0
+offset_left = 484.099
+offset_top = -18.3828
+offset_right = -481.901
+offset_bottom = -18.3828
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="resume" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
-anchor_left = 0.111465
-anchor_top = 0.375
-anchor_right = 0.856688
-anchor_bottom = 0.480556
+anchor_left = 0.106775
+anchor_top = 0.37449
+anchor_right = 0.851998
+anchor_bottom = 0.507824
 offset_top = 1.52588e-05
 offset_right = -3.05176e-05
 rotation = 0.119424
@@ -100,10 +102,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="exit" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
-anchor_left = 0.066879
-anchor_top = 0.509722
-anchor_right = 0.815287
-anchor_bottom = 0.615278
+anchor_left = 0.0706533
+anchor_top = 0.509943
+anchor_right = 0.819061
+anchor_bottom = 0.643277
 offset_top = -3.05176e-05
 rotation = 0.118682
 text = "Exit"
