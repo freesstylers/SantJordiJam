@@ -27,8 +27,10 @@ func _ready():
 	
 	if not get_tree().root.get_node("SceneManager").firstTimeLangSetup:
 		select(langs.find("ca"))
-		TranslationServer.set_locale(langs[langs.find("ca")])
+		TranslationServer.set_locale("ca")
 		get_tree().root.get_node("SceneManager").firstTimeLangSetup = true
+	else:
+		select(langs.find(TranslationServer.get_locale()))
 
 func _on_item_selected(index):
 	TranslationServer.set_locale(langs[index])
