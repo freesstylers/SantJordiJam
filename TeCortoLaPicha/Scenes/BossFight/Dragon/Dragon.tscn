@@ -48,36 +48,36 @@ position = Vector2(645, 641)
 script = ExtResource("1_fbe06")
 FlyingSpeed = 750.0
 
-[node name="Hitbox" type="CharacterBody2D" parent="." node_paths=PackedStringArray("DragonMngr")]
+[node name="DragonHitbox" type="CharacterBody2D" parent="." node_paths=PackedStringArray("DragonMngr")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("14_wlc6i")
 DragonMngr = NodePath("..")
 life = 400
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox"]
 shape = SubResource("RectangleShape2D_ou3gk")
 
-[node name="DamageToPlayerHitbox" type="Area2D" parent="Hitbox"]
+[node name="DamageToPlayerHitbox" type="Area2D" parent="DragonHitbox"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/DamageToPlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox/DamageToPlayerHitbox"]
 position = Vector2(-3.5, 3)
 shape = SubResource("RectangleShape2D_ihvi8")
 debug_color = Color(0.976471, 0, 0.403922, 0.419608)
 
-[node name="DamageOnHitTimer" type="Timer" parent="Hitbox"]
+[node name="DamageOnHitTimer" type="Timer" parent="DragonHitbox"]
 
-[node name="HurtBox" type="Area2D" parent="Hitbox"]
+[node name="HurtBox" type="Area2D" parent="DragonHitbox"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox/HurtBox"]
 position = Vector2(-3.5, 3)
 shape = SubResource("RectangleShape2D_gf1hk")
 debug_color = Color(0, 0.647059, 0.227451, 0.419608)
 
-[node name="GetHurtTimer" type="Timer" parent="Hitbox/HurtBox"]
+[node name="GetHurtTimer" type="Timer" parent="DragonHitbox/HurtBox"]
 wait_time = 0.25
 
 [node name="DragonVisualizer" type="Node2D" parent="." node_paths=PackedStringArray("FireParticles", "DragonMngr", "DeathSound")]
@@ -200,10 +200,10 @@ MyState = "VERTICAL"
 
 [node name="FireBeamSound" type="AudioStreamPlayer2D" parent="States/VERTICAL_FLAME_ATTACK_STATE"]
 
-[connection signal="body_entered" from="Hitbox/DamageToPlayerHitbox" to="Hitbox" method="other_collided"]
-[connection signal="timeout" from="Hitbox/DamageOnHitTimer" to="Hitbox" method="damage_timer_finished"]
-[connection signal="area_entered" from="Hitbox/HurtBox" to="Hitbox" method="other_area_entered_hurtbox"]
-[connection signal="timeout" from="Hitbox/HurtBox/GetHurtTimer" to="Hitbox" method="hurtbox_timer_finished"]
+[connection signal="body_entered" from="DragonHitbox/DamageToPlayerHitbox" to="DragonHitbox" method="other_collided"]
+[connection signal="timeout" from="DragonHitbox/DamageOnHitTimer" to="DragonHitbox" method="damage_timer_finished"]
+[connection signal="area_entered" from="DragonHitbox/HurtBox" to="DragonHitbox" method="other_area_entered_hurtbox"]
+[connection signal="timeout" from="DragonHitbox/HurtBox/GetHurtTimer" to="DragonHitbox" method="hurtbox_timer_finished"]
 [connection signal="animation_finished" from="DragonVisualizer/AnimatedSprite2D" to="DragonVisualizer" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DragonVisualizer/FlameHitbox" to="States/VERTICAL_FLAME_ATTACK_STATE" method="other_collided_with_dragon"]
 [connection signal="timeout" from="States/FIREBALL_ATTACK_STATE/DelayBeforeFiring" to="States/FIREBALL_ATTACK_STATE" method="Attack"]
