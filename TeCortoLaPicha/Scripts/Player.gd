@@ -76,6 +76,8 @@ signal dash_start
 signal dash_cancel
 signal refresh_hp
 
+var doorChecked = false
+
 @export var text : Label
 var cdHit_Engine_Scale = 0.2
 var hit_cd_time_buffer = 0
@@ -89,7 +91,7 @@ func _ready():
 	border_fall_gravity = ((-2.0 * border_jump_height) / (border_jump_time_to_descend * border_jump_time_to_descend)) * -1
 	
 	characterLife = timeLimit
-	
+	doorChecked = false
 	print (characterLife)
 
 func Cantar(cantar : String):
@@ -234,8 +236,9 @@ func _physics_process(delta):
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		if collision.get_collider().name == "Door":
+		if !doorChecked and collision.get_collider().name == "Door":
 			Globals.doorAttempt.emit()
+			doorChecked = true
 
 func Launch(launch_vel):
 	velocity = launch_vel
