@@ -126,6 +126,9 @@ func _input(event):
 	if Input.get_connected_joypads().size() > 0 and event is InputEventJoypadMotion:
 		mouse_pos += Vector2((-Input.get_action_strength("Rightstick Left") + Input.get_action_strength("Rightstick right")) * 5, (-Input.get_action_strength("Rightstick Up") + Input.get_action_strength("Rightstick down")) * 5)
 		Input.warp_mouse(mouse_pos)
+		
+	if Input.is_action_pressed("debug1"):
+		Globals.roomCompleted.emit()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "witiza_attack_anim":
@@ -270,15 +273,15 @@ func _on_sword_collider_body_entered(body):
 	print("te pegue")
 	body.takeDamage(damage)
 	
+	if body.name == "DragonHitbox":	
+		characterLife += timeLimit / 9.0
+		refresh_hp.emit()
 	if(body.life <= 0):
 		characterLife += timeLimit / 9.0
-		
 		refresh_hp.emit()
-		pass
 
 	body.applyForce(position)
 	Engine.time_scale = 0.5
-	pass # Replace with function body.
 
 func characterTakeLife(value, enemy):
 	if !attacking and hit_buffer <= 0:# and (clamp(position.x - enemy.x, -1, 1) < 0 and direction == -1) or (clamp(position.x - enemy.x, -1, 1) > 0 and direction == 1):

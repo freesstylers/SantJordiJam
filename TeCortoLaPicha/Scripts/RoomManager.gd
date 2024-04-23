@@ -46,8 +46,11 @@ func addNewRoom():
 		var aux = roomList.pick_random()
 		roomList.erase(aux)
 		currentRoomCont = Rooms[aux].instantiate()
+		var tileset = Textures.pick_random()
+		currentRoomCont.get_child(0).tile_set.get_source(0).texture = tileset #Random Tileset
 		add_child(currentRoomCont)
 	else:
+		get_tree().root.get_child(1).get_child(0).visible = false
 		currentRoomCont = BossRoom.instantiate()
 		add_child(currentRoomCont)
 		
