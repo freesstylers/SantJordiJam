@@ -53,7 +53,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("14_wlc6i")
 DragonMngr = NodePath("..")
-life = 400
+life = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonHitbox"]
 shape = SubResource("RectangleShape2D_ou3gk")
@@ -90,8 +90,10 @@ DeathSound = NodePath("DeathSound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonVisualizer"]
 sprite_frames = ExtResource("4_rswvd")
-animation = &"dash"
+animation = &"floorfire"
 autoplay = "flying"
+frame = 2
+frame_progress = 1.0
 
 [node name="FiringPos" type="Node2D" parent="DragonVisualizer/AnimatedSprite2D"]
 position = Vector2(-53, -3)

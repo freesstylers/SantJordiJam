@@ -52,9 +52,11 @@ func Attack():
 	var destRot = -45
 	if position_to_face.x < Dragon.global_position.x:
 		FireFlameHitbox.rotation_degrees = 135
+		FireFlameHitbox.position = Vector2(-53,-4)
 		destRot = 225
 	else:
 		FireFlameHitbox.rotation_degrees = 45
+		FireFlameHitbox.position = Vector2(53,-4)
 		destRot = -45
 	
 	#Stop turning and start the particles effect

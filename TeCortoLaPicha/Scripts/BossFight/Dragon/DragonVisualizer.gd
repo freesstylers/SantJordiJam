@@ -26,6 +26,9 @@ func _on_animated_sprite_2d_animation_finished():
 	elif $AnimatedSprite2D.animation == "fall":
 		$AnimatedSprite2D.set_animation("panza")
 		$AnimatedSprite2D.play()
+	elif $AnimatedSprite2D.animation == "floorfire":
+		$AnimatedSprite2D.set_animation("floorfire360")
+		$AnimatedSprite2D.play()
 
 func play_animation(new_anim_state : ANIM_STATE):
 	match new_anim_state:
@@ -50,6 +53,7 @@ func play_animation(new_anim_state : ANIM_STATE):
 			#PLAY ONCE, adjust speed to logic
 			pass
 		ANIM_STATE.VERTICAL:
+			$AnimatedSprite2D.set_animation("floorfire")
 			#PLAY ONCE, adjust speed to logic
 			pass
 	$AnimatedSprite2D.play()

@@ -29,7 +29,7 @@ func start_fight():
 	Dragon.setState("FIREBALL")	
 
 func PlayerWon():
-	get_tree().root.get_child(1).get_child(0).visible = true
+	#get_tree().root.get_child(1).get_child(0).visible = true
 	print("VICTORIA")
 	
 func PlayerLost():
