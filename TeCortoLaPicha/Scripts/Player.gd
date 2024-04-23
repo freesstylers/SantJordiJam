@@ -238,7 +238,6 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if !doorChecked and collision.get_collider().name == "Door":
 			Globals.doorAttempt.emit()
-			doorChecked = true
 
 func Launch(launch_vel):
 	velocity = launch_vel
